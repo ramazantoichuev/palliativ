@@ -1,0 +1,12 @@
+*.sqlite3
+venv
+virtualenv
+__pycache__
+*.pyc
+.idea
+.vscode
+*.log
+uploads
+.DS_Store
+settings_local.py
+media/
