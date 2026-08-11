@@ -4,7 +4,6 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from django.views import View
-from .forms import BaseUserCreationForm
 User = get_user_model()
 
 # class RegisterView(View):

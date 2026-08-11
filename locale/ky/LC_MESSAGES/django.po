@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 15:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: accounts/models.py:9
+msgid "Администратор"
+msgstr "Администратор"
+
+msgid "Модератор"
+msgstr "Модератор"
+
+msgid "Менеджер"
+msgstr "Менеджер"
+
+msgid "Врач"
+msgstr "Дарыгер"
+
+msgid "Пациент"
+msgstr "Бейтап"
+
+msgid "Роль"
+msgstr "Ролу"
+
+msgid "Одобрен"
+msgstr "Уруксат берилди"
+
+msgid "Имя"
+msgstr "Аты"
+
+msgid "Фамилия"
+msgstr "Атасынын аты"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Номер телефона должен быть в формате: '+996XXXXXXXXX' (всего 12 цифр)."
+msgstr "Телефон номери бул форматта болушу керек: '+996XXXXXXXXX' (бардыгы 12 цифра)."
+
+msgid "Номер телефона"
+msgstr "Телефон номери"
+
+msgid "Образование или место учебы"
+msgstr "Билими же окуу мекмеси"
+
+msgid "Навыки"
+msgstr "Көндүмдөр"
+
+msgid "Диагноз"
+msgstr "Диагноз"
+
+msgid "Russian"
+msgstr "Орусча"
+
+msgid "Kyrgyz"
+msgstr "Кыргызча"
+
+msgid "English"
+msgstr "Англисче"
+
