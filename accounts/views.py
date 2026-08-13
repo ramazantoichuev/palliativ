@@ -6,31 +6,41 @@ from django.shortcuts import render, redirect
 from django.views import View
 User = get_user_model()
 
-# class RegisterView(View):
-#     def get(self, request):
-#         form = BaseUserCreationForm
-#         return render(request, 'accounts/register.html', {'form': form})
-#
-#     def post(self, request):
-#         form = BaseUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.set_password(form.cleaned_data['password'])
-#             user.save()
-#             if user.role == user.Role.DOCTOR:
-#                 profile = user.doctor_profile
-#                 profile.education = form.cleaned_data['education']
-#                 profile.skills = form.cleaned_data['skills']
-#                 profile.save()
-#             elif user.role == user.Role.PATIENT:
-#                 profile = user.patient_profile
-#                 profile.diagnosis = form.cleaned_data['diagnosis']
-#                 profile.save()
-#             return render(request, 'accounts/register.html', {'success': True})
-#         return render(request, 'accounts/register.html', {'form': form})
+
+from django.contrib.auth import login
+from django.shortcuts import redirect, render
+from django.views import View
+from .forms import DoctorApplicationForm, PatientRegistrationForm, EmailAuthenticationForm
+
+
+class PatientRegisterView(View):
+    def get(self, request):
+        form = PatientRegistrationForm()
+        return render(request, 'accounts/patient_register.html', {'form': form})
+
+    def post(self, request):
+        form = PatientRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('accounts:about')
+        return render(request, 'accounts/patient_register.html', {'form': form})
+
+
+class DoctorRegisterView(View):
+    def get(self, request):
+        form = DoctorApplicationForm()
+        return render(request, 'accounts/doctor_register.html', {'form': form})
+
+    def post(self, request):
+        form = DoctorApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts/doctor_application_sent.html')
+        return render(request, 'accounts/doctor_register.html', {'form': form})
 
 class CustomLoginView(LoginView):
-    form_class = AuthenticationForm
+    form_class = EmailAuthenticationForm
     template_name = 'accounts/login.html'
 
     def form_valid(self, form):
@@ -38,8 +48,11 @@ class CustomLoginView(LoginView):
 
         if user.role == User.Role.DOCTOR and not user.is_approved:
             return redirect('accounts:waiting_approval')
+
         return super().form_valid(form)
 
 class WaitingApprovalView(TemplateView):
-    template_name = 'accounts/waitig_403.html'
+    template_name = 'accounts/waiting_403.html'
+
+
 

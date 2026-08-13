@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-11 15:15+0000\n"
+"POT-Creation-Date: 2026-08-13 15:20+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,75 +17,238 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: accounts/models.py:9
-msgid "Администратор"
-msgstr "Administrator"
 
-#: accounts/models.py:10
-msgid "Модератор"
-msgstr "Moderator"
+#: .\accounts\forms.py:13
+msgid "Айгуль"
+msgstr ""
 
-#: accounts/models.py:11
-msgid "Менеджер"
-msgstr "Manager"
+#: .\accounts\forms.py:14
+msgid "Токтосунова"
+msgstr ""
 
-#: accounts/models.py:12
-msgid "Врач"
-msgstr "Doctor"
+#: .\accounts\forms.py:15
+msgid "example@gmail.com"
+msgstr ""
 
-#: accounts/models.py:13
-msgid "Пациент"
-msgstr "Patient"
+#: .\accounts\forms.py:16
+msgid "+996 700 123 456"
+msgstr ""
 
-#: accounts/models.py:15
-msgid "Роль"
-msgstr "Role"
+#: .\accounts\forms.py:17
+msgid "Минимум 8 символов"
+msgstr ""
 
-#: accounts/models.py:16
-msgid "Одобрен"
-msgstr "Approved"
+#: .\accounts\forms.py:18
+msgid "Повторите пароль"
+msgstr ""
 
-#: accounts/models.py:17
-msgid "Имя"
-msgstr "First Name"
+#: .\accounts\forms.py:20 .\accounts\forms.py:108
+msgid "Пароль"
+msgstr ""
 
-#: accounts/models.py:18
-msgid "Фамилия"
-msgstr "Last Name"
+#: .\accounts\forms.py:21
+msgid "Подтверждение пароля"
+msgstr ""
 
-#: accounts/models.py:20
-msgid "Email"
-msgstr "Email"
+#: .\accounts\forms.py:42
+msgid "Пароли не совпадают."
+msgstr ""
 
-#: accounts/models.py:22
-msgid "Номер телефона должен быть в формате: '+996XXXXXXXXX' (всего 12 цифр)."
-msgstr "Phone number must be in format: '+996XXXXXXXXX' (12 digits total)."
+#: .\accounts\forms.py:73
+msgid "Пользователь с таким номером телефона уже зарегистрирован."
+msgstr ""
 
-
-#: accounts/models.py:23
-msgid "Номер телефона"
-msgstr "Phone Number"
-
-#: accounts/models.py:48
+#: .\accounts\forms.py:83 .\accounts\models.py:51
 msgid "Образование или место учебы"
 msgstr "Education or Place of Study"
 
-#: accounts/models.py:49
+#: .\accounts\forms.py:84
+msgid "Профессиональные навыки"
+msgstr ""
+
+#: .\accounts\forms.py:98 .\accounts\models.py:20
+msgid "Email"
+msgstr "Email"
+
+#: .\accounts\forms.py:102
+msgid "Введите email"
+msgstr ""
+
+#: .\accounts\forms.py:112
+msgid "Введите пароль"
+msgstr ""
+
+#: .\accounts\models.py:9
+msgid "Администратор"
+msgstr "Administrator"
+
+#: .\accounts\models.py:10
+msgid "Модератор"
+msgstr "Moderator"
+
+#: .\accounts\models.py:11
+msgid "Менеджер"
+msgstr "Manager"
+
+#: .\accounts\models.py:12
+msgid "Врач"
+msgstr "Doctor"
+
+#: .\accounts\models.py:13
+msgid "Пациент"
+msgstr "Patient"
+
+#: .\accounts\models.py:15
+msgid "Роль"
+msgstr "Role"
+
+#: .\accounts\models.py:16
+msgid "Одобрен"
+msgstr "Approved"
+
+#: .\accounts\models.py:17
+msgid "Имя"
+msgstr "First Name"
+
+#: .\accounts\models.py:18
+msgid "Фамилия"
+msgstr "Last Name"
+
+#: .\accounts\models.py:22
+msgid "Номер телефона должен быть в формате: '+996XXXXXXXXX' (всего 12 цифр)."
+msgstr "Phone number must be in format: '+996XXXXXXXXX' (12 digits total)."
+
+#: .\accounts\models.py:23
+msgid "Номер телефона"
+msgstr "Phone Number"
+
+#: .\accounts\models.py:52
 msgid "Навыки"
 msgstr "Skills"
 
-#: accounts/models.py:54
+#: .\accounts\models.py:57
 msgid "Диагноз"
 msgstr "Diagnosis"
 
-#: config/settings.py:118
+#: .\config\settings.py:121
 msgid "Russian"
 msgstr "Russian"
 
-#: config/settings.py:119
+#: .\config\settings.py:122
 msgid "Kyrgyz"
 msgstr "Kyrgyz"
 
-#: config/settings.py:120
+#: .\config\settings.py:123
 msgid "English"
 msgstr "English"
+
+#: .\templates\accounts\doctor_application_sent.html:3
+msgid "Заявка отправлена"
+msgstr ""
+
+#: .\templates\accounts\doctor_application_sent.html:7
+msgid "Спасибо!"
+msgstr ""
+
+#: .\templates\accounts\doctor_application_sent.html:8
+msgid "Ваша заявка успешно отправлена и находится на модерации."
+msgstr ""
+
+#: .\templates\accounts\doctor_application_sent.html:9
+#: .\templates\accounts\waiting_403.html:11
+msgid "На главную"
+msgstr ""
+
+#: .\templates\accounts\doctor_register.html:5
+msgid "Заявка врача/волонтёра"
+msgstr ""
+
+#: .\templates\accounts\doctor_register.html:21
+msgid "Заявка на регистрацию Врача"
+msgstr ""
+
+#: .\templates\accounts\doctor_register.html:25
+msgid ""
+"Заполните форму. Ваша заявка будет рассмотрена администратором ассоциации."
+msgstr ""
+
+#: .\templates\accounts\doctor_register.html:73
+msgid "Отправить заявку"
+msgstr ""
+
+#: .\templates\accounts\doctor_register.html:80
+#: .\templates\accounts\patient_register.html:78
+msgid "Уже есть аккаунт?"
+msgstr ""
+
+#: .\templates\accounts\doctor_register.html:84
+#: .\templates\accounts\login.html:6
+#: .\templates\accounts\patient_register.html:82
+msgid "Войти"
+msgstr "Log in"
+
+#: .\templates\accounts\login.html:5
+msgid "Логин"
+msgstr ""
+
+#: .\templates\accounts\patient_register.html:5
+#: .\templates\accounts\patient_register.html:21
+msgid "Регистрация пациента"
+msgstr ""
+
+#: .\templates\accounts\patient_register.html:25
+msgid "Создайте аккаунт, чтобы пользоваться возможностями ассоциации."
+msgstr ""
+
+#: .\templates\accounts\patient_register.html:71
+#: .\templates\accounts\register_type.html:40
+msgid "Зарегистрироваться"
+msgstr ""
+
+#: .\templates\accounts\register_type.html:5
+#: .\templates\accounts\register_type.html:14
+msgid "Членство / Участие"
+msgstr ""
+
+#: .\templates\accounts\register_type.html:18
+msgid "Выберите подходящий вариант участия в ассоциации."
+msgstr ""
+
+#: .\templates\accounts\register_type.html:29
+#, fuzzy
+#| msgid "Пациент"
+msgid "Стать пациентом"
+msgstr "Patient"
+
+#: .\templates\accounts\register_type.html:33
+msgid ""
+"Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации."
+msgstr ""
+
+#: .\templates\accounts\register_type.html:52
+msgid "Стать врачом или волонтёром"
+msgstr ""
+
+#: .\templates\accounts\register_type.html:56
+msgid ""
+"Отправьте заявку на вступление. Ваша заявка будет рассмотрена и одобрена "
+"администратором ассоциации."
+msgstr ""
+
+#: .\templates\accounts\register_type.html:63
+msgid "Подать заявку"
+msgstr ""
+
+#: .\templates\accounts\waiting_403.html:3
+msgid "Аккаунт на проверке"
+msgstr ""
+
+#: .\templates\accounts\waiting_403.html:7
+msgid "Ваш аккаунт ожидает проверки"
+msgstr ""
+
+#: .\templates\accounts\waiting_403.html:9
+msgid ""
+"Заявка на регистрацию врача/волонтёра находится на модерации у "
+"администратора ассоциации. Мы сообщим вам, когда доступ будет одобрен."
+msgstr ""
