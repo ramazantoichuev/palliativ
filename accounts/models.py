@@ -23,6 +23,9 @@ class BaseUser(AbstractUser):
     phone = models.CharField(_('Номер телефона'),
         validators=[phone_regex], max_length=13,unique=True,blank=False,null=False)
 
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username"]
+
     def save(self, *args, **kwargs):
         is_new = self._state.adding
         if self.role == self.Role.PATIENT:
