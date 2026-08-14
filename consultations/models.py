@@ -10,6 +10,7 @@ class ConsultationRequest(models.Model):
 
     first_name = models.CharField(_('Имя'), max_length=255)
     phone = models.CharField(_('Телефон'), max_length=20)
+    email = models.EmailField(_('Email'))
     topic = models.CharField(_('Тема обращения'), max_length=20, choices=TOPIC_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
 
