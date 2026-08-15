@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% translate "Предстоящие мероприятия" %}</h2>
+    <div class="row">
+        {% for event in upcoming_events %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                {% if event.image %}<img src="{{ event.image.url }}" class="card-img-top">{% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <p class="card-text">{{ event.event_date }}</p>
+                    <a href="{% url 'events:event_detail' event.slug %}" class="btn btn-primary">{% translate "Подробнее" %}</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>{% translate "Пока нет предстоящих мероприятий" %}</p>
+        {% endfor %}
+    </div>
+
+    <h2 class="mt-5">{% translate "Прошедшие мероприятия" %}</h2>
+    <div class="row">
+        {% for event in past_events %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <p class="card-text">{{ event.event_date }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
