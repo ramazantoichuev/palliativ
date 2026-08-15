@@ -4,7 +4,7 @@ from news.models import Category, Post
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
+    pass
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

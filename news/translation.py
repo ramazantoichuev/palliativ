@@ -1,12 +1,14 @@
 from modeltranslation.translator import TranslationOptions, translator
 
-from news.models.posts import Post, Category
+from .models import Category, Post
 
 class PostTranslationOptions(TranslationOptions):
     fields = ('title', 'content')
+    required_languages = ('ru',)
 
 class CategoryTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ('name',)
+    required_languages = ('ru',)
 
 translator.register(Post, PostTranslationOptions)
 translator.register(Category, CategoryTranslationOptions)

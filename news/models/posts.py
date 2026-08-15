@@ -1,21 +1,25 @@
 from django.db import models
 
 class Category(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True)
+    name = models.CharField(max_length=255)
 
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
     def __str__(self):
-        return self.title
+        return self.name
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
+    description = models.TextField()
     content = models.TextField()
-    image = models.ImageField(upload_to='news/', blank=True, null=True)
+    image = models.ImageField(
+        upload_to='news/',
+        blank=True,
+        null=True,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(
         Category,
