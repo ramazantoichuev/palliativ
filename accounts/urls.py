@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CustomLoginView, WaitingApprovalView, PatientRegisterView, DoctorRegisterView, about
+from .views import CustomLoginView, WaitingApprovalView, PatientRegisterView, DoctorRegisterView
 
 app_name = 'accounts'
 
