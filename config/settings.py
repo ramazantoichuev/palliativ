@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'accounts',
     'news',
     'django_bootstrap5',
-    'main'
+    'main',
+    'patients',
 
 ]
 
