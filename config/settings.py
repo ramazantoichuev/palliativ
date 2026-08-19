@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'consultations',
 
     'accounts',
     'django_bootstrap5',
+    'main',
 
 ]
 
@@ -117,7 +117,7 @@ DATABASES = {
 
 # LANGUAGE_CODE = 'ru'
 LANGUAGE_CODE = 'ru'
-# LANGUAGE_CODE = 'en'
+USE_I18N = True
 LANGUAGES = [
     ('ru', _('Russian')),
     ('ky', _('Kyrgyz')),
@@ -125,8 +125,6 @@ LANGUAGES = [
 ]
 
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
 
 USE_TZ = True
 
