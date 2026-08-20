@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Членство / Участие" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid px-4 px-md-5 py-5">
+
+    <div class="mb-5">
+        <h1 class="display-4 fw-bold mb-4">
+            {% trans "Членство / Участие" %}
+        </h1>
+
+        <p class="fs-4 mb-0">
+            {% trans "Выберите подходящий вариант участия в ассоциации." %}
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 border rounded-4">
+                <div class="card-body p-4 p-md-5 d-flex flex-column">
+
+                    <h3 class="fw-bold mb-4">
+                        {% trans "Стать пациентом" %}
+                    </h3>
+
+                    <p class="fs-5 mb-4">
+                        {% trans "Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации." %}
+                    </p>
+
+                    <a
+                        href="{% url 'accounts:patient_register' %}"
+                        class="btn btn-success btn-lg px-4 mt-auto align-self-start"
+                    >
+                        {% trans "Зарегистрироваться" %}
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 border rounded-4">
+                <div class="card-body p-4 p-md-5 d-flex flex-column">
+
+                    <h3 class="fw-bold mb-4">
+                        {% trans "Стать врачом или волонтёром" %}
+                    </h3>
+
+                    <p class="fs-5 mb-4">
+                        {% trans "Отправьте заявку на вступление. Ваша заявка будет рассмотрена и одобрена администратором ассоциации." %}
+                    </p>
+
+                    <a
+                        href="{% url 'accounts:doctor_register' %}"
+                        class="btn btn-success btn-lg px-4 mt-auto align-self-start"
+                    >
+                        {% trans "Подать заявку" %}
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
