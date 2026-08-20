@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Заявка отправлена" %}{% endblock %}
+
+{% block content %}
+<section class="container py-4 text-center">
+    <h1>{% trans "Спасибо!" %}</h1>
+    <p class="text-muted">{% trans "Ваша заявка успешно отправлена и находится на модерации." %}</p>
+    <a href="{% url 'accounts:about' %}" class="btn btn-primary mt-3">{% trans "На главную" %}</a>
+</section>
+{% endblock %}
