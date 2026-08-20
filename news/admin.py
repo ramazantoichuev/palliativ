@@ -15,3 +15,4 @@ class PostAdmin(TranslationAdmin):
     list_display = ('title', 'category', 'created_at')
     list_filter = ('category', 'created_at')
     search_fields = ('title', 'content')
+    prepopulated_fields = {'slug': ('title',)}

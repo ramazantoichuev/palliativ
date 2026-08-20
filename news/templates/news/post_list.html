@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+</head>
+<body>
+
+<h1>Новости</h1>
+
+<form method="get">
+    <label for="category_id">Категория:</label>
+    <select name="category_id" id="category_id">
+        <option value="">Все категории</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}"
+                {% if request.GET.category_id == category.id|stringformat:"s" %}selected{% endif %}>
+                {{ category.name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <label for="date_from">Дата от:</label>
+    <input
+        type="date"
+        name="date_from"
+        id="date_from"
+        value="{{ request.GET.date_from }}"
+    >
+
+    <label for="date_to">Дата до:</label>
+    <input
+        type="date"
+        name="date_to"
+        id="date_to"
+        value="{{ request.GET.date_to }}"
+    >
+
+    <button type="submit">Фильтровать</button>
+</form>
+
+{% for post in posts %}
+    <article>
+        <h2>
+            <a href="{% url 'news:post_detail' post.slug %}">
+                {{ post.title }}
+            </a>
+        </h2>
+
+        <p>{{ post.created_at }}</p>
+
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% endif %}
+    </article>
+{% empty %}
+    <p>Новостей пока нет.</p>
+{% endfor %}
+
+</body>
+</html>

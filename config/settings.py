@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'modeltranslation',  # должен стоять до django.contrib.admin
+    'modeltranslation',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'events',
     'accounts',
     'news',
     'django_bootstrap5',
-    'main'
-
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -118,9 +118,8 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-# LANGUAGE_CODE = 'ru'
 LANGUAGE_CODE = 'ru'
-# LANGUAGE_CODE = 'en'
+
 LANGUAGES = [
     ('ru', _('Russian')),
     ('ky', _('Kyrgyz')),
@@ -130,7 +129,6 @@ LANGUAGES = [
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_TZ = True
 
 LOCALE_PATHS = [
