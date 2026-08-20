@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% load i18n %}
-
-{% block content %}
-    {% trans "Логин" as login_title %}
-    {% trans "Войти" as login_button %}
-
-    {% include 'partial/form.html' with form=form form_title=login_title btn_txt=login_button extra_classes="w-50 mx-auto" %}
-{% endblock %}
