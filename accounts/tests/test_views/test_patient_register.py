@@ -1,7 +1,6 @@
 from unittest import mock
 
 from django.contrib.auth import get_user_model
-from django.template.defaultfilters import last
 from django.test import TestCase
 from django.urls import reverse
 
@@ -14,10 +13,6 @@ class TestPatientRegisterView(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # User.objects.create(
-        #     first_name="John",
-        #     last_name="Doe",
-        # )
         cls.user = UserFactory()
 
     def test_get_patient_register_view(self):
@@ -49,5 +44,23 @@ class TestPatientRegisterView(TestCase):
         )
         mocked_login.assert_called_once()
 
-    def test_post_patient_register_view_fail(self):
-        pass
+    @mock.patch('accounts.views.login')
+    def test_post_patient_register_view_fail(self, mocked_login: mock.MagicMock):
+        url = reverse('accounts:patient_register')
+        response = self.client.post(
+            url,
+            data={
+                "email": "invalid@mail.ru",
+                "first_name": "Jane",
+                "last_name": "Doe",
+                "password1": "1qaz@WSX29",
+                "password2": "different",
+                "phone": "+996700123457"
+            }
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(
+            User.objects.filter(email="invalid@mail.ru").exists()
+        )
+        mocked_login.assert_not_called()
