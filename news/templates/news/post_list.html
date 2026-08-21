@@ -1,61 +1,75 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Новости</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load i18n %}
 
-<h1>Новости</h1>
+{% block title %}{% translate "Новости" %} — Паллиатив.kg{% endblock %}
 
-<form method="get">
-    <label for="category_id">Категория:</label>
-    <select name="category_id" id="category_id">
-        <option value="">Все категории</option>
-        {% for category in categories %}
-            <option value="{{ category.id }}"
-                {% if request.GET.category_id == category.id|stringformat:"s" %}selected{% endif %}>
-                {{ category.name }}
-            </option>
+{% block content %}
+    <h1 class="fw-bold mb-4">{% translate "Новости" %}</h1>
+
+    <form method="get" class="row g-3 align-items-end mb-4">
+        <div class="col-12 col-md-4">
+            <label for="category_id" class="form-label">{% translate "Категория" %}</label>
+            <select name="category_id" id="category_id" class="form-select">
+                <option value="">{% translate "Все категории" %}</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}"
+                        {% if request.GET.category_id == category.id|stringformat:"s" %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <label for="date_from" class="form-label">{% translate "Дата от" %}</label>
+            <input
+                type="date"
+                class="form-control"
+                name="date_from"
+                id="date_from"
+                value="{{ request.GET.date_from }}"
+            >
+        </div>
+
+        <div class="col-6 col-md-3">
+            <label for="date_to" class="form-label">{% translate "Дата до" %}</label>
+            <input
+                type="date"
+                class="form-control"
+                name="date_to"
+                id="date_to"
+                value="{{ request.GET.date_to }}"
+            >
+        </div>
+
+        <div class="col-12 col-md-2 d-grid">
+            <button type="submit" class="btn btn-primary">{% translate "Фильтровать" %}</button>
+        </div>
+    </form>
+
+    <div class="row g-4">
+        {% for post in posts %}
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title h5">
+                            <a class="stretched-link text-decoration-none"
+                               href="{% url 'news:post_detail' post.slug %}">
+                                {{ post.title }}
+                            </a>
+                        </h2>
+                        <p class="card-text text-muted small">{{ post.created_at }}</p>
+                        <p class="card-text">{{ post.description|truncatewords:20 }}</p>
+                    </div>
+                </article>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <p class="text-muted">{% translate "Новостей пока нет." %}</p>
+            </div>
         {% endfor %}
-    </select>
-
-    <label for="date_from">Дата от:</label>
-    <input
-        type="date"
-        name="date_from"
-        id="date_from"
-        value="{{ request.GET.date_from }}"
-    >
-
-    <label for="date_to">Дата до:</label>
-    <input
-        type="date"
-        name="date_to"
-        id="date_to"
-        value="{{ request.GET.date_to }}"
-    >
-
-    <button type="submit">Фильтровать</button>
-</form>
-
-{% for post in posts %}
-    <article>
-        <h2>
-            <a href="{% url 'news:post_detail' post.slug %}">
-                {{ post.title }}
-            </a>
-        </h2>
-
-        <p>{{ post.created_at }}</p>
-
-        {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}">
-        {% endif %}
-    </article>
-{% empty %}
-    <p>Новостей пока нет.</p>
-{% endfor %}
-
-</body>
-</html>
+    </div>
+{% endblock %}

@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ post.title }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load i18n %}
 
-<a href="{% url 'news:post_list' %}">← Все новости</a>
+{% block title %}{{ post.title }} — Паллиатив.kg{% endblock %}
 
-<h1>{{ post.title }}</h1>
+{% block content %}
+    <p>
+        <a href="{% url 'news:post_list' %}">&larr; {% translate "Все новости" %}</a>
+    </p>
 
-<p>{{ post.created_at }}</p>
+    <article>
+        <h1 class="fw-bold">{{ post.title }}</h1>
+        <p class="text-muted">{{ post.created_at }}</p>
 
-{% if post.image %}
-    <img src="{{ post.image.url }}" alt="{{ post.title }}">
-{% endif %}
+        {% if post.image %}
+            <img src="{{ post.image.url }}" class="img-fluid rounded mb-3" alt="{{ post.title }}">
+        {% endif %}
 
-<div>
-    {{ post.content }}
-</div>
-
-</body>
-</html>
+        <div>
+            {{ post.content|linebreaks }}
+        </div>
+    </article>
+{% endblock %}

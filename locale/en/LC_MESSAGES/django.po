@@ -160,10 +160,10 @@ msgid "Мероприятие"
 msgstr "Event"
 
 #: events/models.py:16
-#, fuzzy
-#| msgid "Мероприятие"
+#: templates/base.html:64
+#: templates/main/home.html:40
 msgid "Мероприятия"
-msgstr "Event"
+msgstr "Events"
 
 #: events/models.py:28
 msgid "ФИО"
@@ -300,6 +300,7 @@ msgid "Название"
 msgstr "Title"
 
 #: news/models.py:9 news/models.py:21
+#: news/templates/news/post_list.html:11
 msgid "Категория"
 msgstr "Category"
 
@@ -320,6 +321,10 @@ msgid "Новость"
 msgstr "News article"
 
 #: news/models.py:27
+#: templates/base.html:59
+#: templates/main/home.html:39
+#: news/templates/news/post_list.html:4
+#: news/templates/news/post_list.html:7
 msgid "Новости"
 msgstr "News"
 
@@ -447,3 +452,67 @@ msgstr ""
 #| msgid "Заявка на регистрацию Врача"
 msgid "Заявка на консультацию"
 msgstr "Doctor registration application"
+
+#: templates/base.html:49
+msgid "Главная"
+msgstr "Home page"
+
+#: templates/base.html:54
+msgid "О нас"
+msgstr "About us"
+
+#: templates/base.html:69
+msgid "Контакты"
+msgstr "Contacts"
+
+#: templates/base.html:41
+msgid "Открыть меню"
+msgstr "Open menu"
+
+#: templates/base.html:78
+msgid "Выбор языка"
+msgstr "Language selection"
+
+#: templates/base.html:106
+msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
+msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
+
+#: templates/base.html:107
+msgid "г. Бишкек, ул. Юдахина 61"
+msgstr "Bishkek, 61 Yudakhin St."
+
+#: templates/base.html:110
+msgid "Написать нам"
+msgstr "Contact us"
+
+#: templates/base.html:111
+msgid "Все права защищены."
+msgstr "All rights reserved."
+
+#: news/templates/news/post_list.html:13
+msgid "Все категории"
+msgstr "All categories"
+
+#: news/templates/news/post_list.html:24
+msgid "Дата от"
+msgstr "Date from"
+
+#: news/templates/news/post_list.html:35
+msgid "Дата до"
+msgstr "Date to"
+
+#: news/templates/news/post_list.html:46
+msgid "Фильтровать"
+msgstr "Filter"
+
+#: news/templates/news/post_list.html:71
+msgid "Новостей пока нет."
+msgstr "There is no news yet."
+
+#: news/templates/news/post_detail.html:8
+msgid "Все новости"
+msgstr "All news"
+
+#: templates/main/home.html:41
+msgid "Оставить заявку"
+msgstr "Submit a request"

@@ -161,6 +161,8 @@ msgid "Мероприятие"
 msgstr "Иш-чара"
 
 #: events/models.py:16
+#: templates/base.html:64
+#: templates/main/home.html:40
 msgid "Мероприятия"
 msgstr "Иш-чаралар"
 
@@ -292,6 +294,7 @@ msgid "Название"
 msgstr "Аталышы"
 
 #: news/models.py:9 news/models.py:21
+#: news/templates/news/post_list.html:11
 msgid "Категория"
 msgstr "Категория"
 
@@ -312,6 +315,10 @@ msgid "Новость"
 msgstr "Жаңылык"
 
 #: news/models.py:27
+#: templates/base.html:59
+#: templates/main/home.html:39
+#: news/templates/news/post_list.html:4
+#: news/templates/news/post_list.html:7
 msgid "Новости"
 msgstr "Жаңылыктар"
 
@@ -430,3 +437,67 @@ msgstr "Дарыгерди/волонтерду каттоо билдирмес�
 msgid "Заявка на консультацию"
 msgstr "Консультация алууга билдирме"
 
+
+#: templates/base.html:49
+msgid "Главная"
+msgstr "Башкы бет"
+
+#: templates/base.html:54
+msgid "О нас"
+msgstr "Биз жөнүндө"
+
+#: templates/base.html:69
+msgid "Контакты"
+msgstr "Байланыш"
+
+#: templates/base.html:41
+msgid "Открыть меню"
+msgstr "Менюну ачуу"
+
+#: templates/base.html:78
+msgid "Выбор языка"
+msgstr "Тилди тандоо"
+
+#: templates/base.html:106
+msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
+msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
+
+#: templates/base.html:107
+msgid "г. Бишкек, ул. Юдахина 61"
+msgstr "Бишкек ш., Юдахин көч. 61"
+
+#: templates/base.html:110
+msgid "Написать нам"
+msgstr "Бизге жазыңыз"
+
+#: templates/base.html:111
+msgid "Все права защищены."
+msgstr "Бардык укуктар корголгон."
+
+#: news/templates/news/post_list.html:13
+msgid "Все категории"
+msgstr "Бардык категориялар"
+
+#: news/templates/news/post_list.html:24
+msgid "Дата от"
+msgstr "Күнү (баштап)"
+
+#: news/templates/news/post_list.html:35
+msgid "Дата до"
+msgstr "Күнү (чейин)"
+
+#: news/templates/news/post_list.html:46
+msgid "Фильтровать"
+msgstr "Чыпкалоо"
+
+#: news/templates/news/post_list.html:71
+msgid "Новостей пока нет."
+msgstr "Азырынча жаңылыктар жок."
+
+#: news/templates/news/post_detail.html:8
+msgid "Все новости"
+msgstr "Бардык жаңылыктар"
+
+#: templates/main/home.html:41
+msgid "Оставить заявку"
+msgstr "Билдирме калтыруу"
