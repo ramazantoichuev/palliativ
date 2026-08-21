@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+
+<a href="{% url 'news:post_list' %}">← Все новости</a>
+
+<h1>{{ post.title }}</h1>
+
+<p>{{ post.created_at }}</p>
+
+{% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+{% endif %}
+
+<div>
+    {{ post.content }}
+</div>
+
+</body>
+</html>

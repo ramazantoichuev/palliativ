@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% include 'partial/form.html' with form_title=_('Заявка на консультацию') btn_txt=_('Отправить заявку') extra_classes='shadow-sm' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -4,7 +4,7 @@ from .models import Category, Post
 
 
 class PostTranslationOptions(TranslationOptions):
-    fields = ('title', 'content')
+    fields = ('title', 'content', 'description')
     required_languages = ('ru',)
 
 
