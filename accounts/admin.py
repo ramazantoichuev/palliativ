@@ -35,3 +35,11 @@ class BaseUserAdmin(UserAdmin):
             elif obj.role == BaseUser.Role.PATIENT:
                 return [PatientProfileInline]
         return []
+@admin.register(PatientProfile)
+class PatientProfileAdmin(admin.ModelAdmin):
+    search_fields = ['user__first_name', 'user__last_name', 'user__email']
+
+
+@admin.register(DoctorProfile)
+class DoctorProfileAdmin(admin.ModelAdmin):
+    search_fields = ['user__first_name', 'user__last_name', 'user__email']

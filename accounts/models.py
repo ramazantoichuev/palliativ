@@ -44,6 +44,11 @@ class BaseUser(AbstractUser):
             elif self.role == self.Role.PATIENT:
                 PatientProfile.objects.create(user=self)
 
+        if self.role == self.Role.MANAGER:
+            from django.contrib.auth.models import Group
+            managers_group, _created = Group.objects.get_or_create(name='Managers')
+            self.groups.add(managers_group)
+
 
 class DoctorProfile(models.Model):
     user = models.OneToOneField(BaseUser,on_delete=models.CASCADE, related_name='doctor_profile')
