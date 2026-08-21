@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-20 09:25+0000\n"
+"POT-Creation-Date: 2026-08-21 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,15 +132,15 @@ msgstr "Көндүмдөр"
 msgid "Диагноз"
 msgstr "Диагноз"
 
-#: config/settings.py:125
+#: config/settings.py:124
 msgid "Russian"
 msgstr "Орусча"
 
-#: config/settings.py:126
+#: config/settings.py:125
 msgid "Kyrgyz"
 msgstr "Кыргызча"
 
-#: config/settings.py:127
+#: config/settings.py:126
 msgid "English"
 msgstr "Англисче"
 
@@ -156,7 +156,7 @@ msgstr "Сүрөттөлүшү"
 msgid "Текст"
 msgstr "Текст"
 
-#: events/models.py:15 events/templates/events/event_form.html:6
+#: events/models.py:15 templates/events/event_form.html:6
 msgid "Мероприятие"
 msgstr "Иш-чара"
 
@@ -178,57 +178,13 @@ msgstr "Телефон номери"
 msgid "Рассмотрено"
 msgstr "Каралды"
 
-#: events/models.py:35 events/templates/events/event_detail.html:12
+#: events/models.py:35 templates/events/event_detail.html:12
 msgid "Регистрация на мероприятие"
 msgstr "Иш-чарага каттоо"
 
 #: events/models.py:36
 msgid "Регистрации на мероприятия"
 msgstr "Иш-чараларга каттоолор"
-
-#: events/templates/events/event_confirm_delete.html:6
-msgid "Удалить мероприятие"
-msgstr "Иш-чараны өчүрүү"
-
-#: events/templates/events/event_confirm_delete.html:7
-msgid "Вы уверены, что хотите удалить"
-msgstr "Өчүрүүнү каалайсызбы"
-
-#: events/templates/events/event_confirm_delete.html:10
-msgid "Удалить"
-msgstr "Өчүрүү"
-
-#: events/templates/events/event_detail.html:9
-msgid "Дата"
-msgstr "Күнү"
-
-#: events/templates/events/event_detail.html:10
-msgid "Место проведения"
-msgstr "Өткөрүлүүчү орду"
-
-#: events/templates/events/event_detail.html:16
-msgid "Записаться"
-msgstr "Жазылуу"
-
-#: events/templates/events/event_form.html:10
-msgid "Сохранить"
-msgstr "Сактоо"
-
-#: events/templates/events/event_list.html:6
-msgid "Предстоящие мероприятия"
-msgstr "Алдыдагы иш-чаралар"
-
-#: events/templates/events/event_list.html:15
-msgid "Подробнее"
-msgstr "Кененирээк"
-
-#: events/templates/events/event_list.html:20
-msgid "Пока нет предстоящих мероприятий"
-msgstr "Азырынча алдыдагы иш-чаралар жок"
-
-#: events/templates/events/event_list.html:24
-msgid "Прошедшие мероприятия"
-msgstr "Өткөн иш-чаралар"
 
 #: main/admin.py:14
 msgid "Основная информация"
@@ -241,11 +197,15 @@ msgstr "Билдирмени башкаруу"
 #: main/forms.py:21
 msgid ""
 "Неверный формат номера. Введите номер в формате: 0555123456 или +996555123456"
-msgstr "Телефон номурдун форматы туура эмес. Номурду бул форматта киргизиңиз: 0555123456 же +996555123456"
+msgstr ""
+"Телефон номурдун форматы туура эмес. Номурду бул форматта киргизиңиз: "
+"0555123456 же +996555123456"
 
 #: main/forms.py:29
 msgid "Неверный код оператора Кыргызстана. Проверьте правильность ввода."
-msgstr "Кыргызстандын операторунун коду туура эмес. Киргизилген маалыматты текшериңиз."
+msgstr ""
+"Кыргызстандын операторунун коду туура эмес. Киргизилген маалыматты "
+"текшериңиз."
 
 #: main/models/consultation.py:7
 msgid "Медицинская помощь"
@@ -311,7 +271,8 @@ msgstr "Түзүлгөн күнү"
 msgid "Новость"
 msgstr "Жаңылык"
 
-#: news/models.py:27
+#: news/models.py:27 templates/news/post_list.html:4
+#: templates/news/post_list.html:7
 msgid "Новости"
 msgstr "Жаңылыктар"
 
@@ -343,7 +304,9 @@ msgstr "Дарыгерди каттоо үчүн билдирме"
 #: templates/accounts/doctor_register.html:25
 msgid ""
 "Заполните форму. Ваша заявка будет рассмотрена администратором ассоциации."
-msgstr "Форманы толтуруңуз. Билдирмеңиз ассоциациянын администратору тарабынан каралат."
+msgstr ""
+"Форманы толтуруңуз. Билдирмеңиз ассоциациянын администратору тарабынан "
+"каралат."
 
 #: templates/accounts/doctor_register.html:73
 #: templates/main/consultation.html:8
@@ -396,7 +359,8 @@ msgstr "Бейтап"
 #: templates/accounts/register_type.html:33
 msgid ""
 "Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации."
-msgstr "Ассоциациянын мүмкүнчүлүктөрүнө жана кызматтарына жетүү үчүн катталыңыз."
+msgstr ""
+"Ассоциациянын мүмкүнчүлүктөрүнө жана кызматтарына жетүү үчүн катталыңыз."
 
 #: templates/accounts/register_type.html:52
 msgid "Стать врачом или волонтёром"
@@ -406,7 +370,9 @@ msgstr "Дарыгер же волонтер болуу"
 msgid ""
 "Отправьте заявку на вступление. Ваша заявка будет рассмотрена и одобрена "
 "администратором ассоциации."
-msgstr "Мүчө болуу үчүн билдирме жөнөтүңүз. Билдирмеңиз ассоциациянын администратору тарабынан каралат жана бекитилет."
+msgstr ""
+"Мүчө болуу үчүн билдирме жөнөтүңүз. Билдирмеңиз ассоциациянын администратору "
+"тарабынан каралат жана бекитилет."
 
 #: templates/accounts/register_type.html:63
 msgid "Подать заявку"
@@ -424,9 +390,90 @@ msgstr "Сиздин аккаунтуңуз текшерүүнү күтүүдө"
 msgid ""
 "Заявка на регистрацию врача/волонтёра находится на модерации у "
 "администратора ассоциации. Мы сообщим вам, когда доступ будет одобрен."
-msgstr "Дарыгерди/волонтерду каттоо билдирмеси ассоциациянын администраторунун модерациясында турат. Кирүү укугу бекитилгенде сизге кабарлайбыз."
+msgstr ""
+"Дарыгерди/волонтерду каттоо билдирмеси ассоциациянын администраторунун "
+"модерациясында турат. Кирүү укугу бекитилгенде сизге кабарлайбыз."
+
+#: templates/events/event_confirm_delete.html:6
+msgid "Удалить мероприятие"
+msgstr "Иш-чараны өчүрүү"
+
+#: templates/events/event_confirm_delete.html:7
+msgid "Вы уверены, что хотите удалить"
+msgstr "Өчүрүүнү каалайсызбы"
+
+#: templates/events/event_confirm_delete.html:10
+msgid "Удалить"
+msgstr "Өчүрүү"
+
+#: templates/events/event_detail.html:9
+msgid "Дата"
+msgstr "Күнү"
+
+#: templates/events/event_detail.html:10
+msgid "Место проведения"
+msgstr "Өткөрүлүүчү орду"
+
+#: templates/events/event_detail.html:16
+msgid "Записаться"
+msgstr "Жазылуу"
+
+#: templates/events/event_form.html:10
+msgid "Сохранить"
+msgstr "Сактоо"
+
+#: templates/events/event_list.html:6
+msgid "Предстоящие мероприятия"
+msgstr "Алдыдагы иш-чаралар"
+
+#: templates/events/event_list.html:15
+msgid "Подробнее"
+msgstr "Кененирээк"
+
+#: templates/events/event_list.html:20
+msgid "Пока нет предстоящих мероприятий"
+msgstr "Азырынча алдыдагы иш-чаралар жок"
+
+#: templates/events/event_list.html:24
+msgid "Прошедшие мероприятия"
+msgstr "Өткөн иш-чаралар"
 
 #: templates/main/consultation.html:8
 msgid "Заявка на консультацию"
 msgstr "Консультация алууга билдирме"
 
+#: templates/news/post_detail.html:28
+msgid "Вернуться к новостям"
+msgstr "Жаңылыктарга кайтуу"
+
+#: templates/news/post_list.html:13
+msgid "Категория:"
+msgstr "Категория:"
+
+#: templates/news/post_list.html:17
+msgid "Все категории"
+msgstr "Бардык категориялар"
+
+#: templates/news/post_list.html:31
+msgid "Дата от:"
+msgstr "Күнүнөн:"
+
+#: templates/news/post_list.html:36
+msgid "Дата до:"
+msgstr "Күнүнө чейин:"
+
+#: templates/news/post_list.html:41
+msgid "Фильтровать"
+msgstr "Чыпкалоо"
+
+#: templates/news/post_list.html:42
+msgid "Сбросить"
+msgstr "Түшүрүү"
+
+#: templates/news/post_list.html:68
+msgid "Читать дальше"
+msgstr "Толугу менен окуу"
+
+#: templates/news/post_list.html:77
+msgid "Новостей пока нет."
+msgstr "Азырынча жаңылыктар жок."

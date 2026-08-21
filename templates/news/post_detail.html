@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block content %}
+<div class="container-fluid my-4 px-4 px-md-5">
+    <article class="col-12 col-lg-10 mx-auto">
+        <h1 class="mb-3 fw-bold">{{ post.title }}</h1>
+
+        <div class="text-muted mb-4 d-flex align-items-center gap-2">
+            <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"d E Y" }}</time>
+            {% if post.category %}
+                <span>•</span>
+                <span class="badge bg-secondary">{{ post.category }}</span>
+            {% endif %}
+        </div>
+        {% if post.image %}
+            <div class="mb-4 text-center">
+                <img src="{{ post.image.url }}" class="img-fluid rounded shadow" alt="{{ post.title }}" style="max-height: 550px; width: 100%; object-fit: cover;">
+            </div>
+        {% endif %}
+            <div class="description fs-4 lh-lg mb-4 text-secondary">
+                {{ post.description|linebreaks }}
+            </div>
+            <div class="content fs-5 lh-lg mb-5 text-dark">
+                {{ post.content|linebreaks }}
+            </div>
+
+        <a href="{% url 'news:post_list' %}" class="btn btn-secondary">
+            &larr; {% translate "Вернуться к новостям" %}
+        </a>
+    </article>
+</div>
+{% endblock %}
