@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% translate "Мои пациенты" %}</h2>
+
+    {% if patient_cards %}
+    <div class="row">
+        {% for card in patient_cards %}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.patient }}</h5>
+                    <p class="card-text"><strong>{% translate "Диагноз" %}:</strong> {{ card.diagnosis }}</p>
+                    <p class="card-text">
+                        <strong>{% translate "Симптомы" %}:</strong>
+                        {% for symptom in card.symptoms.all %}
+                            {{ symptom.name }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            {% translate "не указаны" %}
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% translate "За вами пока не закреплено ни одного пациента." %}</p>
+    {% endif %}
+</div>
+{% endblock %}
