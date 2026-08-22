@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-22 05:45+0000\n"
+"POT-Creation-Date: 2026-08-21 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "Passwords do not match."
 msgid "Пользователь с таким номером телефона уже зарегистрирован."
 msgstr "The user with this phone number is already registered."
 
-#: accounts/forms.py:83 accounts/models.py:56
+#: accounts/forms.py:83 accounts/models.py:51
 msgid "Образование или место учебы"
 msgstr "Education or Place of Study"
 
@@ -95,7 +95,7 @@ msgstr "Manager"
 msgid "Врач"
 msgstr "Doctor"
 
-#: accounts/models.py:13 patients/models/patients.py:20
+#: accounts/models.py:13
 msgid "Пациент"
 msgstr "Patient"
 
@@ -123,31 +123,31 @@ msgstr "Phone number must be in format: '+996XXXXXXXXX' (12 digits total)."
 msgid "Номер телефона"
 msgstr "Phone Number"
 
-#: accounts/models.py:57
+#: accounts/models.py:52
 msgid "Навыки"
 msgstr "Skills"
 
-#: accounts/models.py:62 patients/models/patients.py:30
+#: accounts/models.py:57
 msgid "Диагноз"
 msgstr "Diagnosis"
 
-#: config/settings.py:127
+#: config/settings.py:124
 msgid "Russian"
 msgstr "Russian"
 
-#: config/settings.py:128
+#: config/settings.py:125
 msgid "Kyrgyz"
 msgstr "Kyrgyz"
 
-#: config/settings.py:129
+#: config/settings.py:126
 msgid "English"
 msgstr "English"
 
-#: events/models.py:6 news/models.py:17 resources/models/resources.py:26
+#: events/models.py:6 news/models.py:17
 msgid "Заголовок"
 msgstr "Title"
 
-#: events/models.py:8 resources/models/resources.py:27
+#: events/models.py:8
 msgid "Описание"
 msgstr "Description"
 
@@ -268,8 +268,7 @@ msgstr "Categories"
 msgid "Картинка"
 msgstr "Image"
 
-#: news/models.py:23 patients/models/patients.py:35
-#: resources/models/resources.py:48
+#: news/models.py:23
 msgid "Дата создания"
 msgstr "Creation date"
 
@@ -277,142 +276,10 @@ msgstr "Creation date"
 msgid "Новость"
 msgstr "News article"
 
-#: news/models.py:27
+#: news/models.py:27 templates/news/post_list.html:4
+#: templates/news/post_list.html:7
 msgid "Новости"
 msgstr "News"
-
-#: patients/models/patients.py:6
-#, fuzzy
-#| msgid "Название"
-msgid "Название симптома"
-msgstr "Title"
-
-#: patients/models/patients.py:9
-msgid "Симптом"
-msgstr ""
-
-#: patients/models/patients.py:10 patients/models/patients.py:34
-#: resources/models/resources.py:43
-msgid "Симптомы"
-msgstr ""
-
-#: patients/models/patients.py:28
-msgid "Лечащий врач"
-msgstr ""
-
-#: patients/models/patients.py:31
-msgid "Принимаемые препараты"
-msgstr ""
-
-#: patients/models/patients.py:32
-msgid "Противопоказания"
-msgstr ""
-
-#: patients/models/patients.py:33
-msgid "Ранее проведенное лечение"
-msgstr ""
-
-#: patients/models/patients.py:36
-#, fuzzy
-#| msgid "Дата создания"
-msgid "Дата изменения"
-msgstr "Creation date"
-
-#: patients/models/patients.py:39
-#, fuzzy
-#| msgid "Пациент"
-msgid "Карточка пациента"
-msgstr "Patient"
-
-#: patients/models/patients.py:40
-#, fuzzy
-#| msgid "Пациент"
-msgid "Карточки пациентов"
-msgstr "Patient cards"
-
-#: resources/models/resources.py:11
-msgid "Руководство для специалистов"
-msgstr "Specialist guide"
-
-#: resources/models/resources.py:12
-msgid "Советы ухаживающим"
-msgstr "Caregiver tips"
-
-#: resources/models/resources.py:16
-msgid "Контроль симптомов"
-msgstr "Symptom management"
-
-#: resources/models/resources.py:17
-msgid "Уход в конце жизни"
-msgstr "End-of-life care"
-
-#: resources/models/resources.py:18
-msgid "НПА (Нормативно-правовые акты)"
-msgstr "Regulations and laws"
-
-#: resources/models/resources.py:20
-msgid "Уход и кормление"
-msgstr "Care and feeding"
-
-#: resources/models/resources.py:21
-msgid "Советы психолога"
-msgstr "Psychologist's advice"
-
-#: resources/models/resources.py:22
-msgid "Лекарства и права пациента"
-msgstr "Medications and patient rights"
-
-#: resources/models/resources.py:23
-msgid "Соцподдержка"
-msgstr "Social support"
-
-#: resources/models/resources.py:30
-msgid "Целевая аудитория"
-msgstr "Target audience"
-
-#: resources/models/resources.py:35
-msgid "Подкатегория"
-msgstr "Subcategory"
-
-#: resources/models/resources.py:49
-msgid "Дата обновления"
-msgstr "Update date"
-
-#: resources/models/resources.py:52
-msgid "Справочный материал"
-msgstr "Reference material"
-
-#: resources/models/resources.py:53
-msgid "Справочные материалы"
-msgstr "Reference materials"
-
-#: resources/models/resources.py:64 resources/models/resources.py:77
-msgid "Ресурс"
-msgstr "Resource"
-
-#: resources/models/resources.py:66
-msgid "Файл"
-msgstr "File"
-
-#: resources/models/resources.py:68
-msgid "Файл ресурса"
-msgstr "Resource file"
-
-#: resources/models/resources.py:69
-msgid "Файлы ресурса"
-msgstr "Resource files"
-
-#: resources/models/resources.py:79
-msgid "Ссылка на YouTube"
-msgstr "YouTube link"
-
-#: resources/models/resources.py:81
-msgid "Видео-ссылка"
-msgstr "Video link"
-
-#: resources/models/resources.py:82
-msgid "Видео-ссылки"
-msgstr "Video links"
 
 #: templates/accounts/doctor_application_sent.html:3
 msgid "Заявка отправлена"
@@ -584,3 +451,40 @@ msgstr "Past events"
 #| msgid "Заявка на регистрацию Врача"
 msgid "Заявка на консультацию"
 msgstr "Doctor registration application"
+
+#: templates/news/post_detail.html:28
+msgid "Вернуться к новостям"
+msgstr "Back to news"
+
+#: templates/news/post_list.html:13
+msgid "Категория:"
+msgstr "Category:"
+
+#: templates/news/post_list.html:17
+msgid "Все категории"
+msgstr "All categories"
+
+#: templates/news/post_list.html:31
+msgid "Дата от:"
+msgstr "Date from:"
+
+#: templates/news/post_list.html:36
+msgid "Дата до:"
+msgstr "Date to:"
+
+#: templates/news/post_list.html:41
+msgid "Фильтровать"
+msgstr "Filter"
+
+#: templates/news/post_list.html:42
+msgid "Сбросить"
+msgstr "Reset"
+
+#: templates/news/post_list.html:68
+msgid "Читать дальше"
+msgstr "Read more"
+
+#: templates/news/post_list.html:77
+msgid "Новостей пока нет."
+msgstr "No news available yet."
+
