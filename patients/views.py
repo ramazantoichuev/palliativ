@@ -1,3 +1,22 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
+from django.views.generic import ListView
+from accounts.models import BaseUser
+from .models import PatientCard
 
-# Create your views here.
+class DoctorPatientListView(LoginRequiredMixin, ListView):
+    model = PatientCard
+    template_name = 'patients/doctor_dashboard.html'
+    context_object_name = 'patient_cards'
+
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        return response
+
+    def get(self, request, *args, **kwargs):
+        if request.user.role != BaseUser.Role.DOCTOR:
+            raise PermissionDenied
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return PatientCard.objects.filter(doctor=self.request.user.doctor_profile)
