@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-22 05:45+0000\n"
+"POT-Creation-Date: 2026-08-23 06:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,6 +128,7 @@ msgid "Навыки"
 msgstr "Skills"
 
 #: accounts/models.py:62 patients/models/patients.py:30
+#: patients/templates/patients/doctor_dashboard.html:15
 msgid "Диагноз"
 msgstr "Diagnosis"
 
@@ -143,15 +144,15 @@ msgstr "Kyrgyz"
 msgid "English"
 msgstr "English"
 
-#: events/models.py:6 news/models.py:17 resources/models/resources.py:26
+#: events/models.py:6 news/models/posts.py:17 resources/models/resources.py:26
 msgid "Заголовок"
 msgstr "Title"
 
-#: events/models.py:8 resources/models/resources.py:27
+#: events/models.py:8 news/models/posts.py:20 resources/models/resources.py:27
 msgid "Описание"
 msgstr "Description"
 
-#: events/models.py:9 news/models.py:18
+#: events/models.py:9 news/models/posts.py:19
 msgid "Текст"
 msgstr "Text"
 
@@ -159,9 +160,7 @@ msgstr "Text"
 msgid "Мероприятие"
 msgstr "Event"
 
-#: events/models.py:16
-#: templates/base.html:64
-#: templates/main/home.html:40
+#: events/models.py:16 templates/base.html:64 templates/main/home.html:40
 msgid "Мероприятия"
 msgstr "Events"
 
@@ -171,7 +170,6 @@ msgstr "Full name"
 
 #: events/models.py:30 main/models/consultation.py:19
 #, fuzzy
-#| msgid "Номер телефона"
 msgid "Телефон"
 msgstr "Phone Number"
 
@@ -185,7 +183,6 @@ msgstr "Registration on event"
 
 #: events/models.py:36
 #, fuzzy
-#| msgid "Регистрация на мероприятие"
 msgid "Регистрации на мероприятия"
 msgstr "Registration on event"
 
@@ -195,13 +192,13 @@ msgstr "Main information"
 
 #: main/admin.py:17
 #, fuzzy
-#| msgid "Отправить заявку"
 msgid "Управление заявкой"
 msgstr "Submit"
 
 #: main/forms.py:21
 msgid ""
-"Неверный формат номера. Введите номер в формате: 0555123456 или +996555123456"
+"Неверный формат номера. Введите номер в формате: 0555123456 или "
+"+996555123456"
 msgstr ""
 "Invalid phone number format. Please enter in the format: 0555123456 or "
 "+996555123456"
@@ -244,51 +241,82 @@ msgstr "Subject of inquiry"
 
 #: main/models/consultation.py:24
 #, fuzzy
-#| msgid "Подать заявку"
 msgid "Статус заявки"
 msgstr "Appley"
 
-#: main/views.py:23
+#: main/views.py:24
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
-#: news/models.py:6
+#: news/models/posts.py:6
 msgid "Название"
 msgstr "Title"
 
-#: news/models.py:9 news/models.py:21
-#: news/templates/news/post_list.html:11
+#: news/models/posts.py:9 news/models/posts.py:23
 msgid "Категория"
 msgstr "Category"
 
-#: news/models.py:10
+#: news/models/posts.py:10
 msgid "Категории"
 msgstr "Categories"
 
-#: news/models.py:19
+#: news/models/posts.py:21
 msgid "Картинка"
 msgstr "Image"
 
-#: news/models.py:23 patients/models/patients.py:35
+#: news/models/posts.py:25 patients/models/patients.py:35
 #: resources/models/resources.py:48
 msgid "Дата создания"
 msgstr "Creation date"
 
-#: news/models.py:26
+#: news/models/posts.py:28
 msgid "Новость"
 msgstr "News article"
 
-#: news/models.py:27
-#: templates/base.html:59
+#: news/models/posts.py:29 news/templates/news/post_list.html:4
+#: news/templates/news/post_list.html:7 templates/base.html:59
 #: templates/main/home.html:39
-#: news/templates/news/post_list.html:4
-#: news/templates/news/post_list.html:7
 msgid "Новости"
 msgstr "News"
 
+#: news/templates/news/post_detail.html:31
+msgid "Вернуться к новостям"
+msgstr "Back to news"
+
+#: news/templates/news/post_list.html:13
+msgid "Категория:"
+msgstr "Category:"
+
+#: news/templates/news/post_list.html:17
+msgid "Все категории"
+msgstr "All categories"
+
+#: news/templates/news/post_list.html:28
+msgid "Дата от:"
+msgstr "Date from:"
+
+#: news/templates/news/post_list.html:33
+msgid "Дата до:"
+msgstr "Date to:"
+
+#: news/templates/news/post_list.html:38
+msgid "Фильтровать"
+msgstr "Filter"
+
+#: news/templates/news/post_list.html:39
+msgid "Сбросить"
+msgstr "Reset"
+
+#: news/templates/news/post_list.html:66
+msgid "Читать дальше"
+msgstr "Read more"
+
+#: news/templates/news/post_list.html:75
+msgid "Новостей пока нет."
+msgstr "No news available yet."
+
 #: patients/models/patients.py:6
 #, fuzzy
-#| msgid "Название"
 msgid "Название симптома"
 msgstr "Title"
 
@@ -297,6 +325,7 @@ msgid "Симптом"
 msgstr ""
 
 #: patients/models/patients.py:10 patients/models/patients.py:34
+#: patients/templates/patients/doctor_dashboard.html:17
 #: resources/models/resources.py:43
 msgid "Симптомы"
 msgstr ""
@@ -319,21 +348,30 @@ msgstr ""
 
 #: patients/models/patients.py:36
 #, fuzzy
-#| msgid "Дата создания"
 msgid "Дата изменения"
 msgstr "Creation date"
 
 #: patients/models/patients.py:39
 #, fuzzy
-#| msgid "Пациент"
 msgid "Карточка пациента"
 msgstr "Patient"
 
 #: patients/models/patients.py:40
 #, fuzzy
-#| msgid "Пациент"
 msgid "Карточки пациентов"
 msgstr "Patient cards"
+
+#: patients/templates/patients/doctor_dashboard.html:6
+msgid "Мои пациенты"
+msgstr ""
+
+#: patients/templates/patients/doctor_dashboard.html:21
+msgid "не указаны"
+msgstr ""
+
+#: patients/templates/patients/doctor_dashboard.html:30
+msgid "За вами пока не закреплено ни одного пациента."
+msgstr ""
 
 #: resources/models/resources.py:11
 msgid "Руководство для специалистов"
@@ -496,13 +534,13 @@ msgstr "Choose the membership option that suits you"
 
 #: templates/accounts/register_type.html:29
 #, fuzzy
-#| msgid "Пациент"
 msgid "Стать пациентом"
 msgstr "Patient"
 
 #: templates/accounts/register_type.html:33
 msgid ""
-"Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации."
+"Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам "
+"ассоциации."
 msgstr "Register to access the association’s opportunities and services"
 
 #: templates/accounts/register_type.html:52
@@ -535,8 +573,44 @@ msgid ""
 "администратора ассоциации. Мы сообщим вам, когда доступ будет одобрен."
 msgstr ""
 "The application for registration as a doctor/volunteer is currently under "
-"review by the association’s administrator. We will notify you once access is "
-"approved."
+"review by the association’s administrator. We will notify you once access "
+"is approved."
+
+#: templates/base.html:41
+msgid "Открыть меню"
+msgstr "Open menu"
+
+#: templates/base.html:49
+msgid "Главная"
+msgstr "Home page"
+
+#: templates/base.html:54
+msgid "О нас"
+msgstr "About us"
+
+#: templates/base.html:69
+msgid "Контакты"
+msgstr "Contacts"
+
+#: templates/base.html:78
+msgid "Выбор языка"
+msgstr "Language selection"
+
+#: templates/base.html:106
+msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
+msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
+
+#: templates/base.html:107
+msgid "г. Бишкек, ул. Юдахина 61"
+msgstr "Bishkek, 61 Yudakhin St."
+
+#: templates/base.html:110
+msgid "Написать нам"
+msgstr "Contact us"
+
+#: templates/base.html:111
+msgid "Все права защищены."
+msgstr "All rights reserved."
 
 #: templates/events/event_confirm_delete.html:6
 msgid "Удалить мероприятие"
@@ -544,7 +618,6 @@ msgstr "Delete event"
 
 #: templates/events/event_confirm_delete.html:7
 #, fuzzy
-#| msgid "Вы уверены, что хотите удалить?"
 msgid "Вы уверены, что хотите удалить"
 msgstr "Are you sure you want to delete?"
 
@@ -586,70 +659,37 @@ msgstr "Past events"
 
 #: templates/main/consultation.html:8
 #, fuzzy
-#| msgid "Заявка на регистрацию Врача"
 msgid "Заявка на консультацию"
 msgstr "Doctor registration application"
-
-#: templates/base.html:49
-msgid "Главная"
-msgstr "Home page"
-
-#: templates/base.html:54
-msgid "О нас"
-msgstr "About us"
-
-#: templates/base.html:69
-msgid "Контакты"
-msgstr "Contacts"
-
-#: templates/base.html:41
-msgid "Открыть меню"
-msgstr "Open menu"
-
-#: templates/base.html:78
-msgid "Выбор языка"
-msgstr "Language selection"
-
-#: templates/base.html:106
-msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
-msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
-
-#: templates/base.html:107
-msgid "г. Бишкек, ул. Юдахина 61"
-msgstr "Bishkek, 61 Yudakhin St."
-
-#: templates/base.html:110
-msgid "Написать нам"
-msgstr "Contact us"
-
-#: templates/base.html:111
-msgid "Все права защищены."
-msgstr "All rights reserved."
-
-#: news/templates/news/post_list.html:13
-msgid "Все категории"
-msgstr "All categories"
-
-#: news/templates/news/post_list.html:24
-msgid "Дата от"
-msgstr "Date from"
-
-#: news/templates/news/post_list.html:35
-msgid "Дата до"
-msgstr "Date to"
-
-#: news/templates/news/post_list.html:46
-msgid "Фильтровать"
-msgstr "Filter"
-
-#: news/templates/news/post_list.html:71
-msgid "Новостей пока нет."
-msgstr "There is no news yet."
-
-#: news/templates/news/post_detail.html:8
-msgid "Все новости"
-msgstr "All news"
 
 #: templates/main/home.html:41
 msgid "Оставить заявку"
 msgstr "Submit a request"
+
+#: templates/partial/pagination.html:2
+msgid "Навигация по страницам"
+msgstr "Page navigation"
+
+#: templates/partial/pagination.html:5
+msgid "В начало"
+msgstr "To the first page"
+
+#: templates/partial/pagination.html:12 templates/partial/pagination.html:17
+msgid "Назад"
+msgstr "Back"
+
+#: templates/partial/pagination.html:23
+msgid "Стр."
+msgstr "Page"
+
+#: templates/partial/pagination.html:29
+msgid "из"
+msgstr "of"
+
+#: templates/partial/pagination.html:40 templates/partial/pagination.html:45
+msgid "Вперед"
+msgstr "Forward"
+
+#: templates/partial/pagination.html:49
+msgid "В конец"
+msgstr "To the last page"

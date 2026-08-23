@@ -4,20 +4,32 @@
 {% block title %}{{ post.title }} — Паллиатив.kg{% endblock %}
 
 {% block content %}
-    <p>
-        <a href="{% url 'news:post_list' %}">&larr; {% translate "Все новости" %}</a>
-    </p>
+<div class="container-fluid my-4 px-4 px-md-5">
+    <article class="col-12 col-lg-10 mx-auto">
+        <h1 class="mb-3 fw-bold">{{ post.title }}</h1>
 
-    <article>
-        <h1 class="fw-bold">{{ post.title }}</h1>
-        <p class="text-muted">{{ post.created_at }}</p>
-
-        {% if post.image %}
-            <img src="{{ post.image.url }}" class="img-fluid rounded mb-3" alt="{{ post.title }}">
-        {% endif %}
-
-        <div>
-            {{ post.content|linebreaks }}
+        <div class="text-muted mb-4 d-flex align-items-center gap-2">
+            <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"d E Y" }}</time>
+            {% if post.category %}
+                <span>•</span>
+                <span class="badge bg-secondary">{{ post.category }}</span>
+            {% endif %}
         </div>
+        {% if post.image %}
+            <div class="mb-4 text-center">
+                <img src="{{ post.image.url }}" class="img-fluid rounded shadow" alt="{{ post.title }}" style="max-height: 550px; width: 100%; object-fit: cover;">
+            </div>
+        {% endif %}
+            <div class="description fs-4 lh-lg mb-4 text-secondary">
+                {{ post.description|linebreaks }}
+            </div>
+            <div class="content fs-5 lh-lg mb-5 text-dark">
+                {{ post.content|linebreaks }}
+            </div>
+
+        <a href="{% url 'news:post_list' %}" class="btn btn-secondary">
+            &larr; {% translate "Вернуться к новостям" %}
+        </a>
     </article>
+</div>
 {% endblock %}

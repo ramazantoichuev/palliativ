@@ -1,6 +1,6 @@
 from modeltranslation.translator import TranslationOptions, translator
 
-from .models import Category, Post
+from .models.posts import Category, Post
 
 
 class PostTranslationOptions(TranslationOptions):

@@ -25,6 +25,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('events/', include('events.urls')),
     path('news/', include('news.urls')),
+    path('patients/', include('patients.urls')),
 ]
 
 if settings.DEBUG:
