@@ -13,6 +13,7 @@ class HomeView(TemplateView):
 class AboutView(TemplateView):
     template_name = 'main/about.html'
 
+
 # Create your views here.
 
 class ConsultationCreateView(SuccessMessageMixin, CreateView):

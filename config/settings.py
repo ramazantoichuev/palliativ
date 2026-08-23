@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'main',
     'patients',
+    'resources',
 
 ]
 
@@ -96,7 +97,7 @@ DATABASES = {
         'PORT': os.getenv("DB_PORT"),
     }
 }
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
@@ -157,3 +158,4 @@ MAILERS = {
 }
 AUTH_USER_MODEL = 'accounts.BaseUser'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = "/"

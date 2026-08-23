@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from .models import Category, Post
+from .models.posts import Category, Post
 
 
 @admin.register(Category)

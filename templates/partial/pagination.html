@@ -1,0 +1,53 @@
+<nav aria-label="Навигация по страницам" class="d-flex justify-content-center my-5">
+    <ul class="pagination align-items-center mb-0">
+        <li class="page-item">
+            <a class="page-link text-dark" href="?page=1{% if query %}&{{ query }}{% endif %}" title="В начало">
+                &laquo;
+            </a>
+        </li>
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link text-dark" href="?page={{ page_obj.previous_page_number }}{% if query %}&{{ query }}{% endif %}">
+                    Назад
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Назад</span>
+            </li>
+        {% endif %}
+        <li class="page-item mx-2">
+            <form method="get" class="m-0">
+                <div class="input-group input-group-sm" style="max-width: 140px;">
+                    <span class="input-group-text bg-light text-muted small">Стр.</span>
+                    <input type="number" name="page" id="page"
+                           class="form-control text-center fw-bold"
+                           value="{{ page_obj.number }}"
+                           min="1"
+                           max="{{ page_obj.paginator.num_pages }}">
+                    <span class="input-group-text bg-light text-muted small">из {{ page_obj.paginator.num_pages }}</span>
+                </div>
+                {% if search_value %}
+                    <input type="hidden" name="search" value="{{ search_value }}">
+                {% endif %}
+                <button type="submit" class="d-none"></button>
+            </form>
+        </li>
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link text-dark" href="?page={{ page_obj.next_page_number }}{% if query %}&{{ query }}{% endif %}">
+                    Вперед
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Вперед</span>
+            </li>
+        {% endif %}
+        <li class="page-item">
+            <a class="page-link text-dark" href="?page={{ page_obj.paginator.num_pages }}{% if query %}&{{ query }}{% endif %}" title="В конец">
+                &raquo;
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -41,3 +41,6 @@ class PatientCard(models.Model):
 
     def __str__(self):
         return f"{self.patient} — {self.diagnosis[:30]}"
+
+    def get_queryset(self):
+        return PatientCard.objects.filter(doctor=self.request.user.doctor_profile)

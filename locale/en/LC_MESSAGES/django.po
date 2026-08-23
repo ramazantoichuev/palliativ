@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-20 09:25+0000\n"
+"POT-Creation-Date: 2026-08-21 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,15 +131,15 @@ msgstr "Skills"
 msgid "Диагноз"
 msgstr "Diagnosis"
 
-#: config/settings.py:125
+#: config/settings.py:124
 msgid "Russian"
 msgstr "Russian"
 
-#: config/settings.py:126
+#: config/settings.py:125
 msgid "Kyrgyz"
 msgstr "Kyrgyz"
 
-#: config/settings.py:127
+#: config/settings.py:126
 msgid "English"
 msgstr "English"
 
@@ -155,7 +155,7 @@ msgstr "Description"
 msgid "Текст"
 msgstr "Text"
 
-#: events/models.py:15 events/templates/events/event_form.html:6
+#: events/models.py:15 templates/events/event_form.html:6
 msgid "Мероприятие"
 msgstr "Event"
 
@@ -179,7 +179,7 @@ msgstr "Phone Number"
 msgid "Рассмотрено"
 msgstr "Reviewed"
 
-#: events/models.py:35 events/templates/events/event_detail.html:12
+#: events/models.py:35 templates/events/event_detail.html:12
 msgid "Регистрация на мероприятие"
 msgstr "Registration on event"
 
@@ -188,52 +188,6 @@ msgstr "Registration on event"
 #| msgid "Регистрация на мероприятие"
 msgid "Регистрации на мероприятия"
 msgstr "Registration on event"
-
-#: events/templates/events/event_confirm_delete.html:6
-msgid "Удалить мероприятие"
-msgstr "Delete event"
-
-#: events/templates/events/event_confirm_delete.html:7
-#, fuzzy
-#| msgid "Вы уверены, что хотите удалить?"
-msgid "Вы уверены, что хотите удалить"
-msgstr "Are you sure you want to delete?"
-
-#: events/templates/events/event_confirm_delete.html:10
-msgid "Удалить"
-msgstr "Delete"
-
-#: events/templates/events/event_detail.html:9
-msgid "Дата"
-msgstr "Date"
-
-#: events/templates/events/event_detail.html:10
-msgid "Место проведения"
-msgstr "Location"
-
-#: events/templates/events/event_detail.html:16
-msgid "Записаться"
-msgstr "Sign up"
-
-#: events/templates/events/event_form.html:10
-msgid "Сохранить"
-msgstr "Submit"
-
-#: events/templates/events/event_list.html:6
-msgid "Предстоящие мероприятия"
-msgstr "Upcoming events"
-
-#: events/templates/events/event_list.html:15
-msgid "Подробнее"
-msgstr "Show more"
-
-#: events/templates/events/event_list.html:20
-msgid "Пока нет предстоящих мероприятий"
-msgstr "There are no upcoming events yet"
-
-#: events/templates/events/event_list.html:24
-msgid "Прошедшие мероприятия"
-msgstr "Past events"
 
 #: main/admin.py:14
 msgid "Основная информация"
@@ -246,8 +200,11 @@ msgid "Управление заявкой"
 msgstr "Submit"
 
 #: main/forms.py:21
-msgid "Неверный формат номера. Введите номер в формате: 0555123456 или +996555123456"
-msgstr "Invalid phone number format. Please enter in the format: 0555123456 or +996555123456"
+msgid ""
+"Неверный формат номера. Введите номер в формате: 0555123456 или +996555123456"
+msgstr ""
+"Invalid phone number format. Please enter in the format: 0555123456 or "
+"+996555123456"
 
 #: main/forms.py:29
 msgid "Неверный код оператора Кыргызстана. Проверьте правильность ввода."
@@ -319,7 +276,8 @@ msgstr "Creation date"
 msgid "Новость"
 msgstr "News article"
 
-#: news/models.py:27
+#: news/models.py:27 templates/news/post_list.html:4
+#: templates/news/post_list.html:7
 msgid "Новости"
 msgstr "News"
 
@@ -442,8 +400,91 @@ msgstr ""
 "review by the association’s administrator. We will notify you once access is "
 "approved."
 
+#: templates/events/event_confirm_delete.html:6
+msgid "Удалить мероприятие"
+msgstr "Delete event"
+
+#: templates/events/event_confirm_delete.html:7
+#, fuzzy
+#| msgid "Вы уверены, что хотите удалить?"
+msgid "Вы уверены, что хотите удалить"
+msgstr "Are you sure you want to delete?"
+
+#: templates/events/event_confirm_delete.html:10
+msgid "Удалить"
+msgstr "Delete"
+
+#: templates/events/event_detail.html:9
+msgid "Дата"
+msgstr "Date"
+
+#: templates/events/event_detail.html:10
+msgid "Место проведения"
+msgstr "Location"
+
+#: templates/events/event_detail.html:16
+msgid "Записаться"
+msgstr "Sign up"
+
+#: templates/events/event_form.html:10
+msgid "Сохранить"
+msgstr "Submit"
+
+#: templates/events/event_list.html:6
+msgid "Предстоящие мероприятия"
+msgstr "Upcoming events"
+
+#: templates/events/event_list.html:15
+msgid "Подробнее"
+msgstr "Show more"
+
+#: templates/events/event_list.html:20
+msgid "Пока нет предстоящих мероприятий"
+msgstr "There are no upcoming events yet"
+
+#: templates/events/event_list.html:24
+msgid "Прошедшие мероприятия"
+msgstr "Past events"
+
 #: templates/main/consultation.html:8
 #, fuzzy
 #| msgid "Заявка на регистрацию Врача"
 msgid "Заявка на консультацию"
 msgstr "Doctor registration application"
+
+#: templates/news/post_detail.html:28
+msgid "Вернуться к новостям"
+msgstr "Back to news"
+
+#: templates/news/post_list.html:13
+msgid "Категория:"
+msgstr "Category:"
+
+#: templates/news/post_list.html:17
+msgid "Все категории"
+msgstr "All categories"
+
+#: templates/news/post_list.html:31
+msgid "Дата от:"
+msgstr "Date from:"
+
+#: templates/news/post_list.html:36
+msgid "Дата до:"
+msgstr "Date to:"
+
+#: templates/news/post_list.html:41
+msgid "Фильтровать"
+msgstr "Filter"
+
+#: templates/news/post_list.html:42
+msgid "Сбросить"
+msgstr "Reset"
+
+#: templates/news/post_list.html:68
+msgid "Читать дальше"
+msgstr "Read more"
+
+#: templates/news/post_list.html:77
+msgid "Новостей пока нет."
+msgstr "No news available yet."
+

@@ -23,7 +23,7 @@ class PatientRegisterView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('accounts:about')
+            return redirect('main:about')
         return render(request, 'accounts/patient_register.html', {'form': form})
 
 
