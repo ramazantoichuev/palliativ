@@ -1,42 +1,19 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{{ event.title }} — Паллиатив.kg{% endblock %}
-
 {% block content %}
-    <p>
-        <a href="{% url 'events:event_list' %}">&larr; {% translate "Мероприятия" %}</a>
-    </p>
+<div class="container mt-5">
+    <h2>{{ event.title }}</h2>
+    {% if event.image %}<img src="{{ event.image.url }}" class="img-fluid mb-3">{% endif %}
+    <p>{{ event.description }}</p>
+    <p><strong>{% translate "Дата" %}:</strong> {{ event.event_date }}</p>
+    <p><strong>{% translate "Место проведения" %}:</strong> {{ event.location }}</p>
 
-    <article class="col-12 col-lg-10">
-        <h1 class="fw-bold mb-3">{{ event.title }}</h1>
-
-        <dl class="row text-muted mb-4">
-            <dt class="col-sm-3">{% translate "Дата" %}</dt>
-            <dd class="col-sm-9">
-                <time datetime="{{ event.event_date|date:'c' }}">
-                    {{ event.event_date|date:"d.m.Y H:i" }}
-                </time>
-            </dd>
-
-            <dt class="col-sm-3">{% translate "Место проведения" %}</dt>
-            <dd class="col-sm-9">{{ event.location }}</dd>
-        </dl>
-
-        {% if event.image %}
-            <img src="{{ event.image.url }}" class="img-fluid rounded mb-4" alt="{{ event.title }}">
-        {% endif %}
-
-        {% if event.description %}
-            <div class="fs-5 lh-lg mb-4 text-secondary">
-                {{ event.description|linebreaks }}
-            </div>
-        {% endif %}
-
-        <div class="lh-lg mb-4">
-            {{ event.content|linebreaks }}
-        </div>
-
-        {% include 'partial/form.html' with form_title=_('Регистрация на мероприятие') btn_txt=_('Записаться') extra_classes='shadow-sm' %}
-    </article>
+    <h4 class="mt-4">{% translate "Регистрация на мероприятие" %}</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">{% translate "Записаться" %}</button>
+    </form>
+</div>
 {% endblock %}
