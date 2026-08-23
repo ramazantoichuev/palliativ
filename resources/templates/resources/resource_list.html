@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% translate "Ресурсы" %}</h2>
+
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+            <a class="nav-link {% if not selected_audience %}active{% endif %}"
+               href="{% url 'resources:resource_list' %}">{% translate "Все" %}</a>
+        </li>
+        {% for value, label in audience_choices %}
+        <li class="nav-item">
+            <a class="nav-link {% if selected_audience == value %}active{% endif %}"
+               href="?audience={{ value }}">{{ label }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <form method="get" class="row g-2 mb-4">
+        {% if selected_audience %}<input type="hidden" name="audience" value="{{ selected_audience }}">{% endif %}
+        <div class="col-md-4">
+            <select name="subcategory" class="form-select" onchange="this.form.submit()">
+                <option value="">{% translate "Все подкатегории" %}</option>
+                {% for value, label in subcategory_choices %}
+                <option value="{{ value }}" {% if selected_subcategory == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select name="symptom" class="form-select" onchange="this.form.submit()">
+                <option value="">{% translate "Все симптомы" %}</option>
+                {% for symptom in symptoms %}
+                <option value="{{ symptom.id }}" {% if selected_symptom == symptom.id|stringformat:"s" %}selected{% endif %}>{{ symptom.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </form>
+
+    {% if resources %}
+    <div class="row">
+        {% for resource in resources %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ resource.title }}</h5>
+                    <p class="card-text">{{ resource.description|truncatewords:20 }}</p>
+                    <a href="{% url 'resources:resource_detail' resource.pk %}" class="btn btn-primary">{% translate "Подробнее" %}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% translate "В этой подкатегории пока нет материалов." %}</p>
+    {% endif %}
+</div>
+{% endblock %}
