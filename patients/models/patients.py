@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from accounts.models import PatientProfile, DoctorProfile
 
+
 class Symptom(models.Model):
     name = models.CharField(_('Название симптома'), max_length=255, unique=True)
 
@@ -42,5 +43,24 @@ class PatientCard(models.Model):
     def __str__(self):
         return f"{self.patient} — {self.diagnosis[:30]}"
 
-    def get_queryset(self):
-        return PatientCard.objects.filter(doctor=self.request.user.doctor_profile)
+    def get_matching_resources(self):
+        if not self.id or not self.symptoms.exists():
+            from resources.models.resources import Resource
+            return Resource.objects.none()
+        from resources.models.resources import Resource
+        return Resource.objects.filter(
+            symptoms__in=self.symptoms.all()
+        ).distinct()
+
+    def matching_resources_list(self):
+        if not self.id:
+            return []
+        if hasattr(self, '_prefetched_matching_resources'):
+            return self._prefetched_matching_resources
+
+        symptom_ids = [symptom.id for symptom in self.symptoms.all()]
+        if not symptom_ids:
+            return []
+
+        from resources.models.resources import Resource
+        return list(Resource.objects.filter(symptoms__id__in=symptom_ids).distinct())

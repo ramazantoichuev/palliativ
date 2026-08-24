@@ -7,7 +7,7 @@
 
     {% if patient_cards %}
         {% for card in patient_cards %}
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
             <div class="card-body">
                 <p><strong>{% translate "Диагноз" %}:</strong> {{ card.diagnosis }}</p>
                 <p><strong>{% translate "Принимаемые препараты" %}:</strong> {{ card.medications|default:"—" }}</p>
@@ -26,11 +26,42 @@
                     {{ card.doctor.user.first_name }} {{ card.doctor.user.last_name }}
                 </p>
                 {% endif %}
+                <div class="mt-4 pt-3 border-top">
+                    <h6 class="text-success fw-bold">
+                        <i class="bi bi-heart-pulse-fill"></i> {% translate "Рекомендованные материалы" %}
+                    </h6>
+                    <div class="mt-2">
+                        {% if card.symptoms.exists %}
+                            {% if card.matching_resources_list %}
+                                <ul class="list-group list-group-flush">
+                                    {% for resource in card.matching_resources_list %}
+                                        <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
+                                            <a href="#" class="text-decoration-none text-dark hover-primary">{{ resource.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="alert alert-light text-muted small my-2 border rounded-3" role="alert">
+                                    <i class="bi bi-info-circle"></i> {% translate "Пока нет подходящих руководств для указанных симптомов." %}
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="alert alert-info text-center py-3 my-2 rounded-3" role="alert">
+                                <p class="mb-0 fw-medium text-secondary">
+                                    {% translate "Рекомендованных материалов пока нет." %}
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
             </div>
         </div>
         {% endfor %}
     {% else %}
-        <p>{% translate "У вас пока нет созданной карточки." %}</p>
+        <div class="alert alert-warning text-center py-4" role="alert">
+            <p class="fs-5 mb-0">{% translate "У вас пока нет созданной карточки." %}</p>
+        </div>
     {% endif %}
 </div>
 {% endblock %}

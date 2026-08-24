@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from patients.models.patients import Symptom
 
 
 class Resource(models.Model):
@@ -36,10 +35,7 @@ class Resource(models.Model):
         max_length=30,
         choices=SUBCATEGORY_CHOICES
     )
-
-
-    symptoms = models.ManyToManyField(
-        Symptom,
+    symptoms = models.ManyToManyField('patients.Symptom',
         verbose_name=_('Симптомы'),
         blank=True,
         related_name='resources'
