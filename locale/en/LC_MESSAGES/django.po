@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-21 13:01+0000\n"
+"POT-Creation-Date: 2026-08-23 06:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "Passwords do not match."
 msgid "Пользователь с таким номером телефона уже зарегистрирован."
 msgstr "The user with this phone number is already registered."
 
-#: accounts/forms.py:83 accounts/models.py:51
+#: accounts/forms.py:83 accounts/models.py:56
 msgid "Образование или место учебы"
 msgstr "Education or Place of Study"
 
@@ -95,7 +95,7 @@ msgstr "Manager"
 msgid "Врач"
 msgstr "Doctor"
 
-#: accounts/models.py:13
+#: accounts/models.py:13 patients/models/patients.py:20
 msgid "Пациент"
 msgstr "Patient"
 
@@ -123,35 +123,36 @@ msgstr "Phone number must be in format: '+996XXXXXXXXX' (12 digits total)."
 msgid "Номер телефона"
 msgstr "Phone Number"
 
-#: accounts/models.py:52
+#: accounts/models.py:57
 msgid "Навыки"
 msgstr "Skills"
 
-#: accounts/models.py:57
+#: accounts/models.py:62 patients/models/patients.py:30
+#: patients/templates/patients/doctor_dashboard.html:15
 msgid "Диагноз"
 msgstr "Diagnosis"
 
-#: config/settings.py:124
+#: config/settings.py:127
 msgid "Russian"
 msgstr "Russian"
 
-#: config/settings.py:125
+#: config/settings.py:128
 msgid "Kyrgyz"
 msgstr "Kyrgyz"
 
-#: config/settings.py:126
+#: config/settings.py:129
 msgid "English"
 msgstr "English"
 
-#: events/models.py:6 news/models.py:17
+#: events/models.py:6 news/models/posts.py:17 resources/models/resources.py:26
 msgid "Заголовок"
 msgstr "Title"
 
-#: events/models.py:8
+#: events/models.py:8 news/models/posts.py:20 resources/models/resources.py:27
 msgid "Описание"
 msgstr "Description"
 
-#: events/models.py:9 news/models.py:18
+#: events/models.py:9 news/models/posts.py:19
 msgid "Текст"
 msgstr "Text"
 
@@ -159,11 +160,9 @@ msgstr "Text"
 msgid "Мероприятие"
 msgstr "Event"
 
-#: events/models.py:16
-#, fuzzy
-#| msgid "Мероприятие"
+#: events/models.py:16 templates/base.html:64 templates/main/home.html:40
 msgid "Мероприятия"
-msgstr "Event"
+msgstr "Events"
 
 #: events/models.py:28
 msgid "ФИО"
@@ -171,7 +170,6 @@ msgstr "Full name"
 
 #: events/models.py:30 main/models/consultation.py:19
 #, fuzzy
-#| msgid "Номер телефона"
 msgid "Телефон"
 msgstr "Phone Number"
 
@@ -185,7 +183,6 @@ msgstr "Registration on event"
 
 #: events/models.py:36
 #, fuzzy
-#| msgid "Регистрация на мероприятие"
 msgid "Регистрации на мероприятия"
 msgstr "Registration on event"
 
@@ -195,13 +192,13 @@ msgstr "Main information"
 
 #: main/admin.py:17
 #, fuzzy
-#| msgid "Отправить заявку"
 msgid "Управление заявкой"
 msgstr "Submit"
 
 #: main/forms.py:21
 msgid ""
-"Неверный формат номера. Введите номер в формате: 0555123456 или +996555123456"
+"Неверный формат номера. Введите номер в формате: 0555123456 или "
+"+996555123456"
 msgstr ""
 "Invalid phone number format. Please enter in the format: 0555123456 or "
 "+996555123456"
@@ -244,42 +241,221 @@ msgstr "Subject of inquiry"
 
 #: main/models/consultation.py:24
 #, fuzzy
-#| msgid "Подать заявку"
 msgid "Статус заявки"
 msgstr "Appley"
 
-#: main/views.py:23
+#: main/views.py:24
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
-#: news/models.py:6
+#: news/models/posts.py:6
 msgid "Название"
 msgstr "Title"
 
-#: news/models.py:9 news/models.py:21
+#: news/models/posts.py:9 news/models/posts.py:23
 msgid "Категория"
 msgstr "Category"
 
-#: news/models.py:10
+#: news/models/posts.py:10
 msgid "Категории"
 msgstr "Categories"
 
-#: news/models.py:19
+#: news/models/posts.py:21
 msgid "Картинка"
 msgstr "Image"
 
-#: news/models.py:23
+#: news/models/posts.py:25 patients/models/patients.py:35
+#: resources/models/resources.py:48
 msgid "Дата создания"
 msgstr "Creation date"
 
-#: news/models.py:26
+#: news/models/posts.py:28
 msgid "Новость"
 msgstr "News article"
 
-#: news/models.py:27 templates/news/post_list.html:4
-#: templates/news/post_list.html:7
+#: news/models/posts.py:29 news/templates/news/post_list.html:4
+#: news/templates/news/post_list.html:7 templates/base.html:59
+#: templates/main/home.html:39
 msgid "Новости"
 msgstr "News"
+
+#: news/templates/news/post_detail.html:31
+msgid "Вернуться к новостям"
+msgstr "Back to news"
+
+#: news/templates/news/post_list.html:13
+msgid "Категория:"
+msgstr "Category:"
+
+#: news/templates/news/post_list.html:17
+msgid "Все категории"
+msgstr "All categories"
+
+#: news/templates/news/post_list.html:28
+msgid "Дата от:"
+msgstr "Date from:"
+
+#: news/templates/news/post_list.html:33
+msgid "Дата до:"
+msgstr "Date to:"
+
+#: news/templates/news/post_list.html:38
+msgid "Фильтровать"
+msgstr "Filter"
+
+#: news/templates/news/post_list.html:39
+msgid "Сбросить"
+msgstr "Reset"
+
+#: news/templates/news/post_list.html:66
+msgid "Читать дальше"
+msgstr "Read more"
+
+#: news/templates/news/post_list.html:75
+msgid "Новостей пока нет."
+msgstr "No news available yet."
+
+#: patients/models/patients.py:6
+#, fuzzy
+msgid "Название симптома"
+msgstr "Title"
+
+#: patients/models/patients.py:9
+msgid "Симптом"
+msgstr ""
+
+#: patients/models/patients.py:10 patients/models/patients.py:34
+#: patients/templates/patients/doctor_dashboard.html:17
+#: resources/models/resources.py:43
+msgid "Симптомы"
+msgstr ""
+
+#: patients/models/patients.py:28
+msgid "Лечащий врач"
+msgstr ""
+
+#: patients/models/patients.py:31
+msgid "Принимаемые препараты"
+msgstr ""
+
+#: patients/models/patients.py:32
+msgid "Противопоказания"
+msgstr ""
+
+#: patients/models/patients.py:33
+msgid "Ранее проведенное лечение"
+msgstr ""
+
+#: patients/models/patients.py:36
+#, fuzzy
+msgid "Дата изменения"
+msgstr "Creation date"
+
+#: patients/models/patients.py:39
+#, fuzzy
+msgid "Карточка пациента"
+msgstr "Patient"
+
+#: patients/models/patients.py:40
+#, fuzzy
+msgid "Карточки пациентов"
+msgstr "Patient cards"
+
+#: patients/templates/patients/doctor_dashboard.html:6
+msgid "Мои пациенты"
+msgstr ""
+
+#: patients/templates/patients/doctor_dashboard.html:21
+msgid "не указаны"
+msgstr ""
+
+#: patients/templates/patients/doctor_dashboard.html:30
+msgid "За вами пока не закреплено ни одного пациента."
+msgstr ""
+
+#: resources/models/resources.py:11
+msgid "Руководство для специалистов"
+msgstr "Specialist guide"
+
+#: resources/models/resources.py:12
+msgid "Советы ухаживающим"
+msgstr "Caregiver tips"
+
+#: resources/models/resources.py:16
+msgid "Контроль симптомов"
+msgstr "Symptom management"
+
+#: resources/models/resources.py:17
+msgid "Уход в конце жизни"
+msgstr "End-of-life care"
+
+#: resources/models/resources.py:18
+msgid "НПА (Нормативно-правовые акты)"
+msgstr "Regulations and laws"
+
+#: resources/models/resources.py:20
+msgid "Уход и кормление"
+msgstr "Care and feeding"
+
+#: resources/models/resources.py:21
+msgid "Советы психолога"
+msgstr "Psychologist's advice"
+
+#: resources/models/resources.py:22
+msgid "Лекарства и права пациента"
+msgstr "Medications and patient rights"
+
+#: resources/models/resources.py:23
+msgid "Соцподдержка"
+msgstr "Social support"
+
+#: resources/models/resources.py:30
+msgid "Целевая аудитория"
+msgstr "Target audience"
+
+#: resources/models/resources.py:35
+msgid "Подкатегория"
+msgstr "Subcategory"
+
+#: resources/models/resources.py:49
+msgid "Дата обновления"
+msgstr "Update date"
+
+#: resources/models/resources.py:52
+msgid "Справочный материал"
+msgstr "Reference material"
+
+#: resources/models/resources.py:53
+msgid "Справочные материалы"
+msgstr "Reference materials"
+
+#: resources/models/resources.py:64 resources/models/resources.py:77
+msgid "Ресурс"
+msgstr "Resource"
+
+#: resources/models/resources.py:66
+msgid "Файл"
+msgstr "File"
+
+#: resources/models/resources.py:68
+msgid "Файл ресурса"
+msgstr "Resource file"
+
+#: resources/models/resources.py:69
+msgid "Файлы ресурса"
+msgstr "Resource files"
+
+#: resources/models/resources.py:79
+msgid "Ссылка на YouTube"
+msgstr "YouTube link"
+
+#: resources/models/resources.py:81
+msgid "Видео-ссылка"
+msgstr "Video link"
+
+#: resources/models/resources.py:82
+msgid "Видео-ссылки"
+msgstr "Video links"
 
 #: templates/accounts/doctor_application_sent.html:3
 msgid "Заявка отправлена"
@@ -358,13 +534,13 @@ msgstr "Choose the membership option that suits you"
 
 #: templates/accounts/register_type.html:29
 #, fuzzy
-#| msgid "Пациент"
 msgid "Стать пациентом"
 msgstr "Patient"
 
 #: templates/accounts/register_type.html:33
 msgid ""
-"Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации."
+"Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам "
+"ассоциации."
 msgstr "Register to access the association’s opportunities and services"
 
 #: templates/accounts/register_type.html:52
@@ -397,8 +573,44 @@ msgid ""
 "администратора ассоциации. Мы сообщим вам, когда доступ будет одобрен."
 msgstr ""
 "The application for registration as a doctor/volunteer is currently under "
-"review by the association’s administrator. We will notify you once access is "
-"approved."
+"review by the association’s administrator. We will notify you once access "
+"is approved."
+
+#: templates/base.html:41
+msgid "Открыть меню"
+msgstr "Open menu"
+
+#: templates/base.html:49
+msgid "Главная"
+msgstr "Home page"
+
+#: templates/base.html:54
+msgid "О нас"
+msgstr "About us"
+
+#: templates/base.html:69
+msgid "Контакты"
+msgstr "Contacts"
+
+#: templates/base.html:78
+msgid "Выбор языка"
+msgstr "Language selection"
+
+#: templates/base.html:106
+msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
+msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
+
+#: templates/base.html:107
+msgid "г. Бишкек, ул. Юдахина 61"
+msgstr "Bishkek, 61 Yudakhin St."
+
+#: templates/base.html:110
+msgid "Написать нам"
+msgstr "Contact us"
+
+#: templates/base.html:111
+msgid "Все права защищены."
+msgstr "All rights reserved."
 
 #: templates/events/event_confirm_delete.html:6
 msgid "Удалить мероприятие"
@@ -406,7 +618,6 @@ msgstr "Delete event"
 
 #: templates/events/event_confirm_delete.html:7
 #, fuzzy
-#| msgid "Вы уверены, что хотите удалить?"
 msgid "Вы уверены, что хотите удалить"
 msgstr "Are you sure you want to delete?"
 
@@ -448,43 +659,37 @@ msgstr "Past events"
 
 #: templates/main/consultation.html:8
 #, fuzzy
-#| msgid "Заявка на регистрацию Врача"
 msgid "Заявка на консультацию"
 msgstr "Doctor registration application"
 
-#: templates/news/post_detail.html:28
-msgid "Вернуться к новостям"
-msgstr "Back to news"
+#: templates/main/home.html:41
+msgid "Оставить заявку"
+msgstr "Submit a request"
 
-#: templates/news/post_list.html:13
-msgid "Категория:"
-msgstr "Category:"
+#: templates/partial/pagination.html:2
+msgid "Навигация по страницам"
+msgstr "Page navigation"
 
-#: templates/news/post_list.html:17
-msgid "Все категории"
-msgstr "All categories"
+#: templates/partial/pagination.html:5
+msgid "В начало"
+msgstr "To the first page"
 
-#: templates/news/post_list.html:31
-msgid "Дата от:"
-msgstr "Date from:"
+#: templates/partial/pagination.html:12 templates/partial/pagination.html:17
+msgid "Назад"
+msgstr "Back"
 
-#: templates/news/post_list.html:36
-msgid "Дата до:"
-msgstr "Date to:"
+#: templates/partial/pagination.html:23
+msgid "Стр."
+msgstr "Page"
 
-#: templates/news/post_list.html:41
-msgid "Фильтровать"
-msgstr "Filter"
+#: templates/partial/pagination.html:29
+msgid "из"
+msgstr "of"
 
-#: templates/news/post_list.html:42
-msgid "Сбросить"
-msgstr "Reset"
+#: templates/partial/pagination.html:40 templates/partial/pagination.html:45
+msgid "Вперед"
+msgstr "Forward"
 
-#: templates/news/post_list.html:68
-msgid "Читать дальше"
-msgstr "Read more"
-
-#: templates/news/post_list.html:77
-msgid "Новостей пока нет."
-msgstr "No news available yet."
-
+#: templates/partial/pagination.html:49
+msgid "В конец"
+msgstr "To the last page"
