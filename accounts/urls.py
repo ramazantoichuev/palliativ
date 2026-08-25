@@ -5,6 +5,7 @@ from django.contrib.auth.views import LogoutView
 
 app_name = 'accounts'
 
+
 urlpatterns = [
     path('register/patient/', PatientRegisterView.as_view(), name='patient_register'),
     path('register/doctor/', DoctorRegisterView.as_view(), name='doctor_register'),
