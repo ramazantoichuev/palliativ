@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Главная — Паллиатив.kg{% endblock %}
 
@@ -34,9 +35,10 @@
     </section>
 
     <section class="text-center py-4">
-        <p class="text-muted">
-            Раздел находится в разработке — новости, мероприятия и ресурсы
-            появятся здесь по мере готовности соответствующих модулей сайта.
-        </p>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+            <a href="{% url 'news:post_list' %}" class="btn btn-outline-primary">{% translate "Новости" %}</a>
+            <a href="{% url 'events:event_list' %}" class="btn btn-outline-primary">{% translate "Мероприятия" %}</a>
+            <a href="{% url 'main:new-consultation' %}" class="btn btn-primary">{% translate "Оставить заявку" %}</a>
+        </div>
     </section>
 {% endblock %}

@@ -20,5 +20,5 @@ class ConsultationCreateView(SuccessMessageMixin, CreateView):
     model = ConsultationRequest
     form_class = ConsultationForm
     template_name = 'main/consultation.html'
-    success_url = reverse_lazy('main:new-consultation')
+    success_url = reverse_lazy('main:home')
     success_message = _("Ваша заявка на консультацию успешно отправлена!")

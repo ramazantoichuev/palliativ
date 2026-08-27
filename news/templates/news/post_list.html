@@ -1,61 +1,84 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Новости</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load i18n %}
 
-<h1>Новости</h1>
+{% block title %}{% translate "Новости" %} — Паллиатив.kg{% endblock %}
+{% block content %}
+<div class="container-fluid my-4 p-4 px-0 rounded-0 news-header-block">
+    <h1 class="fw-bold mb-4 text-center"> {% translate "Новости" %}
+    </h1>
 
-<form method="get">
-    <label for="category_id">Категория:</label>
-    <select name="category_id" id="category_id">
-        <option value="">Все категории</option>
-        {% for category in categories %}
-            <option value="{{ category.id }}"
-                {% if request.GET.category_id == category.id|stringformat:"s" %}selected{% endif %}>
-                {{ category.name }}
-            </option>
-        {% endfor %}
-    </select>
-
-    <label for="de_from">Дата от:</label>
-    <input
-        type="date"
-        name="date_from"
-        id="date_from"
-        value="{{ request.GET.date_from }}"
-    >
-
-    <label for="date_to">Дата до:</label>
-    <input
-        type="date"
-        name="date_to"
-        id="date_to"
-        value="{{ request.GET.date_to }}"
-    >
-
-    <button type="submit">Фильтровать</button>
-</form>
-
-{% for post in posts %}
-    <article>
-        <h2>
-            <a href="{% url 'news:post_detail' post.slug %}">
-                {{ post.title }}
-            </a>
-        </h2>
-
-        <p>{{ post.created_at }}</p>
-
-        {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}">
-        {% endif %}
-    </article>
-{% empty %}
-    <p>Новостей пока нет.</p>
-{% endfor %}
-
-</body>
-</html>
+    <form method="get" class="row g-3 p-4 bg-light border rounded-3 shadow-sm">
+        <div class="col-md-3">
+            <label for="category_id" class="form-label fw-semibold">
+                {% translate "Категория:" %}
+            </label>
+            <select name="category_id" id="category_id" class="form-select">
+                <option value="">
+                    {% translate "Все категории" %}
+                </option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}" {% if request.GET.category_id == category.id|stringformat:"s" %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="date_from" class="form-label fw-semibold">
+                {% translate "Дата от:" %}</label>
+            <input type="date" name="date_from" id="date_from" class="form-control" value="{{ request.GET.date_from }}">
+        </div>
+        <div class="col-md-3">
+            <label for="date_to" class="form-label fw-semibold">
+                {% translate "Дата до:" %}</label>
+            <input type="date" name="date_to" id="date_to" class="form-control" value="{{ request.GET.date_to }}">
+        </div>
+        <div class="col-md-3 d-flex align-items-end gap-2">
+            <button type="submit" class="btn btn-primary px-4">
+                {% translate "Фильтровать" %}</button>
+            <a href="{% url 'news:post_list' %}" class="btn btn-outline-secondary px-4">{% translate "Сбросить" %}</a>
+        </div>
+    </form>
+</div>
+   <div class="row justify-content-center mt-4">
+    {% for post in posts %}
+       <div class="col-12 col-sm-6 col-lg-4 mb-4">
+            <article class="card h-100 shadow-sm">
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <div class="text-muted small mb-2">
+                        <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"d.m.Y" }}</time>
+                        {% if post.category %}
+                            | <span class="badge bg-secondary">{{ post.category.name|default:post.category }}</span>
+                        {% endif %}
+                    </div>
+                    <h2 class="h5 card-title">
+                        <a href="{% url 'news:post_detail' post.slug %}" class="text-decoration-none text-dark">
+                            {{ post.title }}
+                        </a>
+                    </h2>
+                    <p class="card-text text-secondary">{{ post.description|truncatewords:20 }}</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <a href="{% url 'news:post_detail' post.slug %}" class="btn btn-outline-primary btn-sm">
+                        {% translate "Читать дальше" %}
+                    </a>
+                </div>
+            </article>
+        </div>
+    {% empty %}
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="alert alert-info text-center py-4 my-4 rounded-3 shadow-sm" role="alert">
+                <p class="fs-5 mb-0 fw-medium text-secondary">
+                    {% translate "Новостей пока нет." %}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
+{% endblock %}

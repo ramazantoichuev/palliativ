@@ -1,38 +1,72 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
+{% block title %}{% translate "Мероприятия" %} — Паллиатив.kg{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-    <h2>{% translate "Предстоящие мероприятия" %}</h2>
-    <div class="row">
+    <h1 class="fw-bold mb-4">{% translate "Мероприятия" %}</h1>
+
+    <h2 class="h4 mb-3">{% translate "Предстоящие мероприятия" %}</h2>
+    <div class="row g-4">
         {% for event in upcoming_events %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                {% if event.image %}<img src="{{ event.image.url }}" class="card-img-top">{% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ event.title }}</h5>
-                    <p class="card-text">{{ event.event_date }}</p>
-                    <a href="{% url 'events:event_detail' event.slug %}" class="btn btn-primary">{% translate "Подробнее" %}</a>
-                </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <article class="card h-100 shadow-sm">
+                    {% if event.image %}
+                        <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}"
+                             style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="h5 card-title">{{ event.title }}</h3>
+                        <p class="card-text text-muted small mb-1">
+                            <time datetime="{{ event.event_date|date:'c' }}">
+                                {{ event.event_date|date:"d.m.Y H:i" }}
+                            </time>
+                        </p>
+                        <p class="card-text text-muted small">
+                            {% translate "Место проведения" %}: {{ event.location }}
+                        </p>
+                        <a href="{% url 'events:event_detail' event.slug %}"
+                           class="btn btn-outline-primary btn-sm mt-auto align-self-start">
+                            {% translate "Подробнее" %}
+                        </a>
+                    </div>
+                </article>
             </div>
-        </div>
         {% empty %}
-        <p>{% translate "Пока нет предстоящих мероприятий" %}</p>
+            <div class="col-12">
+                <p class="text-muted">{% translate "Пока нет предстоящих мероприятий" %}</p>
+            </div>
         {% endfor %}
     </div>
 
-    <h2 class="mt-5">{% translate "Прошедшие мероприятия" %}</h2>
-    <div class="row">
-        {% for event in past_events %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ event.title }}</h5>
-                    <p class="card-text">{{ event.event_date }}</p>
+    {% if past_events %}
+        <h2 class="h4 mt-5 mb-3">{% translate "Прошедшие мероприятия" %}</h2>
+        <div class="row g-4">
+            {% for event in past_events %}
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card h-100 shadow-sm opacity-75">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}"
+                                 style="height: 200px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title">{{ event.title }}</h3>
+                            <p class="card-text text-muted small mb-1">
+                                <time datetime="{{ event.event_date|date:'c' }}">
+                                    {{ event.event_date|date:"d.m.Y H:i" }}
+                                </time>
+                            </p>
+                            <p class="card-text text-muted small">
+                                {% translate "Место проведения" %}: {{ event.location }}
+                            </p>
+                            <a href="{% url 'events:event_detail' event.slug %}"
+                               class="btn btn-outline-secondary btn-sm mt-auto align-self-start">
+                                {% translate "Подробнее" %}
+                            </a>
+                        </div>
+                    </article>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-</div>
+    {% endif %}
 {% endblock %}
