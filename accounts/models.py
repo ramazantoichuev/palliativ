@@ -49,6 +49,11 @@ class BaseUser(AbstractUser):
             managers_group, _created = Group.objects.get_or_create(name='Managers')
             self.groups.add(managers_group)
 
+        if self.role == self.Role.MODERATOR:
+            from django.contrib.auth.models import Group
+            moderators_group, _created = Group.objects.get_or_create(name='Moderators')
+            self.groups.add(moderators_group)
+
 
 class DoctorProfile(models.Model):
     user = models.OneToOneField(BaseUser,on_delete=models.CASCADE, related_name='doctor_profile')
