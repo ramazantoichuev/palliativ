@@ -44,11 +44,11 @@ class BaseUser(AbstractUser):
             elif self.role == self.Role.PATIENT:
                 PatientProfile.objects.create(user=self)
 
-        if self.role == self.Role.MANAGER:
+        if self.role in [self.Role.MANAGER, self.Role.MODERATOR]:
             from django.contrib.auth.models import Group
-            managers_group, _created = Group.objects.get_or_create(name='Managers')
-            self.groups.add(managers_group)
-
+            group_name = 'Managers' if self.role == self.Role.MANAGER else 'Moderators'
+            group, _created = Group.objects.get_or_create(name=group_name)
+            self.groups.add(group)
 
 class DoctorProfile(models.Model):
     user = models.OneToOneField(BaseUser,on_delete=models.CASCADE, related_name='doctor_profile')

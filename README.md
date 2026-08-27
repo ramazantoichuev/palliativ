@@ -101,6 +101,10 @@ python manage.py shell
 Локализация (RU / KY / EN)
 В проекте две независимые системы перевода.
 
+Инициализация групп и прав пользователей:
+python manage.py setup_moderator_group
+python manage.py setup_manager_group
+
 1) Интерфейс — gettext. Строки в коде и шаблонах оборачиваются в gettext_lazy()
 и {% translate %}. Переводы лежат в locale/<язык>/LC_MESSAGES/django.po,
 а Django читает скомпилированный django.mo рядом с ним.
