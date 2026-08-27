@@ -69,8 +69,7 @@
                            href="{% url 'main:new-consultation' %}">{% translate "Контакты" %}</a>
                     </li>
                 </ul>
-
-                <form action="{% url 'set_language' %}" method="post"
+                                <form action="{% url 'set_language' %}" method="post"
                       class="d-flex justify-content-center ms-md-3 mb-2 mb-md-0">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.get_full_path }}">
@@ -87,6 +86,14 @@
                         {% endfor %}
                     </div>
                 </form>
+                <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Контакты</a>
+                    </li>
+                    {% if user.is_authenticated and user.role == 'patient' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patients:patient_dashboard' %}">{% translate "Моя карточка" %}</a>
+                    </li>
+                    {% endif %}
             </div>
         </div>
     </nav>
