@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 
@@ -14,6 +15,12 @@ class Event(models.Model):
     class Meta:
         verbose_name = _('Мероприятие')
         verbose_name_plural = _('Мероприятия')
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title, allow_unicode=True)
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title
@@ -36,7 +43,7 @@ class EventRegistration(models.Model):
         verbose_name_plural = _('Регистрации на мероприятия')
 
 
-def __str__(self):
+    def __str__(self):
         return f"{self.full_name} — {self.event.title}"
 
 # Create your models here.
