@@ -6,21 +6,25 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="container py-3">
+    <p>Авторизован: {{ user.is_authenticated }}</p>
+    <p>Роль: {{ user.role }}</p>
+</div>
 <div class="container-fluid px-4 px-md-5 py-5">
 
     <div class="mb-5">
-        <h1 class="display-4 fw-bold mb-4">
+        <h1 class="display-5 fw-medium mb-4">
             {% trans "Членство / Участие" %}
         </h1>
 
-        <p class="fs-4 mb-0">
+        <p class="fs-5 mb-0">
             {% trans "Выберите подходящий вариант участия в ассоциации." %}
         </p>
     </div>
 
     <div class="row g-4">
 
+        <!-- Пациент -->
         <div class="col-12 col-lg-6">
             <div class="card h-100 border rounded-4">
                 <div class="card-body p-4 p-md-5 d-flex flex-column">
@@ -33,17 +37,54 @@
                         {% trans "Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации." %}
                     </p>
 
-                    <a
-                        href="{% url 'accounts:patient_register' %}"
-                        class="btn btn-success btn-lg px-4 mt-auto align-self-start"
-                    >
-                        {% trans "Зарегистрироваться" %}
-                    </a>
+                    <h5 class="fw-bold mb-3">
+                        {% trans "Преимущества" %}
+                    </h5>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold mb-1">
+                            {% trans "Избавление от боли" %}
+                        </h6>
+                        <p class="mb-3">
+                            {% trans "Современные методы позволяют купировать даже самую сильную боль." %}
+                        </p>
+
+                        <h6 class="fw-bold mb-1">
+                            {% trans "Поддержка семьи" %}
+                        </h6>
+                        <p class="mb-3">
+                            {% trans "Знания и психологическая опора для близких, ухаживающих за больным." %}
+                        </p>
+
+                        <h6 class="fw-bold mb-1">
+                            {% trans "Права пациента" %}
+                        </h6>
+                        <p class="mb-0">
+                            {% trans "Как получить нужные лекарства от боли и другие права пациента." %}
+                        </p>
+                    </div>
+
+                    {% if user.is_authenticated and user.role == "patient" %}
+                        <a
+                            href="{% url 'patients:patient_dashboard' %}"
+                            class="btn btn-success btn-lg px-4 mt-auto align-self-start"
+                        >
+                            {% trans "Перейти в личный кабинет" %}
+                        </a>
+                    {% else %}
+                        <a
+                            href="{% url 'accounts:patient_register' %}"
+                            class="btn btn-success btn-lg px-4 mt-auto align-self-start"
+                        >
+                            {% trans "Зарегистрироваться" %}
+                        </a>
+                    {% endif %}
 
                 </div>
             </div>
         </div>
 
+        <!-- Врач / волонтёр -->
         <div class="col-12 col-lg-6">
             <div class="card h-100 border rounded-4">
                 <div class="card-body p-4 p-md-5 d-flex flex-column">
@@ -53,15 +94,51 @@
                     </h3>
 
                     <p class="fs-5 mb-4">
-                        {% trans "Отправьте заявку на вступление. Ваша заявка будет рассмотрена и одобрена администратором ассоциации." %}
+                        {% trans "Отправьте заявку на вступление. Заявка будет рассмотрена администратором ассоциации. Доступ к личному кабинету предоставляется после одобрения заявки." %}
                     </p>
 
-                    <a
-                        href="{% url 'accounts:doctor_register' %}"
-                        class="btn btn-success btn-lg px-4 mt-auto align-self-start"
-                    >
-                        {% trans "Подать заявку" %}
-                    </a>
+                    <h5 class="fw-bold mb-3">
+                        {% trans "Преимущества" %}
+                    </h5>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold mb-1">
+                            {% trans "Безопасность" %}
+                        </h6>
+                        <p class="mb-3">
+                            {% trans "Доступ к юридическим алгоритмам выписки рецептов и учёта препаратов." %}
+                        </p>
+
+                        <h6 class="fw-bold mb-1">
+                            {% trans "Репутация" %}
+                        </h6>
+                        <p class="mb-3">
+                            {% trans "Станьте частью международного сообщества (EAPC, IAHPC)." %}
+                        </p>
+
+                        <h6 class="fw-bold mb-1">
+                            {% trans "Развитие" %}
+                        </h6>
+                        <p class="mb-0">
+                            {% trans "Обучение персонала навыкам «медицины комфорта»." %}
+                        </p>
+                    </div>
+
+                    {% if user.is_authenticated and user.role == "doctor" %}
+                        <a
+                            href="{% url 'patients:doctor_dashboard' %}"
+                            class="btn btn-success btn-lg px-4 mt-auto align-self-start"
+                        >
+                            {% trans "Перейти в кабинет" %}
+                        </a>
+                    {% else %}
+                        <a
+                            href="{% url 'accounts:doctor_register' %}"
+                            class="btn btn-success btn-lg px-4 mt-auto align-self-start"
+                        >
+                            {% trans "Подать заявку" %}
+                        </a>
+                    {% endif %}
 
                 </div>
             </div>
