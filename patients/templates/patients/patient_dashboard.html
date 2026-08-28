@@ -31,27 +31,27 @@
                         <i class="bi bi-heart-pulse-fill"></i> {% translate "Рекомендованные материалы" %}
                     </h6>
                     <div class="mt-2">
-                        {% if card.symptoms.exists %}
-                            {% if card.matching_resources_list %}
-                                <ul class="list-group list-group-flush">
-                                    {% for resource in card.matching_resources_list %}
-                                        <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
-                                            <a href="#" class="text-decoration-none text-dark hover-primary">{{ resource.title }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            {% else %}
-                                <div class="alert alert-light text-muted small my-2 border rounded-3" role="alert">
-                                    <i class="bi bi-info-circle"></i> {% translate "Пока нет подходящих руководств для указанных симптомов." %}
-                                </div>
-                            {% endif %}
+                        {% with resources=card.get_matching_resources %}
+                        {% if resources %}
+                            <ul>
+                                {% for resource in resources %}
+                                    <li>
+                                        <a href="#">
+                                            {{ resource.title }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         {% else %}
-                            <div class="alert alert-info text-center py-3 my-2 rounded-3" role="alert">
-                                <p class="mb-0 fw-medium text-secondary">
-                                    {% translate "Рекомендованных материалов пока нет." %}
-                                </p>
-                            </div>
+                            <p class="text-muted">
+                                {% if card.symptoms.all %}
+                                    Нет подходящих материалов по текущим симптомам.
+                                {% else %}
+                                    Симптомы не указаны.
+                                {% endif %}
+                            </p>
                         {% endif %}
+                    {% endwith %}
                     </div>
                 </div>
 

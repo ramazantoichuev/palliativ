@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from accounts.models import PatientProfile, DoctorProfile
+from resources.models.resources import Resource
 
 
 class Symptom(models.Model):
@@ -44,23 +45,15 @@ class PatientCard(models.Model):
         return f"{self.patient} — {self.diagnosis[:30]}"
 
     def get_matching_resources(self):
-        if not self.id or not self.symptoms.exists():
-            from resources.models.resources import Resource
-            return Resource.objects.none()
-        from resources.models.resources import Resource
-        return Resource.objects.filter(
-            symptoms__in=self.symptoms.all()
-        ).distinct()
-
-    def matching_resources_list(self):
-        if not self.id:
-            return []
         if hasattr(self, '_prefetched_matching_resources'):
             return self._prefetched_matching_resources
-
-        symptom_ids = [symptom.id for symptom in self.symptoms.all()]
-        if not symptom_ids:
+        if not self.pk:
             return []
 
         from resources.models.resources import Resource
-        return list(Resource.objects.filter(symptoms__id__in=symptom_ids).distinct())
+        if 'symptoms' in getattr(self, '_prefetched_objects_cache', {}):
+            symptom_ids = [s.id for s in self.symptoms.all()]
+            if not symptom_ids:
+                return Resource.objects.none()
+            return Resource.objects.filter(symptoms__id__in=symptom_ids).distinct()
+        return Resource.objects.filter(symptoms__in=self.symptoms.all()).distinct()

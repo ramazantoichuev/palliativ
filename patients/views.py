@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
-from django.db.models import prefetch_related_objects
 from django.views.generic import ListView
 from accounts.models import BaseUser
 from resources.models.resources import Resource
@@ -23,15 +22,19 @@ class DoctorPatientListView(LoginRequiredMixin, ListView):
         cards_list = list(
             PatientCard.objects.filter(doctor__user=self.request.user)
             .order_by('-updated_at')
-            .select_related('patient')
+            .select_related(
+                'patient__user',
+                'doctor__user'
+            )
             .prefetch_related('symptoms')
         )
         all_symptom_ids = set()
         for card in cards_list:
             for symptom in card.symptoms.all():
                 all_symptom_ids.add(symptom.id)
-
         if not all_symptom_ids:
+            for card in cards_list:
+                card._prefetched_matching_resources = []
             return cards_list
 
         resources = (
@@ -42,37 +45,37 @@ class DoctorPatientListView(LoginRequiredMixin, ListView):
         )
 
         symptom_to_resources = {}
-
         for resource in resources:
             for symptom in resource.symptoms.all():
                 if symptom.id not in symptom_to_resources:
                     symptom_to_resources[symptom.id] = []
                 symptom_to_resources[symptom.id].append(resource)
+
         for card in cards_list:
             card_resources = set()
             for symptom in card.symptoms.all():
                 if symptom.id in symptom_to_resources:
-                    card_resources.update(
-                        symptom_to_resources[symptom.id]
-                    )
+                    card_resources.update(symptom_to_resources[symptom.id])
             card._prefetched_matching_resources = list(card_resources)
+
         return cards_list
+
 
 class PatientCardDetailView(LoginRequiredMixin, ListView):
     model = PatientCard
     template_name = 'patients/patient_dashboard.html'
     context_object_name = 'patient_cards'
 
-    def get(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         if request.user.role != BaseUser.Role.PATIENT:
-            raise PermissionDenied
-        return super().get(request, *args, **kwargs)
+            raise PermissionDenied("Доступ разрешен только пациентам.")
+        return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         return (
             PatientCard.objects
             .filter(patient__user=self.request.user)
             .order_by('-updated_at')
-            .select_related('patient')
+            .select_related('patient__user', 'doctor__user')
             .prefetch_related('symptoms')
         )
