@@ -1,9 +1,6 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import TemplateView
-from django.shortcuts import render, redirect
-from django.views import View
 User = get_user_model()
 
 
@@ -53,6 +50,9 @@ class CustomLoginView(LoginView):
 
 class WaitingApprovalView(TemplateView):
     template_name = 'accounts/waiting_403.html'
+
+class RegisterTypeView(TemplateView):
+    template_name = "accounts/register_type.html"
 
 
 
