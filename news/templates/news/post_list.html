@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load i18n static %}
+{% load i18n %}
 
-{% block title %}{% translate "Новости" %}{% endblock %}
+{% block title %}{% translate "Новости" %} — Паллиатив.kg{% endblock %}
 {% block content %}
 <div class="container-fluid my-4 p-4 px-0 rounded-0 news-header-block">
     <h1 class="fw-bold mb-4 text-center"> {% translate "Новости" %}
@@ -41,7 +41,7 @@
     </form>
 </div>
    <div class="row justify-content-center mt-4">
-    {% for post in posts|default:object_list %}
+    {% for post in posts %}
        <div class="col-12 col-sm-6 col-lg-4 mb-4">
             <article class="card h-100 shadow-sm">
                 {% if post.image %}
@@ -59,6 +59,7 @@
                             {{ post.title }}
                         </a>
                     </h2>
+                    <p class="card-text text-secondary">{{ post.description|truncatewords:20 }}</p>
                 </div>
                 <div class="card-footer bg-transparent border-top-0">
                     <a href="{% url 'news:post_detail' post.slug %}" class="btn btn-outline-primary btn-sm">

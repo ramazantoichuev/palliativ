@@ -29,10 +29,15 @@ Python 3.11+
 PostgreSQL
 pip
 virtualenv (или venv)
+GNU gettext — нужен только для работы с переводами (makemessages / compilemessages)
 Для Ubuntu/Debian:
 
 sudo apt update
-sudo apt install -y python3-venv libpq-dev postgresql postgresql-contrib
+sudo apt install -y python3-venv libpq-dev postgresql postgresql-contrib gettext
+Для Windows:
+
+winget install --id mlocati.GettextIconv
+После установки перезапустите терминал, чтобы msgfmt и xgettext появились в PATH.
 Клонирование проекта
 git clone https://github.com/ramazantoichuev/palliativ.git
 cd palliativ
@@ -93,6 +98,55 @@ python manage.py collectstatic
 Запустить Django shell:
 
 python manage.py shell
+Локализация (RU / KY / EN)
+В проекте две независимые системы перевода.
+
+1) Интерфейс — gettext. Строки в коде и шаблонах оборачиваются в gettext_lazy()
+и {% translate %}. Переводы лежат в locale/<язык>/LC_MESSAGES/django.po,
+а Django читает скомпилированный django.mo рядом с ним.
+Основной язык — русский: исходные строки русские, поэтому при отсутствии
+перевода показывается русский текст.
+
+2) Контент — django-modeltranslation. Для полей, перечисленных в news/translation.py
+и events/translation.py, в таблицах созданы колонки title_ru / title_ky / title_en и т.п.
+Заполняются вручную в админке (вкладки по языкам). Обязателен только русский,
+при пустом значении остальные языки подхватывают fallback на ru.
+
+Переключатель RU / KY / EN находится в общей навигации (templates/base.html)
+и отправляет POST на /i18n/setlang/. Выбор сохраняется в cookie,
+URL разделов при этом не меняются.
+
+Пересборка переводов интерфейса
+Требуется установленный GNU gettext (см. раздел Требования).
+
+Шаг 1. Собрать новые строки из кода и шаблонов в .po:
+
+python manage.py makemessages -l ky -l en --ignore=.venv
+Шаг 2. Открыть locale/ky/LC_MESSAGES/django.po и locale/en/LC_MESSAGES/django.po
+и заполнить msgstr у новых записей. Каталога locale/ru нет и не нужно —
+русский берётся из самих msgid.
+
+Записи с пометкой "#, fuzzy" — черновой перевод, подставленный автоматически.
+В django.mo они НЕ попадают. Проверьте перевод и удалите строку "#, fuzzy",
+иначе строка останется непереведённой.
+
+Шаг 3. Скомпилировать .mo:
+
+python manage.py compilemessages
+Шаг 4. Перезапустить сервер — каталог переводов кешируется в памяти процесса.
+
+Важно: django.po и django.mo коммитятся в репозиторий парой.
+Если изменить .po и не пересобрать .mo, на сайте перевод не появится.
+
+Добавление нового языка
+Добавьте код языка в LANGUAGES в config/settings.py, затем:
+
+python manage.py makemessages -l <код>
+python manage.py makemigrations
+python manage.py migrate
+Миграции нужны, чтобы modeltranslation создал колонки нового языка
+для переводимых полей моделей.
+
 Разработка
 Основная ветка разработки:
 

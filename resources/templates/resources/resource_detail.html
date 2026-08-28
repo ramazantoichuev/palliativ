@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ resource.title }}</h2>
+    <p>{{ resource.description }}</p>
+
+    {% if resource.files.all %}
+    <h4 class="mt-4">{% translate "Файлы" %}</h4>
+    <ul>
+        {% for f in resource.files.all %}
+        <li><a href="{{ f.file.url }}" target="_blank">{{ f.file.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if resource.videos.all %}
+    <h4 class="mt-4">{% translate "Видео" %}</h4>
+    <ul>
+        {% for v in resource.videos.all %}
+        <li><a href="{{ v.url }}" target="_blank">{{ v.url }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if not resource.files.all and not resource.videos.all %}
+    <p class="text-muted">{% translate "Дополнительных материалов нет." %}</p>
+    {% endif %}
+</div>
+{% endblock %}>
