@@ -1,4 +1,5 @@
 from django.test import RequestFactory, TestCase
+from django.urls import reverse
 
 from accounts.forms import EmailAuthenticationForm
 from accounts.tests.factories import UserFactory
@@ -7,7 +8,8 @@ from accounts.tests.factories import UserFactory
 class EmailAuthenticationFormTests(TestCase):
 
     def setUp(self):
-        self.request = RequestFactory().post("/accounts/login/")
+        url = reverse('accounts:login')
+        self.request = RequestFactory().post(url)
         self.password = "strongpass1"
         self.user = UserFactory(email="login@test.kg")
         self.user.set_password(self.password)
