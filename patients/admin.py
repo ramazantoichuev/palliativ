@@ -4,23 +4,6 @@ from .models import PatientCard, Symptom
 from django.http import JsonResponse
 from django.urls import path
 
-class PatientCardAdminForm(forms.ModelForm):
-    class Meta:
-        model = PatientCard
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Если карточка новая и пациент уже выбран (например, при повторном открытии формы с ошибкой)
-        if not self.instance.pk and self.data.get('patient'):
-            try:
-                from accounts.models import PatientProfile
-                patient = PatientProfile.objects.get(pk=self.data.get('patient'))
-                self.fields['diagnosis'].initial = patient.diagnosis
-            except PatientProfile.DoesNotExist:
-                pass
-        elif not self.instance.pk and self.initial.get('patient'):
-            self.fields['diagnosis'].initial = self.initial['patient'].diagnosis
 
 class PatientCardAdminForm(forms.ModelForm):
     class Meta:
