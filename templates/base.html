@@ -64,10 +64,24 @@
                            href="{% url 'events:event_list' %}">{% translate "Мероприятия" %}</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link{% if ns == 'resources' %} active{% endif %}"
+                           {% if ns == 'resources' %}aria-current="page"{% endif %}
+                           href="{% url 'resources:resource_list' %}">{% translate "Ресурсы" %}</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'accounts:register_type' %}">{% translate "Участие" %}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link{% if ns == 'main' and un == 'new-consultation' %} active{% endif %}"
                            {% if ns == 'main' and un == 'new-consultation' %}aria-current="page"{% endif %}
                            href="{% url 'main:new-consultation' %}">{% translate "Контакты" %}</a>
                     </li>
+                      {% if user.is_authenticated and user.role == 'patient' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patients:patient_dashboard' %}">{% translate "Моя карточка" %}</a>
+                    </li>
+                    {% endif %}
                 </ul>
                                 <form action="{% url 'set_language' %}" method="post"
                       class="d-flex justify-content-center ms-md-3 mb-2 mb-md-0">
@@ -86,14 +100,6 @@
                         {% endfor %}
                     </div>
                 </form>
-                <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Контакты</a>
-                    </li>
-                    {% if user.is_authenticated and user.role == 'patient' %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'patients:patient_dashboard' %}">{% translate "Моя карточка" %}</a>
-                    </li>
-                    {% endif %}
             </div>
         </div>
     </nav>
