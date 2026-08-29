@@ -162,3 +162,68 @@ git pull origin dev
 Для новых задач создавайте отдельные feature-ветки:
 
 git checkout -b feature/task-name
+
+
+
+
+
+
+
+
+Запуск проекта через ngrok
+
+Для локальной разработки с внешним доступом (вебхуки, тестирование на других устройствах) используется статический домен ngrok.
+
+Установка ngrok
+
+Windows:
+winget install ngrok -s msstore
+
+macOS:
+brew install ngrok
+
+Либо скачать напрямую с ngrok.com/download — подходит для обеих ОС.
+
+Авторизация
+
+Получи свой authtoken на dashboard.ngrok.com/get-started/your-authtoken и выполни (одинаково для Windows и macOS):
+
+ngrok config add-authtoken твой_authtoken
+
+Запусти Django-сервер
+
+Убедись, что сервер слушает порт 8000 (или другой — но тогда поменяй порт в команде ngrok ниже):
+
+python manage.py runserver 8000
+
+Запусти ngrok с привязкой к статическому домену
+
+В отдельном терминале (Django-сервер должен продолжать работать в первом):
+
+ngrok http 8000 --url https://hatchling-causal-doornail.ngrok-free.dev
+
+Важно: порт после ngrok http должен совпадать с портом, на котором реально запущен Django (8000 в примере выше, а не 80).
+
+После запуска сайт будет доступен по адресу:
+https://hatchling-causal-doornail.ngrok-free.dev
+
+Проверка
+
+Убедись, что в config/settings.py домен добавлен в ALLOWED_HOSTS:
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free.dev']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
