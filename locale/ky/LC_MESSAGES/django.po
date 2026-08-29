@@ -797,3 +797,35 @@ msgstr "Алга"
 #: .\templates\partial\pagination.html:49
 msgid "В конец"
 msgstr "Аягына"
+
+#: .\templates\main\contacts.html
+msgid "Адрес"
+msgstr "Дарек"
+
+#: .\templates\main\contacts.html
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: .\templates\main\contacts.html
+msgid "Написать в WhatsApp"
+msgstr "WhatsApp аркылуу жазуу"
+
+#: .\templates\main\contacts.html
+msgid "Как нас найти"
+msgstr "Бизди кантип табууга болот"
+
+#: .\templates\main\contacts.html
+msgid "Открыть карту"
+msgstr "Картаны ачуу"
+
+#: .\templates\main\contacts.html
+msgid "Обратная связь"
+msgstr "Кайтарым байланыш"
+
+#: .\templates\main\contacts.html
+msgid "Здесь будет размещена форма обратной связи."
+msgstr "Бул жерде кайтарым байланыш формасы жайгаштырылат."
+
+#: .\templates\main\contacts.html
+msgid "Нужна консультация"
+msgstr "Кеңеш керек"

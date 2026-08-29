@@ -14,6 +14,10 @@ class AboutView(TemplateView):
     template_name = 'main/about.html'
 
 
+class ContactsView(TemplateView):
+    template_name = 'main/contacts.html'
+
+
 # Create your views here.
 
 class ConsultationCreateView(SuccessMessageMixin, CreateView):

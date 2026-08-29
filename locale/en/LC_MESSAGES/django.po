@@ -812,3 +812,35 @@ msgstr "Forward"
 #: .\templates\partial\pagination.html:49
 msgid "В конец"
 msgstr "To the last page"
+
+#: .\templates\main\contacts.html
+msgid "Адрес"
+msgstr "Address"
+
+#: .\templates\main\contacts.html
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: .\templates\main\contacts.html
+msgid "Написать в WhatsApp"
+msgstr "Write on WhatsApp"
+
+#: .\templates\main\contacts.html
+msgid "Как нас найти"
+msgstr "How to find us"
+
+#: .\templates\main\contacts.html
+msgid "Открыть карту"
+msgstr "Open map"
+
+#: .\templates\main\contacts.html
+msgid "Обратная связь"
+msgstr "Feedback"
+
+#: .\templates\main\contacts.html
+msgid "Здесь будет размещена форма обратной связи."
+msgstr "The feedback form will be placed here."
+
+#: .\templates\main\contacts.html
+msgid "Нужна консультация"
+msgstr "Need a consultation"
