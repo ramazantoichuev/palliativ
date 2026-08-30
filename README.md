@@ -136,7 +136,7 @@ python manage.py makemessages -l ky -l en --ignore=.venv
 
 Шаг 3. Скомпилировать .mo:
 
-python manage.py compilemessages
+python manage.py compilemessages --ignore=.venv
 Шаг 4. Перезапустить сервер — каталог переводов кешируется в памяти процесса.
 
 Важно: django.po и django.mo коммитятся в репозиторий парой.
