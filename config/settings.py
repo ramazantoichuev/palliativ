@@ -150,6 +150,11 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+MAX_IMAGE_SIZE_MB = 5
+MAX_IMAGE_DIMENSION_PX = 3000
+MAX_RESOURCE_FILE_SIZE_MB = 15
+DESCRIPTION_MAX_LENGTH = 2000
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 

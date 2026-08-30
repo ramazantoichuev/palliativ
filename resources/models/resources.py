@@ -1,5 +1,9 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+
+from common.validators import validate_resource_file_size
 
 
 class Resource(models.Model):
@@ -23,7 +27,7 @@ class Resource(models.Model):
     ]
 
     title = models.CharField(_('Заголовок'), max_length=255)
-    description = models.TextField(_('Описание'), blank=True)
+    description = models.TextField(_('Описание'), blank=True, max_length=settings.DESCRIPTION_MAX_LENGTH)
 
     audience = models.CharField(
         _('Целевая аудитория'),
@@ -59,7 +63,14 @@ class ResourceFile(models.Model):
         related_name='files',
         verbose_name=_('Ресурс')
     )
-    file = models.FileField(_('Файл'), upload_to='resources/files/')
+    file = models.FileField(
+        _('Файл'),
+        upload_to='resources/files/',
+        validators=[
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp', 'pdf', 'doc', 'docx']),
+            validate_resource_file_size,
+    ],
+    )
     class Meta:
         verbose_name = _('Файл ресурса')
         verbose_name_plural = _('Файлы ресурса')
