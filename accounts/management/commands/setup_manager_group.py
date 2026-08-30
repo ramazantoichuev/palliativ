@@ -1,13 +1,14 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group, Permission
 from django.core.exceptions import ObjectDoesNotExist
+from accounts.models import BaseUser
 
 
 class Command(BaseCommand):
     help = 'Настройка группы Managers и назначение ей достаточных прав по ТЗ.'
 
     def handle(self, *args, **options):
-        group_name = 'Managers'
+        group_name = BaseUser.ROLE_GROUPS[BaseUser.Role.MANAGER]
         group, created = Group.objects.get_or_create(name=group_name)
 
         if created:
