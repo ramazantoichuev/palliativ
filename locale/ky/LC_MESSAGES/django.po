@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-30 07:13+0000\n"
+"POT-Creation-Date: 2026-08-30 17:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,6 +134,23 @@ msgstr "Көндүмдөр"
 msgid "Диагноз"
 msgstr "Диагноз"
 
+#: common/validators.py:11
+#, python-format
+msgid "Размер изображения не должен превышать %(limit)s МБ."
+msgstr ""
+
+#: common/validators.py:22
+#, python-format
+msgid ""
+"Разрешение изображения не должно превышать %(limit)s пикселей по большей "
+"стороне."
+msgstr ""
+
+#: common/validators.py:31
+#, python-format
+msgid "Размер файла не должен превышать %(limit)s МБ."
+msgstr ""
+
 #: config/settings.py:129
 msgid "Russian"
 msgstr "Орусча"
@@ -146,15 +163,15 @@ msgstr "Кыргызча"
 msgid "English"
 msgstr "Англисче"
 
-#: events/models.py:7 news/models/posts.py:17 resources/models/resources.py:25
+#: events/models.py:7 news/models/posts.py:21 resources/models/resources.py:29
 msgid "Заголовок"
 msgstr "Башкы тема"
 
-#: events/models.py:9 news/models/posts.py:20 resources/models/resources.py:26
+#: events/models.py:9 news/models/posts.py:24 resources/models/resources.py:30
 msgid "Описание"
 msgstr "Сүрөттөлүшү"
 
-#: events/models.py:10 news/models/posts.py:19
+#: events/models.py:10 news/models/posts.py:23
 msgid "Текст"
 msgstr "Текст"
 
@@ -164,7 +181,7 @@ msgstr "Иш-чара"
 
 #: events/models.py:17 templates/base.html:73
 #: templates/events/event_detail.html:8 templates/events/event_list.html:4
-#: templates/events/event_list.html:7 templates/main/home.html:40
+#: templates/events/event_list.html:7 templates/main/home.html:42
 msgid "Мероприятия"
 msgstr "Иш-чаралар"
 
@@ -197,15 +214,24 @@ msgstr "Негизги маалымат"
 msgid "Управление заявкой"
 msgstr "Билдирмени башкаруу"
 
-#: main/forms.py:21
+#: main/forms.py:23
+#, fuzzy
+#| msgid ""
+#| "Неверный формат номера. Введите номер в формате: 0555123456 или "
+#| "+996555123456"
 msgid ""
-"Неверный формат номера. Введите номер в формате: 0555123456 или +996555123456"
+"Неверный формат номера. Введите номер в формате: 0555123456 (мобильный) или "
+"0312123456 (городской, Бишкек)"
 msgstr ""
 "Телефон номурдун форматы туура эмес. Номурду бул форматта киргизиңиз: "
 "0555123456 же +996555123456"
 
-#: main/forms.py:29
-msgid "Неверный код оператора Кыргызстана. Проверьте правильность ввода."
+#: main/forms.py:36
+#, fuzzy
+#| msgid "Неверный код оператора Кыргызстана. Проверьте правильность ввода."
+msgid ""
+"Неверный код оператора или города. Проверьте правильность ввода номера "
+"мобильного или городского телефона Кыргызстана."
 msgstr ""
 "Кыргызстандын операторунун коду туура эмес. Киргизилген маалыматты "
 "текшериңиз."
@@ -250,32 +276,32 @@ msgstr "Билдирменин статусу"
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Консультация алууга билдирмеңиз ийгиликтүү жөнөтүлдү!"
 
-#: news/models/posts.py:6
+#: news/models/posts.py:10
 msgid "Название"
 msgstr "Аталышы"
 
-#: news/models/posts.py:9 news/models/posts.py:23
+#: news/models/posts.py:13 news/models/posts.py:37
 msgid "Категория"
 msgstr "Категория"
 
-#: news/models/posts.py:10
+#: news/models/posts.py:14
 msgid "Категории"
 msgstr "Категориялар"
 
-#: news/models/posts.py:21
+#: news/models/posts.py:26
 msgid "Картинка"
 msgstr "Сүрөт"
 
-#: news/models/posts.py:25 patients/models/patients.py:37
-#: resources/models/resources.py:44
+#: news/models/posts.py:39 patients/models/patients.py:37
+#: resources/models/resources.py:48
 msgid "Дата создания"
 msgstr "Түзүлгөн күнү"
 
-#: news/models/posts.py:28
+#: news/models/posts.py:42
 msgid "Новость"
 msgstr "Жаңылык"
 
-#: news/models/posts.py:29 templates/base.html:68 templates/main/home.html:39
+#: news/models/posts.py:43 templates/base.html:68 templates/main/home.html:41
 #: templates/news/post_list.html:4 templates/news/post_list.html:7
 msgid "Новости"
 msgstr "Жаңылыктар"
@@ -287,28 +313,28 @@ msgstr "Аталышы"
 
 #: patients/models/patients.py:11
 msgid "Симптом"
-msgstr ""
+msgstr "Оорунун белгиси"
 
 #: patients/models/patients.py:12 patients/models/patients.py:36
-#: resources/models/resources.py:39 templates/patients/doctor_dashboard.html:18
+#: resources/models/resources.py:43 templates/patients/doctor_dashboard.html:18
 msgid "Симптомы"
-msgstr ""
+msgstr "Оорунун белгилери"
 
 #: patients/models/patients.py:30 templates/patients/patient_dashboard.html:25
 msgid "Лечащий врач"
-msgstr ""
+msgstr "Дарылоочу дарыгер"
 
 #: patients/models/patients.py:33 templates/patients/patient_dashboard.html:13
 msgid "Принимаемые препараты"
-msgstr ""
+msgstr "Колдонулуп жаткан препараттар"
 
 #: patients/models/patients.py:34 templates/patients/patient_dashboard.html:14
 msgid "Противопоказания"
-msgstr ""
+msgstr "Каршы көрсөтмөлөр"
 
 #: patients/models/patients.py:35
 msgid "Ранее проведенное лечение"
-msgstr ""
+msgstr "Мурда жүргүзүлгөн дарылоо"
 
 #: patients/models/patients.py:38
 #, fuzzy
@@ -323,88 +349,88 @@ msgstr "Бейтаптын карточкасы"
 msgid "Карточки пациентов"
 msgstr "Бейтаптардын карточкалары"
 
-#: resources/models/resources.py:10
+#: resources/models/resources.py:14
 msgid "Руководство для специалистов"
 msgstr "Адистер үчүн колдонмо"
 
-#: resources/models/resources.py:11
+#: resources/models/resources.py:15
 msgid "Советы ухаживающим"
 msgstr "Карап-багуучуларга кеңештер"
 
-#: resources/models/resources.py:15
+#: resources/models/resources.py:19
 msgid "Контроль симптомов"
 msgstr "Симптомдорду көзөмөлдөө"
 
-#: resources/models/resources.py:16
+#: resources/models/resources.py:20
 msgid "Уход в конце жизни"
 msgstr "Өмүрүнүн акырындагы кам көрүү"
 
-#: resources/models/resources.py:17
+#: resources/models/resources.py:21
 msgid "НПА (Нормативно-правовые акты)"
 msgstr "УРA (Укуктук-нормативдик актылар)"
 
-#: resources/models/resources.py:19
+#: resources/models/resources.py:23
 msgid "Уход и кормление"
 msgstr "Кам көрүү жана тамактандыруу"
 
-#: resources/models/resources.py:20
+#: resources/models/resources.py:24
 msgid "Советы психолога"
 msgstr "Психологдун кеңештери"
 
-#: resources/models/resources.py:21
+#: resources/models/resources.py:25
 msgid "Лекарства и права пациента"
 msgstr "Дары-дармектер жана бейтаптын укуктары"
 
-#: resources/models/resources.py:22
+#: resources/models/resources.py:26
 msgid "Соцподдержка"
 msgstr "Социалдык колдоо"
 
-#: resources/models/resources.py:29
+#: resources/models/resources.py:33
 msgid "Целевая аудитория"
 msgstr "Максаттуу аудитория"
 
-#: resources/models/resources.py:34
+#: resources/models/resources.py:38
 msgid "Подкатегория"
 msgstr "Ички категория"
 
-#: resources/models/resources.py:45
+#: resources/models/resources.py:49
 msgid "Дата обновления"
 msgstr "Жаңыланган күнү"
 
-#: resources/models/resources.py:48
+#: resources/models/resources.py:52
 #, fuzzy
 msgid "Справочный материал"
 msgstr "Маалымдама материал"
 
-#: resources/models/resources.py:49
+#: resources/models/resources.py:53
 msgid "Справочные материалы"
 msgstr "Маалымдама материалдар"
 
-#: resources/models/resources.py:60 resources/models/resources.py:73
+#: resources/models/resources.py:64 resources/models/resources.py:84
 msgid "Ресурс"
 msgstr "Ресурс"
 
-#: resources/models/resources.py:62
+#: resources/models/resources.py:67
 msgid "Файл"
 msgstr "Файл"
 
-#: resources/models/resources.py:64
+#: resources/models/resources.py:75
 msgid "Файл ресурса"
 msgstr "Ресурстун файлы"
 
-#: resources/models/resources.py:65
+#: resources/models/resources.py:76
 msgid "Файлы ресурса"
 msgstr "Ресурстун файлдары"
 
-#: resources/models/resources.py:75
+#: resources/models/resources.py:86
 msgid "Ссылка на YouTube"
 msgstr "YouTube шилтемеси"
 
-#: resources/models/resources.py:77
+#: resources/models/resources.py:88
 msgid "Видео-ссылка"
 msgstr "Видео шилтеме"
 
-#: resources/models/resources.py:78
+#: resources/models/resources.py:89
 msgid "Видео-ссылки"
 msgstr "Видео шилтемелер"
 
@@ -604,7 +630,7 @@ msgstr "Менюну ачуу"
 msgid "Главная"
 msgstr "Башкы бет"
 
-#: templates/base.html:63
+#: templates/base.html:63 templates/main/about.html:8
 msgid "О нас"
 msgstr "Биз жөнүндө"
 
@@ -694,11 +720,142 @@ msgstr "Азырынча алдыдагы иш-чаралар жок"
 msgid "Прошедшие мероприятия"
 msgstr "Өткөн иш-чаралар"
 
+#: templates/main/about.html:4
+msgid "О нас — Паллиатив.kg"
+msgstr "Биз жөнүндө — Паллиатив.kg"
+
+#: templates/main/about.html:10
+msgid "Наша миссия"
+msgstr "Биздин миссия"
+
+#: templates/main/about.html:12
+msgid ""
+"\n"
+"            Паллиатив — это не про смерть. Это про жизнь до самого конца. Мы "
+"не\n"
+"            «отменяем» лечение — мы добавляем к нему комфорт, достоинство и\n"
+"            профессиональный уход, когда радикальные методы бессильны. "
+"Жизнь\n"
+"            без боли — это право, а не привилегия: каждый человек в\n"
+"            Кыргызстане, от Бишкека до самых отдалённых сёл, имеет право не\n"
+"            страдать от боли.\n"
+"            "
+msgstr ""
+"\n"
+"            Паллиативдик жардам — бул өлүм жөнүндө эмес. Бул акыркы демге\n"
+"            чейин жашоо жөнүндө. Биз дарылоону «жокко чыгарбайбыз» — "
+"радикалдуу\n"
+"            ыкмалар алсыз болгондо, ага комфорт, ар-намыс жана кесипкөй\n"
+"            кароону кошобуз. Оорусуз жашоо — бул артыкчылык эмес, укук:\n"
+"            Кыргызстандагы ар бир адам, Бишкектен эң алыскы айылдарга "
+"чейин,\n"
+"            оорудан кыйналбоого укуктуу.\n"
+"            "
+
+#: templates/main/about.html:22
+msgid "Наши ценности"
+msgstr "Биздин баалуулуктар"
+
+#: templates/main/about.html:24
+msgid "Избавление от боли современными и законными методами."
+msgstr "Оорудан заманбап жана мыйзамдуу ыкмалар менен арылуу."
+
+#: templates/main/about.html:25
+msgid "Поддержка семьи и тех, кто ухаживает за близкими."
+msgstr "Үй-бүлөнү жана жакындарына кароочуларды колдоо."
+
+#: templates/main/about.html:26
+#, fuzzy
+#| msgid "Доступ к юридическим алгоритмам выписки рецептов и учёта препаратов."
+msgid "Юридическая грамотность врачей при работе с препаратами."
+msgstr ""
+"Рецепт жазуунун жана дары-дармектерди эсепке алуунун укуктук алгоритмдерине "
+"жетүү."
+
+#: templates/main/about.html:27
+msgid "Мультидисциплинарный подход: врачи, фармацевты, психологи."
+msgstr "Көп тармактуу мамиле: дарыгерлер, фармацевттер, психологдор."
+
+#: templates/main/about.html:30
+msgid "Что мы делаем"
+msgstr "Биз эмне кылабыз"
+
+#: templates/main/about.html:32
+msgid ""
+"\n"
+"            Мы объединяем государственные органы, частные клиники, "
+"фармацевтов\n"
+"            и волонтёров в единую сеть, строя мост между законом и реальным\n"
+"            пациентом. Подробную информацию об истории организации и "
+"команде\n"
+"            мы дополним по мере наполнения сайта контентом.\n"
+"            "
+msgstr ""
+"\n"
+"            Биз мамлекеттик органдарды, жеке клиникаларды, фармацевттерди\n"
+"            жана волонтёрлорду бирдиктүү тармакка бириктирип, мыйзам менен\n"
+"            чыныгы пациенттин ортосунда көпүрө курабыз. Уюмдун тарыхы жана\n"
+"            командасы жөнүндө толук маалыматты сайт мазмун менен "
+"толукталган\n"
+"            сайын кошобуз.\n"
+"            "
+
 #: templates/main/consultation.html:8
 msgid "Заявка на консультацию"
 msgstr "Консультация алууга билдирме"
 
-#: templates/main/home.html:41
+#: templates/main/home.html:4
+msgid "Главная — Паллиатив.kg"
+msgstr "Башкы бет — Паллиатив.kg"
+
+#: templates/main/home.html:8
+msgid "Жизнь без боли — это право каждого."
+msgstr "Оорусуз жашоо — бул ар бир адамдын укугу."
+
+#: templates/main/home.html:10
+msgid ""
+"\n"
+"            Ассоциация паллиативной и хосписной помощи Кыргызской "
+"Республики.\n"
+"            Мы объединяем врачей, клиники и семьи, чтобы обеспечить "
+"достойное\n"
+"            качество жизни на любом её этапе.\n"
+"             "
+msgstr ""
+"\n"
+"            Кыргыз Республикасынын паллиативдик жана хоспистик жардам\n"
+"            ассоциациясы. Биз ар кандай баскычта татыктуу жашоо сапатын\n"
+"            камсыз кылуу үчүн дарыгерлерди, клиникаларды жана\n"
+"            үй-бүлөлөрдү бириктиребиз.\n"
+"             "
+
+#: templates/main/home.html:21
+#, fuzzy
+#| msgid "Стать пациентом"
+msgid "Для пациентов"
+msgstr "Бейтап катары катталуу"
+
+#: templates/main/home.html:22
+msgid "Информация о том, как получить помощь и куда обратиться."
+msgstr "Жардам кантип алууга жана кайда кайрылууга болору жөнүндө маалымат."
+
+#: templates/main/home.html:27
+msgid "Для клиник"
+msgstr "Клиникалар үчүн"
+
+#: templates/main/home.html:28
+msgid "Присоединяйтесь к сети паллиативной помощи в вашем регионе."
+msgstr "Аймагыңыздагы паллиативдик жардам тармагына кошулуңуз."
+
+#: templates/main/home.html:33
+msgid "Для врачей"
+msgstr "Дарыгерлерге"
+
+#: templates/main/home.html:34
+msgid "Протоколы, лекции и справочные материалы по уходу за пациентами."
+msgstr "Пациенттерге кароо боюнча протоколдор, лекциялар жана справочный материалдар."
+
+#: templates/main/home.html:43
 msgid "Оставить заявку"
 msgstr "Билдирме калтыруу"
 
@@ -730,11 +887,11 @@ msgstr "Чыпкалоо"
 msgid "Сбросить"
 msgstr "Түшүрүү"
 
-#: templates/news/post_list.html:66
+#: templates/news/post_list.html:73
 msgid "Читать дальше"
 msgstr "Толугу менен окуу"
 
-#: templates/news/post_list.html:75
+#: templates/news/post_list.html:82
 msgid "Новостей пока нет."
 msgstr "Азырынча жаңылыктар жок."
 
@@ -768,12 +925,12 @@ msgstr "Аягына"
 
 #: templates/patients/doctor_dashboard.html:6
 msgid "Мои пациенты"
-msgstr ""
+msgstr "Менин пациенттерим"
 
 #: templates/patients/doctor_dashboard.html:22
 #: templates/patients/patient_dashboard.html:20
 msgid "не указаны"
-msgstr ""
+msgstr "көрсөтүлгөн эмес"
 
 #: templates/patients/doctor_dashboard.html:28
 #: templates/patients/patient_dashboard.html:31
@@ -782,9 +939,19 @@ msgstr ""
 msgid "Рекомендованные материалы"
 msgstr "Маалымдама материалдар"
 
+#: templates/patients/doctor_dashboard.html:45
+#, fuzzy
+#| msgid "Выберите подходящий вариант участия в ассоциации."
+msgid "Нет подходящих материалов по текущим симптомам."
+msgstr "Ассоциацияга катышуунун сизге ылайыктуу вариантын тандаңыз."
+
+#: templates/patients/doctor_dashboard.html:47
+msgid "Симптомы не указаны."
+msgstr "Белгилер көрсөтүлгөн эмес."
+
 #: templates/patients/doctor_dashboard.html:61
 msgid "За вами пока не закреплено ни одного пациента."
-msgstr ""
+msgstr "Азырынча сизге бир дагы пациент бекитилген эмес."
 
 #: templates/patients/patient_dashboard.html:16
 #, fuzzy
@@ -793,7 +960,7 @@ msgstr "Аталышы"
 
 #: templates/patients/patient_dashboard.html:63
 msgid "У вас пока нет созданной карточки."
-msgstr ""
+msgstr "Сизде азырынча түзүлгөн карта жок."
 
 #: templates/resources/resource_detail.html:10
 #, fuzzy
@@ -815,7 +982,7 @@ msgstr "Маалымдама материалдар"
 
 #: templates/resources/resource_list.html:11
 msgid "Все"
-msgstr ""
+msgstr "Бүт"
 
 #: templates/resources/resource_list.html:25
 #, fuzzy
@@ -830,4 +997,4 @@ msgstr "Аталышы"
 
 #: templates/resources/resource_list.html:56
 msgid "В этой подкатегории пока нет материалов."
-msgstr ""
+msgstr "Бул подкатегорияда азырынча материалдар жок"
