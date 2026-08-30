@@ -14,6 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from django.utils.translation import gettext_lazy as _
+from django.contrib.messages import constants as messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -157,6 +158,11 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
 AUTH_USER_MODEL = 'accounts.BaseUser'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = "/"

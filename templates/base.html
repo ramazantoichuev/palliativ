@@ -30,7 +30,16 @@
     </style>
 </head>
 <body>
-
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{% translate 'Закрыть' %}"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 {% with ns=request.resolver_match.namespace un=request.resolver_match.url_name %}
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm">
@@ -82,6 +91,18 @@
                         <a class="nav-link" href="{% url 'patients:patient_dashboard' %}">{% translate "Моя карточка" %}</a>
                     </li>
                     {% endif %}
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <form action="{% url 'accounts:logout' %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link btn btn-link">{% translate "Выйти" %}</button>
+                    </form>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:login' %}">{% translate "Войти" %}</a>
+                </li>
+                {% endif %}
                 </ul>
                                 <form action="{% url 'set_language' %}" method="post"
                       class="d-flex justify-content-center ms-md-3 mb-2 mb-md-0">
