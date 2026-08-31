@@ -1,8 +1,11 @@
-from django.contrib.auth.models import AbstractUser
+import logging
+
+from django.contrib.auth.models import AbstractUser, Group
 from django.core.validators import RegexValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+logger = logging.getLogger(__name__)
 
 class BaseUser(AbstractUser):
     class Role(models.TextChoices):
@@ -12,6 +15,10 @@ class BaseUser(AbstractUser):
         DOCTOR = 'doctor', _('Врач')
         PATIENT = 'patient', _('Пациент')
 
+    ROLE_GROUPS = {
+        Role.MANAGER: 'Managers',
+        Role.MODERATOR: 'Moderators',
+    }
     role = models.CharField(_('Роль'), max_length=20, choices=Role.choices, default=Role.PATIENT)
     is_approved = models.BooleanField(_('Одобрен'),default=False )
     first_name = models.CharField(_("Имя"), max_length=150, blank=False, null=False)
@@ -44,15 +51,16 @@ class BaseUser(AbstractUser):
             elif self.role == self.Role.PATIENT:
                 PatientProfile.objects.create(user=self)
 
-        if self.role == self.Role.MANAGER:
-            from django.contrib.auth.models import Group
-            managers_group, _created = Group.objects.get_or_create(name='Managers')
-            self.groups.add(managers_group)
-
-        if self.role == self.Role.MODERATOR:
-            from django.contrib.auth.models import Group
-            moderators_group, _created = Group.objects.get_or_create(name='Moderators')
-            self.groups.add(moderators_group)
+        group_name = self.ROLE_GROUPS.get(self.role)
+        if group_name:
+            try:
+                group = Group.objects.get(name=group_name)
+                self.groups.add(group)
+            except Group.DoesNotExist:
+                logger.warning(
+                    "Группа '%s' не найдена — запустите setup_%s_group для роли %s",
+                    group_name, self.role, self.role,
+                )
 
 
 class DoctorProfile(models.Model):
