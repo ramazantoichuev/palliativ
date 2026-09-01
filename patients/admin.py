@@ -51,5 +51,5 @@ class PatientCardAdmin(admin.ModelAdmin):
             return JsonResponse({'diagnosis': ''})
 
 @admin.register(Symptom)
-class SymptomAdmin(admin.ModelAdmin):
+class SymptomAdmin(TranslationAdmin):
     search_fields = ['name_ru', 'name_en', 'name_ky']
