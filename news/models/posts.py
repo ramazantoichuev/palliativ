@@ -1,5 +1,9 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+
+from common.validators import validate_image_size, validate_image_dimensions
 
 
 class Category(models.Model):
@@ -17,8 +21,18 @@ class Post(models.Model):
     title = models.CharField(_('Заголовок'), max_length=255)
     slug = models.SlugField(unique=True)
     content = models.TextField(_('Текст'))
-    description = models.TextField(_('Описание'))
-    image = models.ImageField(_('Картинка'), upload_to='news/', blank=True, null=True)
+    description = models.TextField(_('Описание'), max_length=settings.DESCRIPTION_MAX_LENGTH)
+    image = models.ImageField(
+        _('Картинка'),
+        upload_to='news/',
+        blank=True,
+        null=True,
+        validators=[
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp']),
+            validate_image_size,
+            validate_image_dimensions,
+        ],
+    )
     category = models.ForeignKey(
         Category, verbose_name=_('Категория'),
         on_delete=models.PROTECT, related_name='posts')

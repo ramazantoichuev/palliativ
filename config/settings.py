@@ -14,6 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from django.utils.translation import gettext_lazy as _
+from django.contrib.messages import constants as messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +27,7 @@ DEBUG = os.getenv('DEBUG') == 'True'
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free.dev']
 
 
 # Application definition
@@ -149,6 +150,11 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+MAX_IMAGE_SIZE_MB = 5
+MAX_IMAGE_DIMENSION_PX = 3000
+MAX_RESOURCE_FILE_SIZE_MB = 15
+DESCRIPTION_MAX_LENGTH = 2000
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
@@ -157,6 +163,11 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
 AUTH_USER_MODEL = 'accounts.BaseUser'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = "/"
