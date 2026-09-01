@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 from .models import PatientCard, Symptom
 from django.http import JsonResponse
 from django.urls import path
@@ -50,6 +51,5 @@ class PatientCardAdmin(admin.ModelAdmin):
             return JsonResponse({'diagnosis': ''})
 
 @admin.register(Symptom)
-class SymptomAdmin(admin.ModelAdmin):
-    search_fields = ['name']
-# Register your models here.
+class SymptomAdmin(TranslationAdmin):
+    search_fields = ['name_ru', 'name_en', 'name_ky']
