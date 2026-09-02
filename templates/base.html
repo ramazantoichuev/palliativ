@@ -1,4 +1,5 @@
 {% load static i18n %}
+{% load seo_tags %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
           rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
           crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>{% block title %}Паллиатив.kg{% endblock %}</title>
+    <title>{% block title %}{% translate 'Паллиатив.kg — паллиативная и хосписная помощь в Кыргызстане' %}{% endblock %}</title>
     <style>
         body {
             display: flex;
@@ -28,6 +29,24 @@
             text-decoration: underline;
         }
     </style>
+    {# === Meta Description === #}
+    {% block meta_description %}
+        <meta name="description" content="{% block meta_description_text %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
+    {% endblock %}
+    {# === Open Graph === #}
+    <meta property="og:title" content="{% block og_title %}{% block title %}{% endblock %}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{% block meta_description_text_og %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{% translate 'Паллиатив.kg' %}">
+    <meta property="og:url" content="{% canonical_url request %}">
+
+    {# TODO: заменить на финальный OG-визуал от заказчика #}
+    {% block og_image %}
+        <meta property="og:image" content="{{ request.build_absolute_uri }}{% static 'images/og-default.jpg' %}">
+    {% endblock %}
+
+    {# === Canonical === #}
+    <link rel="canonical" href="{% canonical_url request %}">
 </head>
 <body>
 
