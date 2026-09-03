@@ -220,6 +220,70 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free
 
 
 
+# Тестовые данные (фикстуры)
+
+Наборы данных для локальной разработки и ручного тестирования. Заполняют базу пользователями, новостями, мероприятиями, симптомами, карточками пациентов и справочными материалами на трёх языках (RU/KY/EN, где применимо).
+
+
+## Загрузка
+
+Сначала миграции (на чистой базе):
+
+```bash
+python manage.py migrate
+```
+
+Затем фикстуры — **строго в этом порядке**, из-за связей между моделями (`patients` ссылается на `accounts`, `resources` ссылается на `patients.Symptom`):
+
+```bash
+python manage.py loaddata accounts_fixtures
+python manage.py loaddata news_fixtures
+python manage.py loaddata events_fixtures
+python manage.py loaddata patients_fixtures
+python manage.py loaddata resources_fixtures
+```
+
+## Тестовые пользователи
+
+Пароль у всех одинаковый: **`Testpass123!`**. Вход по **email**, не по username.
+
+| Роль | Email |
+|---|---|
+| Админ | `admin@palliativ.kg` |
+| Менеджер | `manager@palliativ.kg` |
+| Модератор | `moderator@palliativ.kg` |
+| Врач | `doctor1@palliativ.kg`, `doctor2@palliativ.kg` |
+| Пациент | `patient1@palliativ.kg` … `patient5@palliativ.kg` |
+
+Админка: `/admin/`, вход теми же данными (`admin@palliativ.kg`).
+
+## Что внутри
+
+- **accounts_fixtures.json** — 10 пользователей всех ролей + `DoctorProfile` (2) + `PatientProfile` (5)
+- **news_fixtures.json** — 3 категории, 6 новостей
+- **events_fixtures.json** — 7 мероприятий
+- **patients_fixtures.json** — 5 симптомов, 4 карточки пациента (диагноз, препараты, симптомы, врач)
+- **resources_fixtures.json** — 7 справочных материалов
+
+
+## Повторная генерация / очистка
+
+Очистить базу перед загрузкой заново:
+
+```bash
+python manage.py flush
+```
+
+Удалит все данные, структуру таблиц не тронет — миграции применять заново не нужно.
+
+
+
+
+
+
+
+
+
 
 
 
