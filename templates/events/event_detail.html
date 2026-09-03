@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
-
-{% block title %}{{ event.title }} — Паллиатив.kg{% endblock %}
-
+{% block title %}{{ event.title }}{% endblock %}
+{% block meta_description %}{{ event.description|truncatechars:160 }}{% endblock %}
 {% block content %}
     <p>
         <a href="{% url 'events:event_list' %}">&larr; {% translate "Мероприятия" %}</a>

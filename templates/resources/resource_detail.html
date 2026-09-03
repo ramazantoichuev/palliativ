@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
-
+{% block title %}{{ resource.title }}{% endblock %}
+{% block meta_description %}{{ resource.description|truncatechars:160 }}{% endblock %}
 {% block content %}
 <div class="container mt-5">
     <h2>{{ resource.title }}</h2>

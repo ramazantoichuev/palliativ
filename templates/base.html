@@ -31,13 +31,9 @@
         }
     </style>
 
-    {# === Meta Description === #}
-    {% block meta_description %}
-        <meta name="description" content="{% block meta_description_text %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
-    {% endblock %}
+        <meta name="description" content="{% block meta_description %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
 
-    {# === Open Graph === #}
-    <meta property="og:description" content="{% block og_description %}{% block meta_description_text_og %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}{% endblock %}">
+    
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{% translate 'Паллиатив.kg' %}">
     <meta property="og:url" content="{% canonical_url %}">
@@ -47,7 +43,6 @@
         <meta property="og:image" content="{{ request.build_absolute_uri }}{% static 'images/og-default.jpg' %}">
     {% endblock %}
 
-    {# === Canonical === #}
     <link rel="canonical" href="{% canonical_url %}">
 </head>
 
