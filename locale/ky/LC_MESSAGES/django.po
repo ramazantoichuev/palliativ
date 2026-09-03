@@ -20,43 +20,43 @@ msgstr ""
 
 #: accounts/forms.py:13
 msgid "Айгуль"
-msgstr ""
+msgstr "Айгүл"
 
 #: accounts/forms.py:14
 msgid "Токтосунова"
-msgstr ""
+msgstr "Токтосунова"
 
 #: accounts/forms.py:15
 msgid "example@gmail.com"
-msgstr ""
+msgstr "example@gmail.com"
 
 #: accounts/forms.py:16
 msgid "+996 700 123 456"
-msgstr ""
+msgstr "+996 700 123 456"
 
 #: accounts/forms.py:17
 msgid "Минимум 8 символов"
-msgstr ""
+msgstr "Кеминде 8 белги"
 
 #: accounts/forms.py:18
 msgid "Повторите пароль"
-msgstr ""
+msgstr "Сырсөздү кайталаңыз"
 
 #: accounts/forms.py:20 accounts/forms.py:108
 msgid "Пароль"
-msgstr ""
+msgstr "Сырсөз"
 
 #: accounts/forms.py:21
 msgid "Подтверждение пароля"
-msgstr ""
+msgstr "Сырсөздү ырастоо"
 
 #: accounts/forms.py:42
 msgid "Пароли не совпадают."
-msgstr ""
+msgstr "Сырсөздөр дал келбейт."
 
 #: accounts/forms.py:73
 msgid "Пользователь с таким номером телефона уже зарегистрирован."
-msgstr ""
+msgstr "Бул телефон номери менен колдонуучу мурунтан эле катталган."
 
 #: accounts/forms.py:83 accounts/models.py:61
 msgid "Образование или место учебы"
@@ -64,7 +64,7 @@ msgstr "Билими же окуу мекмеси"
 
 #: accounts/forms.py:84
 msgid "Профессиональные навыки"
-msgstr ""
+msgstr "Кесиптик көндүмдөр"
 
 #: accounts/forms.py:98 accounts/models.py:20 events/models.py:36
 #: main/models/consultation.py:20
@@ -73,11 +73,11 @@ msgstr "Email"
 
 #: accounts/forms.py:102
 msgid "Введите email"
-msgstr ""
+msgstr "Email киргизиңиз"
 
 #: accounts/forms.py:112
 msgid "Введите пароль"
-msgstr ""
+msgstr "Сырсөздү киргизиңиз"
 
 #: accounts/models.py:9
 msgid "Администратор"
@@ -137,19 +137,19 @@ msgstr "Диагноз"
 #: common/validators.py:11
 #, python-format
 msgid "Размер изображения не должен превышать %(limit)s МБ."
-msgstr ""
+msgstr "Сүрөттүн көлөмү %(limit)s МБдан ашпашы керек."
 
 #: common/validators.py:22
 #, python-format
 msgid ""
 "Разрешение изображения не должно превышать %(limit)s пикселей по большей "
 "стороне."
-msgstr ""
+msgstr "Сүрөттүн чоңдугу чоң жагы боюнча %(limit)s пикселден ашпашы керек."
 
 #: common/validators.py:31
 #, python-format
 msgid "Размер файла не должен превышать %(limit)s МБ."
-msgstr ""
+msgstr "Файлдын көлөмү %(limit)s МБдан ашпашы керек."
 
 #: config/settings.py:129
 msgid "Russian"
@@ -190,9 +190,8 @@ msgid "ФИО"
 msgstr "Аты-жөнү"
 
 #: events/models.py:37 main/models/consultation.py:19
-#, fuzzy
 msgid "Телефон"
-msgstr "Телефон номери"
+msgstr "Телефон"
 
 #: events/models.py:39
 msgid "Рассмотрено"
@@ -215,26 +214,20 @@ msgid "Управление заявкой"
 msgstr "Билдирмени башкаруу"
 
 #: main/forms.py:23
-#, fuzzy
 #| msgid ""
 #| "Неверный формат номера. Введите номер в формате: 0555123456 или "
 #| "+996555123456"
 msgid ""
 "Неверный формат номера. Введите номер в формате: 0555123456 (мобильный) или "
 "0312123456 (городской, Бишкек)"
-msgstr ""
-"Телефон номурдун форматы туура эмес. Номурду бул форматта киргизиңиз: "
-"0555123456 же +996555123456"
+msgstr "Телефон номеринин форматы туура эмес. Номерди мындай форматта киргизиңиз: 0555123456 (мобилдик) же 0312123456 (шаардык, Бишкек)"
 
 #: main/forms.py:36
-#, fuzzy
 #| msgid "Неверный код оператора Кыргызстана. Проверьте правильность ввода."
 msgid ""
 "Неверный код оператора или города. Проверьте правильность ввода номера "
 "мобильного или городского телефона Кыргызстана."
-msgstr ""
-"Кыргызстандын операторунун коду туура эмес. Киргизилген маалыматты "
-"текшериңиз."
+msgstr "Оператордун же шаардын коду туура эмес. Кыргызстандын мобилдик же шаардык телефон номери туура киргизилгенин текшериңиз."
 
 #: main/models/consultation.py:7
 msgid "Медицинская помощь"
@@ -307,9 +300,8 @@ msgid "Новости"
 msgstr "Жаңылыктар"
 
 #: patients/models/patients.py:8
-#, fuzzy
 msgid "Название симптома"
-msgstr "Аталышы"
+msgstr "Симптомдун аталышы"
 
 #: patients/models/patients.py:11
 msgid "Симптом"
@@ -337,9 +329,8 @@ msgid "Ранее проведенное лечение"
 msgstr "Мурда жүргүзүлгөн дарылоо"
 
 #: patients/models/patients.py:38
-#, fuzzy
 msgid "Дата изменения"
-msgstr "Жаңыланган күнү"
+msgstr "Өзгөртүлгөн күнү"
 
 #: patients/models/patients.py:41
 msgid "Карточка пациента"
@@ -398,7 +389,6 @@ msgid "Дата обновления"
 msgstr "Жаңыланган күнү"
 
 #: resources/models/resources.py:52
-#, fuzzy
 msgid "Справочный материал"
 msgstr "Маалымдама материал"
 
@@ -765,12 +755,9 @@ msgid "Поддержка семьи и тех, кто ухаживает за �
 msgstr "Үй-бүлөнү жана жакындарына кароочуларды колдоо."
 
 #: templates/main/about.html:26
-#, fuzzy
 #| msgid "Доступ к юридическим алгоритмам выписки рецептов и учёта препаратов."
 msgid "Юридическая грамотность врачей при работе с препаратами."
-msgstr ""
-"Рецепт жазуунун жана дары-дармектерди эсепке алуунун укуктук алгоритмдерине "
-"жетүү."
+msgstr "Дарыгерлердин дары-дармектер менен иштөөдөгү укуктук сабаттуулугу."
 
 #: templates/main/about.html:27
 msgid "Мультидисциплинарный подход: врачи, фармацевты, психологи."
@@ -830,10 +817,9 @@ msgstr ""
 "             "
 
 #: templates/main/home.html:21
-#, fuzzy
 #| msgid "Стать пациентом"
 msgid "Для пациентов"
-msgstr "Бейтап катары катталуу"
+msgstr "Бейтаптар үчүн"
 
 #: templates/main/home.html:22
 msgid "Информация о том, как получить помощь и куда обратиться."
@@ -934,16 +920,14 @@ msgstr "көрсөтүлгөн эмес"
 
 #: templates/patients/doctor_dashboard.html:28
 #: templates/patients/patient_dashboard.html:31
-#, fuzzy
 #| msgid "Справочные материалы"
 msgid "Рекомендованные материалы"
-msgstr "Маалымдама материалдар"
+msgstr "Сунушталган материалдар"
 
 #: templates/patients/doctor_dashboard.html:45
-#, fuzzy
 #| msgid "Выберите подходящий вариант участия в ассоциации."
 msgid "Нет подходящих материалов по текущим симптомам."
-msgstr "Ассоциацияга катышуунун сизге ылайыктуу вариантын тандаңыз."
+msgstr "Учурдагы симптомдорго ылайыктуу материалдар жок."
 
 #: templates/patients/doctor_dashboard.html:47
 msgid "Симптомы не указаны."
@@ -954,46 +938,40 @@ msgid "За вами пока не закреплено ни одного пац
 msgstr "Азырынча сизге бир дагы пациент бекитилген эмес."
 
 #: templates/patients/patient_dashboard.html:16
-#, fuzzy
 msgid "Текущие симптомы"
-msgstr "Аталышы"
+msgstr "Учурдагы симптомдор"
 
 #: templates/patients/patient_dashboard.html:63
 msgid "У вас пока нет созданной карточки."
 msgstr "Сизде азырынча түзүлгөн карта жок."
 
 #: templates/resources/resource_detail.html:10
-#, fuzzy
 #| msgid "Файл"
 msgid "Файлы"
-msgstr "Файл"
+msgstr "Файлдар"
 
 #: templates/resources/resource_detail.html:19
-#, fuzzy
 #| msgid "Видео-ссылка"
 msgid "Видео"
-msgstr "Видео шилтеме"
+msgstr "Видео"
 
 #: templates/resources/resource_detail.html:28
-#, fuzzy
 #| msgid "Справочные материалы"
 msgid "Дополнительных материалов нет."
-msgstr "Маалымдама материалдар"
+msgstr "Кошумча материалдар жок."
 
 #: templates/resources/resource_list.html:11
 msgid "Все"
 msgstr "Бүт"
 
 #: templates/resources/resource_list.html:25
-#, fuzzy
 #| msgid "Все категории"
 msgid "Все подкатегории"
-msgstr "Бардык категориялар"
+msgstr "Бардык подкатегориялар"
 
 #: templates/resources/resource_list.html:33
-#, fuzzy
 msgid "Все симптомы"
-msgstr "Аталышы"
+msgstr "Бардык симптомдор"
 
 #: templates/resources/resource_list.html:56
 msgid "В этой подкатегории пока нет материалов."

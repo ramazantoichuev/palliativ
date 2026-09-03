@@ -20,11 +20,11 @@ msgstr ""
 
 #: accounts/forms.py:13
 msgid "Айгуль"
-msgstr ""
+msgstr "Aigul"
 
 #: accounts/forms.py:14
 msgid "Токтосунова"
-msgstr ""
+msgstr "Toktosunova"
 
 #: accounts/forms.py:15
 msgid "example@gmail.com"
@@ -136,19 +136,19 @@ msgstr "Diagnosis"
 #: common/validators.py:11
 #, python-format
 msgid "Размер изображения не должен превышать %(limit)s МБ."
-msgstr ""
+msgstr "The image size must not exceed %(limit)s MB."
 
 #: common/validators.py:22
 #, python-format
 msgid ""
 "Разрешение изображения не должно превышать %(limit)s пикселей по большей "
 "стороне."
-msgstr ""
+msgstr "The image resolution must not exceed %(limit)s pixels on the longer side."
 
 #: common/validators.py:31
 #, python-format
 msgid "Размер файла не должен превышать %(limit)s МБ."
-msgstr ""
+msgstr "The file size must not exceed %(limit)s MB."
 
 #: config/settings.py:129
 msgid "Russian"
@@ -189,9 +189,8 @@ msgid "ФИО"
 msgstr "Full name"
 
 #: events/models.py:37 main/models/consultation.py:19
-#, fuzzy
 msgid "Телефон"
-msgstr "Phone Number"
+msgstr "Phone"
 
 #: events/models.py:39
 msgid "Рассмотрено"
@@ -202,38 +201,32 @@ msgid "Регистрация на мероприятие"
 msgstr "Registration on event"
 
 #: events/models.py:43
-#, fuzzy
 msgid "Регистрации на мероприятия"
-msgstr "Registration on event"
+msgstr "Event registrations"
 
 #: main/admin.py:14
 msgid "Основная информация"
 msgstr "Main information"
 
 #: main/admin.py:17
-#, fuzzy
 msgid "Управление заявкой"
-msgstr "Submit"
+msgstr "Request management"
 
 #: main/forms.py:23
-#, fuzzy
 #| msgid ""
 #| "Неверный формат номера. Введите номер в формате: 0555123456 или "
 #| "+996555123456"
 msgid ""
 "Неверный формат номера. Введите номер в формате: 0555123456 (мобильный) или "
 "0312123456 (городской, Бишкек)"
-msgstr ""
-"Invalid phone number format. Please enter in the format: 0555123456 or "
-"+996555123456"
+msgstr "Invalid phone number format. Enter the number in the format: 0555123456 (mobile) or 0312123456 (landline, Bishkek)"
 
 #: main/forms.py:36
-#, fuzzy
 #| msgid "Неверный код оператора Кыргызстана. Проверьте правильность ввода."
 msgid ""
 "Неверный код оператора или города. Проверьте правильность ввода номера "
 "мобильного или городского телефона Кыргызстана."
-msgstr "Invalid Kyrgyzstan operator code. Please check your input."
+msgstr "Invalid operator or city code. Please check that you entered a valid Kyrgyzstan mobile or landline phone number."
 
 #: main/models/consultation.py:7
 msgid "Медицинская помощь"
@@ -268,9 +261,8 @@ msgid "Тема обращения"
 msgstr "Subject of inquiry"
 
 #: main/models/consultation.py:24
-#, fuzzy
 msgid "Статус заявки"
-msgstr "Appley"
+msgstr "Request status"
 
 #: main/views.py:24
 msgid "Ваша заявка на консультацию успешно отправлена!"
@@ -307,9 +299,8 @@ msgid "Новости"
 msgstr "News"
 
 #: patients/models/patients.py:8
-#, fuzzy
 msgid "Название симптома"
-msgstr "Title"
+msgstr "Symptom name"
 
 #: patients/models/patients.py:11
 msgid "Симптом"
@@ -337,17 +328,14 @@ msgid "Ранее проведенное лечение"
 msgstr "Previously administered treatment"
 
 #: patients/models/patients.py:38
-#, fuzzy
 msgid "Дата изменения"
-msgstr "Modification date"
+msgstr "Last modified"
 
 #: patients/models/patients.py:41
-#, fuzzy
 msgid "Карточка пациента"
 msgstr "Patient card"
 
 #: patients/models/patients.py:42
-#, fuzzy
 msgid "Карточки пациентов"
 msgstr "Patient cards"
 
@@ -511,9 +499,8 @@ msgid "Выберите подходящий вариант участия в а
 msgstr "Choose the membership option that suits you"
 
 #: templates/accounts/register_type.html:28
-#, fuzzy
 msgid "Стать пациентом"
-msgstr "Patient"
+msgstr "Become a patient"
 
 #: templates/accounts/register_type.html:32
 msgid ""
@@ -555,9 +542,8 @@ msgid "Перейти в личный кабинет"
 msgstr "Go to personal account"
 
 #: templates/accounts/register_type.html:87
-#, fuzzy
 msgid "Стать врачом"
-msgstr "Patient"
+msgstr "Become a doctor"
 
 #: templates/accounts/register_type.html:91
 msgid ""
@@ -608,7 +594,6 @@ msgid "Ваш аккаунт ожидает проверки"
 msgstr "Your account is awaiting verification"
 
 #: templates/accounts/waiting_403.html:18
-#, fuzzy
 #| msgid ""
 #| "Заявка на регистрацию врача/волонтёра находится на модерации у "
 #| "администратора ассоциации. Мы сообщим вам, когда доступ будет одобрен."
@@ -616,10 +601,7 @@ msgid ""
 "Заявка на регистрацию врача находится на модерации у администратора "
 "ассоциации. Пожалуйста, подождите завершения проверки. После одобрения вам "
 "станет доступен личный кабинет."
-msgstr ""
-"The doctor registration application is under review by the association "
-"administrator. Please wait for the review to complete. Once approved, your "
-"personal account will become available."
+msgstr "The doctor registration application is under review by the association administrator. Please wait for the review to finish. Once approved, you will get access to your account."
 
 #: templates/base.html:38
 msgid "Закрыть"
@@ -638,7 +620,6 @@ msgid "О нас"
 msgstr "About us"
 
 #: templates/base.html:78 templates/resources/resource_list.html:6
-#, fuzzy
 #| msgid "Ресурс"
 msgid "Ресурсы"
 msgstr "Resources"
@@ -684,9 +665,8 @@ msgid "Удалить мероприятие"
 msgstr "Delete event"
 
 #: templates/events/event_confirm_delete.html:7
-#, fuzzy
 msgid "Вы уверены, что хотите удалить"
-msgstr "Are you sure you want to delete?"
+msgstr "Are you sure you want to delete"
 
 #: templates/events/event_confirm_delete.html:10
 msgid "Удалить"
@@ -761,7 +741,6 @@ msgstr ""
 "            "
 
 #: templates/main/about.html:22
-#, fuzzy
 #| msgid "Новости"
 msgid "Наши ценности"
 msgstr "Our values"
@@ -775,10 +754,9 @@ msgid "Поддержка семьи и тех, кто ухаживает за �
 msgstr "Support for families and caregivers."
 
 #: templates/main/about.html:26
-#, fuzzy
 #| msgid "Доступ к юридическим алгоритмам выписки рецептов и учёта препаратов."
 msgid "Юридическая грамотность врачей при работе с препаратами."
-msgstr "Access to legal procedures for prescribing and tracking medications."
+msgstr "Legal literacy for doctors working with medications."
 
 #: templates/main/about.html:27
 msgid "Мультидисциплинарный подход: врачи, фармацевты, психологи."
@@ -809,9 +787,8 @@ msgstr ""
 "            "
 
 #: templates/main/consultation.html:8
-#, fuzzy
 msgid "Заявка на консультацию"
-msgstr "Doctor registration application"
+msgstr "Consultation request"
 
 #: templates/main/home.html:4
 msgid "Главная — Паллиатив.kg"
@@ -839,7 +816,6 @@ msgstr ""
 "             "
 
 #: templates/main/home.html:21
-#, fuzzy
 msgid "Для пациентов"
 msgstr "For patients"
 
@@ -942,16 +918,14 @@ msgstr "not specified"
 
 #: templates/patients/doctor_dashboard.html:28
 #: templates/patients/patient_dashboard.html:31
-#, fuzzy
 #| msgid "Справочные материалы"
 msgid "Рекомендованные материалы"
-msgstr "Reference materials"
+msgstr "Recommended materials"
 
 #: templates/patients/doctor_dashboard.html:45
-#, fuzzy
 #| msgid "Выберите подходящий вариант участия в ассоциации."
 msgid "Нет подходящих материалов по текущим симптомам."
-msgstr "Choose the membership option that suits you"
+msgstr "No matching materials for the current symptoms."
 
 #: templates/patients/doctor_dashboard.html:47
 msgid "Симптомы не указаны."
@@ -962,44 +936,38 @@ msgid "За вами пока не закреплено ни одного пац
 msgstr "You don't have any assigned patients yet."
 
 #: templates/patients/patient_dashboard.html:16
-#, fuzzy
 msgid "Текущие симптомы"
-msgstr "Actual symptoms"
+msgstr "Current symptoms"
 
 #: templates/patients/patient_dashboard.html:63
 msgid "У вас пока нет созданной карточки."
 msgstr "You have no created card yet"
 
 #: templates/resources/resource_detail.html:10
-#, fuzzy
 #| msgid "Файл"
 msgid "Файлы"
-msgstr "File"
+msgstr "Files"
 
 #: templates/resources/resource_detail.html:19
-#, fuzzy
 #| msgid "Видео-ссылка"
 msgid "Видео"
-msgstr "Video link"
+msgstr "Video"
 
 #: templates/resources/resource_detail.html:28
-#, fuzzy
 #| msgid "Справочные материалы"
 msgid "Дополнительных материалов нет."
-msgstr "There are no reference materials"
+msgstr "No additional materials."
 
 #: templates/resources/resource_list.html:11
 msgid "Все"
 msgstr "All"
 
 #: templates/resources/resource_list.html:25
-#, fuzzy
 #| msgid "Все категории"
 msgid "Все подкатегории"
 msgstr "All subcategories"
 
 #: templates/resources/resource_list.html:33
-#, fuzzy
 msgid "Все симптомы"
 msgstr "All symptoms"
 
