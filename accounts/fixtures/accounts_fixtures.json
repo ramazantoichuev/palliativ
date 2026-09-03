@@ -1,214 +1,274 @@
 [
-  {
+{
     "model": "accounts.baseuser",
     "pk": 1,
     "fields": {
-      "username": "admin",
-      "email": "admin@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Айбек",
-      "last_name": "Админов",
-      "phone": "+996700111001",
-      "role": "admin",
-      "is_approved": true,
-      "is_staff": true,
-      "is_superuser": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1000000$SLNcf8lMJ3OCW3cO0Yg1pO$zTuXUAbZiPAYKqmul3yHLhBZdqLp5D7cffF17evXJnk=",
+        "last_login": "2026-09-03T17:27:02.598Z",
+        "is_superuser": true,
+        "username": "admin",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.354Z",
+        "role": "admin",
+        "is_approved": true,
+        "first_name": "Айбек",
+        "last_name": "Админов",
+        "email": "admin@palliativ.kg",
+        "phone": "+996700111001",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 2,
     "fields": {
-      "username": "manager1",
-      "email": "manager@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Гулнара",
-      "last_name": "Менеджерова",
-      "phone": "+996700111002",
-      "role": "manager",
-      "is_approved": true,
-      "is_staff": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1000000$qynMfYpxly22fks7aG594c$9Ks7rgqkXDQgywvCsLHa0eNxnWC9h6PhKyYE2hp6uZ0=",
+        "last_login": "2026-09-03T17:26:26Z",
+        "is_superuser": false,
+        "username": "manager1",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35Z",
+        "role": "manager",
+        "is_approved": true,
+        "first_name": "Гулнара",
+        "last_name": "Менеджерова",
+        "email": "manager@palliativ.kg",
+        "phone": "+996700111002",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 3,
     "fields": {
-      "username": "moderator1",
-      "email": "moderator@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Бермет",
-      "last_name": "Модераторова",
-      "phone": "+996700111003",
-      "role": "moderator",
-      "is_approved": true,
-      "is_staff": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1000000$xLVRXbVJZtEsRCkCRmmHh6$lFD4sON7oBFOqHmzL6gquCv7uTwYT1bYEvlQP5tM+J0=",
+        "last_login": "2026-09-03T17:24:43Z",
+        "is_superuser": false,
+        "username": "moderator1",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35Z",
+        "role": "moderator",
+        "is_approved": true,
+        "first_name": "Бермет",
+        "last_name": "Модераторова",
+        "email": "moderator@palliativ.kg",
+        "phone": "+996700111003",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 4,
     "fields": {
-      "username": "doctor1",
-      "email": "doctor1@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Нурлан",
-      "last_name": "Докторов",
-      "phone": "+996700111004",
-      "role": "doctor",
-      "is_approved": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "doctor1",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.363Z",
+        "role": "doctor",
+        "is_approved": true,
+        "first_name": "Нурлан",
+        "last_name": "Докторов",
+        "email": "doctor1@palliativ.kg",
+        "phone": "+996700111004",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 5,
     "fields": {
-      "username": "doctor2",
-      "email": "doctor2@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Айгерим",
-      "last_name": "Врачева",
-      "phone": "+996700111005",
-      "role": "doctor",
-      "is_approved": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "doctor2",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.365Z",
+        "role": "doctor",
+        "is_approved": true,
+        "first_name": "Айгерим",
+        "last_name": "Врачева",
+        "email": "doctor2@palliativ.kg",
+        "phone": "+996700111005",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 6,
     "fields": {
-      "username": "patient1",
-      "email": "patient1@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Эрлан",
-      "last_name": "Пациентов",
-      "phone": "+996700111006",
-      "role": "patient",
-      "is_approved": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "patient1",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.367Z",
+        "role": "patient",
+        "is_approved": true,
+        "first_name": "Эрлан",
+        "last_name": "Пациентов",
+        "email": "patient1@palliativ.kg",
+        "phone": "+996700111006",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 7,
     "fields": {
-      "username": "patient2",
-      "email": "patient2@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Жамиля",
-      "last_name": "Пациентова",
-      "phone": "+996700111007",
-      "role": "patient",
-      "is_approved": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "patient2",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.369Z",
+        "role": "patient",
+        "is_approved": true,
+        "first_name": "Жамиля",
+        "last_name": "Пациентова",
+        "email": "patient2@palliativ.kg",
+        "phone": "+996700111007",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
-    "model": "accounts.doctorprofile",
-    "pk": 1,
-    "fields": {
-      "user": 4,
-      "education": "КГМА, лечебное дело, 2012",
-      "skills": "Обезболивание, паллиативная терапия"
-    }
-  },
-  {
-    "model": "accounts.doctorprofile",
-    "pk": 2,
-    "fields": {
-      "user": 5,
-      "education": "КРСУ, педиатрия, 2015",
-      "skills": "Уход за тяжелобольными детьми"
-    }
-  },
-  {
-    "model": "accounts.patientprofile",
-    "pk": 1,
-    "fields": {
-      "user": 6,
-      "diagnosis": "Онкологическое заболевание, IV стадия"
-    }
-  },
-  {
-    "model": "accounts.patientprofile",
-    "pk": 2,
-    "fields": {
-      "user": 7,
-      "diagnosis": "Хроническая сердечная недостаточность"
-    }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 8,
     "fields": {
-      "username": "patient3",
-      "email": "patient3@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Талант",
-      "last_name": "Асанов",
-      "phone": "+996700111008",
-      "role": "patient",
-      "is_approved": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "patient3",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.379Z",
+        "role": "patient",
+        "is_approved": true,
+        "first_name": "Талант",
+        "last_name": "Асанов",
+        "email": "patient3@palliativ.kg",
+        "phone": "+996700111008",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 9,
     "fields": {
-      "username": "patient4",
-      "email": "patient4@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Нурзат",
-      "last_name": "Осмонова",
-      "phone": "+996700111009",
-      "role": "patient",
-      "is_approved": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "patient4",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.381Z",
+        "role": "patient",
+        "is_approved": true,
+        "first_name": "Нурзат",
+        "last_name": "Осмонова",
+        "email": "patient4@palliativ.kg",
+        "phone": "+996700111009",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
     "model": "accounts.baseuser",
     "pk": 10,
     "fields": {
-      "username": "patient5",
-      "email": "patient5@palliativ.kg",
-      "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
-      "first_name": "Бакыт",
-      "last_name": "Жумабеков",
-      "phone": "+996700111010",
-      "role": "patient",
-      "is_approved": true,
-      "is_active": true
+        "password": "pbkdf2_sha256$1500000$JqO1bm02shdB8yLC6E3lcF$5mo7HZmmLZSevLdDRWYhFLKAHNRKVk4JQddB8T50kak=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "patient5",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-03T17:21:35.383Z",
+        "role": "patient",
+        "is_approved": true,
+        "first_name": "Бакыт",
+        "last_name": "Жумабеков",
+        "email": "patient5@palliativ.kg",
+        "phone": "+996700111010",
+        "groups": [],
+        "user_permissions": []
     }
-  },
-  {
+},
+{
+    "model": "accounts.patientprofile",
+    "pk": 1,
+    "fields": {
+        "user": 6,
+        "diagnosis": "Онкологическое заболевание, IV стадия"
+    }
+},
+{
+    "model": "accounts.patientprofile",
+    "pk": 2,
+    "fields": {
+        "user": 7,
+        "diagnosis": "Хроническая сердечная недостаточность"
+    }
+},
+{
     "model": "accounts.patientprofile",
     "pk": 3,
     "fields": {
-      "user": 8,
-      "diagnosis": "Хроническая почечная недостаточность"
+        "user": 8,
+        "diagnosis": "Хроническая почечная недостаточность"
     }
-  },
-  {
+},
+{
     "model": "accounts.patientprofile",
     "pk": 4,
     "fields": {
-      "user": 9,
-      "diagnosis": "Онкологическое заболевание, III стадия"
+        "user": 9,
+        "diagnosis": "Онкологическое заболевание, III стадия"
     }
-  },
-  {
+},
+{
     "model": "accounts.patientprofile",
     "pk": 5,
     "fields": {
-      "user": 10,
-      "diagnosis": "Боковой амиотрофический склероз"
+        "user": 10,
+        "diagnosis": "Боковой амиотрофический склероз"
     }
-  }
+},
+{
+    "model": "accounts.doctorprofile",
+    "pk": 1,
+    "fields": {
+        "user": 4,
+        "education": "КГМА, лечебное дело, 2012",
+        "skills": "Обезболивание, паллиативная терапия"
+    }
+},
+{
+    "model": "accounts.doctorprofile",
+    "pk": 2,
+    "fields": {
+        "user": 5,
+        "education": "КРСУ, педиатрия, 2015",
+        "skills": "Уход за тяжелобольными детьми"
+    }
+}
 ]

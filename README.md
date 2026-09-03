@@ -232,6 +232,11 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free
 ```bash
 python manage.py migrate
 ```
+Создайте группы строго по порядку.Чтобы права доступа не перепутались.
+```bash
+python manage.py setup_moderator_group
+python manage.py setup_manager_group
+```
 
 Затем фикстуры — **строго в этом порядке**, из-за связей между моделями (`patients` ссылается на `accounts`, `resources` ссылается на `patients.Symptom`):
 
@@ -273,8 +278,13 @@ python manage.py loaddata resources_fixtures
 ```bash
 python manage.py flush
 ```
-
 Удалит все данные, структуру таблиц не тронет — миграции применять заново не нужно.
+
+Создайте группы строго по порядку.Чтобы права доступа не перепутались.
+```bash
+python manage.py setup_moderator_group
+python manage.py setup_manager_group
+```
 
 
 
