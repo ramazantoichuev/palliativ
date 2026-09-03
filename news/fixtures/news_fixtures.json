@@ -1,0 +1,137 @@
+[
+  {
+    "model": "news.category",
+    "pk": 1,
+    "fields": {
+      "name_ru": "Новости фонда",
+      "name_ky": "Фонддун жаңылыктары",
+      "name_en": "Foundation news"
+    }
+  },
+  {
+    "model": "news.category",
+    "pk": 2,
+    "fields": {
+      "name_ru": "Истории пациентов",
+      "name_ky": "Бейтаптардын окуялары",
+      "name_en": "Patient stories"
+    }
+  },
+  {
+    "model": "news.category",
+    "pk": 3,
+    "fields": {
+      "name_ru": "Обучение",
+      "name_ky": "Окутуу",
+      "name_en": "Training"
+    }
+  },
+  {
+    "model": "news.post",
+    "pk": 1,
+    "fields": {
+      "title_ru": "Открыт новый кабинет паллиативной помощи в Бишкеке",
+      "title_ky": "Бишкекте паллиативдик жардам кабинети ачылды",
+      "title_en": "New palliative care office opened in Bishkek",
+      "slug": "new-office-bishkek",
+      "content_ru": "С 1 сентября в Бишкеке начал работу новый кабинет паллиативной помощи, рассчитанный на приём до 15 семей в день. Здесь пациенты и их близкие могут получить очную консультацию врача по подбору обезболивающей терапии, оформить необходимые документы для получения наркотических анальгетиков по месту жительства, а также записаться на встречу с психологом фонда. Отдельное помещение оборудовано для обучения родственников практическим навыкам ухода: смене положения тела, профилактике пролежней и использованию медицинского оборудования, которое можно взять напрокат прямо в кабинете.",
+      "content_ky": "Сентябрдын 1инен тартып Бишкекте күнүнө 15ке чейин үй-бүлөнү кабыл алууга ылайыкталган жаңы паллиативдик жардам кабинети иштей баштады. Бул жерде бейтаптар жана алардын жакындары ооруну басаңдатуучу терапияны тандоо боюнча дарыгердин консультациясын алышат, жашаган жери боюнча баңги затты камтыган анальгетиктерди алуу үчүн керектүү документтерди жасатышат, ошондой эле фонддун психологу менен жолугушууга жазыла алышат. Өзүнчө бөлмө туугандарды денени которуу, жатак жараларын алдын алуу жана кабинеттен ижарага алса болгон медициналык жабдууларды колдонуу боюнча практикалык көндүмдөргө үйрөтүү үчүн жабдылган.",
+      "content_en": "Starting September 1, a new palliative care office opened in Bishkek, able to see up to 15 families per day. Patients and their relatives can get an in-person consultation on selecting pain management therapy, arrange the paperwork needed to obtain narcotic analgesics at their place of residence, and book a session with the foundation's psychologist. A separate room is equipped for teaching relatives practical care skills: repositioning, pressure sore prevention, and using medical equipment available for rent directly at the office.",
+      "description_ru": "Кабинет работает по будням с 9:00 до 18:00, приём по предварительной записи.",
+      "description_ky": "Кабинет жумуш күндөрү саат 9:00дон 18:00гө чейин иштейт, алдын ала жазылуу менен кабыл алат.",
+      "description_en": "The office is open on weekdays from 9:00 to 18:00, by prior appointment.",
+      "category": 1,
+      "created_at": "2026-08-25T09:00:00Z"
+    }
+  },
+  {
+    "model": "news.post",
+    "pk": 2,
+    "fields": {
+      "title_ru": "История Айгуль: как справиться с болью дома",
+      "title_ky": "Айгүлдүн окуясы: үйдө оорудан кантип кутулуу керек",
+      "title_en": "Aigul's story: coping with pain at home",
+      "slug": "aigul-story",
+      "content_ru": "Когда маме Айгуль поставили онкологический диагноз, семья столкнулась с тем, что боль было почти невозможно контролировать в домашних условиях — ближайший врач, знакомый с паллиативной терапией, находился в другом городе. После обращения в фонд семье подобрали схему обезболивания, объяснили, как безопасно хранить и вводить препараты, и подключили патронажную медсестру, которая приезжает раз в неделю. Айгуль рассказывает, что самым сложным было не столько физическое, сколько эмоциональное — научиться просить о помощи и не бояться открыто говорить о состоянии близкого человека с соседями и родственниками.",
+      "content_ky": "Айгүлдүн апасына онкологиялык диагноз коюлганда, үй-бүлө үйдө ооруну контролдоо мүмкүн эместигине туш болушту — паллиативдик терапияны билген жакынкы дарыгер башка шаарда болчу. Фондго кайрылгандан кийин үй-бүлөгө оорудан кутулуу схемасы тандалып, дарыны кантип коопсуз сактап, коюу керектиги түшүндүрүлдү, ошондой эле жумасына бир жолу келген патронаждык медайым бириктирилди. Айгүл эң кыйыны физикалык эмес, эмоционалдык жагы болгонун — жардам сурай билүү жана жакын адамдын абалы жөнүндө коңшулар менен ачык сүйлөшүүдөн коркпоону үйрөнгөнүн айтып берет.",
+      "content_en": "When Aigul's mother was diagnosed with cancer, the family found pain almost impossible to manage at home — the nearest doctor familiar with palliative therapy was in another city. After reaching out to the foundation, the family was given a pain management plan, taught how to safely store and administer medication, and connected with a home-visiting nurse who comes once a week. Aigul says the hardest part wasn't the physical side but the emotional one — learning to ask for help and speak openly with neighbors and relatives about a loved one's condition.",
+      "description_ru": "Реальная история одной семьи о том, как выстроить домашний уход при онкологическом диагнозе.",
+      "description_ky": "Онкологиялык диагноз коюлганда үйдө кароону кантип уюштуруу керектиги жөнүндө бир үй-бүлөнүн чыныгы окуясы.",
+      "description_en": "A real family's story on organizing home care after a cancer diagnosis.",
+      "category": 2,
+      "created_at": "2026-08-20T12:00:00Z"
+    }
+  },
+  {
+    "model": "news.post",
+    "pk": 3,
+    "fields": {
+      "title_ru": "Семинар для медсестёр по уходу за лежачими больными",
+      "title_ky": "Жаткан бейтаптарды кароо боюнча медайымдар үчүн семинар",
+      "title_en": "Seminar for nurses on bedridden patient care",
+      "slug": "nurses-seminar",
+      "content_ru": "В августе прошёл бесплатный однодневный семинар для медсестёр районных поликлиник, посвящённый уходу за лежачими пациентами. Программа включала практическую часть по профилактике пролежней и правильной технике смены положения тела, разбор гигиенических процедур с ограниченной подвижностью пациента, а также блок по психологической поддержке семьи — как разговаривать с родственниками о тяжёлом прогнозе и не выгорать самим. По итогам семинара участники получили сертификаты и методические материалы для дальнейшей работы.",
+      "content_ky": "Августта район поликлиникаларынын медайымдары үчүн жаткан бейтаптарды кароого арналган бир күндүк акысыз семинар өттү. Программага жатак жараларын алдын алуу жана денени туура которуу техникасы боюнча практикалык бөлүк, кыймылы чектелген бейтаптын гигиеналык жол-жоболорун талкуулоо, ошондой эле үй-бүлөгө психологиялык колдоо боюнча блок — туугандар менен оор божомол жөнүндө кантип сүйлөшүү жана өздөрү күйбөй калуу кирди. Семинардын жыйынтыгы боюнча катышуучулар сертификаттарды жана мындан аркы иш үчүн методикалык материалдарды алышты.",
+      "content_en": "In August, a free one-day seminar for district clinic nurses was held on caring for bedridden patients. The program included hands-on training in pressure sore prevention and proper repositioning technique, a review of hygiene procedures for patients with limited mobility, and a module on psychological support for families — how to talk to relatives about a difficult prognosis without burning out themselves. Participants received certificates and reference materials for their ongoing work.",
+      "description_ru": "Обучение прошли 20 специалистов из районных поликлиник Чуйской области.",
+      "description_ky": "Чүй облусунун район поликлиникаларынан 20 адис окуудан өттү.",
+      "description_en": "20 specialists from district clinics in Chuy region completed the training.",
+      "category": 3,
+      "created_at": "2026-08-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "news.post",
+    "pk": 4,
+    "fields": {
+      "title_ru": "Волонтёры фонда посетили 30 семей за месяц",
+      "title_ky": "Фонддун ыктыярчылары бир айда 30 үй-бүлөнү тейлеп кетишти",
+      "title_en": "Foundation volunteers visited 30 families this month",
+      "slug": "volunteers-30-families",
+      "content_ru": "За август волонтёры фонда посетили 30 семей в Бишкеке и пригородных сёлах. Помощь была разной: кто-то нуждался в сопровождении на приём к врачу, кому-то требовалась помощь с покупкой продуктов и лекарств в аптеке, а некоторым семьям было важно просто человеческое общение — волонтёры проводили время с пациентами, читали вслух, помогали с настройкой видеозвонков с родственниками за границей. Координатор программы отмечает, что заявок стало заметно больше после открытия нового кабинета паллиативной помощи, и сейчас фонд набирает дополнительных волонтёров.",
+      "content_ky": "Августта фонддун ыктыярчылары Бишкекте жана айланадагы айылдарда 30 үй-бүлөнү тейлеп кетишти. Жардам ар кандай болду: кимдир бирөө дарыгерге баруу учурунда коштоп жүрүүнү, кимдир бирөө дарыканадан азык-түлүк жана дары сатып алууда жардам талап кылды, ал эми кээ бир үй-бүлөлөр үчүн жөн эле адамдык баарлашуу маанилүү болду — ыктыярчылар бейтаптар менен убакыт өткөрүп, үн чыгарып окуп беришти, чет өлкөдөгү туугандар менен видео чалуу орнотууда жардам беришти. Программанын координатору жаңы паллиативдик жардам кабинети ачылгандан кийин арыздар байкаларлык көбөйгөнүн белгилейт.",
+      "content_en": "In August, foundation volunteers visited 30 families in Bishkek and surrounding villages. The help varied: some needed accompaniment to doctor visits, others needed help buying groceries and medication at the pharmacy, and for some families simple human company mattered most — volunteers spent time with patients, read aloud, and helped set up video calls with relatives abroad. The program coordinator notes requests have grown noticeably since the new palliative care office opened, and the foundation is now recruiting additional volunteers.",
+      "description_ru": "Итоги волонтёрской программы за август: кому и как помогали.",
+      "description_ky": "Августтагы ыктыярчылык программасынын жыйынтыгы: кимге жана кантип жардам берилди.",
+      "description_en": "Results of the August volunteer program: who was helped and how.",
+      "category": 1,
+      "created_at": "2026-08-30T09:00:00Z"
+    }
+  },
+  {
+    "model": "news.post",
+    "pk": 5,
+    "fields": {
+      "title_ru": "Как получить бесплатное обезболивание: пошаговая инструкция",
+      "title_ky": "Акысыз оорудан кутулуучу дарыны кантип алуу керек",
+      "title_en": "How to get free pain relief: a step-by-step guide",
+      "slug": "free-painkillers-guide",
+      "content_ru": "Многие семьи не знают, что в Кыргызстане пациенты с тяжёлыми диагнозами имеют право на бесплатное получение обезболивающих препаратов, включая наркотические анальгетики, по месту жительства. В материале разбираем весь путь: какое заключение врача-онколога или профильного специалиста нужно оформить, как встать на учёт в поликлинике по месту прописки, какие документы взять с собой в аптечный пункт и что делать, если участковый врач отказывается выписывать рецепт. Также приводим контакты горячей линии фонда, куда можно позвонить, если процесс застопорился.",
+      "content_ky": "Көптөгөн үй-бүлөлөр Кыргызстанда оор диагноздогу бейтаптардын жашаган жери боюнча акысыз оорудан кутулуучу дарыларды, анын ичинде баңги затты камтыган анальгетиктерди алууга укугу бар экенин билишпейт. Материалда бүт жолду карайбыз: онколог же профилдик адистин кайсы корутундусу керек, жашаган жери боюнча поликлиникада кантип эсепке туруу керек, дарыкана бөлүмүнө кайсы документтерди алып баруу керек жана участок дарыгери рецепт жазып берүүдөн баш тартса эмне кылуу керек.",
+      "content_en": "Many families don't know that in Kyrgyzstan, patients with serious diagnoses are entitled to free pain medication, including narcotic analgesics, at their place of residence. This guide walks through the whole process: what documentation from an oncologist or specialist is required, how to register at your local clinic, what documents to bring to the pharmacy point, and what to do if your local doctor refuses to issue a prescription. We also share the foundation's hotline contacts for when the process stalls.",
+      "description_ru": "Практическое руководство для родственников: документы, сроки, куда обращаться.",
+      "description_ky": "Туугандар үчүн практикалык колдонмо: документтер, мөөнөттөр, кайда кайрылуу керек.",
+      "description_en": "A practical guide for relatives: documents, timelines, where to apply.",
+      "category": 3,
+      "created_at": "2026-08-28T09:00:00Z"
+    }
+  },
+  {
+    "model": "news.post",
+    "pk": 6,
+    "fields": {
+      "title_ru": "История Марата: пять лет с диагнозом и надеждой",
+      "title_ky": "Мараттын окуясы: диагноз менен беш жыл жана үмүт",
+      "title_en": "Marat's story: five years with a diagnosis and hope",
+      "slug": "marat-story",
+      "content_ru": "Пять лет назад Марату диагностировали редкое неврологическое заболевание, и врачи давали семье не самые обнадёживающие прогнозы. Марат рассказывает, как поддержка команды фонда — от подбора медицинского оборудования до регулярных визитов психолога — помогла его семье выстроить новый распорядок жизни, не потеряв при этом качество отношений друг с другом. Отдельно он отмечает важность группы поддержки, куда ходит его жена: возможность говорить с людьми, которые проходят через похожий опыт, оказалась не менее ценной, чем медицинская помощь.",
+      "content_ky": "Беш жыл мурун Маратка сейрек кездешүүчү нейрологиялык оору диагнозу коюлган, дарыгерлер үй-бүлөгө анча деле үмүттүү божомол беришкен эмес. Марат фонддун командасынын колдоосу — медициналык жабдууну тандоодон баштап психологдун туруктуу баруусуна чейин — үй-бүлөсүнө бир-бирине болгон мамилелердин сапатын жоготпой, жашоонун жаңы тартибин курууга кантип жардам бергенин айтып берет.",
+      "content_en": "Five years ago Marat was diagnosed with a rare neurological condition, and doctors gave the family a fairly grim prognosis. Marat talks about how the foundation team's support — from selecting medical equipment to regular psychologist visits — helped his family build a new daily routine without losing the quality of their relationships. He especially highlights the value of the support group his wife attends: being able to talk to people going through a similar experience turned out to be just as valuable as medical care.",
+      "description_ru": "Личная история пациента о жизни с тяжёлым диагнозом и роли поддержки близких.",
+      "description_ky": "Оор диагноз менен жашоо жана жакындардын колдоосунун ролу жөнүндө бейтаптын жеке окуясы.",
+      "description_en": "A patient's personal story on living with a serious diagnosis and the role of family support.",
+      "category": 2,
+      "created_at": "2026-08-10T09:00:00Z"
+    }
+  }
+]

@@ -37,6 +37,7 @@ class EventDetailView(FormMixin, DetailView):
     def get_success_url(self):
         return reverse('events:event_detail', kwargs={'slug': self.object.slug})
 
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
