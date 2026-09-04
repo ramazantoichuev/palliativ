@@ -69,7 +69,13 @@ class DoctorProfile(models.Model):
         _('Образование или место учебы'),max_length=255, blank=True)
     skills = models.TextField(_('Навыки'),blank=True)
 
+    def __str__(self):
+        return self.user.get_full_name()
+
 
 class PatientProfile(models.Model):
     user = models.OneToOneField( BaseUser, on_delete=models.CASCADE, related_name='patient_profile')
     diagnosis = models.TextField(_('Диагноз'),blank=True)
+
+    def __str__(self):
+        return self.user.get_full_name()
