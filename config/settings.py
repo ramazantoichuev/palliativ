@@ -53,6 +53,19 @@ INSTALLED_APPS = [
 
 ]
 
+JAZZMIN_SETTINGS = {
+    "site_brand": "POL-KG",
+
+    "site_title": "POL-KG",
+
+    "site_header": "POL-KG",
+    "UI_TWEAKS": {
+    "sidebar_display_full_name": False,
+    }
+    }
+JAZZMIN_UI_TWEAKS = {
+    "sidebar_nav_compact_style": True,}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

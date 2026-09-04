@@ -29,5 +29,10 @@ class ConsultationRequest(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+
+    class Meta:
+        verbose_name = _('Заявка на консультацию')
+        verbose_name_plural = _('Заявки на консультацию')
+
     def __str__(self):
         return f"{self.first_name} — {self.get_topic_display()} [{self.get_status_display()}]"

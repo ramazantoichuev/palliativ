@@ -33,6 +33,10 @@ class BaseUser(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
 
+    class Meta:
+        verbose_name = _('Пользователь')
+        verbose_name_plural = _('Пользователи')
+
     def save(self, *args, **kwargs):
         is_new = self._state.adding
         if self.role == self.Role.PATIENT:
@@ -69,7 +73,21 @@ class DoctorProfile(models.Model):
         _('Образование или место учебы'),max_length=255, blank=True)
     skills = models.TextField(_('Навыки'),blank=True)
 
+    class Meta:
+       verbose_name = _('Врач')
+       verbose_name_plural = _('Врачи')
+
+    def __str__(self):
+        return self.user.username
+
 
 class PatientProfile(models.Model):
     user = models.OneToOneField( BaseUser, on_delete=models.CASCADE, related_name='patient_profile')
     diagnosis = models.TextField(_('Диагноз'),blank=True)
+
+    class Meta:
+       verbose_name = _('Пациент')
+       verbose_name_plural = _('Пациенты')
+
+    def __str__(self):
+        return self.user.username
