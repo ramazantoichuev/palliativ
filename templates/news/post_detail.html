@@ -2,11 +2,11 @@
 {% load i18n %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block meta_description %}{{ post.description|truncatechars:160 }}{% endblock %}
-{% if post.image %}
 {% block og_image %}
+{% if post.image %}
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ post.image.url }}">
-{% endblock %}
 {% endif %}
+{% endblock %}
 {% block content %}
 <div class="container-fluid my-4 px-4 px-md-5">
     <article class="col-12 col-lg-10 mx-auto">
