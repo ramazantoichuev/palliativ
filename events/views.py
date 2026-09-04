@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.views.generic.edit import FormMixin
 from django.urls import reverse, reverse_lazy
 from accounts.models import BaseUser
+from common.notifications import notify_admins, send_confirmation
 from .models import Event
 from .forms import EventRegistrationForm
 from django.utils.text import slugify
@@ -45,6 +46,11 @@ class EventDetailView(FormMixin, DetailView):
             registration = form.save(commit=False)
             registration.event = self.object
             registration.save()
+            admin_url = request.build_absolute_uri(
+            reverse('admin:events_eventregistration_change', args=[registration.pk]))
+            notify_admins('Новая регистрация на мероприятие', f'Событие: {self.object.title}\nАдминка: {admin_url}')
+            send_confirmation(registration.email, 'Регистрация на мероприятие принята',
+                              f'Вы зарегистрированы на «{self.object.title}».')
             return self.form_valid(form)
         return self.form_invalid(form)
 
