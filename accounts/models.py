@@ -77,6 +77,9 @@ class DoctorProfile(models.Model):
        verbose_name = _('Врач')
        verbose_name_plural = _('Врачи')
 
+    def __str__(self):
+        return self.user.get_full_name()
+
 
 class PatientProfile(models.Model):
     user = models.OneToOneField( BaseUser, on_delete=models.CASCADE, related_name='patient_profile')
@@ -85,3 +88,6 @@ class PatientProfile(models.Model):
     class Meta:
        verbose_name = _('Пациент')
        verbose_name_plural = _('Пациенты')
+
+    def __str__(self):
+        return self.user.get_full_name()
