@@ -667,6 +667,7 @@ msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
 #: templates/base.html:34
 msgid ""
+"\n"
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка "
 "пациентов, обучение специалистов и развитие паллиативной помощи в "
 "Кыргызстане."
