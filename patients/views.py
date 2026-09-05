@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render
+from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView
 
@@ -115,7 +116,7 @@ class SymptomSurveyView(LoginRequiredMixin, View):
         if card is None:
             messages.info(
                 request,
-                "Карточка ещё не заведена — с вами свяжется сотрудник",
+                _("Карточка ещё не заведена — с вами свяжется сотрудник"),
             )
             return redirect('patients:patient_dashboard')
 
@@ -134,7 +135,7 @@ class SymptomSurveyView(LoginRequiredMixin, View):
         if card is None:
             messages.info(
                 request,
-                "Карточка ещё не заведена — с вами свяжется сотрудник",
+                _("Карточка ещё не заведена — с вами свяжется сотрудник"),
             )
             return redirect('patients:patient_dashboard')
 
@@ -145,7 +146,7 @@ class SymptomSurveyView(LoginRequiredMixin, View):
             card.save(update_fields=['updated_at'])
             messages.success(
                 request,
-                "Спасибо! Симптомы обновлены, ниже — материалы, которые могут помочь",
+                _("Спасибо! Симптомы обновлены, ниже — материалы, которые могут помочь"),
             )
             return redirect('patients:patient_dashboard')
 
