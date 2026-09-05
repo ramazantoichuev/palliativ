@@ -27,8 +27,11 @@ DEBUG = os.getenv('DEBUG') == 'True'
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free.dev']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free.dev', 'penpal-unnamable-snowy.ngrok-free.dev']
+CSRF_TRUSTED_ORIGINS = [
+    'https://hatchling-causal-doornail.ngrok-free.dev',
+    'https://penpal-unnamable-snowy.ngrok-free.dev',
+]
 
 # Application definition
 
