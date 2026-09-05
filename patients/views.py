@@ -72,8 +72,12 @@ class PatientCardDetailView(LoginRequiredMixin, ListView):
     context_object_name = 'patient_cards'
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+
         if request.user.role != BaseUser.Role.PATIENT:
             raise PermissionDenied("Доступ разрешен только пациентам.")
+
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -89,8 +93,12 @@ class SymptomSurveyView(LoginRequiredMixin, View):
     template_name = 'patients/symptom_survey.html'
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+
         if request.user.role != BaseUser.Role.PATIENT:
             raise PermissionDenied("Доступ разрешен только пациентам.")
+
         return super().dispatch(request, *args, **kwargs)
 
     def get_card(self):
