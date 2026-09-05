@@ -8,27 +8,27 @@ from patients.models import PatientCard, Symptom
 class SymptomSurveyViewTests(TestCase):
     def setUp(self):
         self.patient_user = BaseUser.objects.create_user(
-            username='test_patient',
-            password='password123',
-            email='test_patient@example.com',
-            phone='+996555123455',
+            username="test_patient",
+            password="password123",
+            email="test_patient@example.com",
+            phone="+996555123455",
             role=BaseUser.Role.PATIENT,
         )
         self.patient_profile = self.patient_user.patient_profile
 
-        self.symptom_pain = Symptom.objects.create(name='Боль')
-        self.symptom_fever = Symptom.objects.create(name='Жар')
-        self.symptom_cough = Symptom.objects.create(name='Кашель')
+        self.symptom_pain = Symptom.objects.create(name="Боль")
+        self.symptom_fever = Symptom.objects.create(name="Жар")
+        self.symptom_cough = Symptom.objects.create(name="Кашель")
 
         self.card = PatientCard.objects.create(
             patient=self.patient_profile,
-            diagnosis='Основной диагноз',
-            medications='Препараты',
-            contraindications='Противопоказания',
+            diagnosis="Основной диагноз",
+            medications="Препараты",
+            contraindications="Противопоказания",
         )
 
-        self.url = reverse('patients:symptom_survey')
-        self.dashboard_url = reverse('patients:patient_dashboard')
+        self.url = reverse("patients:symptom_survey")
+        self.dashboard_url = reverse("patients:patient_dashboard")
 
     def test_patient_can_open_survey(self):
         self.client.force_login(self.patient_user)
@@ -36,14 +36,14 @@ class SymptomSurveyViewTests(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Как вы себя чувствуете?')
+        self.assertContains(response, "Как вы себя чувствуете?")
 
     def test_patient_can_save_symptoms(self):
         self.client.force_login(self.patient_user)
 
         response = self.client.post(
             self.url,
-            {'symptoms': [self.symptom_pain.id, self.symptom_cough.id]},
+            {"symptoms": [self.symptom_pain.id, self.symptom_cough.id]},
         )
 
         self.assertRedirects(response, self.dashboard_url)
@@ -64,11 +64,11 @@ class SymptomSurveyViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-        form = response.context['form']
+        form = response.context["form"]
 
-        self.assertIn(self.symptom_pain, form.initial['symptoms'])
-        self.assertIn(self.symptom_cough, form.initial['symptoms'])
-        self.assertNotIn(self.symptom_fever, form.initial['symptoms'])
+        self.assertIn(self.symptom_pain, form.initial["symptoms"])
+        self.assertIn(self.symptom_cough, form.initial["symptoms"])
+        self.assertNotIn(self.symptom_fever, form.initial["symptoms"])
 
     def test_empty_post_clears_symptoms(self):
         self.card.symptoms.add(
@@ -85,10 +85,10 @@ class SymptomSurveyViewTests(TestCase):
 
     def test_non_patient_cannot_open_survey(self):
         doctor_user = BaseUser.objects.create_user(
-            username='test_doctor',
-            password='password123',
-            email='test_doctor@example.com',
-            phone='+996555123456',
+            username="test_doctor",
+            password="password123",
+            email="test_doctor@example.com",
+            phone="+996555123456",
             role=BaseUser.Role.DOCTOR,
         )
 
@@ -100,10 +100,10 @@ class SymptomSurveyViewTests(TestCase):
 
     def test_manager_cannot_open_survey(self):
         manager_user = BaseUser.objects.create_user(
-            username='test_manager',
-            password='password123',
-            email='test_manager@example.com',
-            phone='+996555123458',
+            username="test_manager",
+            password="password123",
+            email="test_manager@example.com",
+            phone="+996555123458",
             role=BaseUser.Role.MANAGER,
         )
         self.client.force_login(manager_user)
@@ -114,14 +114,14 @@ class SymptomSurveyViewTests(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 302)
-        self.assertIn('/accounts/login/', response.url)
+        self.assertIn("/accounts/login/", response.url)
 
     def test_patient_without_card_is_redirected_to_dashboard(self):
         patient_user = BaseUser.objects.create_user(
-            username='patient_without_card',
-            password='password123',
-            email='patient_without_card@example.com',
-            phone='+996555123457',
+            username="patient_without_card",
+            password="password123",
+            email="patient_without_card@example.com",
+            phone="+996555123457",
             role=BaseUser.Role.PATIENT,
         )
 
@@ -134,7 +134,7 @@ class SymptomSurveyViewTests(TestCase):
         messages = list(response.wsgi_request._messages)
         self.assertEqual(len(messages), 1)
         self.assertIn(
-            'Карточка ещё не заведена',
+            "Карточка ещё не заведена",
             str(messages[0]),
         )
 
@@ -143,14 +143,14 @@ class SymptomSurveyViewTests(TestCase):
 
         new_card = PatientCard.objects.create(
             patient=self.patient_profile,
-            diagnosis='Новый диагноз',
+            diagnosis="Новый диагноз",
         )
 
         self.client.force_login(self.patient_user)
 
         response = self.client.post(
             self.url,
-            {'symptoms': [self.symptom_pain.id]},
+            {"symptoms": [self.symptom_pain.id]},
         )
 
         self.assertRedirects(response, self.dashboard_url)
@@ -171,11 +171,11 @@ class SymptomSurveyViewTests(TestCase):
         response = self.client.post(
             self.url,
             {
-                'symptoms': [self.symptom_pain.id],
-                'diagnosis': 'Измененный диагноз',
-                'medications': 'Измененные препараты',
-                'contraindications': 'Измененные противопоказания',
-                'doctor': '',
+                "symptoms": [self.symptom_pain.id],
+                "diagnosis": "Измененный диагноз",
+                "medications": "Измененные препараты",
+                "contraindications": "Измененные противопоказания",
+                "doctor": "",
             },
         )
 
@@ -185,15 +185,15 @@ class SymptomSurveyViewTests(TestCase):
 
         self.assertEqual(
             self.card.diagnosis,
-            'Основной диагноз',
+            "Основной диагноз",
         )
         self.assertEqual(
             self.card.medications,
-            'Препараты',
+            "Препараты",
         )
         self.assertEqual(
             self.card.contraindications,
-            'Противопоказания',
+            "Противопоказания",
         )
         self.assertIsNone(self.card.doctor)
         self.assertIn(

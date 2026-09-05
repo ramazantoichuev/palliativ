@@ -6,9 +6,8 @@ from accounts.tests.factories import UserFactory
 
 
 class EmailAuthenticationFormTests(TestCase):
-
     def setUp(self):
-        url = reverse('accounts:login')
+        url = reverse("accounts:login")
         self.request = RequestFactory().post(url)
         self.password = "strongpass1"
         self.user = UserFactory(email="login@test.kg")
