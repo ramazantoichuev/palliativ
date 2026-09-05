@@ -1117,3 +1117,19 @@ msgstr "There are no material in this subcategory"
 
 #~ msgid "Стать врачом или волонтёром"
 #~ msgstr "Doctor/volunteer"
+
+#: patients/views.py
+msgid "Карточка ещё не заведена — с вами свяжется сотрудник"
+msgstr "The patient card has not been created yet — a staff member will contact you"
+
+#: patients/views.py
+msgid "Спасибо! Симптомы обновлены, ниже — материалы, которые могут помочь"
+msgstr "Thank you! Your symptoms have been updated. Below are materials that may help"
+
+#: templates/patients/patient_dashboard.html
+msgid "Отметить самочувствие"
+msgstr "Update symptoms"
+
+#: templates/patients/symptom_survey.html
+msgid "Как вы себя чувствуете?"
+msgstr "How are you feeling?"
