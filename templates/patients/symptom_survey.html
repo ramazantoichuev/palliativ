@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2>{% translate "Как вы себя чувствуете?" %}</h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                {{ form.symptoms }}
+
+                <button type="submit" class="btn btn-primary mt-3">
+                    {% translate "Сохранить" %}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

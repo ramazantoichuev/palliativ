@@ -20,6 +20,11 @@
                         {% translate "не указаны" %}
                     {% endfor %}
                 </p>
+
+                <a href="{% url 'patients:symptom_survey' %}" class="btn btn-primary mt-2">
+                    {% translate "Отметить самочувствие" %}
+                </a>
+
                 {% if card.doctor %}
                 <p>
                     <strong>{% translate "Лечащий врач" %}:</strong>
