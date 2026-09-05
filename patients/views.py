@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.views.generic import ListView
+
 from accounts.models import BaseUser
 from resources.models.resources import Resource
+
 from .models import PatientCard
 
 

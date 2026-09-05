@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import HomeView, AboutView, ContactsView
-from .views import ConsultationCreateView
+
+from .views import AboutView, ConsultationCreateView, ContactsView, HomeView
 
 app_name = 'main'
 

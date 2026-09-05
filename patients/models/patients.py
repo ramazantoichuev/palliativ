@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from accounts.models import PatientProfile, DoctorProfile
+
+from accounts.models import DoctorProfile, PatientProfile
 from resources.models.resources import Resource
 
 
@@ -50,7 +51,6 @@ class PatientCard(models.Model):
         if not self.pk:
             return []
 
-        from resources.models.resources import Resource
         if 'symptoms' in getattr(self, '_prefetched_objects_cache', {}):
             symptom_ids = [s.id for s in self.symptoms.all()]
             if not symptom_ids:

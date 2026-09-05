@@ -1,4 +1,5 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
+
 from .models.resources import Resource
 
 

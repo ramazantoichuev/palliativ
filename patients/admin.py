@@ -1,15 +1,24 @@
 from django import forms
 from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin
-from .models import PatientCard, Symptom
 from django.http import JsonResponse
 from django.urls import path
+from modeltranslation.admin import TranslationAdmin
+
+from .models import PatientCard, Symptom
 
 
 class PatientCardAdminForm(forms.ModelForm):
     class Meta:
         model = PatientCard
-        fields = '__all__'
+        fields = [
+            'patient',
+            'doctor',
+            'diagnosis',
+            'medications',
+            'contraindications',
+            'previous_treatment',
+            'symptoms',
+        ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

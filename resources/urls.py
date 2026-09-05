@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import ResourceListView, ResourceDetailView
+
+from .views import ResourceDetailView, ResourceListView
 
 app_name = 'resources'
 

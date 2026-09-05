@@ -1,9 +1,8 @@
-from django.db import IntegrityError, transaction
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from accounts.models import DoctorProfile, PatientProfile
+from accounts.models import PatientProfile
 from accounts.tests.factories import UserFactory
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 

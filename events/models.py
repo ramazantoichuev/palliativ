@@ -16,14 +16,13 @@ class Event(models.Model):
         verbose_name = _('Мероприятие')
         verbose_name_plural = _('Мероприятия')
 
+    def __str__(self):
+        return self.title
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
-
-
-    def __str__(self):
-        return self.title
 
 
 class EventRegistration(models.Model):

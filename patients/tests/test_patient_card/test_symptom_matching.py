@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from accounts.models import BaseUser, PatientProfile
 from patients.models import PatientCard, Symptom
 from resources.models.resources import Resource

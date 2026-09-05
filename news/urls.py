@@ -1,7 +1,6 @@
-﻿from django.urls import path
+from django.urls import path
 
 from news.views.posts import PostDetailView, PostListView
-
 
 app_name = 'news'
 
