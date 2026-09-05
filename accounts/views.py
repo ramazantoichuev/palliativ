@@ -1,6 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView
 from django.views.generic import TemplateView
+from django.urls import reverse
+
+from common.notifications import notify_admins
+
 User = get_user_model()
 
 
@@ -20,8 +24,9 @@ class PatientRegisterView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            admin_url = request.build_absolute_uri(reverse('admin:accounts_baseuser_change', args=[user.pk]))
+            notify_admins('Новая регистрация пациента', f'Email: {user.email}\nАдминка: {admin_url}')
             return redirect('main:about')
-        return render(request, 'accounts/patient_register.html', {'form': form})
 
 
 class DoctorRegisterView(View):
@@ -32,7 +37,9 @@ class DoctorRegisterView(View):
     def post(self, request):
         form = DoctorApplicationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            admin_url = request.build_absolute_uri(reverse('admin:accounts_baseuser_change', args=[user.pk]))
+            notify_admins('Новая заявка врача/волонтёра', f'Email: {user.email}\nАдминка: {admin_url}')
             return render(request, 'accounts/doctor_application_sent.html')
         return render(request, 'accounts/doctor_register.html', {'form': form})
 
