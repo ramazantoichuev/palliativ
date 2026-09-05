@@ -1,11 +1,19 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.views.generic.edit import FormMixin
 from django.urls import reverse, reverse_lazy
-from accounts.models import BaseUser
-from .models import Event
-from .forms import EventRegistrationForm
 from django.utils.text import slugify
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
+from django.views.generic.edit import FormMixin
+
+from accounts.models import BaseUser
+
+from .forms import EventRegistrationForm
+from .models import Event
 
 
 class StaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):

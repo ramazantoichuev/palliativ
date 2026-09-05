@@ -12,6 +12,7 @@ from resources.models.resources import Resource
 from .forms import SymptomSurveyForm
 from .models import PatientCard
 
+
 class DoctorPatientListView(LoginRequiredMixin, ListView):
     model = PatientCard
     template_name = 'patients/doctor_dashboard.html'

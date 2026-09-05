@@ -1,5 +1,7 @@
-from modeltranslation.translator import register, TranslationOptions
+from modeltranslation.translator import TranslationOptions, register
+
 from .models.resources import Resource
+
 
 @register(Resource)
 class ResourceTranslationOptions(TranslationOptions):

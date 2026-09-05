@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
+
 from accounts.models import BaseUser
+
 from .models import Event, EventRegistration
 
 

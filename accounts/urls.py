@@ -1,7 +1,13 @@
-from django.urls import path
-from .views import CustomLoginView, WaitingApprovalView, PatientRegisterView, DoctorRegisterView, RegisterTypeView
 from django.contrib.auth.views import LogoutView
+from django.urls import path
 
+from .views import (
+    CustomLoginView,
+    DoctorRegisterView,
+    PatientRegisterView,
+    RegisterTypeView,
+    WaitingApprovalView,
+)
 
 app_name = 'accounts'
 

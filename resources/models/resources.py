@@ -1,7 +1,7 @@
+from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 
 from common.validators import validate_resource_file_size
 
@@ -75,6 +75,9 @@ class ResourceFile(models.Model):
         verbose_name = _('Файл ресурса')
         verbose_name_plural = _('Файлы ресурса')
 
+    def __str__(self):
+        return self.file.name
+
 
 class ResourceVideoLink(models.Model):
     resource = models.ForeignKey(
@@ -87,3 +90,6 @@ class ResourceVideoLink(models.Model):
     class Meta:
         verbose_name = _('Видео-ссылка')
         verbose_name_plural = _('Видео-ссылки')
+
+    def __str__(self):
+        return self.url

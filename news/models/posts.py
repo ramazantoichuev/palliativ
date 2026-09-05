@@ -1,9 +1,9 @@
+from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 
-from common.validators import validate_image_size, validate_image_dimensions
+from common.validators import validate_image_dimensions, validate_image_size
 
 
 class Category(models.Model):

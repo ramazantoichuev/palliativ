@@ -1,10 +1,11 @@
-from django.views.generic import TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from .models.consultation import ConsultationRequest
+from django.views.generic import CreateView, TemplateView
+
 from .forms import ConsultationForm
+from .models.consultation import ConsultationRequest
+
 
 class HomeView(TemplateView):
     template_name = 'main/home.html'

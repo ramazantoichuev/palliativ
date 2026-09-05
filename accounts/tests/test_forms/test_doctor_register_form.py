@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from accounts.forms import DoctorApplicationForm
-from accounts.tests.factories import  User
+from accounts.tests.factories import User
 
 
 class PatientRegistrationFormTests(TestCase):

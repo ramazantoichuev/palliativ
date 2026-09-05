@@ -1,13 +1,16 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView
-from django.views.generic import TemplateView
-User = get_user_model()
-
-
-from django.contrib.auth import login
 from django.shortcuts import redirect, render
 from django.views import View
-from .forms import DoctorApplicationForm, PatientRegistrationForm, EmailAuthenticationForm
+from django.views.generic import TemplateView
+
+from .forms import (
+    DoctorApplicationForm,
+    EmailAuthenticationForm,
+    PatientRegistrationForm,
+)
+
+User = get_user_model()
 
 
 class PatientRegisterView(View):
