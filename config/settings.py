@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'main',
     'patients',
     'resources',
-
+    'faq',
 ]
 
 JAZZMIN_SETTINGS = {
