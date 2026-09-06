@@ -2,6 +2,7 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from django.urls import reverse
 
 from common.validators import validate_image_size, validate_image_dimensions
 
@@ -37,6 +38,9 @@ class Post(models.Model):
         Category, verbose_name=_('Категория'),
         on_delete=models.PROTECT, related_name='posts')
     created_at = models.DateTimeField(_('Дата создания'), auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse('news:post_detail', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = _('Новость')

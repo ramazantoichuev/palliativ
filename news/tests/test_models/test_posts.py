@@ -19,6 +19,12 @@ class TestPost(TestCase):
         self.assertEqual(self.post.category.name, 'sport')
         self.assertEqual(self.category.posts.all().first().title, 'test')
 
+    def test_get_absolute_url_returns_correct_path(self):
+
+        url = self.post.get_absolute_url()
+
+        self.assertEqual(url, f'/news/{self.post.slug}/')
+
 
 
 
