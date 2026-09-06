@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% trans "Логин" as login_title %}
+    {% trans "Войти" as login_button %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-7 col-lg-4">
+                {% include 'partial/form.html' with form=form form_title=login_title btn_txt=login_button %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% translate "Моя карточка" %}</h2>
+
+    {% if patient_cards %}
+        {% for card in patient_cards %}
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <p><strong>{% translate "Диагноз" %}:</strong> {{ card.diagnosis }}</p>
+                <p><strong>{% translate "Принимаемые препараты" %}:</strong> {{ card.medications|default:"—" }}</p>
+                <p><strong>{% translate "Противопоказания" %}:</strong> {{ card.contraindications|default:"—" }}</p>
+                <p>
+                    <strong>{% translate "Текущие симптомы" %}:</strong>
+                    {% for symptom in card.symptoms.all %}
+                        {{ symptom.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        {% translate "не указаны" %}
+                    {% endfor %}
+                </p>
+
+                <a href="{% url 'patients:symptom_survey' %}" class="btn btn-primary mt-2">
+                    {% translate "Отметить самочувствие" %}
+                </a>
+
+                {% if card.doctor %}
+                <p>
+                    <strong>{% translate "Лечащий врач" %}:</strong>
+                    {{ card.doctor.user.first_name }} {{ card.doctor.user.last_name }}
+                </p>
+                {% endif %}
+                <div class="mt-4 pt-3 border-top">
+                    <h6 class="text-success fw-bold">
+                        <i class="bi bi-heart-pulse-fill"></i> {% translate "Рекомендованные материалы" %}
+                    </h6>
+                    <div class="mt-2">
+                        {% with resources=card.get_matching_resources %}
+                        {% if resources %}
+                            <ul>
+                                {% for resource in resources %}
+                                    <li>
+                                        <a href="#">
+                                            {{ resource.title }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-muted">
+                                {% if card.symptoms.all %}
+                                    {% translate "Нет подходящих материалов по текущим симптомам." %}
+                                {% else %}
+                                    {% translate "Симптомы не указаны." %}
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                    {% endwith %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning text-center py-4" role="alert">
+            <p class="fs-5 mb-0">{% translate "У вас пока нет созданной карточки." %}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

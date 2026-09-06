@@ -1,0 +1,114 @@
+[
+  {
+    "model": "resources.resource",
+    "pk": 1,
+    "fields": {
+      "title_ru": "Как контролировать боль в домашних условиях",
+      "title_ky": "Үйдө оорудан кантип кутулуу керек",
+      "title_en": "How to control pain at home",
+      "description_ru": "Подробное пошаговое руководство для ухаживающих родственников: как оценить силу боли по шкале, какие препараты применяются на разных стадиях (от парацетамола до опиоидов), с каким интервалом их давать, как распознать признаки прорывной боли и когда нужно немедленно звонить врачу, а не ждать планового визита. Отдельно разобраны правила безопасного хранения обезболивающих дома, чтобы избежать случайной передозировки или доступа детей к препаратам.",
+      "description_ky": "Кароочу туугандар үчүн кадам сайын кеңири нускама: ооруну шкала боюнча кантип баалоо керек, ар кайсы баскычта кайсы дарылар колдонулат (парацетамолдон баштап опиоиддерге чейин), аларды кандай аралыкта берүү керек, күтүлбөгөн оорунун белгилерин кантип таануу керек жана дарыгерге дароо чалуу керек болгон учурларды.",
+      "description_en": "A detailed step-by-step guide for family caregivers: how to assess pain intensity on a scale, which medications are used at different stages (from paracetamol to opioids), dosing intervals, how to recognize breakthrough pain, and when to call a doctor immediately rather than wait for a scheduled visit. Also covers safe storage of pain medication at home to prevent accidental overdose or access by children.",
+      "audience": "caregiver",
+      "subcategory": "symptom_control",
+      "created_at": "2026-08-01T09:00:00Z",
+      "updated_at": "2026-08-01T09:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 2,
+    "fields": {
+      "title_ru": "Права пациента на паллиативную помощь",
+      "title_ky": "Бейтаптын паллиативдик жардамга укуктары",
+      "title_en": "Patient rights to palliative care",
+      "description_ru": "Обзор действующих нормативно-правовых актов Кыргызской Республики, регулирующих оказание паллиативной помощи: право на бесплатное обезболивание, включая наркотические анальгетики, порядок получения инвалидности при тяжёлых диагнозах, льготы на медицинское оборудование и социальные выплаты для семей. Материал написан простым языком, со ссылками на конкретные приказы Минздрава и пошаговыми алгоритмами для каждой ситуации.",
+      "description_ky": "Паллиативдик жардам көрсөтүүнү жөнгө салган Кыргыз Республикасынын колдонуудагы мыйзамдарынын обзору: акысыз оорудан кутулуу укугу, оор диагноздо майыптыкты алуу тартиби, медициналык жабдууга жеңилдиктер жана үй-бүлөлөр үчүн социалдык төлөмдөр.",
+      "description_en": "An overview of current Kyrgyz Republic legal acts governing palliative care: the right to free pain relief including narcotic analgesics, the process for obtaining a disability status with serious diagnoses, benefits for medical equipment, and social payments for families. Written in plain language with references to specific Ministry of Health orders and step-by-step guidance for each situation.",
+      "audience": "specialist",
+      "subcategory": "npa",
+      "created_at": "2026-08-05T09:00:00Z",
+      "updated_at": "2026-08-05T09:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 3,
+    "fields": {
+      "title_ru": "Уход за кожей: профилактика пролежней",
+      "title_ky": "Терини кароо: жатак жараларын алдын алуу",
+      "title_en": "Skin care: pressure sore prevention",
+      "description_ru": "Пролежни развиваются уже через 2-3 часа неподвижности в одной позе, поэтому профилактика важнее лечения. В материале — график смены положения тела каждые 2 часа днём и 4 часа ночью, техника осмотра кожи в зонах риска (крестец, пятки, лопатки, локти), рецепты недорогих подручных приспособлений для разгрузки давления (валики из полотенец, круги из поролона) и признаки, при которых пролежень уже требует медицинского вмешательства, а не домашнего ухода.",
+      "description_ky": "Жатак жаралары бир абалда 2-3 сааттан кийин эле пайда боло баштайт, ошондуктан алдын алуу дарылоодон маанилүү. Материалда — күндүз ар 2 саат, түнү ар 4 саат сайын денени которуу графиги, коркунучтуу зоналарда (куймулчак сөөк, өкчө, далы, чыканак) терини кароо техникасы.",
+      "description_en": "Pressure sores can develop after just 2-3 hours in one position, so prevention matters more than treatment. Covers a repositioning schedule (every 2 hours by day, 4 at night), how to inspect high-risk areas (sacrum, heels, shoulder blades, elbows), low-cost DIY pressure-relief aids (towel rolls, foam rings), and warning signs that a sore needs medical attention rather than home care.",
+      "audience": "caregiver",
+      "subcategory": "care_feeding",
+      "created_at": "2026-08-10T09:00:00Z",
+      "updated_at": "2026-08-10T09:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 4,
+    "fields": {
+      "title_ru": "Как справиться с тревогой: советы психолога",
+      "title_ky": "Тынчсызданууну кантип жеңүү керек: психологдун кеңештери",
+      "title_en": "Coping with anxiety: psychologist's tips",
+      "description_ru": "Тревога у пациента и у ухаживающего родственника усиливает друг друга по кругу, и разорвать этот круг помогают простые техники: дыхательные упражнения по 4-7-8, метод заземления через органы чувств, короткие ритуалы перед сном. Отдельный раздел — как распознать, что тревога перешла в состояние, требующее помощи психиатра, а не только психолога, и куда обращаться в такой ситуации в Бишкеке и регионах.",
+      "description_ky": "Бейтаптагы жана кароочу тууганды тынчсыздандыруу бир-бирин күчөтүп, чөйрөнү пайда кылат, аны бузууга жөнөкөй техникалар жардам берет: 4-7-8 дем алуу көнүгүүлөрү, сезим органдары аркылуу жерге байланыштыруу ыкмасы, уктаар алдындагы кыска ырым-жырымдар.",
+      "description_en": "Anxiety in a patient and a caregiver tends to reinforce each other in a loop, and simple techniques help break it: 4-7-8 breathing exercises, sensory grounding methods, short bedtime rituals. A separate section covers how to recognize when anxiety needs a psychiatrist rather than just a psychologist, and where to turn in Bishkek and the regions.",
+      "audience": "caregiver",
+      "subcategory": "psychologist_tips",
+      "created_at": "2026-08-12T09:00:00Z",
+      "updated_at": "2026-08-12T09:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 5,
+    "fields": {
+      "title_ru": "Протокол контроля одышки для специалистов",
+      "title_ky": "Адистер үчүн дем алуу кыйынчылыгын контролдоо протоколу",
+      "title_en": "Dyspnea management protocol for specialists",
+      "description_ru": "Клинический протокол для врачей и медсестёр по ступенчатому облегчению одышки у паллиативных пациентов: немедикаментозные меры первой линии (положение тела, поток воздуха от вентилятора, техники дыхания), показания к назначению низких доз опиоидов и бензодиазепинов при рефрактерной одышке, а также алгоритм действий в терминальной стадии, включая работу с тревогой пациента, которая почти всегда сопровождает выраженную одышку.",
+      "description_ky": "Паллиативдик бейтаптардагы дем алуу кыйынчылыгын баскыч менен жеңилдетүү боюнча дарыгерлер жана медайымдар үчүн клиникалык протокол: биринчи линиянын дарысыз чаралары, рефрактердик дем алуу кыйынчылыгында аз дозадагы опиоиддерди дайындоо көрсөткүчтөрү.",
+      "description_en": "A clinical protocol for physicians and nurses on the stepwise management of dyspnea in palliative patients: first-line non-pharmacological measures (positioning, airflow from a fan, breathing techniques), indications for low-dose opioids and benzodiazepines in refractory dyspnea, and a terminal-stage algorithm that addresses the anxiety almost always accompanying severe breathlessness.",
+      "audience": "specialist",
+      "subcategory": "symptom_control",
+      "created_at": "2026-08-14T09:00:00Z",
+      "updated_at": "2026-08-14T09:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 6,
+    "fields": {
+      "title_ru": "Питание при потере аппетита",
+      "title_ky": "Тамакка табити жоктукта тамактануу",
+      "title_en": "Nutrition when appetite is lost",
+      "description_ru": "Отказ от еды на поздних стадиях болезни — частая и пугающая ситуация для родственников, но заставлять пациента есть насильно не рекомендуется. В материале — как предлагать маленькие порции калорийной пищи чаще, какие консистенции легче усваиваются при слабости и тошноте, рецепты питательных напитков и смесей, которые можно приготовить дома, а также объяснение, почему на терминальной стадии снижение аппетита — естественный процесс, а не признак того, что уход был недостаточным.",
+      "description_ky": "Оорунун кеч баскычында тамактан баш тартуу туугандар үчүн көп кездешкен жана коркунучтуу кырдаал, бирок бейтапты күчкө тамактандырууга сунушталбайт. Материалда — калориялуу тамакты кичине бөлүктөп, көбүрөөк сунуштоо, алсыздык жана жүрөк айлануунун учурунда кайсы консистенция жеңил сиңирилерин карайбыз.",
+      "description_en": "Refusing food in the later stages of illness is common and frightening for relatives, but forcing a patient to eat is not recommended. Covers offering small, frequent portions of calorie-dense food, textures that are easier to tolerate with weakness and nausea, recipes for nutritious drinks and shakes you can make at home, and why reduced appetite in the terminal stage is a natural process rather than a sign of inadequate care.",
+      "audience": "caregiver",
+      "subcategory": "care_feeding",
+      "created_at": "2026-08-16T09:00:00Z",
+      "updated_at": "2026-08-16T09:00:00Z"
+    }
+  },
+  {
+    "model": "resources.resource",
+    "pk": 7,
+    "fields": {
+      "title_ru": "Меры социальной поддержки для семей пациентов",
+      "title_ky": "Бейтаптардын үй-бүлөлөрү үчүн социалдык колдоо чаралары",
+      "title_en": "Social support measures for patients' families",
+      "description_ru": "Разбор льгот и пособий, положенных семьям с тяжелобольными родственниками в Кыргызстане: пособие по уходу за инвалидом, компенсация на приобретение технических средств реабилитации, льготы по оплате коммунальных услуг и порядок оформления бесплатного проезда к месту лечения. Для каждой меры указано, куда подавать заявление, какой пакет документов нужен и в какие сроки рассматривается обращение.",
+      "description_ky": "Кыргызстанда оор бейтап туугандары бар үй-бүлөлөргө каралган жеңилдиктер жана пособиелердин обзору: майыпты кароо боюнча пособие, реабилитациянын техникалык каражаттарын сатып алууга компенсация, коммуналдык кызматтарды төлөө боюнча жеңилдиктер.",
+      "description_en": "An overview of benefits and allowances available to families with seriously ill relatives in Kyrgyzstan: disability caregiver allowance, compensation for rehabilitation equipment, utility payment discounts, and how to arrange free travel to treatment facilities. For each benefit, we list where to apply, the required documents, and the review timeline.",
+      "audience": "caregiver",
+      "subcategory": "social_support",
+      "created_at": "2026-08-18T09:00:00Z",
+      "updated_at": "2026-08-18T09:00:00Z"
+    }
+  }
+]

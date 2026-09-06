@@ -1,0 +1,128 @@
+[
+  {
+    "model": "events.event",
+    "pk": 1,
+    "fields": {
+      "title_ru": "Бесплатная консультация врача-паллиатолога",
+      "title_ky": "Паллиатолог дарыгердин акысыз консультациясы",
+      "title_en": "Free consultation with a palliative care doctor",
+      "slug": "free-consultation-sep",
+      "description_ru": "Индивидуальная консультация по подбору схемы обезболивания и общему плану ухода за пациентом на дому.",
+      "description_ky": "Ооруну басаңдатуу схемасын тандоо жана үйдө бейтапты кароонун жалпы планы боюнча жеке консультация.",
+      "description_en": "Individual consultation on selecting a pain management plan and overall home care approach.",
+      "content_ru": "Приём ведёт врач с 10-летним опытом работы в паллиативной помощи. На консультации можно обсудить текущую схему обезболивания, задать вопросы о взаимодействии препаратов и получить рекомендации по уходу с учётом конкретного диагноза. Запись по телефону или через сайт, количество мест на день ограничено пятью семьями.",
+      "content_ky": "Кабылдоону паллиативдик жардам боюнча 10 жылдык тажрыйбасы бар дарыгер алып барат. Консультацияда учурдагы оорудан кутулуу схемасын талкуулоого, дарылардын өз ара таасири жөнүндө суроо берүүгө жана конкреттүү диагнозду эске алуу менен кароо боюнча сунуштарды алууга болот.",
+      "content_en": "The consultation is led by a doctor with 10 years of experience in palliative care. You can discuss your current pain management plan, ask about drug interactions, and get care recommendations tailored to a specific diagnosis. Registration by phone or website; limited to five families per day.",
+      "event_date": "2026-09-15T10:00:00Z",
+      "location": "г. Бишкек, ул. Токтогула 90"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 2,
+    "fields": {
+      "title_ru": "Тренинг для ухаживающих родственников",
+      "title_ky": "Кароочу туугандар үчүн тренинг",
+      "title_en": "Training for family caregivers",
+      "slug": "caregiver-training-oct",
+      "description_ru": "Практический тренинг для тех, кто ухаживает за тяжелобольным родственником дома, без медицинского образования.",
+      "description_ky": "Медициналык билими жок, үйдө оор бейтап туугандарын кароочулар үчүн практикалык тренинг.",
+      "description_en": "A hands-on training for those caring for a seriously ill relative at home without a medical background.",
+      "content_ru": "Программа рассчитана на 4 часа и включает практические навыки: правильное перемещение и смена положения тела пациента, гигиенические процедуры, кормление при затруднённом глотании, техники обезболивания без назначения врача, а также блок по психологической устойчивости самого ухаживающего. Участие бесплатное, группа до 12 человек.",
+      "content_ky": "Программа 4 саатка эсептелген жана практикалык көндүмдөрдү камтыйт: бейтаптын денесин туура которуу, гигиеналык жол-жоболор, жутуу кыйындаганда тамактандыруу, дарыгердин көрсөтмөсүз ооруну басаңдатуу техникасы, ошондой эле кароочунун өзүнүн психологиялык туруктуулугу боюнча блок.",
+      "content_en": "The 4-hour program covers practical skills: safe repositioning and moving of the patient, hygiene procedures, feeding with swallowing difficulties, non-prescription pain relief techniques, and a module on the caregiver's own psychological resilience. Free participation, groups of up to 12 people.",
+      "event_date": "2026-10-05T14:00:00Z",
+      "location": "г. Бишкек, Центр социальной поддержки"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 3,
+    "fields": {
+      "title_ru": "Группа поддержки для родственников пациентов",
+      "title_ky": "Бейтаптардын туугандары үчүн колдоо тобу",
+      "title_en": "Support group for patients' relatives",
+      "slug": "support-group-nov",
+      "description_ru": "Регулярная встреча для тех, кто ухаживает за близкими: безопасное пространство для обмена опытом и эмоций.",
+      "description_ky": "Жакындарын кароочулар үчүн үзгүлтүксүз жолугушуу: тажрыйба жана сезим алмашуу үчүн коопсуз мейкиндик.",
+      "description_en": "A regular meeting for caregivers: a safe space to share experience and emotions.",
+      "content_ru": "Встречи проходят каждую вторую субботу месяца в закрытом формате — присутствуют только участники группы и модератор-психолог. Формат свободный: можно молча слушать или делиться своей ситуацией, советы не даются без запроса. Многие участники отмечают, что группа помогает справляться с чувством вины и одиночества, которое часто сопровождает долгий уход за близким человеком.",
+      "content_ky": "Жолугушуулар ай сайын экинчи ишемби күнү жабык форматта өтөт — топтун катышуучулары жана модератор-психолог гана болушат. Формат эркин: унчукпай угууга же өз кырдаалы менен бөлүшүүгө болот, сунуштар суранбаса берилбейт.",
+      "content_en": "Meetings are held every second Saturday of the month in a closed format — only group members and a psychologist-moderator attend. The format is open: you can listen silently or share your situation; advice is only given if requested.",
+      "event_date": "2026-11-14T11:00:00Z",
+      "location": "г. Бишкек, ул. Токтогула 90"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 4,
+    "fields": {
+      "title_ru": "Благотворительный забег в поддержку фонда",
+      "title_ky": "Фондду колдоо үчүн кайрымдуулук жүгүрүшү",
+      "title_en": "Charity run in support of the foundation",
+      "slug": "charity-run-2026",
+      "description_ru": "Массовый забег на две дистанции, сбор средств на лекарства и оборудование для паллиативных пациентов.",
+      "description_ky": "Эки аралыкка массалык жүгүрүш, паллиативдик бейтаптар үчүн дары жана жабдуу үчүн каражат чогултуу.",
+      "description_en": "A mass charity run over two distances, raising funds for medication and equipment for palliative patients.",
+      "content_ru": "Дистанции: 3 км (семейный формат, можно с детьми и колясками) и 10 км (для подготовленных бегунов). Стартовый взнос полностью идёт в фонд. Собранные средства пойдут на закупку противопролежневых матрасов, инвалидных колясок и обезболивающих препаратов для семей, которые не могут позволить их себе самостоятельно. Регистрация на сайте, количество мест ограничено.",
+      "content_ky": "Аралыктар: 3 км (үй-бүлөлүк формат, балдар жана арабалар менен болот) жана 10 км (даярдалган жүгүрүүчүлөр үчүн). Старттык акы толугу менен фондго кетет. Чогултулган каражат жатак жараларына каршы төшөктөрдү, майыптар арабаларын жана дарыны сатып алууга жумшалат.",
+      "content_en": "Distances: 3 km (family-friendly, kids and strollers welcome) and 10 km (for trained runners). The entry fee goes entirely to the foundation. Funds raised will go toward anti-bedsore mattresses, wheelchairs, and pain medication for families who cannot afford them. Registration on the website, limited spots.",
+      "event_date": "2026-09-27T08:00:00Z",
+      "location": "г. Бишкек, парк Ынтымак"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 5,
+    "fields": {
+      "title_ru": "Онлайн-лекция: психология горевания",
+      "title_ky": "Онлайн лекция: кайгыруу психологиясы",
+      "title_en": "Online lecture: the psychology of grief",
+      "slug": "grief-psychology-lecture",
+      "description_ru": "Открытая лекция психолога о стадиях горевания и о том, как поддержать себя и близких в этот период.",
+      "description_ky": "Кайгыруунун баскычтары жана бул мезгилде өзүңдү жана жакындарыңды кантип колдоо керектиги жөнүндө психологдун ачык лекциясы.",
+      "description_en": "An open lecture by a psychologist on the stages of grief and how to support yourself and loved ones.",
+      "content_ru": "Лекция подойдёт как тем, кто уже столкнулся с утратой, так и тем, кто ухаживает за тяжелобольным человеком и хочет заранее понимать, с чем можно столкнуться. Психолог разберёт частые мифы о горевании, расскажет, когда стоит обратиться за профессиональной помощью, и ответит на вопросы участников в прямом эфире. Запись лекции будет доступна участникам в течение недели после эфира.",
+      "content_ky": "Лекция жоготууга туш болгондорго да, оор бейтапты кароочуларга да ылайыктуу. Психолог кайгыруу жөнүндөгү кеңири таралган мифтерди талдап, качан кесипкөй жардамга кайрылуу керектигин айтып, катышуучулардын түз эфирдеги суроолоруна жооп берет.",
+      "content_en": "The lecture is suited both for those who have already experienced loss and for those caring for a seriously ill person who want to know what to expect. The psychologist will address common myths about grief, explain when to seek professional help, and answer questions live. A recording will be available to participants for a week after the broadcast.",
+      "event_date": "2026-10-20T18:00:00Z",
+      "location": "Онлайн (Zoom)"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 6,
+    "fields": {
+      "title_ru": "День открытых дверей в хосписе",
+      "title_ky": "Хосписте ачык эшиктер күнү",
+      "title_en": "Hospice open house day",
+      "slug": "hospice-open-day",
+      "description_ru": "Экскурсия по отделению хосписа для тех, кто рассматривает стационарную паллиативную помощь для близкого человека.",
+      "description_ky": "Жакын адамы үчүн стационардык паллиативдик жардамды карап жаткандар үчүн хоспис бөлүмү боюнча экскурсия.",
+      "description_en": "A tour of the hospice ward for those considering inpatient palliative care for a loved one.",
+      "content_ru": "Многие семьи боятся отдавать близкого человека в хоспис из-за стереотипов и незнания, как там на самом деле устроен уход. День открытых дверей — возможность увидеть палаты, пообщаться с медицинским персоналом, узнать, как организован режим посещений и что можно принести пациенту. Отдельно ответят на вопросы о том, как принять решение о переводе в хоспис и не винить себя за это.",
+      "content_ky": "Көптөгөн үй-бүлөлөр стереотиптерден жана ал жерде кароо чындыгында кантип уюштурулганын билбегендиктен жакын адамын хосписке бергенден корушат. Ачык эшиктер күнү — палаталарды көрүү, медициналык персонал менен баарлашуу, коноктоо тартиби кантип уюштурулганын билүү мүмкүнчүлүгү.",
+      "content_en": "Many families are afraid to place a loved one in a hospice due to stereotypes and not knowing how care actually works there. The open house is a chance to see the wards, talk to medical staff, learn about visiting hours, and what you can bring for a patient. Staff will also address how to make the decision to transfer to hospice care without self-blame.",
+      "event_date": "2026-11-01T12:00:00Z",
+      "location": "г. Бишкек, хоспис №1"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 7,
+    "fields": {
+      "title_ru": "Мастер-класс по уходу за лежачими больными",
+      "title_ky": "Жаткан бейтаптарды кароо боюнча мастер-класс",
+      "title_en": "Masterclass on bedridden patient care",
+      "slug": "bedridden-care-masterclass",
+      "description_ru": "Практическое занятие для родственников и сиделок по базовым техникам ухода за лежачим пациентом.",
+      "description_ky": "Туугандар жана кароочулар үчүн жаткан бейтапты кароонун негизги техникалары боюнча практикалык сабак.",
+      "description_en": "A hands-on session for relatives and caregivers on basic bedridden patient care techniques.",
+      "content_ru": "Занятие ведёт медсестра с опытом работы в паллиативном отделении. На манекене отрабатываются: безопасное перемещение пациента вдвоём и в одиночку, смена постельного белья без лишнего беспокойства пациента, профилактика пролежней с использованием подручных средств, а также базовая гигиена полости рта и кожи. Участники получают памятку с пошаговыми инструкциями на трёх языках.",
+      "content_ky": "Сабакты паллиативдик бөлүмдө иштеген тажрыйбалуу медайым алып барат. Манекенде иштелип чыгат: бейтапты эки жана жалгыз коопсуз которуу, бейтапты тынчсыздандырбай төшөк кийимин алмаштыруу, кол алдындагы каражаттарды колдонуу менен жатак жараларын алдын алуу.",
+      "content_en": "The session is led by a nurse experienced in palliative care. Using a mannequin, participants practice: safely moving a patient with one or two helpers, changing bedding with minimal disturbance, pressure sore prevention using household items, and basic oral and skin hygiene. Participants receive a step-by-step handout in three languages.",
+      "event_date": "2026-10-11T10:00:00Z",
+      "location": "г. Бишкек, Центр социальной поддержки"
+    }
+  }
+]

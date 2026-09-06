@@ -1,0 +1,111 @@
+[
+  {
+    "model": "patients.symptom",
+    "pk": 1,
+    "fields": {
+      "name": "Боль"
+    }
+  },
+  {
+    "model": "patients.symptom",
+    "pk": 2,
+    "fields": {
+      "name": "Тошнота"
+    }
+  },
+  {
+    "model": "patients.symptom",
+    "pk": 3,
+    "fields": {
+      "name": "Одышка"
+    }
+  },
+  {
+    "model": "patients.symptom",
+    "pk": 4,
+    "fields": {
+      "name": "Бессонница"
+    }
+  },
+  {
+    "model": "patients.symptom",
+    "pk": 5,
+    "fields": {
+      "name": "Потеря аппетита"
+    }
+  },
+  {
+    "model": "patients.patientcard",
+    "pk": 1,
+    "fields": {
+      "patient": 1,
+      "doctor": 1,
+      "diagnosis": "Онкологическое заболевание, IV стадия, метастазы в кости",
+      "medications": "Морфин 10мг по требованию, Парацетамол 500мг 3 раза в день",
+      "contraindications": "Аллергия на аспирин",
+      "previous_treatment": "Курс химиотерапии завершён в июне 2026",
+      "symptoms": [
+        1,
+        3,
+        4
+      ],
+      "created_at": "2026-08-05T10:00:00Z",
+      "updated_at": "2026-08-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "patients.patientcard",
+    "pk": 2,
+    "fields": {
+      "patient": 3,
+      "doctor": 1,
+      "diagnosis": "Хроническая почечная недостаточность, терминальная стадия",
+      "medications": "Эритропоэтин, препараты железа",
+      "contraindications": "",
+      "previous_treatment": "Гемодиализ 3 раза в неделю",
+      "symptoms": [
+        2,
+        5
+      ],
+      "created_at": "2026-08-06T10:00:00Z",
+      "updated_at": "2026-08-21T10:00:00Z"
+    }
+  },
+  {
+    "model": "patients.patientcard",
+    "pk": 3,
+    "fields": {
+      "patient": 4,
+      "doctor": 2,
+      "diagnosis": "Онкологическое заболевание, III стадия",
+      "medications": "Трамадол по схеме, противорвотные препараты",
+      "contraindications": "Непереносимость лактозы",
+      "previous_treatment": "Лучевая терапия, 20 сеансов",
+      "symptoms": [
+        1,
+        2,
+        5
+      ],
+      "created_at": "2026-08-07T10:00:00Z",
+      "updated_at": "2026-08-22T10:00:00Z"
+    }
+  },
+  {
+    "model": "patients.patientcard",
+    "pk": 4,
+    "fields": {
+      "patient": 5,
+      "doctor": 2,
+      "diagnosis": "Боковой амиотрофический склероз",
+      "medications": "Рилузол, миорелаксанты",
+      "contraindications": "",
+      "previous_treatment": "Физиотерапия, дыхательная гимнастика",
+      "symptoms": [
+        3,
+        4
+      ],
+      "created_at": "2026-08-08T10:00:00Z",
+      "updated_at": "2026-08-23T10:00:00Z"
+    }
+  }
+]

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Контакты" %} — Паллиатив.kg{% endblock %}
+
+{% block content %}
+    <section class="py-4">
+        <h1 class="fw-bold mb-4">{% translate "Контакты" %}</h1>
+
+        <h4 class="fw-bold">{% translate "Адрес" %}</h4>
+        <p>
+            {% translate "г. Бишкек, ул. Юдахина 61" %}
+        </p>
+
+        <h4 class="fw-bold mt-4">{% translate "Телефон" %}</h4>
+        <p>
+            <a href="tel:+996000000000">+996 000 000 000</a>
+        </p>
+
+        <h4 class="fw-bold mt-4">{% translate "Email" %}</h4>
+        <p>
+            <a href="mailto:info@palliativ.kg">info@palliativ.kg</a>
+        </p>
+
+        <h4 class="fw-bold mt-4">{% translate "WhatsApp" %}</h4>
+        <p>
+            <a href="https://wa.me/996000000000"
+               target="_blank"
+               rel="noopener noreferrer">
+                {% translate "Написать в WhatsApp" %}
+            </a>
+        </p>
+
+        <h4 class="fw-bold mt-4">{% translate "Как нас найти" %}</h4>
+        <p>
+            <a href="https://2gis.kg/bishkek"
+               target="_blank"
+               rel="noopener noreferrer">
+                {% translate "Открыть карту" %}
+            </a>
+        </p>
+
+        <section id="feedback" class="mt-5">
+            <h4 class="fw-bold">{% translate "Обратная связь" %}</h4>
+            <p>
+                {% translate "Здесь будет размещена форма обратной связи." %}
+            </p>
+        </section>
+
+        <div class="mt-4">
+            <a href="{% url 'main:new-consultation' %}" class="btn btn-primary">
+                {% translate "Нужна консультация" %}
+            </a>
+        </div>
+    </section>
+{% endblock %}

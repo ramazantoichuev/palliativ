@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{ event.title }}{% endblock %}
+{% block meta_description %}{{ event.description|truncatechars:160 }}{% endblock %}
+{% block og_image %}
+{% if post.image %}
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ post.image.url }}">
+{% endif %}
+{% endblock %}
+{% block content %}
+    <p>
+        <a href="{% url 'events:event_list' %}">&larr; {% translate "Мероприятия" %}</a>
+    </p>
+
+    <article class="col-12 col-lg-10">
+        <h1 class="fw-bold mb-3">{{ event.title }}</h1>
+
+        <dl class="row text-muted mb-4">
+            <dt class="col-sm-3">{% translate "Дата" %}</dt>
+            <dd class="col-sm-9">
+                <time datetime="{{ event.event_date|date:'c' }}">
+                    {{ event.event_date|date:"d.m.Y H:i" }}
+                </time>
+            </dd>
+
+            <dt class="col-sm-3">{% translate "Место проведения" %}</dt>
+            <dd class="col-sm-9">{{ event.location }}</dd>
+        </dl>
+
+        {% if event.image %}
+            <img src="{{ event.image.url }}" class="img-fluid rounded mb-4" alt="{{ event.title }}">
+        {% endif %}
+
+        {% if event.description %}
+            <div class="fs-5 lh-lg mb-4 text-secondary">
+                {{ event.description|linebreaks }}
+            </div>
+        {% endif %}
+
+        <div class="lh-lg mb-4">
+            {{ event.content|linebreaks }}
+        </div>
+
+        {% include 'partial/form.html' with form_title=_('Регистрация на мероприятие') btn_txt=_('Записаться') extra_classes='shadow-sm' %}
+    </article>
+{% endblock %}
