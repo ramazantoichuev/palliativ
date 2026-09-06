@@ -16,7 +16,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.sitemaps.views import sitemap
 
+from news.sitemaps import PostSitemap
+from events.sitemaps import EventSitemap
+from resources.sitemaps import ResourceSitemap
+
+sitemaps = {
+    'news': PostSitemap,
+    'events': EventSitemap,
+    'resources': ResourceSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +37,8 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('patients/', include('patients.urls')),
     path('resources/', include('resources.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 if settings.DEBUG:
