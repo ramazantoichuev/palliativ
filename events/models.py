@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 
 class Event(models.Model):
@@ -11,6 +12,9 @@ class Event(models.Model):
     image = models.ImageField(upload_to='events/', blank=True, null=True)
     event_date = models.DateTimeField()
     location = models.CharField(max_length=255)
+
+    def get_absolute_url(self):
+        return reverse('events:event_detail', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = _('Мероприятие')
@@ -45,5 +49,3 @@ class EventRegistration(models.Model):
 
     def __str__(self):
         return f"{self.full_name} — {self.event.title}"
-
-# Create your models here.
