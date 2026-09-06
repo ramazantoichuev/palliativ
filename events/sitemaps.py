@@ -8,6 +8,3 @@ class EventSitemap(Sitemap):
 
     def items(self):
         return Event.objects.all()
-
-    def lastmod(self, obj):
-        return obj.created_at
