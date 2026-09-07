@@ -22,6 +22,12 @@ class TestEvent(TestCase):
     def test_event_slug(self):
         self.assertEqual(slugify(self.event.title, allow_unicode=True), self.event.slug)
 
+    def test_get_absolute_url_returns_correct_path(self):
+
+        url = self.event.get_absolute_url()
+
+        self.assertEqual(url, f'/events/{self.event.slug}/')
+
 
 
 

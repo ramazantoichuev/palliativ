@@ -62,14 +62,14 @@
                         {% endif %}
                     </div>
                     <h2 class="h5 card-title">
-                        <a href="{% url 'news:post_detail' post.slug %}" class="text-decoration-none text-dark">
+                        <a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">
                             {{ post.title }}
                         </a>
                     </h2>
                     <p class="card-text text-secondary">{{ post.description|truncatewords:20 }}</p>
                 </div>
                 <div class="card-footer bg-transparent border-top-0">
-                    <a href="{% url 'news:post_detail' post.slug %}" class="btn btn-outline-primary btn-sm">
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-outline-primary btn-sm">
                         {% translate "Читать дальше" %}
                     </a>
                 </div>

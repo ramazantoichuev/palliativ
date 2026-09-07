@@ -14,6 +14,8 @@ class ResourceVideoLinkInline(admin.TabularInline):
 
 @admin.register(Resource)
 class ResourceAdmin(TranslationAdmin):
+    fields = ['title', 'slug', 'description', 'audience', 'subcategory', 'symptoms']
+    prepopulated_fields = {'slug': ('title',)}
     list_display = ('title', 'audience', 'subcategory', 'created_at')
     list_filter = ('audience', 'subcategory', 'symptoms')
     search_fields = ('title', 'description')
