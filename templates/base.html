@@ -29,6 +29,17 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        .navbar-brand img {
+            height: 60px;
+            width: auto;
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-brand img {
+                height: 50px;
+            }
+        }
     </style>
 
         <meta name="description" content="{% block meta_description %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
@@ -64,7 +75,10 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'main:home' %}">Паллиатив.kg</a>
+            <a class="navbar-brand" href="{% url 'main:home' %}">
+                <img src="{% static 'main/images/logo1_contur.png' %}"
+                      alt="Ассоциация паллиативной и хосписной помощи">
+            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#mainNavbar" aria-controls="mainNavbar"
