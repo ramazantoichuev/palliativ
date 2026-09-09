@@ -17,6 +17,8 @@ class AboutView(TemplateView):
 class ContactsView(TemplateView):
     template_name = 'main/contacts.html'
 
+class PrivacyPolicyView(TemplateView):
+    template_name = 'main/privacy_policy.html'
 
 # Create your views here.
 
