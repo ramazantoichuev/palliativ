@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /accounts/login/
+Disallow: /accounts/register/
+Disallow: /accounts/waiting-approval/
+Disallow: /patients/
+
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml

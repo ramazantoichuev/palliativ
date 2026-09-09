@@ -27,8 +27,11 @@ DEBUG = os.getenv('DEBUG') == 'True'
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free.dev']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free.dev', 'penpal-unnamable-snowy.ngrok-free.dev']
+CSRF_TRUSTED_ORIGINS = [
+    'https://hatchling-causal-doornail.ngrok-free.dev',
+    'https://penpal-unnamable-snowy.ngrok-free.dev',
+]
 
 # Application definition
 
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     'events',
     'accounts',
@@ -52,6 +56,19 @@ INSTALLED_APPS = [
     'resources',
 
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_brand": "POL-KG",
+
+    "site_title": "POL-KG",
+
+    "site_header": "POL-KG",
+    "UI_TWEAKS": {
+    "sidebar_display_full_name": False,
+    }
+    }
+JAZZMIN_UI_TWEAKS = {
+    "sidebar_nav_compact_style": True,}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
