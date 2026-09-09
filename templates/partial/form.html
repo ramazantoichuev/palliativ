@@ -1,15 +1,17 @@
-{% load django_bootstrap5 %}
-
-<div class="card my-5 {{ extra_classes }} registration-card">
-    <div class="card-header fs-4 text-center py-3">{{ form_title }}</div>
-    <div class="card-body">
-        <form action="" id="article-form" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% bootstrap_form form layout="floating" %}
-        </form>
-    </div>
-    <div class="card-footer text-end py-3">
-        <button type="submit" form="article-form" class="btn btn-sm btn-primary">{{ btn_txt }}</button>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Контакты — Паллиатив.kg" %}{% endblock %}
+{% block meta_description %}{% blocktranslate %}Свяжитесь с Ассоциацией паллиативной и хосписной помощи — контакты, адрес, форма обратной связи.{% endblocktranslate %}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% include 'partial/form.html' with form_title=_('Заявка на консультацию') btn_txt=_('Отправить заявку') extra_classes='shadow-sm' %}
+            <small class="text-muted d-block mt-2">
+                {% blocktranslate %}Отправляя форму, вы соглашаетесь с{% endblocktranslate %}
+                <a href="{% url 'main:privacy_policy' %}">{% translate "Политикой обработки данных" %}</a>
+            </small>
+        </div>
     </div>
 </div>
-
+{% endblock %}
