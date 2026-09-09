@@ -27,6 +27,7 @@ class PatientRegisterView(View):
             admin_url = request.build_absolute_uri(reverse('admin:accounts_baseuser_change', args=[user.pk]))
             notify_admins('Новая регистрация пациента', f'Email: {user.email}\nАдминка: {admin_url}')
             return redirect('main:about')
+        return render(request, 'accounts/patient_register.html', {'form': form})
 
 
 class DoctorRegisterView(View):
