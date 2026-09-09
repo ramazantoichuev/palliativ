@@ -56,17 +56,20 @@ pip install -r requirements.txt
 Настройка переменных окружения
 Скопируйте пример конфигурации:
 
-cp .env.example .env
-Заполните необходимые значения в файле .env:
+## Настройка переменных окружения
+Проект использует библиотеку `django-environ` для безопасного 
+и удобного управления конфигурацией.
 
-DB_NAME=palliativ
-DB_USER=postgres
-DB_PASSWORD=password
-DB_HOST=localhost
-DB_PORT=5432
-
-SECRET_KEY=your-secret-key
-DEBUG=True
+1. Создайте локальный файл конфигурации `.env` на основе примера:
+   ```bash
+   cp .env.example .env
+   ```
+2. Откройте созданный файл `.env` и заполните следующие параметры:
+   * `SECRET_KEY` — уникальный секретный ключ вашего инстанса (обязательный параметр, без него проект не запустится).
+   * `DEBUG` — режим отладки. Поддерживает значения: `True`/`False`/`1`/`0`/`yes`/`no`.
+   * `DB_URL` — единая строка подключения к базе данных PostgreSQL в формате:
+     `postgres://db_user:db_password@db_host:db_port/db_name`
+   
 Настройка базы данных
 Создайте пользователя и базу данных PostgreSQL:
 
