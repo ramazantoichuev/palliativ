@@ -177,6 +177,7 @@ DESCRIPTION_MAX_LENGTH = 2000
 # ID счётчиков задаются через .env только на проде; при пустых значениях
 # скрипты аналитики не рендерятся вообще (см. templates/partial/analytics.html).
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
+GOOGLE_TAG_MANAGER_ID = os.getenv('GOOGLE_TAG_MANAGER_ID', '')
 YANDEX_METRIKA_ID = os.getenv('YANDEX_METRIKA_ID', '')
 
 # Email

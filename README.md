@@ -177,14 +177,22 @@ git checkout -b feature/task-name
 Локально и на demo-стенде переменные оставляем пустыми, чтобы тестовые
 визиты команды не попадали в статистику клиента.
 
-Когда клиент передаст ID счётчиков, на проде в .env нужно вписать:
+Когда клиент передаст ID счётчиков, на проде в .env нужно вписать
+соответствующие значения (любое подмножество, ненужные оставить пустыми):
 
-GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
-YANDEX_METRIKA_ID=XXXXXXXX
+GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX      # Google Analytics 4 (gtag.js)
+GOOGLE_TAG_MANAGER_ID=GTM-XXXXXXX     # Google Tag Manager
+YANDEX_METRIKA_ID=XXXXXXXX            # Яндекс Метрика (номер счётчика)
 
 и перезапустить сервер. Больше ничего менять не нужно: сниппеты лежат
-в templates/partial/analytics.html, ID подставляются автоматически
-(context processor main.context_processors.analytics).
+в templates/partial/analytics.html (и analytics_body.html — noscript-часть
+GTM после <body>), ID подставляются автоматически (context processor
+main.context_processors.analytics).
+
+Важно: GA4 (G-...) и Tag Manager (GTM-...) — разные продукты с разными
+сниппетами; вписывайте ID строго в свою переменную. Обычно используется
+что-то одно: либо прямой GA4, либо GTM (внутри которого маркетолог сам
+подключает GA4, Метрику и прочие теги).
 
 Запуск проекта через ngrok
 
