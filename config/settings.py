@@ -95,6 +95,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.analytics',
             ],
         },
     },
@@ -171,6 +172,12 @@ MAX_IMAGE_SIZE_MB = 5
 MAX_IMAGE_DIMENSION_PX = 3000
 MAX_RESOURCE_FILE_SIZE_MB = 15
 DESCRIPTION_MAX_LENGTH = 2000
+
+# Analytics
+# ID счётчиков задаются через .env только на проде; при пустых значениях
+# скрипты аналитики не рендерятся вообще (см. templates/partial/analytics.html).
+GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
+YANDEX_METRIKA_ID = os.getenv('YANDEX_METRIKA_ID', '')
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
