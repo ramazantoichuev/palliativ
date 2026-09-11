@@ -12,10 +12,12 @@ from common.validators import validate_resource_file_size
 class Resource(models.Model):
     AUDIENCE_SPECIALIST = 'specialist'
     AUDIENCE_CAREGIVER = 'caregiver'
+    AUDIENCE_PEDIATRIC = 'pediatric'
 
     AUDIENCE_CHOICES = [
         (AUDIENCE_SPECIALIST, _('Руководство для специалистов')),
         (AUDIENCE_CAREGIVER, _('Советы ухаживающим')),
+        (AUDIENCE_PEDIATRIC, _('Паллиативная педиатрия')),
     ]
 
     SUBCATEGORY_CHOICES = [

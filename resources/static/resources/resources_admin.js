@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', function () {
             { value: 'psychologist_tips', text: 'Советы психолога' },
             { value: 'meds_rights', text: 'Лекарства и права пациента' },
             { value: 'social_support', text: 'Соцподдержка' }
+        ],
+        'pediatric': [
+            { value: 'symptom_control', text: 'Контроль симптомов' },
+            { value: 'care_feeding', text: 'Уход и кормление' },
+            { value: 'psychologist_tips', text: 'Советы психолога' },
+            { value: 'social_support', text: 'Соцподдержка' }
         ]
     };
 
