@@ -1,14 +1,15 @@
-from django.test import TestCase
 from django.urls import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
 from resources.tests.factories import ResourceFactory, ResourceVideoLinkFactory
 from resources.models.resources import ResourceFile
+import tempfile
+from django.test import TestCase, override_settings
 
-
+@override_settings(MEDIA_ROOT=tempfile.mkdtemp())
 class ResourceDetailViewTest(TestCase):
     def test_detail_returns_200(self):
         resource = ResourceFactory()
-        url = reverse('resources:resource_detail', kwargs={'pk': resource.pk})
+        url = reverse('resources:resource_detail', kwargs={'slug': resource.slug})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
@@ -19,8 +20,7 @@ class ResourceDetailViewTest(TestCase):
             file=SimpleUploadedFile('test.pdf', b'file_content', content_type='application/pdf')
         )
         ResourceVideoLinkFactory(resource=resource)
-
-        url = reverse('resources:resource_detail', kwargs={'pk': resource.pk})
+        url = reverse('resources:resource_detail', kwargs={'slug': resource.slug})
         response = self.client.get(url)
 
         self.assertEqual(len(response.context['resource'].files.all()), 1)
@@ -28,11 +28,12 @@ class ResourceDetailViewTest(TestCase):
 
     def test_resource_without_attachments_does_not_fail(self):
         resource = ResourceFactory()
-        url = reverse('resources:resource_detail', kwargs={'pk': resource.pk})
+        url = reverse('resources:resource_detail', kwargs={'slug': resource.slug})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_nonexistent_pk_returns_404(self):
-        url = reverse('resources:resource_detail', kwargs={'pk': 99999})
+        url = reverse('resources:resource_detail', kwargs={'slug': 'non-existent-slug'})
+
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
