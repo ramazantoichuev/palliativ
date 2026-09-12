@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.core import mail
+from django.test import override_settings
 
 from accounts.tests.factories import User
 
@@ -63,3 +65,25 @@ class TestDoctorRegisterView(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertFalse(User.objects.filter(email="doctor3@test.kg").exists())
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_post_doctor_register_view_sends_admin_notification(self):
+        # Arrange
+        url = reverse('accounts:doctor_register')
+        data = {
+            "email": "notify_doctor@test.kg",
+            "first_name": "Марат",
+            "last_name": "Иманалиев",
+            "password1": "1qaz@WSX29",
+            "password2": "1qaz@WSX29",
+            "phone": "+996700000071",
+            "education": "КГМА, лечебное дело",
+            "skills": "Паллиативная помощь",
+        }
+
+        # Act
+        self.client.post(url, data=data)
+
+        # Assert
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertIn('notify_doctor@test.kg', mail.outbox[0].body)
