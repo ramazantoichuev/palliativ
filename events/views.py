@@ -1,4 +1,3 @@
-from common.notifications import notify_admins, send_confirmation
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
@@ -12,6 +11,7 @@ from django.views.generic import (
 from django.views.generic.edit import FormMixin
 
 from accounts.models import BaseUser
+from common.notifications import notify_admins, send_confirmation
 
 from .forms import EventRegistrationForm
 from .models import Event

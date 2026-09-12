@@ -1,10 +1,11 @@
-from common.notifications import notify_admins
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
+
+from common.notifications import notify_admins
 
 from .forms import (
     DoctorApplicationForm,

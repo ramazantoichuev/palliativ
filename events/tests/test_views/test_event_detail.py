@@ -1,9 +1,9 @@
 import tempfile
 
+from django.core import mail
 from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
-from django.core import mail
 
 from events.models import EventRegistration
 from events.tests.factories import EventFactory, make_image

@@ -1,8 +1,9 @@
-from common.notifications import notify_admins, send_confirmation
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, TemplateView
+
+from common.notifications import notify_admins, send_confirmation
 
 from .forms import ConsultationForm
 from .models.consultation import ConsultationRequest
