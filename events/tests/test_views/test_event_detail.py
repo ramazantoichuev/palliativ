@@ -1,5 +1,6 @@
 import tempfile
 
+from django.core import mail
 from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
@@ -9,7 +10,6 @@ from events.tests.factories import EventFactory, make_image
 
 
 class TestEventDetailView(TestCase):
-    """Детальная страница мероприятия: критерии приёмки 5-10."""
 
     @classmethod
     def setUpTestData(cls):
@@ -101,3 +101,20 @@ class TestEventDetailView(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertFalse(EventRegistration.objects.exists())
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_valid_registration_sends_admin_notification_and_confirmation(self):
+        self.client.post(self.url, data=self.valid_data)
+
+        self.assertEqual(len(mail.outbox), 2)
+        recipients = [msg.to[0] for msg in mail.outbox]
+        self.assertIn('admin@example.com', recipients)
+        self.assertIn('ivan@example.com', recipients)
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_invalid_registration_sends_no_email(self):
+        invalid_data = {**self.valid_data, 'email': ''}
+
+        self.client.post(self.url, data=invalid_data)
+
+        self.assertEqual(len(mail.outbox), 0)
