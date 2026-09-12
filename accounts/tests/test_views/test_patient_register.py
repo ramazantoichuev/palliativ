@@ -12,22 +12,21 @@ User = get_user_model()
 
 
 class TestPatientRegisterView(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.user = UserFactory()
 
     def test_get_patient_register_view(self):
-        url = reverse('accounts:patient_register')
+        url = reverse("accounts:patient_register")
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'accounts/patient_register.html')
+        self.assertTemplateUsed(response, "accounts/patient_register.html")
         self.assertIn("form", response.context)
 
-    @mock.patch('accounts.views.login')
+    @mock.patch("accounts.views.login")
     def test_post_patient_register_view_success(self, mocked_login: mock.MagicMock):
-        url = reverse('accounts:patient_register')
+        url = reverse("accounts:patient_register")
         response = self.client.post(
             url,
             data={
@@ -36,19 +35,17 @@ class TestPatientRegisterView(TestCase):
                 "last_name": "Doe",
                 "password1": "1qaz@WSX29",
                 "password2": "1qaz@WSX29",
-                "phone": "+996700123456"
-            }
+                "phone": "+996700123456",
+            },
         )
 
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(
-            User.objects.filter(first_name="John").exists()
-        )
+        self.assertTrue(User.objects.filter(first_name="John").exists())
         mocked_login.assert_called_once()
 
-    @mock.patch('accounts.views.login')
+    @mock.patch("accounts.views.login")
     def test_post_patient_register_view_fail(self, mocked_login: mock.MagicMock):
-        url = reverse('accounts:patient_register')
+        url = reverse("accounts:patient_register")
         response = self.client.post(
             url,
             data={
@@ -57,14 +54,12 @@ class TestPatientRegisterView(TestCase):
                 "last_name": "Doe",
                 "password1": "1qaz@WSX29",
                 "password2": "different",
-                "phone": "+996700123457"
-            }
+                "phone": "+996700123457",
+            },
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertFalse(
-            User.objects.filter(email="invalid@mail.ru").exists()
-        )
+        self.assertFalse(User.objects.filter(email="invalid@mail.ru").exists())
         mocked_login.assert_not_called()
 
     @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
@@ -101,8 +96,6 @@ class TestPatientRegisterView(TestCase):
             "phone": "+996700123459",
         }
 
-        # Act
         self.client.post(url, data=data)
 
-        # Assert
         self.assertEqual(len(mail.outbox), 0)
