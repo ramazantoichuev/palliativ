@@ -1,11 +1,10 @@
 from django.test import TestCase
 
 from accounts.forms import DoctorApplicationForm
-from accounts.tests.factories import  User
+from accounts.tests.factories import User
 
 
 class PatientRegistrationFormTests(TestCase):
-
     def _valid_data(self, **overrides):
         data = {
             "first_name": "Марат",
@@ -33,4 +32,3 @@ class PatientRegistrationFormTests(TestCase):
         form = DoctorApplicationForm(data=self._valid_data(password2="different"))
         self.assertFalse(form.is_valid())
         self.assertIn("password2", form.errors)
-
