@@ -4,7 +4,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
-
 from transliterate import translit
 
 from common.validators import validate_image_dimensions, validate_image_size
@@ -52,6 +51,9 @@ class Post(models.Model):
         verbose_name_plural = _("Новости")
         ordering = ["-created_at"]
 
+    def __str__(self):
+        return self.title
+
     def save(self, *args, **kwargs):
         if not self.slug:
             latin_title = translit(self.title, 'ru', reversed=True)
@@ -63,9 +65,6 @@ class Post(models.Model):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
 
     def get_absolute_url(self):
         return reverse("news:post_detail", kwargs={"slug": self.slug})
