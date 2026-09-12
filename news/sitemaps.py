@@ -1,4 +1,5 @@
 from django.contrib.sitemaps import Sitemap
+
 from .models.posts import Post
 
 
