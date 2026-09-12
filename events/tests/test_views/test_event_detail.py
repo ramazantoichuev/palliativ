@@ -80,6 +80,23 @@ class TestEventDetailView(TestCase):
 
             self.assertContains(response, event.image.url)
 
+    def test_og_image_meta_is_rendered_when_image_present(self):
+        with (
+            tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as media_root,
+            override_settings(MEDIA_ROOT=media_root),
+        ):
+            event = EventFactory(slug="with-og-image", image=make_image())
+
+            response = self.client.get(
+                reverse("events:event_detail", args=[event.slug])
+            )
+
+            self.assertContains(
+                response,
+                f'<meta property="og:image" '
+                f'content="http://testserver{event.image.url}">',
+            )
+
     def test_valid_post_creates_registration_for_this_event(self):
         response = self.client.post(self.url, data=self.valid_data)
 
