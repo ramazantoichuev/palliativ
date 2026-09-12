@@ -1,11 +1,12 @@
-from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group, Permission
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.management.base import BaseCommand
+
 from accounts.models import BaseUser
 
 
 class Command(BaseCommand):
-    help = 'Настройка группы Managers и назначение ей достаточных прав по ТЗ.'
+    help = "Настройка группы Managers и назначение ей достаточных прав по ТЗ."
 
     def handle(self, *args, **options):
         group_name = BaseUser.ROLE_GROUPS[BaseUser.Role.MANAGER]
@@ -16,21 +17,21 @@ class Command(BaseCommand):
         else:
             self.stdout.write(f"Настройка существующей группы: {group_name}")
         required_permissions = {
-            'main': {
-                'consultationrequest': ['view', 'change'],
+            "main": {
+                "consultationrequest": ["view", "change"],
             },
-            'patients': {
-                'patientcard': ['add', 'change', 'view'],
-                'symptom': ['view'],
+            "patients": {
+                "patientcard": ["add", "change", "view"],
+                "symptom": ["view"],
             },
-            'accounts': {
-                'patientprofile': ['view', 'change'],
-                'doctorprofile': ['view'],
-                'baseuser': ['view'],
+            "accounts": {
+                "patientprofile": ["view", "change"],
+                "doctorprofile": ["view"],
+                "baseuser": ["view"],
             },
-            'events': {
-                'eventregistration': ['view', 'change'],
-            }
+            "events": {
+                "eventregistration": ["view", "change"],
+            },
         }
 
         permissions_to_set = []
@@ -41,8 +42,7 @@ class Command(BaseCommand):
                     codename = f"{action}_{model_name}"
                     try:
                         permission = Permission.objects.get(
-                            codename=codename,
-                            content_type__app_label=app_label
+                            codename=codename, content_type__app_label=app_label
                         )
                         permissions_to_set.append(permission)
                     except ObjectDoesNotExist:

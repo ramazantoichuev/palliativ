@@ -1,4 +1,3 @@
-from django.db import transaction
 from django.test import TestCase
 
 from accounts.tests.factories import User, UserFactory
@@ -6,7 +5,6 @@ from patients.models import PatientCard, Symptom
 
 
 class PatientCardModelTests(TestCase):
-
     def _patient_profile(self):
         return UserFactory(role=User.Role.PATIENT).patient_profile
 
@@ -21,7 +19,9 @@ class PatientCardModelTests(TestCase):
     def test_related_name_assigned_cards_on_doctor(self):
         patient = self._patient_profile()
         doctor = self._doctor_profile()
-        card = PatientCard.objects.create(patient=patient, doctor=doctor, diagnosis="Диагноз")
+        card = PatientCard.objects.create(
+            patient=patient, doctor=doctor, diagnosis="Диагноз"
+        )
         self.assertIn(card, doctor.assigned_cards.all())
 
     def test_symptoms_many_to_many(self):

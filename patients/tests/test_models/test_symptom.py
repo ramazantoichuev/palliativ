@@ -5,7 +5,6 @@ from patients.models import Symptom
 
 
 class SymptomModelTests(TestCase):
-
     def test_name_is_unique(self):
         Symptom.objects.create(name="Слабость")
         with self.assertRaises(IntegrityError):
