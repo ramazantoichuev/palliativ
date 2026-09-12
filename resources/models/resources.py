@@ -1,3 +1,5 @@
+import re
+
 from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
@@ -106,7 +108,18 @@ class ResourceVideoLink(models.Model):
         related_name="videos",
         verbose_name=_("Ресурс"),
     )
-    url = models.URLField(_("Ссылка на YouTube"))
+
+    url = models.URLField(_('Ссылка на YouTube'))
+
+    def get_embed_url(self):
+        patterns = [
+            r'(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/live\/)([a-zA-Z0-9_-]{11})',
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, self.url)
+            if match:
+                return f'https://www.youtube.com/embed/{match.group(1)}'
+        return None
 
     class Meta:
         verbose_name = _("Видео-ссылка")

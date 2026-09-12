@@ -23,6 +23,8 @@ environ.Env.read_env(os.path.join(BASE_DIR,".env"))
 SECRET_KEY = env('SECRET_KEY')
 DEBUG=env('DEBUG')
 
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
