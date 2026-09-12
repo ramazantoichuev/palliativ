@@ -1,9 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from accounts.models import DoctorProfile, PatientProfile
+from accounts.models import DoctorProfile
 from accounts.tests.factories import UserFactory
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
@@ -11,8 +11,8 @@ User = get_user_model()
 class DoctorProfileModelTest(TestCase):
     def test_default_fields_blank(self):
         user = UserFactory(role=User.Role.DOCTOR)
-        self.assertEqual(user.doctor_profile.education, '')
-        self.assertEqual(user.doctor_profile.skills, '')
+        self.assertEqual(user.doctor_profile.education, "")
+        self.assertEqual(user.doctor_profile.skills, "")
 
     def test_one_to_one_unique(self):
         user = UserFactory(role=User.Role.DOCTOR)
@@ -34,4 +34,3 @@ class DoctorProfileModelTest(TestCase):
     def test_doctor_not_approved_by_default(self):
         user = UserFactory(role=User.Role.DOCTOR)
         self.assertFalse(user.is_approved)
-
