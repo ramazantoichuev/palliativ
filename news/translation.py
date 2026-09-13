@@ -4,13 +4,13 @@ from .models.posts import Category, Post
 
 
 class PostTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'description')
-    required_languages = ('ru',)
+    fields = ("title", "content", "description")
+    required_languages = ("ru",)
 
 
 class CategoryTranslationOptions(TranslationOptions):
-    fields = ('name',)
-    required_languages = ('ru',)
+    fields = ("name",)
+    required_languages = ("ru",)
 
 
 translator.register(Post, PostTranslationOptions)

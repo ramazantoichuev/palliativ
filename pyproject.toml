@@ -1,0 +1,11 @@
+[tool.ruff]
+target-version = "py313"
+extend-exclude = ["migrations", "locale"]
+
+[tool.ruff.lint]
+# E4/E7/E9/F — базовые проверки, I — сортировка импортов, DJ — Django-специфичные
+select = ["E4", "E7", "E9", "F", "I", "DJ"]
+
+[tool.ruff.lint.per-file-ignores]
+# __init__.py пакетов моделей реэкспортируют классы наружу — это осознанный паттерн
+"**/__init__.py" = ["F401"]

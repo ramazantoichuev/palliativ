@@ -38,6 +38,39 @@ sudo apt install -y python3-venv libpq-dev postgresql postgresql-contrib gettext
 
 winget install --id mlocati.GettextIconv
 После установки перезапустите терминал, чтобы msgfmt и xgettext появились в PATH.
+
+
+SSL-сертификаты для отправки email
+Отправка писем через SMTP (EMAIL_BACKEND = smtp, см. раздел Email ниже) может падать с ошибкой:
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed:
+self-signed certificate in certificate chain
+Причина в обоих случаях одна и та же — Python не может подтвердить цепочку сертификатов
+до системного хранилища. Решение отличается по ОС:
+
+macOS (официальный установщик Python с python.org, не Homebrew)
+pip install --upgrade certifi
+echo 'export SSL_CERT_FILE=$(python3 -c "import certifi; print(certifi.where())")' >> ~/.zshrc
+source ~/.zshrc
+Если Python установлен через Homebrew — обычно достаточно brew install ca-certificates, отдельно этот шаг можно пропустить.
+
+Windows
+На Windows эта ошибка чаще всего связана не с самим Python, а с антивирусом или корпоративным VPN, которые подменяют
+SSL-сертификаты при проверке трафика (Kaspersky, ESET и подобные). Если антивирус/VPN отключить не вариант — 
+тот же обходной путь через certifi:
+pip install --upgrade certifi
+python -c "import certifi; print(certifi.where())"
+Скопируй путь, который покажет вторая команда
+(например, C:\Users\имя\project\.venv\Lib\site-packages\certifi\cacert.pem),
+и пропиши переменную окружения одним из двух способов:
+Через PowerShell (постоянно, для текущего пользователя):
+[System.Environment]::SetEnvironmentVariable('SSL_CERT_FILE', 'C:\путь\к\cacert.pem', 'User')
+Либо через графический интерфейс: Панель управления → Система → Дополнительные параметры системы →
+Переменные среды → создать новую переменную пользователя SSL_CERT_FILE со значением скопированного пути.
+Общее для обеих ОС
+После любого из способов обязательно полностью перезапустить runserver
+(Ctrl+C и заново, а на Windows после переменной через GUI/PowerShell — ещё и открыть новое окно терминала) —
+переменные окружения читаются один раз при старте процесса, простое сохранение .env или изменение переменной на уже запущенный сервер не действует.
+
 Клонирование проекта
 git clone https://github.com/ramazantoichuev/palliativ.git
 cd palliativ
@@ -56,17 +89,20 @@ pip install -r requirements.txt
 Настройка переменных окружения
 Скопируйте пример конфигурации:
 
-cp .env.example .env
-Заполните необходимые значения в файле .env:
+## Настройка переменных окружения
+Проект использует библиотеку `django-environ` для безопасного 
+и удобного управления конфигурацией.
 
-DB_NAME=palliativ
-DB_USER=postgres
-DB_PASSWORD=password
-DB_HOST=localhost
-DB_PORT=5432
-
-SECRET_KEY=your-secret-key
-DEBUG=True
+1. Создайте локальный файл конфигурации `.env` на основе примера:
+   ```bash
+   cp .env.example .env
+   ```
+2. Откройте созданный файл `.env` и заполните следующие параметры:
+   * `SECRET_KEY` — уникальный секретный ключ вашего инстанса (обязательный параметр, без него проект не запустится).
+   * `DEBUG` — режим отладки. Поддерживает значения: `True`/`False`/`1`/`0`/`yes`/`no`.
+   * `DB_URL` — единая строка подключения к базе данных PostgreSQL в формате:
+     `postgres://db_user:db_password@db_host:db_port/db_name`
+   
 Настройка базы данных
 Создайте пользователя и базу данных PostgreSQL:
 
@@ -169,6 +205,29 @@ git checkout -b feature/task-name
 
 
 
+
+Линтер (ruff)
+В проекте используется ruff (https://docs.astral.sh/ruff/) — пока только
+проверка кода (ruff check); автоформатирование (ruff format) сознательно
+не применяется, чтобы не создавать конфликтов открытым веткам.
+
+Конфигурация лежит в pyproject.toml: базовые правила (E4/E7/E9/F),
+сортировка импортов (I) и Django-проверки (DJ); каталоги migrations/ и
+locale/ исключены. Ruff ставится вместе с остальными зависимостями:
+pip install -r requirements.txt.
+
+Проверить код перед коммитом:
+
+ruff check .
+
+Автоматически исправить то, что чинится без участия человека
+(сортировка импортов, неиспользуемые импорты):
+
+ruff check . --fix
+
+Точечно подавить правило можно комментарием "# noqa: <код правила>",
+но по умолчанию лучше исправлять код. Новые правила добавляем в
+pyproject.toml только по договорённости в команде.
 
 Запуск проекта через ngrok
 
