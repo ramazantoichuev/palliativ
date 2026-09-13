@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Политика обработки данных — Паллиатив.kg" %}{% endblock %}
+{% block meta_description %}{% blocktranslate %}Политика обработки персональных данных при заполнении формы консультации.{% endblocktranslate %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% translate "Политика обработки персональных данных" %}</h2>
+
+    <p>{% blocktranslate %}Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи Кыргызской Республики обрабатывает персональные данные, которые вы передаёте через форму заявки на консультацию.{% endblocktranslate %}</p>
+
+    <h4>{% translate "Какие данные собираются" %}</h4>
+    <p>{% blocktranslate %}Имя, номер телефона, адрес электронной почты, тема обращения.{% endblocktranslate %}</p>
+
+    <h4>{% translate "Цель обработки" %}</h4>
+    <p>{% blocktranslate %}Данные используются исключительно для того, чтобы связаться с вами по вашей заявке на консультацию.{% endblocktranslate %}</p>
+
+    <h4>{% translate "Кто имеет доступ" %}</h4>
+    <p>{% blocktranslate %}Доступ к заявкам имеют сотрудники Ассоциации с ролью «Менеджер».{% endblocktranslate %}</p>
+
+    <h4>{% translate "Срок хранения" %}</h4>
+    <p>{% blocktranslate %}[Уточняется — согласовать срок хранения с клиентом]{% endblocktranslate %}</p>
+
+    <h4>{% translate "Как удалить свои данные" %}</h4>
+    <p>{% blocktranslate %}[Уточняется — согласовать контакт/процедуру удаления с клиентом]{% endblocktranslate %}</p>
+</div>
+{% endblock %}tml>
