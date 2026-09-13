@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-12 17:08+0000\n"
+"POT-Creation-Date: 2026-09-13 09:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,6 +294,7 @@ msgid "Статус заявки"
 msgstr "Request status"
 
 #: main/models/consultation.py:30 templates/main/consultation.html:9
+#: templates/partial/form.html:9
 msgid "Заявка на консультацию"
 msgstr "Consultation request"
 
@@ -303,7 +304,7 @@ msgstr "Consultation request"
 msgid "Заявки на консультацию"
 msgstr "Consultation request"
 
-#: main/views.py:32
+#: main/views.py:34
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
@@ -514,7 +515,7 @@ msgid ""
 msgstr "`Fill the form. Your application will be "
 
 #: templates/accounts/doctor_register.html:73
-#: templates/main/consultation.html:9
+#: templates/main/consultation.html:9 templates/partial/form.html:9
 msgid "Отправить заявку"
 msgstr "Submit"
 
@@ -746,7 +747,13 @@ msgstr "Bishkek, 61 Yudakhin St."
 msgid "Написать нам"
 msgstr "Contact us"
 
-#: templates/base.html:197
+#: templates/base.html:196
+#, fuzzy
+#| msgid "Контакты — Паллиатив.kg"
+msgid "Политика обработки данных"
+msgstr "About us - Palliative.kg"
+
+#: templates/base.html:200
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
@@ -887,11 +894,11 @@ msgstr ""
 "            filled with content.\n"
 "            "
 
-#: templates/main/consultation.html:3
+#: templates/main/consultation.html:3 templates/partial/form.html:3
 msgid "Контакты — Паллиатив.kg"
 msgstr "About us - Palliative.kg"
 
-#: templates/main/consultation.html:4
+#: templates/main/consultation.html:4 templates/partial/form.html:4
 msgid ""
 "Свяжитесь с Ассоциацией паллиативной и хосписной помощи — контакты, адрес, "
 "форма обратной связи."
@@ -983,6 +990,92 @@ msgstr ""
 msgid "Оставить заявку"
 msgstr "Submit a request"
 
+#: templates/main/privacy_policy.html:4
+#, fuzzy
+#| msgid "Контакты — Паллиатив.kg"
+msgid "Политика обработки данных — Паллиатив.kg"
+msgstr "About us - Palliative.kg"
+
+#: templates/main/privacy_policy.html:5
+#, fuzzy
+#| msgid "Контакты — Паллиатив.kg"
+msgid ""
+"Политика обработки персональных данных при заполнении формы консультации."
+msgstr "About us - Palliative.kg"
+
+#: templates/main/privacy_policy.html:9
+#, fuzzy
+#| msgid "Контакты — Паллиатив.kg"
+msgid "Политика обработки персональных данных"
+msgstr "About us - Palliative.kg"
+
+#: templates/main/privacy_policy.html:11
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — "
+#| "поддержка пациентов, обучение специалистов и развитие паллиативной помощи "
+#| "в Кыргызстане."
+msgid ""
+"Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи "
+"Кыргызской Республики обрабатывает персональные данные, которые вы передаёте "
+"через форму заявки на консультацию."
+msgstr ""
+"\n"
+"            Association of Palliative and Hospice Care of the Kyrgyz "
+"Republic.\n"
+"            We bring together doctors, clinics, and families to ensure\n"
+"            a dignified quality of life at any stage.\n"
+"             "
+
+#: templates/main/privacy_policy.html:13
+#, fuzzy
+#| msgid "Рекомендованные материалы"
+msgid "Какие данные собираются"
+msgstr "Recommended materials"
+
+#: templates/main/privacy_policy.html:14
+msgid "Имя, номер телефона, адрес электронной почты, тема обращения."
+msgstr ""
+
+#: templates/main/privacy_policy.html:16
+#, fuzzy
+#| msgid "Тема обращения"
+msgid "Цель обработки"
+msgstr "Subject of inquiry"
+
+#: templates/main/privacy_policy.html:17
+msgid ""
+"Данные используются исключительно для того, чтобы связаться с вами по вашей "
+"заявке на консультацию."
+msgstr ""
+
+#: templates/main/privacy_policy.html:19
+msgid "Кто имеет доступ"
+msgstr ""
+
+#: templates/main/privacy_policy.html:20
+msgid "Доступ к заявкам имеют сотрудники Ассоциации с ролью «Менеджер»."
+msgstr ""
+
+#: templates/main/privacy_policy.html:22
+#, fuzzy
+#| msgid "Сохранить"
+msgid "Срок хранения"
+msgstr "Submit"
+
+#: templates/main/privacy_policy.html:23
+msgid "[Уточняется — согласовать срок хранения с клиентом]"
+msgstr ""
+
+#: templates/main/privacy_policy.html:25
+msgid "Как удалить свои данные"
+msgstr ""
+
+#: templates/main/privacy_policy.html:26
+msgid "[Уточняется — согласовать контакт/процедуру удаления с клиентом]"
+msgstr ""
+
 #: templates/news/post_detail.html:35
 msgid "Вернуться к новостям"
 msgstr "Back to news"
@@ -1028,6 +1121,16 @@ msgstr "Read more"
 #: templates/news/post_list.html:82
 msgid "Новостей пока нет."
 msgstr "No news available yet."
+
+#: templates/partial/form.html:11
+msgid "Отправляя форму, вы соглашаетесь с"
+msgstr ""
+
+#: templates/partial/form.html:12
+#, fuzzy
+#| msgid "Контакты — Паллиатив.kg"
+msgid "Политикой обработки данных"
+msgstr "About us - Palliative.kg"
 
 #: templates/partial/pagination.html:2
 msgid "Навигация по страницам"
@@ -1134,44 +1237,6 @@ msgstr "All symptoms"
 #: templates/resources/resource_list.html:59
 msgid "В этой подкатегории пока нет материалов."
 msgstr "There are no material in this subcategory"
-
-#, fuzzy
-#~| msgid "Контакты — Паллиатив.kg"
-#~ msgid "Политика обработки данных — Паллиатив.kg"
-#~ msgstr "About us - Palliative.kg"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — "
-#~| "поддержка пациентов, обучение специалистов и развитие паллиативной "
-#~| "помощи в Кыргызстане."
-#~ msgid ""
-#~ "Настоящий документ описывает, как Ассоциация паллиативной и хосписной "
-#~ "помощи Кыргызской Республики обрабатывает персональные данные, которые вы "
-#~ "передаёте через форму заявки на консультацию."
-#~ msgstr ""
-#~ "\n"
-#~ "            Association of Palliative and Hospice Care of the Kyrgyz "
-#~ "Republic.\n"
-#~ "            We bring together doctors, clinics, and families to ensure\n"
-#~ "            a dignified quality of life at any stage.\n"
-#~ "             "
-
-#, fuzzy
-#~| msgid "Рекомендованные материалы"
-#~ msgid "Какие данные собираются"
-#~ msgstr "Recommended materials"
-
-#, fuzzy
-#~| msgid "Тема обращения"
-#~ msgid "Цель обработки"
-#~ msgstr "Subject of inquiry"
-
-#, fuzzy
-#~| msgid "Сохранить"
-#~ msgid "Срок хранения"
-#~ msgstr "Submit"
 
 #~ msgid "Стать врачом или волонтёром"
 #~ msgstr "Doctor/volunteer"
