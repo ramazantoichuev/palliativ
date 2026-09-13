@@ -1,17 +1,16 @@
-from django.db import IntegrityError, transaction
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from accounts.models import DoctorProfile, PatientProfile
+from accounts.models import PatientProfile
 from accounts.tests.factories import UserFactory
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class PatientProfileModelTest(TestCase):
 
+class PatientProfileModelTest(TestCase):
     def test_related_name_patient_profile(self):
         user = UserFactory(role=User.Role.PATIENT)
-        self.assertTrue(hasattr(user, 'patient_profile'))
+        self.assertTrue(hasattr(user, "patient_profile"))
         self.assertIsInstance(user.patient_profile, PatientProfile)
 
     def test_non_patient_role_has_no_patient_profile(self):
@@ -24,4 +23,3 @@ class PatientProfileModelTest(TestCase):
         user.delete()
 
         self.assertFalse(PatientProfile.objects.filter(id=profile_id).exists())
-

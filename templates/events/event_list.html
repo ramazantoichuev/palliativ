@@ -24,7 +24,7 @@
                         <p class="card-text text-muted small">
                             {% translate "Место проведения" %}: {{ event.location }}
                         </p>
-                        <a href="{% url 'events:event_detail' event.slug %}"
+                        <a href="{{ event.get_absolute_url }}"
                            class="btn btn-outline-primary btn-sm mt-auto align-self-start">
                             {% translate "Подробнее" %}
                         </a>
@@ -58,7 +58,7 @@
                             <p class="card-text text-muted small">
                                 {% translate "Место проведения" %}: {{ event.location }}
                             </p>
-                            <a href="{% url 'events:event_detail' event.slug %}"
+                            <a href="{{ event.get_absolute_url }}"
                                class="btn btn-outline-secondary btn-sm mt-auto align-self-start">
                                 {% translate "Подробнее" %}
                             </a>
