@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+
 from resources.models.resources import Resource
 from resources.tests.factories import ResourceFactory, SymptomFactory
 
@@ -16,13 +17,13 @@ class ResourceListViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_materials_displayed(self):
-        resource = ResourceFactory(title='Тестовый материал')
+        ResourceFactory(title='Тестовый материал')
         response = self.client.get(self.url)
         self.assertContains(response, 'Тестовый материал')
 
     def test_filter_by_audience(self):
-        specialist_resource = ResourceFactory(audience=Resource.AUDIENCE_SPECIALIST, title='Для специалиста')
-        caregiver_resource = ResourceFactory(audience=Resource.AUDIENCE_CAREGIVER, title='Для ухаживающего')
+        ResourceFactory(audience=Resource.AUDIENCE_SPECIALIST, title='Для специалиста')
+        ResourceFactory(audience=Resource.AUDIENCE_CAREGIVER, title='Для ухаживающего')
 
         response = self.client.get(self.url, {'audience': Resource.AUDIENCE_SPECIALIST})
 
@@ -30,8 +31,8 @@ class ResourceListViewTest(TestCase):
         self.assertNotContains(response, 'Для ухаживающего')
 
     def test_filter_by_subcategory(self):
-        target = ResourceFactory(subcategory='npa', title='НПА материал')
-        other = ResourceFactory(subcategory='care_feeding', title='Уход материал')
+        ResourceFactory(subcategory='npa', title='НПА материал')
+        ResourceFactory(subcategory='care_feeding', title='Уход материал')
 
         response = self.client.get(self.url, {'subcategory': 'npa'})
 
@@ -39,8 +40,8 @@ class ResourceListViewTest(TestCase):
         self.assertNotContains(response, 'Уход материал')
 
     def test_filter_by_symptom(self):
-        target = ResourceFactory(title='С болью', symptoms=[self.symptom_pain])
-        other = ResourceFactory(title='С жаром', symptoms=[self.symptom_fever])
+        ResourceFactory(title='С болью', symptoms=[self.symptom_pain])
+        ResourceFactory(title='С жаром', symptoms=[self.symptom_fever])
 
         response = self.client.get(self.url, {'symptom': self.symptom_pain.id})
 
@@ -48,13 +49,13 @@ class ResourceListViewTest(TestCase):
         self.assertNotContains(response, 'С жаром')
 
     def test_combined_filters(self):
-        target = ResourceFactory(
+        ResourceFactory(
             audience=Resource.AUDIENCE_SPECIALIST,
             subcategory='symptom_control',
             symptoms=[self.symptom_pain],
             title='Подходящий'
         )
-        wrong_audience = ResourceFactory(
+        ResourceFactory(
             audience=Resource.AUDIENCE_CAREGIVER,
             subcategory='symptom_control',
             symptoms=[self.symptom_pain],
