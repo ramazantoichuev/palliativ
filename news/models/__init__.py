@@ -1,1 +1,1 @@
-from news.models.posts import Category, Post
+from .posts import Category, Post

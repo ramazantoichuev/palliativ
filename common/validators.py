@@ -19,7 +19,9 @@ def validate_image_dimensions(file):
     width, height = image.size
     if width > limit_px or height > limit_px:
         raise ValidationError(
-            _("Разрешение изображения не должно превышать %(limit)s пикселей по большей стороне."),
+            _(
+                "Разрешение изображения не должно превышать %(limit)s пикселей по большей стороне."
+            ),
             params={"limit": limit_px},
         )
 

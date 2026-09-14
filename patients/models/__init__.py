@@ -1,1 +1,1 @@
-from patients.models.patients import Symptom, PatientCard
+from .patients import PatientCard, Symptom
