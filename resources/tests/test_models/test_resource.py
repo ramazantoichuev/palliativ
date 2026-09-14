@@ -1,7 +1,8 @@
 from django.test import TestCase
+
 from resources.models.resources import Resource
-from resources.tests.factories import ResourceFactory
-from resources.tests.factories import SymptomFactory
+from resources.tests.factories import ResourceFactory, SymptomFactory
+
 
 class ResourceModelTest(TestCase):
     def test_str_returns_title(self):
