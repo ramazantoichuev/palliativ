@@ -5,7 +5,7 @@ from django.urls import reverse
 class AnalyticsSnippetTests(TestCase):
     """Скрипты аналитики рендерятся только при заполненных ID (Ticket 54)."""
 
-    @override_settings(GOOGLE_ANALYTICS_ID='', YANDEX_METRIKA_ID='')
+    @override_settings(GOOGLE_ANALYTICS_ID='', GOOGLE_TAG_MANAGER_ID='', YANDEX_METRIKA_ID='')
     def test_empty_ids_render_nothing(self):
         response = self.client.get(reverse('main:home'))
         self.assertNotContains(response, 'googletagmanager.com')
