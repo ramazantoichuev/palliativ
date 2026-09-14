@@ -111,6 +111,13 @@ class ResourceVideoLink(models.Model):
 
     url = models.URLField(_('Ссылка на YouTube'))
 
+    class Meta:
+        verbose_name = _("Видео-ссылка")
+        verbose_name_plural = _("Видео-ссылки")
+
+    def __str__(self):
+        return self.url
+
     def get_embed_url(self):
         patterns = [
             r'(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/live\/)([a-zA-Z0-9_-]{11})',
@@ -121,9 +128,4 @@ class ResourceVideoLink(models.Model):
                 return f'https://www.youtube.com/embed/{match.group(1)}'
         return None
 
-    class Meta:
-        verbose_name = _("Видео-ссылка")
-        verbose_name_plural = _("Видео-ссылки")
 
-    def __str__(self):
-        return self.url
