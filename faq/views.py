@@ -1,5 +1,7 @@
 from django.views.generic import ListView
+
 from .models import FAQItem
+
 
 class FAQListView(ListView):
     model = FAQItem
