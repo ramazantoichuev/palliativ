@@ -7,11 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2026-09-05 16:25+0000\n"
-=======
 "POT-Creation-Date: 2026-09-12 17:08+0000\n"
->>>>>>> origin/dev
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,19 +126,11 @@ msgstr "Phone number must be in format: '+996XXXXXXXXX' (12 digits total)."
 msgid "Номер телефона"
 msgstr "Phone Number"
 
-<<<<<<< HEAD
-#: accounts/models.py:37
-msgid "Пользователь"
-msgstr "Filter"
-
-#: accounts/models.py:38
-=======
 #: accounts/models.py:49
 msgid "Пользователь"
 msgstr "Filter"
 
 #: accounts/models.py:50
->>>>>>> origin/dev
 msgid "Пользователи"
 msgstr "Filter"
 
@@ -150,11 +138,7 @@ msgstr "Filter"
 msgid "Навыки"
 msgstr "Skills"
 
-<<<<<<< HEAD
-#: accounts/models.py:78
-=======
 #: accounts/models.py:95
->>>>>>> origin/dev
 msgid "Врачи"
 msgstr "Doctor"
 
@@ -164,11 +148,7 @@ msgstr "Doctor"
 msgid "Диагноз"
 msgstr "Diagnosis"
 
-<<<<<<< HEAD
-#: accounts/models.py:90 patients/apps.py:7
-=======
 #: accounts/models.py:109 patients/apps.py:7
->>>>>>> origin/dev
 msgid "Пациенты"
 msgstr "Patient"
 
@@ -202,11 +182,7 @@ msgstr "Kyrgyz"
 msgid "English"
 msgstr "English"
 
-<<<<<<< HEAD
-#: events/admin.py:22
-=======
 #: events/admin.py:25
->>>>>>> origin/dev
 msgid "Зарегистрировано"
 msgstr "Registrate"
 
@@ -253,66 +229,7 @@ msgstr "Registration on event"
 msgid "Регистрации на мероприятия"
 msgstr "Event registrations"
 
-<<<<<<< HEAD
-#: faq/models.py:6
-msgid "Вопрос"
-msgstr ""
-
-#: faq/models.py:7
-msgid "Ответ"
-msgstr ""
-
-#: faq/models.py:8
-msgid "Активен"
-msgstr ""
-
-#: faq/models.py:9
-#, fuzzy
-#| msgid "Тема обращения"
-msgid "Порядок отображения"
-msgstr "Subject of inquiry"
-
-#: faq/models.py:10 news/models/posts.py:39 patients/models/patients.py:37
-#: resources/models/resources.py:48
-msgid "Дата создания"
-msgstr "Creation date"
-
-#: faq/models.py:13
-msgid "Вопрос FAQ"
-msgstr ""
-
-#: faq/models.py:14
-msgid "Вопросы FAQ"
-msgstr ""
-
-#: faq/templates/faq/faq_list.html:4
-#, fuzzy
-#| msgid "Ресурсы — Паллиатив.kg"
-msgid "Часто задаваемые вопросы — Паллиатив.kg"
-msgstr "About us - Palliative.kg"
-
-#: faq/templates/faq/faq_list.html:5
-msgid ""
-"Ответы на часто задаваемые вопросы о паллиативной помощи, мероприятиях и "
-"ресурсах Ассоциации."
-msgstr ""
-
-#: faq/templates/faq/faq_list.html:9
-#, fuzzy
-#| msgid "Принимаемые препараты"
-msgid "Часто задаваемые вопросы"
-msgstr "Medications being taken"
-
-#: faq/templates/faq/faq_list.html:32
-#, fuzzy
-#| msgid "Новостей пока нет."
-msgid "Вопросы пока не добавлены."
-msgstr "No news available yet."
-
-#: main/admin.py:14
-=======
 #: main/admin.py:18
->>>>>>> origin/dev
 msgid "Основная информация"
 msgstr "Main information"
 
@@ -411,16 +328,12 @@ msgstr "Categories"
 msgid "Картинка"
 msgstr "Image"
 
-<<<<<<< HEAD
-#: news/models/posts.py:42
-=======
 #: news/models/posts.py:47 patients/models/patients.py:39
 #: resources/models/resources.py:52
 msgid "Дата создания"
 msgstr "Creation date"
 
 #: news/models/posts.py:50
->>>>>>> origin/dev
 msgid "Новость"
 msgstr "News article"
 
@@ -611,11 +524,7 @@ msgid "Уже есть аккаунт?"
 msgstr "Already have an account?"
 
 #: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-<<<<<<< HEAD
-#: templates/accounts/patient_register.html:82 templates/base.html:150
-=======
 #: templates/accounts/patient_register.html:82 templates/base.html:144
->>>>>>> origin/dev
 msgid "Войти"
 msgstr "Log in"
 
@@ -804,46 +713,15 @@ msgstr "About us"
 msgid "Участие"
 msgstr "Participation"
 
-#: templates/base.html:116
-msgid "FAQ"
-msgstr ""
-
-#: templates/base.html:122 templates/main/contacts.html:4
+#: templates/base.html:116 templates/main/contacts.html:4
 #: templates/main/contacts.html:8
 msgid "Контакты"
 msgstr "Contacts"
 
-#: templates/base.html:128 templates/patients/patient_dashboard.html:6
+#: templates/base.html:122 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
 msgstr "My card"
 
-<<<<<<< HEAD
-#: templates/base.html:134 templates/patients/doctor_dashboard.html:6
-msgid "Мои пациенты"
-msgstr "My patients"
-
-#: templates/base.html:143
-msgid "Выйти"
-msgstr "Log out"
-
-#: templates/base.html:162
-msgid "Выбор языка"
-msgstr "Language selection"
-
-#: templates/base.html:192
-msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
-msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
-
-#: templates/base.html:194 templates/main/contacts.html:12
-msgid "г. Бишкек, ул. Юдахина 61"
-msgstr "Bishkek, 61 Yudakhin St."
-
-#: templates/base.html:199
-msgid "Написать нам"
-msgstr "Contact us"
-
-#: templates/base.html:203
-=======
 #: templates/base.html:128 templates/patients/doctor_dashboard.html:6
 msgid "Мои пациенты"
 msgstr "My patients"
@@ -869,7 +747,6 @@ msgid "Написать нам"
 msgstr "Contact us"
 
 #: templates/base.html:197
->>>>>>> origin/dev
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
