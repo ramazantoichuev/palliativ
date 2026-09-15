@@ -1,4 +1,5 @@
 import factory
+
 from main.models.consultation import ConsultationRequest
 
 

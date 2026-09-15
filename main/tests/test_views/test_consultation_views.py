@@ -1,9 +1,12 @@
 from unittest.mock import patch
-from django.test import TestCase, override_settings
-from django.urls import reverse
+
 from django.contrib.messages import get_messages
 from django.core import mail
+from django.test import TestCase, override_settings
+from django.urls import reverse
+
 from main.models.consultation import ConsultationRequest
+
 
 def build_valid_data():
     return {
@@ -58,7 +61,7 @@ class ConsultationCreateViewTest(TestCase):
 
     def test_valid_post_creates_consultation_request(self):
         self.assertEqual(ConsultationRequest.objects.count(), 0)
-        response = self.client.post(self.url, data=build_valid_data())
+        self.client.post(self.url, data=build_valid_data())
         self.assertEqual(ConsultationRequest.objects.count(), 1)
 
     def test_valid_post_redirects_to_home(self):

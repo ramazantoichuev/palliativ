@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-13 09:23+0000\n"
+"POT-Creation-Date: 2026-09-15 13:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,15 +170,15 @@ msgstr ""
 msgid "Размер файла не должен превышать %(limit)s МБ."
 msgstr "The file size must not exceed %(limit)s MB."
 
-#: config/settings.py:142
+#: config/settings.py:144
 msgid "Russian"
 msgstr "Russian"
 
-#: config/settings.py:143
+#: config/settings.py:145
 msgid "Kyrgyz"
 msgstr "Kyrgyz"
 
-#: config/settings.py:144
+#: config/settings.py:146
 msgid "English"
 msgstr "English"
 
@@ -186,7 +186,7 @@ msgstr "English"
 msgid "Зарегистрировано"
 msgstr "Registrate"
 
-#: events/apps.py:7 events/models.py:19 templates/base.html:99
+#: events/apps.py:7 events/models.py:19 templates/base.html:102
 #: templates/events/event_detail.html:12 templates/events/event_list.html:6
 #: templates/main/home.html:42
 msgid "Мероприятия"
@@ -229,6 +229,55 @@ msgstr "Registration on event"
 msgid "Регистрации на мероприятия"
 msgstr "Event registrations"
 
+#: faq/models.py:6
+msgid "Вопрос"
+msgstr "Question"
+
+#: faq/models.py:7
+msgid "Ответ"
+msgstr "Answer"
+
+#: faq/models.py:8
+msgid "Активен"
+msgstr "Active"
+
+#: faq/models.py:9
+msgid "Порядок отображения"
+msgstr "Display order"
+
+#: faq/models.py:10 news/models/posts.py:47 patients/models/patients.py:39
+#: resources/models/resources.py:52
+msgid "Дата создания"
+msgstr "Creation date"
+
+#: faq/models.py:13
+msgid "Вопрос FAQ"
+msgstr "FAQ question"
+
+#: faq/models.py:14
+msgid "Вопросы FAQ"
+msgstr "FAQ questions"
+
+#: faq/templates/faq/faq_list.html:4
+msgid "Часто задаваемые вопросы — Паллиатив.kg"
+msgstr "Frequently Asked Questions — Palliative.kg"
+
+#: faq/templates/faq/faq_list.html:5
+msgid ""
+"Ответы на часто задаваемые вопросы о паллиативной помощи, мероприятиях и "
+"ресурсах Ассоциации."
+msgstr ""
+"Answers to frequently asked questions about palliative care, events and "
+"resources of the Association."
+
+#: faq/templates/faq/faq_list.html:9
+msgid "Часто задаваемые вопросы"
+msgstr "Frequently Asked Questions"
+
+#: faq/templates/faq/faq_list.html:32
+msgid "Вопросы пока не добавлены."
+msgstr "No questions have been added yet."
+
 #: main/admin.py:18
 msgid "Основная информация"
 msgstr "Main information"
@@ -237,7 +286,7 @@ msgstr "Main information"
 msgid "Управление заявкой"
 msgstr "Request management"
 
-#: main/apps.py:8 templates/base.html:81
+#: main/apps.py:8 templates/base.html:84
 msgid "Главная"
 msgstr "Home page"
 
@@ -308,7 +357,7 @@ msgstr "Consultation request"
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
-#: news/apps.py:8 news/models/posts.py:51 templates/base.html:93
+#: news/apps.py:8 news/models/posts.py:51 templates/base.html:96
 #: templates/main/home.html:41 templates/news/post_list.html:7
 msgid "Новости"
 msgstr "News"
@@ -328,11 +377,6 @@ msgstr "Categories"
 #: news/models/posts.py:31
 msgid "Картинка"
 msgstr "Image"
-
-#: news/models/posts.py:47 patients/models/patients.py:39
-#: resources/models/resources.py:52
-msgid "Дата создания"
-msgstr "Creation date"
 
 #: news/models/posts.py:50
 msgid "Новость"
@@ -389,7 +433,7 @@ msgid "Спасибо! Симптомы обновлены, ниже — мат�
 msgstr ""
 "Thank you! Your symptoms have been updated. Below are materials that may help"
 
-#: resources/apps.py:8 templates/base.html:105
+#: resources/apps.py:8 templates/base.html:108
 #: templates/resources/resource_list.html:7
 msgid "Ресурсы"
 msgstr "Resources"
@@ -474,11 +518,11 @@ msgstr "Resource files"
 msgid "Ссылка на YouTube"
 msgstr "YouTube link"
 
-#: resources/models/resources.py:125
+#: resources/models/resources.py:115
 msgid "Видео-ссылка"
 msgstr "Video link"
 
-#: resources/models/resources.py:126
+#: resources/models/resources.py:116
 msgid "Видео-ссылки"
 msgstr "Video links"
 
@@ -525,7 +569,7 @@ msgid "Уже есть аккаунт?"
 msgstr "Already have an account?"
 
 #: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-#: templates/accounts/patient_register.html:82 templates/base.html:144
+#: templates/accounts/patient_register.html:82 templates/base.html:153
 msgid "Войти"
 msgstr "Log in"
 
@@ -698,62 +742,65 @@ msgstr ""
 msgid "Паллиатив.kg"
 msgstr "About us - Palliative.kg"
 
-#: templates/base.html:57
+#: templates/base.html:60
 msgid "Закрыть"
 msgstr "Close"
 
-#: templates/base.html:71
+#: templates/base.html:74
 msgid "Открыть меню"
 msgstr "Open menu"
 
-#: templates/base.html:87 templates/main/about.html:6
+#: templates/base.html:90 templates/main/about.html:6
 msgid "О нас"
 msgstr "About us"
 
-#: templates/base.html:110
+#: templates/base.html:113
 msgid "Участие"
 msgstr "Participation"
 
-#: templates/base.html:116 templates/main/contacts.html:4
+#: templates/base.html:119
+msgid "FAQ"
+msgstr "FAQ"
+
+#: templates/base.html:125 templates/main/contacts.html:4
 #: templates/main/contacts.html:8
 msgid "Контакты"
 msgstr "Contacts"
 
-#: templates/base.html:122 templates/patients/patient_dashboard.html:6
+#: templates/base.html:131 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
 msgstr "My card"
 
-#: templates/base.html:128 templates/patients/doctor_dashboard.html:6
+#: templates/base.html:137 templates/patients/doctor_dashboard.html:6
 msgid "Мои пациенты"
 msgstr "My patients"
 
-#: templates/base.html:137
+#: templates/base.html:146
 msgid "Выйти"
 msgstr "Log out"
 
-#: templates/base.html:156
+#: templates/base.html:165
 msgid "Выбор языка"
 msgstr "Language selection"
 
-#: templates/base.html:186
+#: templates/base.html:195
 msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/base.html:188 templates/main/contacts.html:12
+#: templates/base.html:197 templates/main/contacts.html:12
 msgid "г. Бишкек, ул. Юдахина 61"
 msgstr "Bishkek, 61 Yudakhin St."
 
-#: templates/base.html:193
+#: templates/base.html:202
 msgid "Написать нам"
 msgstr "Contact us"
 
-#: templates/base.html:196
+#: templates/base.html:205
 #, fuzzy
-#| msgid "Контакты — Паллиатив.kg"
 msgid "Политика обработки данных"
-msgstr "About us - Palliative.kg"
+msgstr "Subject of inquiry"
 
-#: templates/base.html:200
+#: templates/base.html:209
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
@@ -997,25 +1044,16 @@ msgid "Политика обработки данных — Паллиатив.k
 msgstr "About us - Palliative.kg"
 
 #: templates/main/privacy_policy.html:5
-#, fuzzy
-#| msgid "Контакты — Паллиатив.kg"
 msgid ""
 "Политика обработки персональных данных при заполнении формы консультации."
-msgstr "About us - Palliative.kg"
+msgstr ""
 
 #: templates/main/privacy_policy.html:9
-#, fuzzy
-#| msgid "Контакты — Паллиатив.kg"
 msgid "Политика обработки персональных данных"
-msgstr "About us - Palliative.kg"
+msgstr ""
 
 #: templates/main/privacy_policy.html:11
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — "
-#| "поддержка пациентов, обучение специалистов и развитие паллиативной помощи "
-#| "в Кыргызстане."
 msgid ""
 "Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи "
 "Кыргызской Республики обрабатывает персональные данные, которые вы передаёте "
@@ -1030,7 +1068,6 @@ msgstr ""
 
 #: templates/main/privacy_policy.html:13
 #, fuzzy
-#| msgid "Рекомендованные материалы"
 msgid "Какие данные собираются"
 msgstr "Recommended materials"
 
@@ -1040,7 +1077,6 @@ msgstr ""
 
 #: templates/main/privacy_policy.html:16
 #, fuzzy
-#| msgid "Тема обращения"
 msgid "Цель обработки"
 msgstr "Subject of inquiry"
 
@@ -1060,9 +1096,9 @@ msgstr ""
 
 #: templates/main/privacy_policy.html:22
 #, fuzzy
-#| msgid "Сохранить"
+#| msgid "Порядок отображения"
 msgid "Срок хранения"
-msgstr "Submit"
+msgstr "Display order"
 
 #: templates/main/privacy_policy.html:23
 msgid "[Уточняется — согласовать срок хранения с клиентом]"
@@ -1128,9 +1164,8 @@ msgstr ""
 
 #: templates/partial/form.html:12
 #, fuzzy
-#| msgid "Контакты — Паллиатив.kg"
 msgid "Политикой обработки данных"
-msgstr "About us - Palliative.kg"
+msgstr "Subject of inquiry"
 
 #: templates/partial/pagination.html:2
 msgid "Навигация по страницам"
