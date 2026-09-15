@@ -13,16 +13,17 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 import os
 from pathlib import Path
 
+import environ
 from django.contrib.messages import constants as messages
 from django.utils.translation import gettext_lazy as _
-from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(os.path.join(BASE_DIR,".env"))
+SECRET_KEY = env('SECRET_KEY')
+DEBUG=env('DEBUG')
 
-load_dotenv(BASE_DIR / ".env")
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG") == "True"
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     "main",
     "patients",
     "resources",
+    "faq",
 ]
 
 JAZZMIN_SETTINGS = {
@@ -97,6 +99,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "main.context_processors.analytics",
             ],
         },
     },
@@ -109,14 +112,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
-    }
+    'default': env.db('DB_URL'),
 }
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -174,14 +170,31 @@ MAX_IMAGE_DIMENSION_PX = 3000
 MAX_RESOURCE_FILE_SIZE_MB = 15
 DESCRIPTION_MAX_LENGTH = 2000
 
+# Analytics
+# ID счётчиков задаются через .env только на проде; при пустых значениях
+# скрипты аналитики не рендерятся вообще (см. templates/partial/analytics.html).
+GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
+GOOGLE_TAG_MANAGER_ID = os.getenv('GOOGLE_TAG_MANAGER_ID', '')
+YANDEX_METRIKA_ID = os.getenv('YANDEX_METRIKA_ID', '')
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.console.EmailBackend",
-    },
-}
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = os.getenv('EMAIL_HOST', '')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@palliativ.kg')
+
+NOTIFICATION_EMAILS = [
+    email.strip() for email in os.getenv('NOTIFICATION_EMAILS', '').split(',') if email.strip()
+]
 
 MESSAGE_TAGS = {
     messages.ERROR: "danger",

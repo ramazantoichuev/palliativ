@@ -1,8 +1,11 @@
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
+
+from common.notifications import notify_admins
 
 from .forms import (
     DoctorApplicationForm,
@@ -23,9 +26,10 @@ class PatientRegisterView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            admin_url = request.build_absolute_uri(reverse("admin:accounts_baseuser_change", args=[user.pk]))
+            notify_admins("Новая регистрация пациента", f"Email: {user.email}\nАдминка: {admin_url}")
             return redirect("main:about")
         return render(request, "accounts/patient_register.html", {"form": form})
-
 
 class DoctorRegisterView(View):
     def get(self, request):
@@ -35,10 +39,11 @@ class DoctorRegisterView(View):
     def post(self, request):
         form = DoctorApplicationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            admin_url = request.build_absolute_uri(reverse("admin:accounts_baseuser_change", args=[user.pk]))
+            notify_admins("Новая заявка врача/волонтёра", f"Email: {user.email}\nАдминка: {admin_url}")
             return render(request, "accounts/doctor_application_sent.html")
         return render(request, "accounts/doctor_register.html", {"form": form})
-
 
 class CustomLoginView(LoginView):
     form_class = EmailAuthenticationForm

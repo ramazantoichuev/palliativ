@@ -18,11 +18,21 @@
 
     {% if resource.videos.all %}
     <h4 class="mt-4">{% translate "Видео" %}</h4>
-    <ul>
+    <div class="row">
         {% for v in resource.videos.all %}
-        <li><a href="{{ v.url }}" target="_blank">{{ v.url }}</a></li>
+            {% with embed_url=v.get_embed_url %}
+            {% if embed_url %}
+            <div class="col-md-6 mb-3">
+                <div class="ratio ratio-16x9">
+                    <iframe src="{{ embed_url }}"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+            {% endif %}
+            {% endwith %}
         {% endfor %}
-    </ul>
+    </div>
     {% endif %}
 
     {% if not resource.files.all and not resource.videos.all %}
