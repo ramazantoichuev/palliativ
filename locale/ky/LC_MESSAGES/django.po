@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 13:24+0000\n"
+"POT-Creation-Date: 2026-09-15 13:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -772,9 +772,9 @@ msgid "FAQ"
 msgstr "FAQ"
 
 #: templates/base.html:125 templates/main/contacts.html:4
-#: templates/main/contacts.html:8
+#: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
 msgid "Контакты"
-msgstr "Байланыш"
+msgstr ""
 
 #: templates/base.html:131 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
@@ -1097,7 +1097,9 @@ msgid "Срок хранения"
 msgstr ""
 
 #: templates/main/privacy_policy.html:23
-msgid "[Уточняется — согласовать срок хранения с клиентом]"
+msgid ""
+"Данные заявки хранятся в течение 3 (трёх) лет с момента обращения, после "
+"чего удаляются."
 msgstr ""
 
 #: templates/main/privacy_policy.html:25
@@ -1105,7 +1107,9 @@ msgid "Как удалить свои данные"
 msgstr ""
 
 #: templates/main/privacy_policy.html:26
-msgid "[Уточняется — согласовать контакт/процедуру удаления с клиентом]"
+msgid ""
+"Чтобы удалить свои данные, оставьте заявку по номеру WhatsApp или адресу "
+"электронной почты, указанным на странице"
 msgstr ""
 
 #: templates/news/post_detail.html:35
