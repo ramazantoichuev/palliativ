@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 13:07+0000\n"
+"POT-Creation-Date: 2026-09-15 13:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -353,7 +353,7 @@ msgstr "Consultation request"
 msgid "Заявки на консультацию"
 msgstr "Consultation request"
 
-#: main/views.py:32
+#: main/views.py:36
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
@@ -764,9 +764,9 @@ msgid "FAQ"
 msgstr "FAQ"
 
 #: templates/base.html:125 templates/main/contacts.html:4
-#: templates/main/contacts.html:8
+#: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
 msgid "Контакты"
-msgstr "Contacts"
+msgstr ""
 
 #: templates/base.html:131 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
@@ -796,7 +796,11 @@ msgstr "Bishkek, 61 Yudakhin St."
 msgid "Написать нам"
 msgstr "Contact us"
 
-#: templates/base.html:206
+#: templates/base.html:205
+msgid "Политика обработки данных"
+msgstr "Data Processing Policy"
+
+#: templates/base.html:209
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
@@ -938,6 +942,14 @@ msgid ""
 "форма обратной связи."
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
+#: templates/main/consultation.html:11
+msgid "Отправляя форму, вы соглашаетесь с"
+msgstr "By submitting the form, you agree to the"
+
+#: templates/main/consultation.html:12
+msgid "Политикой обработки данных"
+msgstr "Data Processing Policy"
+
 #: templates/main/contacts.html:10
 msgid "Адрес"
 msgstr "Address"
@@ -1020,6 +1032,72 @@ msgstr ""
 #: templates/main/home.html:43
 msgid "Оставить заявку"
 msgstr "Submit a request"
+
+#: templates/main/privacy_policy.html:4
+msgid "Политика обработки данных — Паллиатив.kg"
+msgstr "Data Processing Policy — Palliative.kg"
+
+#: templates/main/privacy_policy.html:5
+msgid ""
+"Политика обработки персональных данных при заполнении формы консультации."
+msgstr ""
+
+#: templates/main/privacy_policy.html:9
+msgid "Политика обработки персональных данных"
+msgstr ""
+
+#: templates/main/privacy_policy.html:11
+msgid ""
+"Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи"
+" Кыргызской Республики обрабатывает персональные данные, которые вы "
+"передаёте через форму заявки на консультацию."
+msgstr ""
+
+#: templates/main/privacy_policy.html:13
+msgid "Какие данные собираются"
+msgstr ""
+
+#: templates/main/privacy_policy.html:14
+msgid "Имя, номер телефона, адрес электронной почты, тема обращения."
+msgstr ""
+
+#: templates/main/privacy_policy.html:16
+msgid "Цель обработки"
+msgstr ""
+
+#: templates/main/privacy_policy.html:17
+msgid ""
+"Данные используются исключительно для того, чтобы связаться с вами по вашей "
+"заявке на консультацию."
+msgstr ""
+
+#: templates/main/privacy_policy.html:19
+msgid "Кто имеет доступ"
+msgstr ""
+
+#: templates/main/privacy_policy.html:20
+msgid "Доступ к заявкам имеют сотрудники Ассоциации с ролью «Менеджер»."
+msgstr ""
+
+#: templates/main/privacy_policy.html:22
+msgid "Срок хранения"
+msgstr ""
+
+#: templates/main/privacy_policy.html:23
+msgid ""
+"Данные заявки хранятся в течение 3 (трёх) лет с момента обращения, после "
+"чего удаляются."
+msgstr ""
+
+#: templates/main/privacy_policy.html:25
+msgid "Как удалить свои данные"
+msgstr ""
+
+#: templates/main/privacy_policy.html:26
+msgid ""
+"Чтобы удалить свои данные, оставьте заявку по номеру WhatsApp или адресу "
+"электронной почты, указанным на странице"
+msgstr ""
 
 #: templates/news/post_detail.html:35
 msgid "Вернуться к новостям"
@@ -1172,26 +1250,6 @@ msgstr "All symptoms"
 #: templates/resources/resource_list.html:59
 msgid "В этой подкатегории пока нет материалов."
 msgstr "There are no material in this subcategory"
-
-#, fuzzy
-#~ msgid ""
-#~ "Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи"
-#~ " Кыргызской Республики обрабатывает персональные данные, которые вы "
-#~ "передаёте через форму заявки на консультацию."
-#~ msgstr ""
-#~ "\n"
-#~ "            Association of Palliative and Hospice Care of the Kyrgyz Republic.\n"
-#~ "            We bring together doctors, clinics, and families to ensure\n"
-#~ "            a dignified quality of life at any stage.\n"
-#~ "             "
-
-#, fuzzy
-#~ msgid "Какие данные собираются"
-#~ msgstr "Recommended materials"
-
-#, fuzzy
-#~ msgid "Цель обработки"
-#~ msgstr "Subject of inquiry"
 
 #~ msgid "Стать врачом или волонтёром"
 #~ msgstr "Doctor/volunteer"
