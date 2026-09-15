@@ -52,7 +52,10 @@
                                  style="height: 200px; object-fit: cover;">
                         {% endif %}
                         <div class="card-body d-flex flex-column">
-                            <h3 class="h5 card-title">{{ event.title }}</h3>
+                            <h3 class="h5 card-title">
+                                <a href="{{ event.get_absolute_url }}" class="text-decoration-none text-dark">
+                                    {{ event.title }}</a>
+                            </h3>
                             <p class="card-text text-muted small mb-1">
                                 <time datetime="{{ event.event_date|date:'c' }}">
                                     {{ event.event_date|date:"d.m.Y H:i" }}
