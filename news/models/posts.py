@@ -4,7 +4,16 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.urls import reverse
 
-from common.validators import validate_image_size, validate_image_dimensions
+from common.validators import validate_image_size
+
+
+class ImageProcessingStatus(models.TextChoices):
+    PENDING = 'pending', _('В очереди')
+    PROCESSING = 'processing', _('Обрабатывается')
+    DONE = 'done', _('Обработано')
+    FAILED = 'failed', _('Ошибка обработки')
+    SKIPPED = 'skipped', _('Сжатие не требуется')
+
 
 
 class Category(models.Model):
@@ -31,7 +40,6 @@ class Post(models.Model):
         validators=[
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp']),
             validate_image_size,
-            validate_image_dimensions,
         ],
     )
     category = models.ForeignKey(
