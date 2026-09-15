@@ -12,7 +12,8 @@
       "audience": "caregiver",
       "subcategory": "symptom_control",
       "created_at": "2026-08-01T09:00:00Z",
-      "updated_at": "2026-08-01T09:00:00Z"
+      "updated_at": "2026-08-01T09:00:00Z",
+      "slug": "kak-kontrolirovat-bol-v-domashnih-uslovijah"
     }
   },
   {
@@ -28,7 +29,8 @@
       "audience": "specialist",
       "subcategory": "npa",
       "created_at": "2026-08-05T09:00:00Z",
-      "updated_at": "2026-08-05T09:00:00Z"
+      "updated_at": "2026-08-05T09:00:00Z",
+      "slug": "prava-patsienta-na-palliativnuju-pomosch"
     }
   },
   {
@@ -44,7 +46,8 @@
       "audience": "caregiver",
       "subcategory": "care_feeding",
       "created_at": "2026-08-10T09:00:00Z",
-      "updated_at": "2026-08-10T09:00:00Z"
+      "updated_at": "2026-08-10T09:00:00Z",
+      "slug": "uhod-za-kozhej-profilaktika-prolezhnej"
     }
   },
   {
@@ -60,7 +63,8 @@
       "audience": "caregiver",
       "subcategory": "psychologist_tips",
       "created_at": "2026-08-12T09:00:00Z",
-      "updated_at": "2026-08-12T09:00:00Z"
+      "updated_at": "2026-08-12T09:00:00Z",
+      "slug": "kak-spravitsja-s-trevogoj-sovety-psihologa"
     }
   },
   {
@@ -76,7 +80,8 @@
       "audience": "specialist",
       "subcategory": "symptom_control",
       "created_at": "2026-08-14T09:00:00Z",
-      "updated_at": "2026-08-14T09:00:00Z"
+      "updated_at": "2026-08-14T09:00:00Z",
+      "slug": "protokol-kontrolja-odyshki-dlja-spetsialistov"
     }
   },
   {
@@ -92,7 +97,8 @@
       "audience": "caregiver",
       "subcategory": "care_feeding",
       "created_at": "2026-08-16T09:00:00Z",
-      "updated_at": "2026-08-16T09:00:00Z"
+      "updated_at": "2026-08-16T09:00:00Z",
+      "slug": "pitanie-pri-potere-appetita"
     }
   },
   {
@@ -108,7 +114,8 @@
       "audience": "caregiver",
       "subcategory": "social_support",
       "created_at": "2026-08-18T09:00:00Z",
-      "updated_at": "2026-08-18T09:00:00Z"
+      "updated_at": "2026-08-18T09:00:00Z",
+      "slug": "mery-sotsialnoj-podderzhki-dlja-semej-patsientov"
     }
   }
 ]
