@@ -1,6 +1,7 @@
 import factory
-from resources.models.resources import Resource, ResourceFile, ResourceVideoLink
+
 from patients.models.patients import Symptom
+from resources.models.resources import Resource, ResourceVideoLink
 
 
 class SymptomFactory(factory.django.DjangoModelFactory):

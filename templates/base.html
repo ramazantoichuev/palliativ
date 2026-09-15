@@ -44,9 +44,12 @@
     {% endblock %}
 
     <link rel="canonical" href="{% canonical_url %}">
+
+    {% include 'partial/analytics.html' %}
 </head>
 
 <body>
+{% include 'partial/analytics_body.html' %}
 
 {% if messages %}
     <div class="container mt-3">

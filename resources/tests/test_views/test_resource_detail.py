@@ -1,9 +1,12 @@
-from django.urls import reverse
-from django.core.files.uploadedfile import SimpleUploadedFile
-from resources.tests.factories import ResourceFactory, ResourceVideoLinkFactory
-from resources.models.resources import ResourceFile
 import tempfile
+
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
+from django.urls import reverse
+
+from resources.models.resources import ResourceFile
+from resources.tests.factories import ResourceFactory, ResourceVideoLinkFactory
+
 
 @override_settings(MEDIA_ROOT=tempfile.mkdtemp())
 class ResourceDetailViewTest(TestCase):
