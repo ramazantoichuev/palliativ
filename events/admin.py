@@ -4,14 +4,19 @@ from modeltranslation.admin import TranslationAdmin
 
 from accounts.models import BaseUser
 
+from .forms import EventAdminForm
 from .models import Event, EventRegistration
 
 
 @admin.register(Event)
 class EventAdmin(TranslationAdmin):
+    form = EventAdminForm
     list_filter = ("event_date", "title", "location")
     search_fields = ("title", "description", "location")
     prepopulated_fields = {"slug": ("title",)}
+
+    class Media:
+        js = ()
 
     def get_list_display(self, request):
         base_fields = ("title", "description", "event_date", "location")
