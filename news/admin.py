@@ -12,6 +12,7 @@ class CategoryAdmin(TranslationAdmin):
 
 @admin.register(Post)
 class PostAdmin(TranslationAdmin):
+    readonly_fields = ['image_processing_status']
     list_display = ('title', 'category', 'created_at')
     list_filter = ('category', 'created_at')
     search_fields = ('title', 'content')

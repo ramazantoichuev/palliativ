@@ -42,6 +42,13 @@ class Post(models.Model):
             validate_image_size,
         ],
     )
+    image_processing_status = models.CharField(
+        _('Статус обработки изображения'),
+        max_length=20,
+        choices=ImageProcessingStatus.choices,
+        default=ImageProcessingStatus.SKIPPED,
+        blank=True,
+    )
     category = models.ForeignKey(
         Category, verbose_name=_('Категория'),
         on_delete=models.PROTECT, related_name='posts')
