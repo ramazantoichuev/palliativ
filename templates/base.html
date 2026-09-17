@@ -55,9 +55,12 @@
     {% endblock %}
 
     <link rel="canonical" href="{% canonical_url %}">
+
+    {% include 'partial/analytics.html' %}
 </head>
 
 <body>
+{% include 'partial/analytics_body.html' %}
 
 {% if messages %}
     <div class="container mt-3">
@@ -122,6 +125,12 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{% url 'accounts:register_type' %}">{% translate "Участие" %}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link{% if ns == 'faq' %} active{% endif %}"
+                            {% if ns == 'faq' %}aria-current="page"{% endif %}
+                            href="{% url 'faq:faq_list' %}">{% translate "FAQ" %}</a>
                     </li>
 
                     <li class="nav-item">
@@ -205,6 +214,9 @@
         <div class="text-center text-md-end">
             <div>
                 <a href="{% url 'main:contacts' %}">{% translate "Написать нам" %}</a>
+            </div>
+            <div>
+                <a href="{% url 'main:privacy_policy' %}">{% translate "Политика обработки данных" %}</a>
             </div>
             <small>
                 &copy; {% now "Y" %} Паллиатив.kg.

@@ -12,36 +12,45 @@ Class-based views
 1. Import the include() function: from django.urls import include, path
 2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
 from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path
 from django.views.generic import TemplateView
 
-from news.sitemaps import PostSitemap
 from events.sitemaps import EventSitemap
+from news.sitemaps import PostSitemap
 from resources.sitemaps import ResourceSitemap
 
 sitemaps = {
-    'news': PostSitemap,
-    'events': EventSitemap,
-    'resources': ResourceSitemap,
+    "news": PostSitemap,
+    "events": EventSitemap,
+    "resources": ResourceSitemap,
 }
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('', include('main.urls')),
-    path('i18n/', include('django.conf.urls.i18n')),
-    path('events/', include('events.urls')),
-    path('news/', include('news.urls')),
-    path('patients/', include('patients.urls')),
-    path('resources/', include('resources.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.views.sitemap'),
-    path('robots.txt', TemplateView.as_view(template_name='robots.txt',
-        content_type='text/plain'), name='robots_txt'),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("accounts.urls")),
+    path("", include("main.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("events/", include("events.urls")),
+    path("news/", include("news.urls")),
+    path("patients/", include("patients.urls")),
+    path("resources/", include("resources.urls")),
+    path("faq/", include("faq.urls")),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+        name="robots_txt",
+    ),
 ]
 
 if settings.DEBUG:
@@ -49,5 +58,5 @@ if settings.DEBUG:
     import debug_toolbar
 
     urlpatterns = [
-                      path('__debug__/', include(debug_toolbar.urls)),
-                  ] + urlpatterns
+        path("__debug__/", include(debug_toolbar.urls)),
+    ] + urlpatterns
