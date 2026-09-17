@@ -6,11 +6,12 @@ from events.models import Event, EventRegistration
 class EventRegistrationModelTests(TestCase):
     def setUp(self):
         self.event = Event.objects.create(
-            title='testing',
-            description='test',
-            content='test',
-            event_date='2026-08-24 00:00:00',
-            location='test')
+            title="testing",
+            description="test",
+            content="test",
+            event_date="2026-08-24 00:00:00",
+            location="test",
+        )
 
     def test_create_registration(self):
         registration = EventRegistration.objects.create(
