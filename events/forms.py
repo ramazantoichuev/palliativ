@@ -13,23 +13,35 @@ class EventRegistrationForm(forms.ModelForm):
             "phone": forms.TextInput(attrs={"class": "form-control"}),
         }
 
+
 class EventAdminForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ["title", "slug", "description","content", "location", "image", "event_date"]
+        fields = [
+            "title",
+            "slug",
+            "description",
+            "content",
+            "location",
+            "image",
+            "event_date",
+        ]
+        # SplitDateTimeWidget возвращает пару [дата, время] — ему обязателен
+        # парный SplitDateTimeField, иначе DateTimeField падает на списке.
+        field_classes = {"event_date": forms.SplitDateTimeField}
         widgets = {
-            'event_date': forms.SplitDateTimeWidget(
-                date_format='%Y-%m-%d',
-                time_format='%H:%M',
+            "event_date": forms.SplitDateTimeWidget(
+                date_format="%Y-%m-%d",
+                time_format="%H:%M",
                 date_attrs={
-                    'type': 'date',
-                    'class': 'form-control d-inline-block',
-                    'style': 'width: 48%; margin-right: 2%; position: relative; z-index: 5;'
+                    "type": "date",
+                    "class": "form-control d-inline-block",
+                    "style": "width: 48%; margin-right: 2%; position: relative; z-index: 5;",
                 },
                 time_attrs={
-                    'type': 'time',
-                    'class': 'form-control d-inline-block',
-                    'style': 'width: 49%; position: relative; z-index: 5;'
-                }
+                    "type": "time",
+                    "class": "form-control d-inline-block",
+                    "style": "width: 49%; position: relative; z-index: 5;",
+                },
             ),
         }

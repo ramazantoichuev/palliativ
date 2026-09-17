@@ -15,9 +15,6 @@ class EventAdmin(TranslationAdmin):
     search_fields = ("title", "description", "location")
     prepopulated_fields = {"slug": ("title",)}
 
-    class Media:
-        js = ()
-
     def get_list_display(self, request):
         base_fields = ("title", "description", "event_date", "location")
         if request.user.role in [BaseUser.Role.ADMIN, BaseUser.Role.MANAGER]:
