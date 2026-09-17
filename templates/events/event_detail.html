@@ -3,8 +3,8 @@
 {% block title %}{{ event.title }}{% endblock %}
 {% block meta_description %}{{ event.description|truncatechars:160 }}{% endblock %}
 {% block og_image %}
-{% if post.image %}
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ post.image.url }}">
+{% if event.image %}
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ event.image.url }}">
 {% endif %}
 {% endblock %}
 {% block content %}

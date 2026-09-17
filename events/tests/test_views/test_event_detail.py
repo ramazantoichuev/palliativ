@@ -63,7 +63,9 @@ class TestEventDetailView(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "<img")
+        # Логотип в base.html — тоже <img>, поэтому проверяем отсутствие
+        # именно изображения события: его тег содержит alt с названием события.
+        self.assertNotContains(response, f'alt="{self.event.title}"')
 
     def test_event_image_is_rendered_when_present(self):
         with (
@@ -77,6 +79,23 @@ class TestEventDetailView(TestCase):
             )
 
             self.assertContains(response, event.image.url)
+
+    def test_og_image_meta_is_rendered_when_image_present(self):
+        with (
+            tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as media_root,
+            override_settings(MEDIA_ROOT=media_root),
+        ):
+            event = EventFactory(slug="with-og-image", image=make_image())
+
+            response = self.client.get(
+                reverse("events:event_detail", args=[event.slug])
+            )
+
+            self.assertContains(
+                response,
+                f'<meta property="og:image" '
+                f'content="http://testserver{event.image.url}">',
+            )
 
     def test_valid_post_creates_registration_for_this_event(self):
         response = self.client.post(self.url, data=self.valid_data)
