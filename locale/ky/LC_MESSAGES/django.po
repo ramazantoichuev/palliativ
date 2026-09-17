@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-17 06:40+0000\n"
+"POT-Creation-Date: 2026-09-17 07:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,7 +187,7 @@ msgstr "Англисче"
 msgid "Зарегистрировано"
 msgstr "Катталуу"
 
-#: events/apps.py:7 events/models.py:19 templates/base.html:102
+#: events/apps.py:7 events/models.py:19 templates/base.html:116
 #: templates/events/event_detail.html:12 templates/events/event_list.html:6
 #: templates/main/home.html:42
 msgid "Мероприятия"
@@ -288,7 +288,7 @@ msgstr "Негизги маалымат"
 msgid "Управление заявкой"
 msgstr "Билдирмени башкаруу"
 
-#: main/apps.py:8 templates/base.html:84
+#: main/apps.py:8 templates/base.html:98
 msgid "Главная"
 msgstr "Башкы бет"
 
@@ -358,7 +358,7 @@ msgstr "Консультация алууга билдирме"
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Консультация алууга билдирмеңиз ийгиликтүү жөнөтүлдү!"
 
-#: news/apps.py:8 news/models/posts.py:51 templates/base.html:96
+#: news/apps.py:8 news/models/posts.py:51 templates/base.html:110
 #: templates/main/home.html:41 templates/news/post_list.html:7
 msgid "Новости"
 msgstr "Жаңылыктар"
@@ -434,7 +434,7 @@ msgid "Спасибо! Симптомы обновлены, ниже — мат�
 msgstr ""
 "Рахмат! Симптомдор жаңыртылды, төмөндө жардам бере турган материалдар бар"
 
-#: resources/apps.py:8 templates/base.html:108
+#: resources/apps.py:8 templates/base.html:122
 #: templates/resources/resource_list.html:7
 msgid "Ресурсы"
 msgstr "Ресурстар"
@@ -574,7 +574,7 @@ msgid "Уже есть аккаунт?"
 msgstr "Аккаунтуңуз барбы?"
 
 #: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-#: templates/accounts/patient_register.html:82 templates/base.html:153
+#: templates/accounts/patient_register.html:82 templates/base.html:167
 msgid "Войти"
 msgstr "Кирүү"
 
@@ -734,7 +734,7 @@ msgid "Паллиатив.kg — паллиативная и хосписная 
 msgstr ""
 "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:34
+#: templates/base.html:45
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -751,69 +751,73 @@ msgstr ""
 "            үй-бүлөлөрдү бириктиребиз.\n"
 "             "
 
-#: templates/base.html:38
+#: templates/base.html:49
 msgid "Паллиатив.kg"
 msgstr "Биз жөнүндө — Паллиатив.kg"
 
-#: templates/base.html:60
+#: templates/base.html:71
 msgid "Закрыть"
 msgstr "Жабуу"
 
-#: templates/base.html:74
+#: templates/base.html:83
+msgid "Ассоциация паллиативной и хосписной помощи"
+msgstr "Паллиативдик жана хоспистик жардам ассоциациясы"
+
+#: templates/base.html:88
 msgid "Открыть меню"
 msgstr "Менюну ачуу"
 
-#: templates/base.html:90 templates/main/about.html:6
+#: templates/base.html:104 templates/main/about.html:6
 msgid "О нас"
 msgstr "Биз жөнүндө"
 
-#: templates/base.html:113
+#: templates/base.html:127
 msgid "Участие"
 msgstr "Катышуу"
 
-#: templates/base.html:119
+#: templates/base.html:133
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/base.html:125 templates/main/contacts.html:4
+#: templates/base.html:139 templates/main/contacts.html:4
 #: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
 msgid "Контакты"
 msgstr ""
 
-#: templates/base.html:131 templates/patients/patient_dashboard.html:6
+#: templates/base.html:145 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
 msgstr "Менин китепчем"
 
-#: templates/base.html:137 templates/patients/doctor_dashboard.html:6
+#: templates/base.html:151 templates/patients/doctor_dashboard.html:6
 msgid "Мои пациенты"
 msgstr "Менин пациенттерим"
 
-#: templates/base.html:146
+#: templates/base.html:160
 msgid "Выйти"
 msgstr "Чыгуу"
 
-#: templates/base.html:165
+#: templates/base.html:179
 msgid "Выбор языка"
 msgstr "Тилди тандоо"
 
-#: templates/base.html:195
+#: templates/base.html:209
 msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
 msgstr ""
 "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:197 templates/main/contacts.html:12
+#: templates/base.html:211 templates/main/contacts.html:12
 msgid "г. Бишкек, ул. Юдахина 61"
 msgstr "Бишкек ш., Юдахин көч. 61"
 
-#: templates/base.html:202
+#: templates/base.html:216
 msgid "Написать нам"
 msgstr "Бизге жазыңыз"
 
-#: templates/base.html:205
+#: templates/base.html:219
 msgid "Политика обработки данных"
 msgstr "Маалыматтарды иштетүү саясаты"
 
-#: templates/base.html:209
+#: templates/base.html:223
 msgid "Все права защищены."
 msgstr "Бардык укуктар корголгон."
 
