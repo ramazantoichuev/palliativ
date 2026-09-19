@@ -1,7 +1,10 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
+from modeltranslation.admin import TranslationAdmin
+from django.utils.text import Truncator
 
 from .models.consultation import ConsultationRequest
+from .models.editable_text_block import EditableTextBlock
 
 # Register your models here.
 
@@ -21,3 +24,17 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
         (_("Управление заявкой"), {"fields": ("status", "created_at")}),
     )
     readonly_fields = ("created_at",)
+
+@admin.register(EditableTextBlock)
+class EditableTextBlockAdmin(TranslationAdmin):
+    list_display = ("slug", "get_short_content")
+    search_fields = ("slug", "content")
+    ordering = ("slug",)
+
+    def get_short_content(self, obj):
+        if obj.content:
+            return Truncator(obj.content, 80).result
+        return "-"
+    get_short_content.short_description = _("Содержимое текста")
+
+
