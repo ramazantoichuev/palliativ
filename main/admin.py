@@ -1,14 +1,12 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
-from django.utils.text import Truncator
 
 from .models.consultation import ConsultationRequest
 from .models.editable_text_block import EditableTextBlock
 
+
 # Register your models here.
-
-
 @admin.register(ConsultationRequest)
 class ConsultationRequestAdmin(admin.ModelAdmin):
     list_display = ("first_name", "phone", "email", "topic", "status", "created_at")
@@ -27,14 +25,27 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
 
 @admin.register(EditableTextBlock)
 class EditableTextBlockAdmin(TranslationAdmin):
-    list_display = ("slug", "get_short_content")
+    list_display = ("slug",)
     search_fields = ("slug", "content")
     ordering = ("slug",)
 
-    def get_short_content(self, obj):
-        if obj.content:
-            return Truncator(obj.content, 80).result
-        return "-"
-    get_short_content.short_description = _("Содержимое текста")
+    def has_module_permission(self, request):
+        return request.user.is_authenticated and (
+            request.user.is_superuser or getattr(request.user, "role", "") == "admin"
+        )
+
+    def has_permission(self, request, obj=None):
+        return request.user.is_authenticated and (
+            request.user.is_superuser or getattr(request.user, "role", "") == "admin"
+        )
+
+    def has_add_permission(self, request):
+        return self.has_module_permission(request)
+
+    def has_change_permission(self, request, obj=None):
+        return self.has_module_permission(request)
+
+    def has_delete_permission(self, request, obj=None):
+        return self.has_module_permission(request)
 
 

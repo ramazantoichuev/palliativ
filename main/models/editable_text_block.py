@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+
 class EditableTextBlock(models.Model):
     slug = models.SlugField(
         _("Уникальный идентификатор (Slug)"),
