@@ -230,5 +230,15 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    [...popoverTriggerList].map(el => new bootstrap.Popover(el, {
+        trigger: 'focus',
+        html: false,
+    }));
+});
+</script>
+
 </body>
 </html>
