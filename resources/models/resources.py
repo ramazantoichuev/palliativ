@@ -54,6 +54,10 @@ class Resource(models.Model):
     created_at = models.DateTimeField(_("Дата создания"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Дата обновления"), auto_now=True)
 
+    terms = models.ManyToManyField(
+        'resources.Term', verbose_name=_('Термины'), blank=True, related_name='resources'
+    )
+
     class Meta:
         verbose_name = _("Справочный материал")
         verbose_name_plural = _("Справочные материалы")
