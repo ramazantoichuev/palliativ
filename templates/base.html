@@ -154,7 +154,7 @@
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <form action="{% url 'accounts:logout' %}" method="post" class="d-inline">
+                        <form action="{% url 'accounts:logout' %}" method="post" class="d-flex justify-content-center">
                             {% csrf_token %}
                             <button type="submit" class="nav-link btn btn-link">
                                 {% translate "Выйти" %}
