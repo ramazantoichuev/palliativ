@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load terms %}
 {% block title %}{{ resource.title }}{% endblock %}
 {% block meta_description %}{{ resource.description|truncatechars:160 }}{% endblock %}
 {% block content %}
@@ -38,5 +39,6 @@
     {% if not resource.files.all and not resource.videos.all %}
     <p class="text-muted">{% translate "Дополнительных материалов нет." %}</p>
     {% endif %}
+    {% render_terms resource %}
 </div>
 {% endblock %}>

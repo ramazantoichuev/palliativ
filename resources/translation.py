@@ -1,7 +1,7 @@
 from modeltranslation.translator import TranslationOptions, register
-from models.terms import Term
 
 from .models.resources import Resource
+from .models.terms import Term
 
 
 @register(Resource)
