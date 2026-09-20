@@ -2,6 +2,7 @@ import factory
 
 from patients.models.patients import Symptom
 from resources.models.resources import Resource, ResourceVideoLink
+from resources.models.terms import Term
 
 
 class SymptomFactory(factory.django.DjangoModelFactory):
@@ -9,6 +10,12 @@ class SymptomFactory(factory.django.DjangoModelFactory):
         model = Symptom
 
     name = factory.Sequence(lambda n: f'Симптом {n}')
+
+class TermFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Term
+
+    name = factory.Sequence(lambda n: f'Термин {n}')
 
 
 class ResourceFactory(factory.django.DjangoModelFactory):
