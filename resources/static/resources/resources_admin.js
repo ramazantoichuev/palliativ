@@ -1,9 +1,8 @@
 (function () {
     const mapping = {
         'specialist': ['symptom_control', 'end_of_life_care', 'npa'],
-        'caregiver': ['care_feeding', 'psychologist_tips', 'meds_rights', 'social_support'],
-        "pediatric": ['care_feeding', 'psychologist_tips', 'meds_rights', 'social_support', 'symptom_control', 'end_of_life_care', 'npa']
-
+        'caregiver': ['symptom_control', 'care_feeding', 'psychologist_tips', 'meds_rights', 'social_support'],
+        'pediatric': ['care_feeding', 'psychologist_tips', 'meds_rights', 'social_support', 'symptom_control', 'end_of_life_care', 'npa']
     };
     function applyDropdownVisibilityFilter() {
         const jq = window.django ? window.django.jQuery : window.jQuery;
@@ -33,28 +32,15 @@
                         itemKey = originalOption.val();
                     }
                 }
-                if (itemKey && itemKey !== "") {
+                // Выбранное значение не прячем: в базе есть пары вне маппинга,
+                // скрытие ломало бы редактирование существующих ресурсов.
+                if (itemKey && itemKey !== "" && itemKey !== subcategoryField.val()) {
                     if (allowedKeys.indexOf(itemKey) === -1) {
                         item.attr('style', 'display: none !important;');
                         item.removeClass('select2-results__option--highlighted');
                     }
                 }
             });
-        }
-    }
-    function validateSelection() {
-        const jq = window.django ? window.django.jQuery : window.jQuery;
-        if (!jq) return;
-
-        const audienceField = jq('select[id^="id_audience"]');
-        const subcategoryField = jq('select[id^="id_subcategory"]');
-
-        const selectedAudience = audienceField.val();
-        const currentSubcategory = subcategoryField.val();
-        const allowedKeys = mapping[selectedAudience] || [];
-
-        if (currentSubcategory && allowedKeys.indexOf(currentSubcategory) === -1) {
-            subcategoryField.val("").trigger('change.select2');
         }
     }
     const observer = new MutationObserver((mutations) => {
@@ -81,17 +67,9 @@
     if (document.body) {
         observer.observe(document.body, { childList: true, subtree: true });
     }
-    document.addEventListener('change', (event) => {
-        if (event.target && event.target.id && event.target.id.indexOf('id_audience') === 0) {
-            validateSelection();
-        }
-    }, true);
     document.addEventListener('keyup', (event) => {
         if (event.target && event.target.classList.contains('select2-search__field')) {
             setTimeout(applyDropdownVisibilityFilter, 10);
         }
     }, true);
-    window.addEventListener('load', () => {
-        setTimeout(validateSelection, 200);
-    });
 })();
