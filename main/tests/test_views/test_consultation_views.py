@@ -99,3 +99,13 @@ class MainPagesTest(TestCase):
     def test_contacts_page_returns_200(self):
         response = self.client.get(reverse('main:contacts'))
         self.assertEqual(response.status_code, 200)
+
+    def test_contacts_page_contains_actual_contact_information(self):
+        response = self.client.get(reverse('main:contacts'))
+
+        self.assertContains(response, '0312 214015')
+        self.assertContains(response, 'г. Бишкек, ул. Юдахина 61')
+        self.assertContains(response, '+996 555 922 604')
+        self.assertContains(response, 'palliativecare_kg')
+        self.assertContains(response, 'https://www.facebook.com/palliativecare.kg')
+        self.assertContains(response, 'https://2gis.kg/bishkek/geo/70000001117702816')
