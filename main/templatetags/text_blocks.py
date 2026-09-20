@@ -10,18 +10,20 @@ register = template.Library()
 @register.simple_tag
 def get_text_block(slug, fallback="", as_list=False):
     try:
-        obj = EditableTextBlock.objects.get(slug=slug)
-        text = obj.content
+        text = EditableTextBlock.objects.get(slug=slug).content
+        from_db = True
     except EditableTextBlock.DoesNotExist:
         text = fallback
+        from_db = False
 
     if not text:
         return ""
     if as_list:
-        lines = [line.strip() for line in text.split('\n') if line.strip()]
-        html_list = "<ul>"
-        for line in lines:
-            html_list += f"<li>{escape(line)}</li>"
-        html_list += "</ul>"
-        return mark_safe(html_list)
+        lines = [line.strip() for line in text.split("\n") if line.strip()]
+        items = "".join(f"<li>{escape(line)}</li>" for line in lines)
+        return mark_safe(f"<ul>{items}</ul>")
+    if from_db:
+        # Контент вводится в админке — экранируем, иначе stored XSS.
+        return mark_safe(linebreaks(text, autoescape=True))
+    # Fallback задаётся разработчиком в шаблоне и может содержать разметку.
     return mark_safe(linebreaks(text))

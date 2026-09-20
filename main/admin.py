@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
+from accounts.models import BaseUser
+
 from .models.consultation import ConsultationRequest
 from .models.editable_text_block import EditableTextBlock
 
@@ -31,12 +33,9 @@ class EditableTextBlockAdmin(TranslationAdmin):
 
     def has_module_permission(self, request):
         return request.user.is_authenticated and (
-            request.user.is_superuser or getattr(request.user, "role", "") == "admin"
-        )
-
-    def has_permission(self, request, obj=None):
-        return request.user.is_authenticated and (
-            request.user.is_superuser or getattr(request.user, "role", "") == "admin"
+            request.user.is_superuser
+            or getattr(request.user, "role", "")
+            in (BaseUser.Role.ADMIN, BaseUser.Role.MANAGER)
         )
 
     def has_add_permission(self, request):
