@@ -6,6 +6,7 @@ from .views import (
     ContactsView,
     HomeView,
     PrivacyPolicyView,
+    SearchResultsView,
 )
 
 app_name = "main"
@@ -16,4 +17,5 @@ urlpatterns = [
     path("contacts/", ContactsView.as_view(), name="contacts"),
     path("consultation/", ConsultationCreateView.as_view(), name="new-consultation"),
     path("privacy-policy/", PrivacyPolicyView.as_view(), name="privacy_policy"),
+    path("search/", SearchResultsView.as_view(), name="search"),
 ]
