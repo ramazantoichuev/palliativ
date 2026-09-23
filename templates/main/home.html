@@ -43,4 +43,49 @@
             <a href="{% url 'main:new-consultation' %}" class="btn btn-primary">{% translate "Оставить заявку" %}</a>
         </div>
     </section>
+        {% if latest_posts %}
+    <section class="py-4">
+        <h2 class="h4 fw-bold mb-3">{% translate "Новости" %}</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+            {% for post in latest_posts %}
+            <div class="col">
+                <div class="card h-100">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ post.get_absolute_url }}" class="text-decoration-none">{{ post.title }}</a></h5>
+                        <p class="text-muted small">{{ post.created_at|date:"d.m.Y" }}</p>
+                        <p class="card-text">{{ post.description|truncatechars:120 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-end mt-2">
+            <a href="{% url 'news:post_list' %}">{% translate "Все новости" %} →</a>
+        </div>
+    </section>
+    {% endif %}
+    {% if upcoming_events %}
+    <section class="py-4">
+        <h2 class="h4 fw-bold mb-3">{% translate "Мероприятия" %}</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+            {% for event in upcoming_events %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ event.get_absolute_url }}" class="text-decoration-none">{{ event.title }}</a></h5>
+                        <p class="text-muted small">{{ event.event_date|date:"d.m.Y H:i" }}</p>
+                        <p class="card-text">{{ event.location }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-end mt-2">
+            <a href="{% url 'events:event_list' %}">{% translate "Все мероприятия" %} →</a>
+        </div>
+    </section>
+    {% endif %}
 {% endblock %}

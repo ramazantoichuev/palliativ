@@ -1,9 +1,12 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse, reverse_lazy
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, TemplateView
 
 from common.notifications import notify_admins, send_confirmation
+from events.models import Event
+from news.models.posts import Post
 
 from .forms import ConsultationForm
 from .models.consultation import ConsultationRequest
@@ -11,6 +14,14 @@ from .models.consultation import ConsultationRequest
 
 class HomeView(TemplateView):
     template_name = "main/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["latest_posts"] = Post.objects.order_by("-created_at")[:3]
+        context["upcoming_events"] = Event.objects.filter(
+            event_date__gte=timezone.now()
+        ).order_by("event_date")[:3]
+        return context
 
 
 class AboutView(TemplateView):
@@ -23,9 +34,6 @@ class ContactsView(TemplateView):
 
 class PrivacyPolicyView(TemplateView):
     template_name = "main/privacy_policy.html"
-
-
-# Create your views here.
 
 
 class ConsultationCreateView(SuccessMessageMixin, CreateView):
@@ -47,4 +55,3 @@ class ConsultationCreateView(SuccessMessageMixin, CreateView):
         )
         send_confirmation(self.object.email, 'Заявка на консультацию принята', 'Ваша заявка принята, мы свяжемся с вами.')
         return response
-
