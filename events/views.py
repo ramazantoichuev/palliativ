@@ -12,6 +12,7 @@ from django.views.generic.edit import FormMixin
 
 from accounts.models import BaseUser
 from common.notifications import notify_admins, send_confirmation
+from common.turnstile_form import TurnstileFormMixin
 
 from .forms import EventRegistrationForm
 from .models import Event
@@ -43,7 +44,7 @@ class EventListView(ListView):
         return context
 
 
-class EventDetailView(FormMixin, DetailView):
+class EventDetailView(TurnstileFormMixin, FormMixin, DetailView):
     model = Event
     template_name = "events/event_detail.html"
     context_object_name = "event"

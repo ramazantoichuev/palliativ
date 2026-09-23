@@ -6,6 +6,7 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from common.notifications import notify_admins
+from common.turnstile_form import TurnstileFormMixin
 
 from .forms import (
     DoctorApplicationForm,
@@ -16,7 +17,7 @@ from .forms import (
 User = get_user_model()
 
 
-class PatientRegisterView(View):
+class PatientRegisterView(TurnstileFormMixin, View):
     def get(self, request):
         form = PatientRegistrationForm()
         return render(request, "accounts/patient_register.html", {"form": form})
@@ -31,7 +32,7 @@ class PatientRegisterView(View):
             return redirect("main:about")
         return render(request, "accounts/patient_register.html", {"form": form})
 
-class DoctorRegisterView(View):
+class DoctorRegisterView(TurnstileFormMixin, View):
     def get(self, request):
         form = DoctorApplicationForm()
         return render(request, "accounts/doctor_register.html", {"form": form})
