@@ -43,6 +43,12 @@
                 height: 50px;
             }
         }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
     </style>
 
     <meta name="description" content="{% block meta_description %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
@@ -104,6 +110,12 @@
                         <a class="nav-link{% if ns == 'main' and un == 'about' %} active{% endif %}"
                            {% if ns == 'main' and un == 'about' %}aria-current="page"{% endif %}
                            href="{% url 'main:about' %}">{% translate "О нас" %}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link{% if ns == 'main' and un == 'team' %} active{% endif %}"
+                           {% if ns == 'main' and un == 'team' %}aria-current="page"{% endif %}
+                           href="{% url 'main:team' %}">{% translate "Команда" %}</a>
                     </li>
 
                     <li class="nav-item">

@@ -12,6 +12,7 @@ from resources.models.resources import Resource
 
 from .forms import ConsultationForm
 from .models.consultation import ConsultationRequest
+from .models.team import TeamMember
 
 
 class HomeView(TemplateView):
@@ -76,6 +77,18 @@ class SearchResultsView(TemplateView):
 
         return context
 
+
+class TeamView(TemplateView):
+    template_name = "main/team.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        members = TeamMember.objects.all()
+        context["team_groups"] = [
+            (label, [m for m in members if m.category == value])
+            for value, label in TeamMember.Category.choices
+        ]
+        return context
 
 class ConsultationCreateView(SuccessMessageMixin, CreateView):
     model = ConsultationRequest
