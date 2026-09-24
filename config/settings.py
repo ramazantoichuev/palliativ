@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
-from pathlib import Path
-from dotenv import load_dotenv
 import os
-from django.utils.translation import gettext_lazy as _
+from pathlib import Path
+
 from django.contrib.messages import constants as messages
+from django.utils.translation import gettext_lazy as _
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -139,7 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 HUEY = {
     'huey_class': 'huey.RedisHuey',  # Use Redis backend
     'name': 'articles_project',  # Unique queue name
-    'immediate': False,  # If True, tasks run synchronously (great for local tests)
+    'immediate': os.getenv('HUEY_IMMEDIATE', 'False') == 'True',  # If True, tasks run synchronously (great for local tests)
     'url': os.getenv('REDIS_URL'),
     'consumer': {
         'workers': 2,  # Number of worker threads/processes
@@ -182,7 +183,8 @@ MAX_IMAGE_SIZE_MB = 25
 MIN_IMAGE_SIZE_FOR_COMPRESSION_MB = 1
 MAX_IMAGE_DIMENSION_PX = 3000
 
-MAX_RESOURCE_FILE_SIZE_MB = 15
+MIN_RESOURCE_FILE_SIZE_FOR_COMPRESSION_MB = 2
+MAX_RESOURCE_FILE_SIZE_MB = 40
 
 
 

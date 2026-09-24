@@ -1,10 +1,11 @@
+from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
-from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
-from common.validators import validate_image_size
+from common.choices import ImageProcessingStatus
+from common.validators import validate_image_integrity, validate_image_size
 
 
 class ImageProcessingStatus(models.TextChoices):
@@ -40,6 +41,7 @@ class Post(models.Model):
         validators=[
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp']),
             validate_image_size,
+            validate_image_integrity
         ],
     )
     image_processing_status = models.CharField(

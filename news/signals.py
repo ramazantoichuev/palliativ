@@ -1,9 +1,11 @@
 import logging
 
+from django.db import transaction
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
-from news.models.posts import ImageProcessingStatus, Post
+from common.choices import ImageProcessingStatus
+from news.models.posts import Post
 
 logger = logging.getLogger(__name__)
 
@@ -30,5 +32,7 @@ def enqueue_image_compression(sender, instance, **kwargs):
         Post.objects.filter(pk=instance.pk).update(
             image_processing_status=ImageProcessingStatus.PENDING
         )
-        compress_post_image_task(instance.pk)
+        transaction.on_commit(
+            lambda pk=instance.pk: compress_post_image_task(pk)
+        )
         logger.info("Queued image compression for Post id=%s", instance.pk)

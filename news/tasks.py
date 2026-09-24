@@ -1,9 +1,13 @@
 import logging
+import os
+import tempfile
 from io import BytesIO
 
 from django.conf import settings
-from huey.contrib.djhuey import task, lock_task
+from huey.contrib.djhuey import lock_task, task
 from PIL import Image
+
+from news.models.posts import ImageProcessingStatus, Post
 
 logger = logging.getLogger(__name__)
 
@@ -11,8 +15,6 @@ logger = logging.getLogger(__name__)
 @task()
 @lock_task('compress-post-image-{0}')
 def compress_post_image_task(post_id: int):
-    from news.models.posts import ImageProcessingStatus, Post
-
     try:
         post = Post.objects.get(pk=post_id)
     except Post.DoesNotExist:
@@ -30,8 +32,9 @@ def compress_post_image_task(post_id: int):
 
     try:
         min_size_bytes = settings.MIN_IMAGE_SIZE_FOR_COMPRESSION_MB * 1024 * 1024
+        original_size = post.image.size
 
-        if post.image.size < min_size_bytes:
+        if original_size < min_size_bytes:
             Post.objects.filter(pk=post_id).update(
                 image_processing_status=ImageProcessingStatus.SKIPPED
             )
@@ -53,7 +56,7 @@ def compress_post_image_task(post_id: int):
             return
 
         if needs_resize:
-            image.thumbnail((max_dim, max_dim), Image.LANCZOS)
+            image.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
         if image.mode in ('RGBA', 'P') and original_format == 'JPEG':
             image = image.convert('RGB')
@@ -65,8 +68,26 @@ def compress_post_image_task(post_id: int):
         image.save(buffer, **save_kwargs)
         buffer.seek(0)
 
-        with post.image.storage.open(post.image.name, 'wb') as dest:
-            dest.write(buffer.read())
+        compressed_size = buffer.getbuffer().nbytes
+
+        if compressed_size >= original_size:
+            Post.objects.filter(pk=post_id).update(
+                image_processing_status=ImageProcessingStatus.SKIPPED
+            )
+            return
+
+        storage_path = post.image.storage.path(post.image.name)
+        dir_name = os.path.dirname(storage_path)
+
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=dir_name)
+        try:
+            with os.fdopen(tmp_fd, 'wb') as tmp_file:
+                tmp_file.write(buffer.read())
+            os.replace(tmp_path, storage_path)
+        except Exception:
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+            raise
 
         Post.objects.filter(pk=post_id).update(
             image_processing_status=ImageProcessingStatus.DONE

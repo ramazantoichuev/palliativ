@@ -1,11 +1,12 @@
+from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
-from django.utils.translation import gettext_lazy as _
-from django.conf import settings
-from django.utils.text import slugify
-from transliterate import translit
 from django.urls import reverse
+from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
+from transliterate import translit
 
+from common.choices import ImageProcessingStatus
 from common.validators import validate_resource_file_size
 
 
@@ -89,6 +90,13 @@ class ResourceFile(models.Model):
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp', 'pdf', 'doc', 'docx']),
             validate_resource_file_size,
     ],
+    )
+    processing_status = models.CharField(
+        _('Статус обработки файла'),
+        max_length=20,
+        choices=ImageProcessingStatus.choices,
+        default=ImageProcessingStatus.SKIPPED,
+        blank=True,
     )
     class Meta:
         verbose_name = _('Файл ресурса')
