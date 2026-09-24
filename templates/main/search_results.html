@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">{% translate "Поиск" %}</h1>
+
+    <form method="get" action="{% url 'main:search' %}" class="mb-5">
+        <div class="input-group">
+            <input
+                type="search"
+                name="q"
+                value="{{ query }}"
+                class="form-control"
+                placeholder="{% translate 'Введите поисковый запрос' %}"
+            >
+            <button type="submit" class="btn btn-primary">
+                {% translate "Найти" %}
+            </button>
+        </div>
+    </form>
+
+    {% if not search_allowed %}
+        {% if query %}
+            <p>{% translate "Введите не менее 2 символов для поиска." %}</p>
+        {% else %}
+            <p>{% translate "Введите поисковый запрос." %}</p>
+        {% endif %}
+    {% else %}
+        {% if news_results or event_results or resource_results %}
+            {% if news_results %}
+                <section class="mb-5">
+                    <h2 class="mb-3">{% translate "Новости" %}</h2>
+
+                    {% for post in news_results %}
+                        <article class="mb-3">
+                            <h3>
+                                <a href="{{ post.get_absolute_url }}">
+                                    {{ post.title }}
+                                </a>
+                            </h3>
+
+                            {% if post.description %}
+                                <p>{{ post.description }}</p>
+                            {% endif %}
+                        </article>
+                    {% endfor %}
+                </section>
+            {% endif %}
+
+            {% if event_results %}
+                <section class="mb-5">
+                    <h2 class="mb-3">{% translate "Мероприятия" %}</h2>
+
+                    {% for event in event_results %}
+                        <article class="mb-3">
+                            <h3>
+                                <a href="{{ event.get_absolute_url }}">
+                                    {{ event.title }}
+                                </a>
+                            </h3>
+
+                            {% if event.description %}
+                                <p>{{ event.description }}</p>
+                            {% endif %}
+                        </article>
+                    {% endfor %}
+                </section>
+            {% endif %}
+
+            {% if resource_results %}
+                <section class="mb-5">
+                    <h2 class="mb-3">{% translate "Ресурсы" %}</h2>
+
+                    {% for resource in resource_results %}
+                        <article class="mb-3">
+                            <h3>
+                                <a href="{{ resource.get_absolute_url }}">
+                                    {{ resource.title }}
+                                </a>
+                            </h3>
+
+                            {% if resource.description %}
+                                <p>{{ resource.description }}</p>
+                            {% endif %}
+                        </article>
+                    {% endfor %}
+                </section>
+            {% endif %}
+        {% else %}
+            <p>{% translate "По вашему запросу ничего не найдено." %}</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

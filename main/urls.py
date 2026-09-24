@@ -6,6 +6,7 @@ from .views import (
     ContactsView,
     HomeView,
     PrivacyPolicyView,
+    SearchResultsView,
     TeamView,
 )
 
@@ -18,4 +19,5 @@ urlpatterns = [
     path("team/", TeamView.as_view(), name="team"),
     path("consultation/", ConsultationCreateView.as_view(), name="new-consultation"),
     path("privacy-policy/", PrivacyPolicyView.as_view(), name="privacy_policy"),
+    path("search/", SearchResultsView.as_view(), name="search"),
 ]
