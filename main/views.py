@@ -7,6 +7,7 @@ from common.notifications import notify_admins, send_confirmation
 
 from .forms import ConsultationForm
 from .models.consultation import ConsultationRequest
+from .models.team import TeamMember
 
 
 class HomeView(TemplateView):
@@ -23,6 +24,19 @@ class ContactsView(TemplateView):
 
 class PrivacyPolicyView(TemplateView):
     template_name = "main/privacy_policy.html"
+
+
+class TeamView(TemplateView):
+    template_name = "main/team.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        members = TeamMember.objects.all()
+        context["team_groups"] = [
+            (label, [m for m in members if m.category == value])
+            for value, label in TeamMember.Category.choices
+        ]
+        return context
 
 
 # Create your views here.
