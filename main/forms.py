@@ -4,6 +4,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from common.turnstile import verify_turnstile_token
 from .models.consultation import ConsultationRequest
 
 BISHKEK_CODE = "312"
@@ -14,6 +15,15 @@ class ConsultationForm(forms.ModelForm):
     class Meta:
         model = ConsultationRequest
         fields = ["first_name", "phone", "email", "topic"]
+
+    def clean(self):
+        cleaned_data = super().clean()
+        token = self.data.get("cf-turnstile-response")
+        if not verify_turnstile_token(token):
+            raise ValidationError(
+                _("Ошибка проверки безопасности")
+            )
+        return cleaned_data
 
     def clean_phone(self):
         phone = self.cleaned_data.get("phone")

@@ -1,5 +1,8 @@
+from unittest.mock import patch
+
 from django.test import TestCase
 
+from common.tests.tests_mixins import FormTurnstileIntegrationMixin
 from main.forms import ConsultationForm
 
 
@@ -11,8 +14,22 @@ def build_form_data(phone):
         "topic": "medical_help",
     }
 
+class ConsultationFormTurnstileTests(FormTurnstileIntegrationMixin, TestCase):
+        form_class = ConsultationForm
+        turnstile_patch_path = "common.turnstile_form.verify_turnstile_token"
+        base_form_data = build_form_data("0555123456")
 
 class ConsultationFormMobileNumbersTests(TestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.turnstile_patcher = patch("common.turnstile.verify_turnstile_token", return_value=True)
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
+
     def test_valid_mobile_numbers_by_operator_code(self):
         valid_codes = [
             "50",
@@ -65,6 +82,16 @@ class ConsultationFormMobileNumbersTests(TestCase):
 
 
 class ConsultationFormLandlineNumbersTests(TestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.turnstile_patcher = patch("common.turnstile.verify_turnstile_token", return_value=True)
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
+
     def test_bishkek_landline_number_is_valid(self):
         form = ConsultationForm(data=build_form_data("0312555123"))
 

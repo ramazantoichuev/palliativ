@@ -18,6 +18,15 @@ def build_valid_data():
 
 @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
 class TestConsultationCreateViewNotifications(TestCase):
+    def setUp(self):
+        super().setUp()
+        self.patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
+        self.patcher.start()
+
+    def tearDown(self):
+        self.patcher.stop()
+        super().tearDown()
+
     @classmethod
     def setUpTestData(cls):
         cls.url = reverse('main:new-consultation')
@@ -49,7 +58,14 @@ class TestConsultationCreateViewNotifications(TestCase):
 
 class ConsultationCreateViewTest(TestCase):
     def setUp(self):
+        super().setUp()
         self.url = reverse('main:new-consultation')
+        self.turnstile_patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
 
     def test_get_consultation_page_returns_200(self):
         response = self.client.get(self.url)
@@ -85,7 +101,6 @@ class ConsultationCreateViewTest(TestCase):
         response = self.client.post(self.url, data=data)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.context['form'].errors)
-
 
 class MainPagesTest(TestCase):
     def test_home_page_returns_200(self):
