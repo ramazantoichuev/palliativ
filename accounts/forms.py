@@ -1,9 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.forms import AuthenticationForm
-
 
 User = get_user_model()
 
@@ -18,7 +17,9 @@ class BaseRegistrationForm(forms.ModelForm):
         "password2": _("Повторите пароль"),
     }
     password1 = forms.CharField(label=_("Пароль"), widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_("Подтверждение пароля"), widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label=_("Подтверждение пароля"), widget=forms.PasswordInput
+    )
 
     role = None
 
@@ -70,7 +71,9 @@ class PatientRegistrationForm(BaseRegistrationForm):
     def clean_phone(self):
         phone = self.cleaned_data["phone"]
         if User.objects.filter(phone=phone).exists():
-            raise ValidationError(_("Пользователь с таким номером телефона уже зарегистрирован."))
+            raise ValidationError(
+                _("Пользователь с таким номером телефона уже зарегистрирован.")
+            )
         return phone
 
 
@@ -92,7 +95,6 @@ class DoctorApplicationForm(BaseRegistrationForm):
         return user
 
 
-
 class EmailAuthenticationForm(AuthenticationForm):
     username = forms.EmailField(
         label=_("Email"),
@@ -101,7 +103,7 @@ class EmailAuthenticationForm(AuthenticationForm):
                 "class": "form-control",
                 "placeholder": _("Введите email"),
             }
-        )
+        ),
     )
 
     password = forms.CharField(
@@ -111,5 +113,5 @@ class EmailAuthenticationForm(AuthenticationForm):
                 "class": "form-control",
                 "placeholder": _("Введите пароль"),
             }
-        )
+        ),
     )

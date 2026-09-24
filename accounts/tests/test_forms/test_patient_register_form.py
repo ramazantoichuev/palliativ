@@ -5,7 +5,6 @@ from accounts.tests.factories import User
 
 
 class PatientRegistrationFormTests(TestCase):
-
     def _valid_data(self, **overrides):
         data = {
             "first_name": "Айгуль",
@@ -26,6 +25,6 @@ class PatientRegistrationFormTests(TestCase):
         self.assertTrue(user.is_approved)
 
     def test_password_mismatch_is_valid(self):
-        form = PatientRegistrationForm(self._valid_data(password2='different'))
+        form = PatientRegistrationForm(self._valid_data(password2="different"))
         self.assertFalse(form.is_valid())
         self.assertIn("password2", form.errors)
