@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 13:19+0000\n"
+"POT-Creation-Date: 2026-09-25 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -186,9 +186,9 @@ msgstr "English"
 msgid "Зарегистрировано"
 msgstr "Registrate"
 
-#: events/apps.py:7 events/models.py:19 templates/base.html:128
+#: events/apps.py:7 events/models.py:19 templates/base.html:130
 #: templates/events/event_detail.html:12 templates/events/event_list.html:6
-#: templates/main/home.html:42
+#: templates/main/home.html:42 templates/main/search_results.html:54
 msgid "Мероприятия"
 msgstr "Events"
 
@@ -287,11 +287,15 @@ msgstr "Main information"
 msgid "Управление заявкой"
 msgstr "Request management"
 
-#: main/apps.py:8 templates/base.html:104
+#: main/apps.py:8 templates/base.html:106
 msgid "Главная"
 msgstr "Home page"
 
-#: main/forms.py:26
+#: main/forms.py:19
+msgid "Айгуль Асанова"
+msgstr "Aigul Asanova"
+
+#: main/forms.py:35
 msgid ""
 "Неверный формат номера. Введите номер в формате: 0555123456 (мобильный) или "
 "0312123456 (городской, Бишкек)"
@@ -299,7 +303,7 @@ msgstr ""
 "Invalid phone number format. Enter the number in the format: 0555123456 "
 "(mobile) or 0312123456 (landline, Bishkek)"
 
-#: main/forms.py:54
+#: main/forms.py:63
 msgid ""
 "Неверный код оператора или города. Проверьте правильность ввода номера "
 "мобильного или городского телефона Кыргызстана."
@@ -343,7 +347,7 @@ msgstr "Subject of inquiry"
 msgid "Статус заявки"
 msgstr "Request status"
 
-#: main/models/consultation.py:30 templates/main/consultation.html:9
+#: main/models/consultation.py:30 templates/main/consultation.html:12
 msgid "Заявка на консультацию"
 msgstr "Consultation request"
 
@@ -362,7 +366,6 @@ msgid "Используется разработчиком в шаблонах"
 msgstr "Used by the developer in templates"
 
 #: main/models/editable_text_block.py:13
-#| msgid "Поддержка семьи"
 msgid "Содержимое текста"
 msgstr "Family support"
 
@@ -423,12 +426,13 @@ msgstr ""
 msgid "Команда и руководство"
 msgstr "Team and Leadership"
 
-#: main/views.py:50
+#: main/views.py:98
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
-#: news/apps.py:8 news/models/posts.py:51 templates/base.html:122
-#: templates/main/home.html:41 templates/news/post_list.html:7
+#: news/apps.py:8 news/models/posts.py:51 templates/base.html:124
+#: templates/main/home.html:41 templates/main/search_results.html:34
+#: templates/news/post_list.html:7
 msgid "Новости"
 msgstr "News"
 
@@ -501,7 +505,8 @@ msgstr ""
 "Thank you! Your symptoms have been updated. Below are materials that may "
 "help"
 
-#: resources/apps.py:8 templates/base.html:134
+#: resources/apps.py:8 templates/base.html:136
+#: templates/main/search_results.html:74
 #: templates/resources/resource_list.html:7
 msgid "Ресурсы"
 msgstr "Resources"
@@ -631,7 +636,7 @@ msgid ""
 msgstr "`Fill the form. Your application will be "
 
 #: templates/accounts/doctor_register.html:73
-#: templates/main/consultation.html:9
+#: templates/main/consultation.html:12
 msgid "Отправить заявку"
 msgstr "Submit"
 
@@ -641,7 +646,7 @@ msgid "Уже есть аккаунт?"
 msgstr "Already have an account?"
 
 #: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-#: templates/accounts/patient_register.html:82 templates/base.html:179
+#: templates/accounts/patient_register.html:82 templates/base.html:181
 msgid "Войти"
 msgstr "Log in"
 
@@ -793,7 +798,7 @@ msgstr ""
 msgid "Паллиатив.kg — паллиативная и хосписная помощь в Кыргызстане"
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/base.html:51
+#: templates/base.html:54
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -809,76 +814,81 @@ msgstr ""
 "            a dignified quality of life at any stage.\n"
 "             "
 
-#: templates/base.html:55
+#: templates/base.html:57
 msgid "Паллиатив.kg"
 msgstr "About us - Palliative.kg"
 
-#: templates/base.html:77
+#: templates/base.html:79
 msgid "Закрыть"
 msgstr "Close"
 
-#: templates/base.html:89 templates/main/contacts.html:57
+#: templates/base.html:91 templates/main/contacts.html:57
 msgid "Ассоциация паллиативной и хосписной помощи"
 msgstr "Association of Palliative and Hospice Care"
 
-#: templates/base.html:94
+#: templates/base.html:96
 msgid "Открыть меню"
 msgstr "Open menu"
 
-#: templates/base.html:104 templates/base.html:110 templates/main/about.html:9
+#: templates/base.html:112
 msgid "О нас"
 msgstr "About us"
 
-#: templates/base.html:116
+#: templates/base.html:118
 msgid "Команда"
 msgstr "Team"
 
-#: templates/base.html:139
+#: templates/base.html:141
 msgid "Участие"
 msgstr "Participation"
 
-#: templates/base.html:145
+#: templates/base.html:147
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/base.html:151 templates/main/contacts.html:4
+#: templates/base.html:153 templates/main/contacts.html:4
 #: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
 msgid "Контакты"
 msgstr ""
 
-#: templates/base.html:157 templates/patients/patient_dashboard.html:6
+#: templates/base.html:159 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
 msgstr "My card"
 
-#: templates/base.html:163 templates/patients/doctor_dashboard.html:6
+#: templates/base.html:165 templates/patients/doctor_dashboard.html:6
 msgid "Мои пациенты"
 msgstr "My patients"
 
-#: templates/base.html:172
+#: templates/base.html:174
 msgid "Выйти"
 msgstr "Log out"
 
-#: templates/base.html:191
+#: templates/base.html:194 templates/base.html:195
+#: templates/main/search_results.html:7
+msgid "Поиск"
+msgstr ""
+
+#: templates/base.html:208
 msgid "Выбор языка"
 msgstr "Language selection"
 
-#: templates/base.html:221
+#: templates/base.html:238
 msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/base.html:223 templates/main/contacts.html:12
+#: templates/base.html:240 templates/main/contacts.html:12
 msgid "г. Бишкек, ул. Юдахина 61"
 msgstr "Bishkek, 61 Yudakhin St."
 
-#: templates/base.html:228
+#: templates/base.html:245
 msgid "Написать нам"
 msgstr "Contact us"
 
-#: templates/base.html:231
+#: templates/base.html:248
 msgid "Политика обработки данных"
 msgstr "Data Processing Policy"
 
-#: templates/base.html:235
+#: templates/base.html:252
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
@@ -943,9 +953,7 @@ msgstr "Past events"
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — "
-#| "поддержка пациентов, обучение специалистов и развитие паллиативной помощи "
-#| "в Кыргызстане."
+#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане."
 msgid ""
 "Ассоциация паллиативной и хосписной помощи — профессиональное объединение, "
 "содействующее развитию доступной и качественной паллиативной помощи в "
@@ -979,6 +987,14 @@ msgstr "We believe"
 msgid "Наш вклад в развитие паллиативной помощи в Кыргызстане"
 msgstr "Our contribution to the development of palliative care in Kyrgyzstan"
 
+#: templates/main/about.html:45
+msgid "Законодательство и нормативная база"
+msgstr ""
+
+#: templates/main/about.html:56
+msgid "Клинические руководства и стандарты"
+msgstr ""
+
 #: templates/main/about.html:67
 msgid "Практические услуги для пациентов"
 msgstr "Practical services for patients"
@@ -997,11 +1013,11 @@ msgstr "International cooperation"
 
 #: templates/main/about.html:112
 msgid ""
-"Наш вклад — это не отдельные мероприятия, а последовательная работа над тем, "
-"чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана."
+"Наш вклад — это не отдельные мероприятия, а последовательная работа над тем,"
+" чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана."
 msgstr ""
-"Our contribution is not a series of separate activities, but a consistent effort "
-"to make palliative care part of the healthcare system in Kyrgyzstan."
+"Our contribution is not a series of separate activities, but a consistent "
+"effort to make palliative care part of the healthcare system in Kyrgyzstan."
 
 #: templates/main/consultation.html:3
 msgid "Контакты — Паллиатив.kg"
@@ -1013,11 +1029,21 @@ msgid ""
 "форма обратной связи."
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/main/consultation.html:11
+#: templates/main/consultation.html:10
+msgid ""
+"Обращаем Ваше внимание, что обработка заявок не автоматизирована — с работой"
+" над почтой нам помогают наши административные волонтёры. Наш администратор "
+"ответит вам в течение одного рабочего дня."
+msgstr ""
+"Please note that requests are not processed automatically — our "
+"administrative volunteers help us handle the mail. Our administrator will "
+"reply to you within one business day."
+
+#: templates/main/consultation.html:14
 msgid "Отправляя форму, вы соглашаетесь с"
 msgstr "By submitting the form, you agree to the"
 
-#: templates/main/consultation.html:12
+#: templates/main/consultation.html:15
 msgid "Политикой обработки данных"
 msgstr "Data Processing Policy"
 
@@ -1160,6 +1186,30 @@ msgstr ""
 msgid ""
 "Чтобы удалить свои данные, оставьте заявку по номеру WhatsApp или адресу "
 "электронной почты, указанным на странице"
+msgstr ""
+
+#: templates/main/search_results.html:16
+#, fuzzy
+#| msgid "Введите пароль"
+msgid "Введите поисковый запрос"
+msgstr "Enter your password"
+
+#: templates/main/search_results.html:19
+msgid "Найти"
+msgstr ""
+
+#: templates/main/search_results.html:26
+msgid "Введите не менее 2 символов для поиска."
+msgstr ""
+
+#: templates/main/search_results.html:28
+#, fuzzy
+#| msgid "Введите пароль"
+msgid "Введите поисковый запрос."
+msgstr "Enter your password"
+
+#: templates/main/search_results.html:92
+msgid "По вашему запросу ничего не найдено."
 msgstr ""
 
 #: templates/main/team.html:5
@@ -1337,31 +1387,30 @@ msgstr "There are no material in this subcategory"
 #~ msgid ""
 #~ "Паллиатив — это не про смерть. Это про жизнь до самого конца. Мы не "
 #~ "«отменяем» лечение — мы добавляем к нему комфорт, достоинство и "
-#~ "профессиональный уход, когда радикальные методы бессильны. Жизнь без боли "
-#~ "— это право, а не привилегия: каждый человек в Кыргызстане, от Бишкека до "
+#~ "профессиональный уход, когда радикальные методы бессильны. Жизнь без боли — "
+#~ "это право, а не привилегия: каждый человек в Кыргызстане, от Бишкека до "
 #~ "самых отдалённых сёл, имеет право не страдать от боли."
 #~ msgstr ""
-#~ "Palliative care is not about dying. It is about living fully until the "
-#~ "very end. We do not \"withdraw\" treatment — we add comfort, dignity, and "
-#~ "professional care to it when radical methods are no longer effective. A "
-#~ "life without pain is a right, not a privilege: every person in "
-#~ "Kyrgyzstan, from Bishkek to the most remote villages, has the right not "
-#~ "to suffer from pain."
+#~ "Palliative care is not about dying. It is about living fully until the very "
+#~ "end. We do not \"withdraw\" treatment — we add comfort, dignity, and "
+#~ "professional care to it when radical methods are no longer effective. A life"
+#~ " without pain is a right, not a privilege: every person in Kyrgyzstan, from "
+#~ "Bishkek to the most remote villages, has the right not to suffer from pain."
 
 #~ msgid "Наши ценности"
 #~ msgstr "Our values"
 
 #~ msgid ""
-#~ "<ul><li>Избавление от боли современными и законными методами.</"
-#~ "li><li>Поддержка семьи и тех, кто ухаживает за близкими.</"
-#~ "li><li>Юридическая грамотность врачей при работе с препаратами.</"
-#~ "li><li>Мультидисциплинарный подход: врачи, фармацевты, психологи.</li></"
-#~ "ul>"
+#~ "<ul><li>Избавление от боли современными и законными "
+#~ "методами.</li><li>Поддержка семьи и тех, кто ухаживает за "
+#~ "близкими.</li><li>Юридическая грамотность врачей при работе с "
+#~ "препаратами.</li><li>Мультидисциплинарный подход: врачи, фармацевты, "
+#~ "психологи.</li></ul>"
 #~ msgstr ""
-#~ "<ul><li>Relief from pain using modern and legal methods.</li><li>Support "
-#~ "for families and caregivers.</li><li>Legal literacy for doctors working "
-#~ "with medications.</li><li>Multidisciplinary approach: doctors, "
-#~ "pharmacists, psychologists</li></ul>"
+#~ "<ul><li>Relief from pain using modern and legal methods.</li><li>Support for"
+#~ " families and caregivers.</li><li>Legal literacy for doctors working with "
+#~ "medications.</li><li>Multidisciplinary approach: doctors, pharmacists, "
+#~ "psychologists</li></ul>"
 
 #~ msgid "Что мы делаем"
 #~ msgstr "What we do"
@@ -1371,8 +1420,8 @@ msgstr "There are no material in this subcategory"
 #~ "волонтёров в единую сеть, строя мост между законом и реальным пациентом."
 #~ msgstr ""
 #~ "We bring together government bodies, private clinics, pharmacists, and "
-#~ "volunteers into a single network, building a bridge between the law and "
-#~ "the real patient."
+#~ "volunteers into a single network, building a bridge between the law and the "
+#~ "real patient."
 
 #~ msgid "История организации и команда"
 #~ msgstr "Our history and team"
@@ -1381,8 +1430,8 @@ msgstr "There are no material in this subcategory"
 #~ "Подробную информацию об истории организации и команде мы дополним по мере "
 #~ "наполнения сайта контентом."
 #~ msgstr ""
-#~ "Detailed information about the organization's history and team will be "
-#~ "added as the site is filled with content."
+#~ "Detailed information about the organization's history and team will be added"
+#~ " as the site is filled with content."
 
 #~ msgid "Написать в WhatsApp"
 #~ msgstr "Write on WhatsApp"

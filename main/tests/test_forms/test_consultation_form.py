@@ -141,3 +141,31 @@ class ConsultationFormGeneralValidationTests(TestCase):
 
         self.assertFalse(is_valid)
         self.assertIn("topic", form.errors)
+
+
+class ConsultationFormPlaceholdersTests(TestCase):
+    """Примеры заполнения (placeholder) в полях формы — Ticket 82."""
+
+    def test_fields_have_expected_placeholders(self):
+        form = ConsultationForm()
+
+        self.assertEqual(
+            form.fields["first_name"].widget.attrs.get("placeholder"),
+            "Айгуль Асанова",
+        )
+        self.assertEqual(
+            form.fields["phone"].widget.attrs.get("placeholder"), "0555123456"
+        )
+        self.assertEqual(
+            form.fields["email"].widget.attrs.get("placeholder"),
+            "aigul@example.com",
+        )
+
+    def test_phone_placeholder_example_passes_clean_phone(self):
+        """Пример телефона из placeholder обязан проходить валидацию формы."""
+        placeholder = ConsultationForm().fields["phone"].widget.attrs["placeholder"]
+
+        form = ConsultationForm(data=build_form_data(placeholder))
+
+        self.assertTrue(form.is_valid(), form.errors)
+        self.assertEqual(form.cleaned_data["phone"], "+996555123456")
