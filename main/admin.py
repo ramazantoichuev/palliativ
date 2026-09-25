@@ -6,6 +6,7 @@ from accounts.models import BaseUser
 
 from .models.consultation import ConsultationRequest
 from .models.editable_text_block import EditableTextBlock
+from .models.team import TeamMember
 
 
 # Register your models here.
@@ -48,3 +49,26 @@ class EditableTextBlockAdmin(TranslationAdmin):
         return self.has_module_permission(request)
 
 
+@admin.register(TeamMember)
+class TeamMemberAdmin(TranslationAdmin):
+    list_display = ("full_name", "category", "position", "order")
+    list_editable = ("order",)
+    list_filter = ("category",)
+    search_fields = ("full_name", "position", "bio")
+    ordering = ("category", "order")
+
+    def has_module_permission(self, request):
+        return request.user.is_authenticated and (
+            request.user.is_superuser
+            or getattr(request.user, "role", "")
+            in (BaseUser.Role.ADMIN, BaseUser.Role.MANAGER)
+        )
+
+    def has_add_permission(self, request):
+        return self.has_module_permission(request)
+
+    def has_change_permission(self, request, obj=None):
+        return self.has_module_permission(request)
+
+    def has_delete_permission(self, request, obj=None):
+        return self.has_module_permission(request)
