@@ -45,13 +45,6 @@ class SearchResultsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         search_query = self.request.GET.get("q", "").strip()
-
-class SearchResultsView(TemplateView):
-    template_name = "main/search_results.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        search_query = self.request.GET.get("q", "").strip()
         context["query"] = search_query
         context["news_results"] = Post.objects.none()
         context["event_results"] = Event.objects.none()
