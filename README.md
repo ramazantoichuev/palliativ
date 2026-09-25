@@ -330,6 +330,7 @@ python manage.py loaddata news_fixtures
 python manage.py loaddata events_fixtures
 python manage.py loaddata patients_fixtures
 python manage.py loaddata resources_fixtures
+python manage.py loaddata team_fixtures
 ```
 
 ## Тестовые пользователи
