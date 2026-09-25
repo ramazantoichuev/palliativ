@@ -1,22 +1,13 @@
 from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
-
-from common.validators import validate_image_integrity
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from transliterate import translit
 
-
-class ImageProcessingStatus(models.TextChoices):
-    PENDING = 'pending', _('В очереди')
-    PROCESSING = 'processing', _('Обрабатывается')
-    DONE = 'done', _('Обработано')
-    FAILED = 'failed', _('Ошибка обработки')
-    SKIPPED = 'skipped', _('Сжатие не требуется')
-
-from common.validators import validate_image_dimensions, validate_image_size
+from common.choices import ImageProcessingStatus
+from common.validators import validate_image_integrity, validate_image_size
 
 
 class Category(models.Model):
@@ -43,7 +34,7 @@ class Post(models.Model):
         blank=True,
         null=True,
         validators=[
-            FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "webp"]),
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp']),
             validate_image_size,
             validate_image_integrity
         ],
