@@ -46,6 +46,12 @@ class SearchResultsView(TemplateView):
         context = super().get_context_data(**kwargs)
         search_query = self.request.GET.get("q", "").strip()
 
+class SearchResultsView(TemplateView):
+    template_name = "main/search_results.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search_query = self.request.GET.get("q", "").strip()
         context["query"] = search_query
         context["news_results"] = Post.objects.none()
         context["event_results"] = Event.objects.none()
@@ -115,5 +121,9 @@ class ConsultationCreateView(SuccessMessageMixin, CreateView):
             f'Имя: {self.object.first_name}\nТелефон: {self.object.phone}\n'
             f'Тема: {self.object.get_topic_display()}\nАдминка: {admin_url}',
         )
-        send_confirmation(self.object.email, 'Заявка на консультацию принята', 'Ваша заявка принята, мы свяжемся с вами.')
+        send_confirmation(
+            self.object.email,
+            'Заявка на консультацию принята',
+            'Ваша заявка принята, мы свяжемся с вами.',
+        )
         return response
