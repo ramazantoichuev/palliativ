@@ -2,30 +2,116 @@
 {% load i18n %}
 {% load text_blocks %}
 
-{% block meta_description %}{% blocktranslate %}Миссия, ценности и команда Ассоциации паллиативной и хосписной помощи Кыргызской Республики.{% endblocktranslate %}{% endblock %}
+{% block meta_description %}
+{% translate "Ассоциация паллиативной и хосписной помощи — профессиональное объединение, содействующее развитию доступной и качественной паллиативной помощи в Кыргызской Республике." %}
+{% endblock %}
 
 {% block content %}
-    <section class="py-4">
-        <h1 class="fw-bold mb-4">{% translate "О нас" %}</h1>
-
-        <h4 class="fw-bold">{% translate "Наша миссия" %}</h4>
-        <div class="mb-4">
-            {% get_text_block "about_mission_text" fallback=_("Паллиатив — это не про смерть. Это про жизнь до самого конца. Мы не «отменяем» лечение — мы добавляем к нему комфорт, достоинство и профессиональный уход, когда радикальные методы бессильны. Жизнь без боли — это право, а не привилегия: каждый человек в Кыргызстане, от Бишкека до самых отдалённых сёл, имеет право не страдать от боли.") %}
+<section class="py-5">
+    <div class="container mb-5">
+        <h1 class="fw-bold mb-4">{% translate "Об Ассоциации" %}</h1>
+        <div class="p-4 bg-light rounded-3 shadow-sm lead">
+            {% get_text_block "about_intro" fallback=_("Пожалуйста, заполните это поле.") %}
         </div>
-
-        <h4 class="fw-bold mt-4">{% translate "Наши ценности" %}</h4>
-        <div class="mb-4">
-            {% get_text_block "about_values_list" fallback=_("<ul><li>Избавление от боли современными и законными методами.</li><li>Поддержка семьи и тех, кто ухаживает за близкими.</li><li>Юридическая грамотность врачей при работе с препаратами.</li><li>Мультидисциплинарный подход: врачи, фармацевты, психологи.</li></ul>") %}
+    </div>
+    <div class="container mb-5">
+        <h2 class="fw-bold mb-4">{% translate "Основные направления нашей работы" %}</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col-12 w-100">
+                <div class="p-3 border-start border-4 border-info bg-white shadow-sm rounded-end">
+                    {% get_text_block "about_work_directions" fallback=_("Пожалуйста, заполните это поле.") %}
+                </div>
+            </div>
         </div>
-
-        <h4 class="fw-bold mt-4">{% translate "Что мы делаем" %}</h4>
-        <div class="mb-4">
-            {% get_text_block "about_what_we_do" fallback=_("Мы объединяем государственные органы, частные клиники, фармацевтов и волонтёров в единую сеть, строя мост между законом и реальным пациентом.") %}
+    </div>
+    <div class="container py-5 mb-5 rounded-3">
+        <div class="container text-center">
+            <h3 class="fw-bold mb-3">{% translate "Мы верим" %}</h3>
+            <div class="fs-5 mx-auto" style="max-width: 800px;">
+                {% get_text_block "about_belief" fallback=_("Пожалуйста, заполните это поле.") %}
+            </div>
         </div>
-
-        <h4 class="fw-bold mt-4">{% translate "История организации и команда" %}</h4>
-        <div class="mb-4">
-            {% get_text_block "about_history_and_team" fallback=_("Подробную информацию об истории организации и команде мы дополним по мере наполнения сайта контентом.") %}
+    </div>
+    <div class="container mb-5">
+        <h2 class="fw-bold mb-3">{% translate "Наш вклад в развитие паллиативной помощи в Кыргызстане" %}</h2>
+        <div class="text-muted mb-4 lead">
+            {% get_text_block "about_contribution_intro" fallback=_("Пожалуйста, заполните это поле.")%}
         </div>
-    </section>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-body">
+                        <div class="display-6 fw-bold text-primary mb-2">01</div>
+                        <h5 class="card-title fw-bold">{% translate "Законодательство и нормативная база" %}</h5>
+                        <div class="card-text small text-secondary">
+                            {% get_text_block "about_contribution_01" fallback=_("Пожалуйста, заполните это поле.") %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-body">
+                        <div class="display-6 fw-bold text-primary mb-2">02</div>
+                        <h5 class="card-title fw-bold">{% translate "Клинические руководства и стандарты" %}</h5>
+                        <div class="card-text small text-secondary">
+                            {% get_text_block "about_contribution_02" fallback=_("Пожалуйста, заполните это поле.") %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-body">
+                        <div class="display-6 fw-bold text-primary mb-2">03</div>
+                        <h5 class="card-title fw-bold">{% translate "Практические услуги для пациентов" %}</h5>
+                        <div class="card-text small text-secondary">
+                            {% get_text_block "about_contribution_03" fallback=_("Пожалуйста, заполните это поле.") %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-body">
+                        <div class="display-6 fw-bold text-primary mb-2">04</div>
+                        <h5 class="card-title fw-bold">{% translate "Подготовка медицинских специалистов" %}</h5>
+                        <div class="card-text small text-secondary">
+                            {% get_text_block "about_contribution_04" fallback=_("Пожалуйста, заполните это поле.") %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-body">
+                        <div class="display-6 fw-bold text-primary mb-2">05</div>
+                        <h5 class="card-title fw-bold">{% translate "Диалог и защита прав пациентов" %}</h5>
+                        <div class="card-text small text-secondary">
+                            {% get_text_block "about_contribution_05" fallback=_("Пожалуйста, заполните это поле.") %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-body">
+                        <div class="display-6 fw-bold text-primary mb-2">06</div>
+                        <h5 class="card-title fw-bold">{% translate "Международное сотрудничество" %}</h5>
+                        <div class="card-text small text-secondary">
+                            {% get_text_block "about_contribution_06" fallback=_("Пожалуйста, заполните это поле.") %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="p-4 border-start border-primary border-4 bg-light rounded-end">
+            <p class="lead mb-0 fw-bold">
+                {% translate "Наш вклад — это не отдельные мероприятия, а последовательная работа над тем, чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана." %}
+            </p>
+        </div>
+    </div>
+</section>
 {% endblock %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 01:29+0000\n"
+"POT-Creation-Date: 2026-09-25 12:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -186,13 +186,13 @@ msgstr "Англисче"
 msgid "Зарегистрировано"
 msgstr "Катталуу"
 
-#: events/apps.py:7 events/models.py:20 templates/base.html:116
+#: events/apps.py:7 events/models.py:20 templates/base.html:130
 #: templates/events/event_detail.html:12 templates/events/event_list.html:6
-#: templates/main/home.html:42
+#: templates/main/home.html:42 templates/main/search_results.html:54
 msgid "Мероприятия"
 msgstr "Иш-чаралар"
 
-#: events/forms.py:11
+#: events/forms.py:12
 msgid "Email (необязательно)"
 msgstr ""
 
@@ -251,7 +251,7 @@ msgstr "Жооп"
 msgid "Активен"
 msgstr "Активдүү"
 
-#: faq/models.py:9
+#: faq/models.py:9 main/models/team.py:31
 msgid "Порядок отображения"
 msgstr "Көрсөтүү тартиби"
 
@@ -288,15 +288,15 @@ msgstr "Көп берилүүчү суроолор"
 msgid "Вопросы пока не добавлены."
 msgstr "Суроолор азырынча кошула элек."
 
-#: main/admin.py:21
+#: main/admin.py:22
 msgid "Основная информация"
 msgstr "Негизги маалымат"
 
-#: main/admin.py:24
+#: main/admin.py:25
 msgid "Управление заявкой"
 msgstr "Билдирмени башкаруу"
 
-#: main/apps.py:8 templates/base.html:98
+#: main/apps.py:8 templates/base.html:106
 msgid "Главная"
 msgstr "Башкы бет"
 
@@ -364,42 +364,85 @@ msgstr "Консультация алууга билдирме"
 
 #: main/models/editable_text_block.py:7
 msgid "Уникальный идентификатор (Slug)"
-msgstr ""
+msgstr "Уникалдуу идентификатор (Slug)"
 
 #: main/models/editable_text_block.py:11
 msgid "Используется разработчиком в шаблонах"
-msgstr ""
+msgstr "Иштеп чыгуучу тарабынан шаблондордо колдонулат"
 
 #: main/models/editable_text_block.py:13
-#, fuzzy
-#| msgid "Поддержка семьи"
 msgid "Содержимое текста"
 msgstr "Үй-бүлөгө колдоо"
 
 #: main/models/editable_text_block.py:16
 msgid "Редактируемый текстовый блок"
-msgstr ""
+msgstr "Редакциялануучу тексттик блок"
 
 #: main/models/editable_text_block.py:17
 msgid "Редактируемые текстовые блоки"
+msgstr "Редакциялануучу тексттик блоктор"
+
+#: main/models/team.py:10
+msgid "Учредители"
+msgstr "Уюштуруучулар"
+
+#: main/models/team.py:11
+msgid "Посол Доброй воли"
+msgstr "Ак ниет элчиси"
+
+#: main/models/team.py:12
+msgid "Управляющий совет"
+msgstr "Башкаруу кеңеши"
+
+#: main/models/team.py:13
+msgid "Команда Ассоциации"
+msgstr "Ассоциациянын командасы"
+
+#: main/models/team.py:15
+msgid "ФИО / название организации"
 msgstr ""
 
-#: main/views.py:36
+#: main/models/team.py:16
+#, fuzzy
+#| msgid "Новость"
+msgid "Должность"
+msgstr "Жаңылык"
+
+#: main/models/team.py:17
+#, fuzzy
+#| msgid "Основная информация"
+msgid "Краткая информация"
+msgstr "Негизги маалымат"
+
+#: main/models/team.py:19 news/models/posts.py:16 news/models/posts.py:43
+msgid "Категория"
+msgstr "Категория"
+
+#: main/models/team.py:22
+msgid "Фотография"
+msgstr ""
+
+#: main/models/team.py:34
+msgid "Член команды"
+msgstr ""
+
+#: main/models/team.py:35 templates/main/team.html:4 templates/main/team.html:9
+msgid "Команда и руководство"
+msgstr "Команда жана жетекчилик"
+
+#: main/views.py:98
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Консультация алууга билдирмеңиз ийгиликтүү жөнөтүлдү!"
 
-#: news/apps.py:8 news/models/posts.py:51 templates/base.html:110
-#: templates/main/home.html:41 templates/news/post_list.html:7
+#: news/apps.py:8 news/models/posts.py:51 templates/base.html:124
+#: templates/main/home.html:41 templates/main/search_results.html:34
+#: templates/news/post_list.html:7
 msgid "Новости"
 msgstr "Жаңылыктар"
 
 #: news/models/posts.py:13
 msgid "Название"
 msgstr "Аталышы"
-
-#: news/models/posts.py:16 news/models/posts.py:43
-msgid "Категория"
-msgstr "Категория"
 
 #: news/models/posts.py:17
 msgid "Категории"
@@ -463,7 +506,8 @@ msgid "Спасибо! Симптомы обновлены, ниже — мат�
 msgstr ""
 "Рахмат! Симптомдор жаңыртылды, төмөндө жардам бере турган материалдар бар"
 
-#: resources/apps.py:8 templates/base.html:122
+#: resources/apps.py:8 templates/base.html:136
+#: templates/main/search_results.html:74
 #: templates/resources/resource_list.html:7
 msgid "Ресурсы"
 msgstr "Ресурстар"
@@ -603,7 +647,7 @@ msgid "Уже есть аккаунт?"
 msgstr "Аккаунтуңуз барбы?"
 
 #: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-#: templates/accounts/patient_register.html:82 templates/base.html:167
+#: templates/accounts/patient_register.html:82 templates/base.html:181
 msgid "Войти"
 msgstr "Кирүү"
 
@@ -754,96 +798,91 @@ msgstr ""
 "жеткиликтүү болот."
 
 #: templates/base.html:14
-#, fuzzy
-#| msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
 msgid "Паллиатив.kg — паллиативная и хосписная помощь в Кыргызстане"
 msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:45
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — "
-#| "поддержка пациентов, обучение специалистов и развитие паллиативной помощи "
-#| "в Кыргызстане."
+#: templates/base.html:54
 msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка "
 "пациентов, обучение специалистов и развитие паллиативной помощи в "
 "Кыргызстане."
-msgstr ""
-"\n"
-"            Кыргыз Республикасынын паллиативдик жана хоспистик жардам\n"
-"            ассоциациясы. Биз ар кандай баскычта татыктуу жашоо сапатын\n"
-"            камсыз кылуу үчүн дарыгерлерди, клиникаларды жана\n"
-"            үй-бүлөлөрдү бириктиребиз.\n"
-"             "
+msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы. Биз ар кандай баскычта татыктуу жашоо сапатын камсыз кылуу үчүн дарыгерлерди, клиникаларды жана үй-бүлөлөрдү бириктиребиз."
 
-#: templates/base.html:49
+#: templates/base.html:57
 msgid "Паллиатив.kg"
-msgstr "Биз жөнүндө — Паллиатив.kg"
+msgstr "Паллиатив.kg"
 
-#: templates/base.html:71
+#: templates/base.html:79
 msgid "Закрыть"
 msgstr "Жабуу"
 
-#: templates/base.html:83 templates/main/contacts.html:57
+#: templates/base.html:91 templates/main/contacts.html:57
 msgid "Ассоциация паллиативной и хосписной помощи"
 msgstr "Паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:88
+#: templates/base.html:96
 msgid "Открыть меню"
 msgstr "Менюну ачуу"
 
-#: templates/base.html:104 templates/main/about.html:9
+#: templates/base.html:112
 msgid "О нас"
 msgstr "Биз жөнүндө"
 
-#: templates/base.html:127
+#: templates/base.html:118
+msgid "Команда"
+msgstr "Команда"
+
+#: templates/base.html:141
 msgid "Участие"
 msgstr "Катышуу"
 
-#: templates/base.html:133
+#: templates/base.html:147
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/base.html:139 templates/main/contacts.html:4
+#: templates/base.html:153 templates/main/contacts.html:4
 #: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
 msgid "Контакты"
 msgstr ""
 
-#: templates/base.html:145 templates/patients/patient_dashboard.html:6
+#: templates/base.html:159 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
 msgstr "Менин китепчем"
 
-#: templates/base.html:151 templates/patients/doctor_dashboard.html:6
+#: templates/base.html:165 templates/patients/doctor_dashboard.html:6
 msgid "Мои пациенты"
 msgstr "Менин пациенттерим"
 
-#: templates/base.html:160
+#: templates/base.html:174
 msgid "Выйти"
 msgstr "Чыгуу"
 
-#: templates/base.html:179
+#: templates/base.html:194 templates/base.html:195
+#: templates/main/search_results.html:7
+msgid "Поиск"
+msgstr ""
+
+#: templates/base.html:208
 msgid "Выбор языка"
 msgstr "Тилди тандоо"
 
-#: templates/base.html:209
+#: templates/base.html:238
 msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
 msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:211 templates/main/contacts.html:12
+#: templates/base.html:240 templates/main/contacts.html:12
 msgid "г. Бишкек, ул. Юдахина 61"
 msgstr "Бишкек ш., Юдахин көч. 61"
 
-#: templates/base.html:216
+#: templates/base.html:245
 msgid "Написать нам"
 msgstr "Бизге жазыңыз"
 
-#: templates/base.html:219
+#: templates/base.html:248
 msgid "Политика обработки данных"
 msgstr "Маалыматтарды иштетүү саясаты"
 
-#: templates/base.html:223
+#: templates/base.html:252
 msgid "Все права защищены."
 msgstr "Бардык укуктар корголгон."
 
@@ -892,7 +931,7 @@ msgid "Предстоящие мероприятия"
 msgstr "Алдыдагы иш-чаралар"
 
 #: templates/events/event_list.html:32 templates/events/event_list.html:69
-#: templates/resources/resource_list.html:54
+#: templates/main/team.html:45 templates/resources/resource_list.html:54
 msgid "Подробнее"
 msgstr "Кененирээк"
 
@@ -904,70 +943,72 @@ msgstr "Азырынча алдыдагы иш-чаралар жок"
 msgid "Прошедшие мероприятия"
 msgstr "Өткөн иш-чаралар"
 
-#: templates/main/about.html:5
+#: templates/main/about.html:6
 msgid ""
-"Миссия, ценности и команда Ассоциации паллиативной и хосписной помощи "
-"Кыргызской Республики."
-msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
-
-#: templates/main/about.html:11
-msgid "Наша миссия"
-msgstr "Биздин миссия"
-
-#: templates/main/about.html:13
-msgid ""
-"Паллиатив — это не про смерть. Это про жизнь до самого конца. Мы не "
-"«отменяем» лечение — мы добавляем к нему комфорт, достоинство и "
-"профессиональный уход, когда радикальные методы бессильны. Жизнь без боли — "
-"это право, а не привилегия: каждый человек в Кыргызстане, от Бишкека до "
-"самых отдалённых сёл, имеет право не страдать от боли."
+"Ассоциация паллиативной и хосписной помощи — профессиональное объединение, "
+"содействующее развитию доступной и качественной паллиативной помощи в "
+"Кыргызской Республике."
 msgstr ""
-"Паллиативдик жардам — бул өлүм жөнүндө эмес. Бул акыркы демге чейин жашоо "
-"жөнүндө. Биз дарылоону «жокко чыгарбайбыз» — радикалдуу ыкмалар алсыз "
-"болгондо, ага комфорт, ар-намыс жана кесипкөй кароону кошобуз. Оорусуз жашоо "
-"— бул артыкчылык эмес, укук: Кыргызстандагы ар бир адам, Бишкектен эң алыскы "
-"айылдарга чейин, оорудан кыйналбоого укуктуу."
+"Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы — "
+"жеткиликтүү жана сапаттуу паллиативдик жардамдын өнүгүшүнө көмөк көрсөткөн "
+"кесиптик бирикме."
 
-#: templates/main/about.html:16
-msgid "Наши ценности"
-msgstr "Биздин баалуулуктар"
+#: templates/main/about.html:12
+msgid "Об Ассоциации"
+msgstr "Ассоциация жөнүндө"
+
+#: templates/main/about.html:14 templates/main/about.html:22
+#: templates/main/about.html:31 templates/main/about.html:38
+#: templates/main/about.html:47 templates/main/about.html:58
+#: templates/main/about.html:69 templates/main/about.html:80
+#: templates/main/about.html:91 templates/main/about.html:102
+msgid "Пожалуйста, заполните это поле."
+msgstr "Сураныч, бул талааны толтуруңуз."
 
 #: templates/main/about.html:18
+msgid "Основные направления нашей работы"
+msgstr "Ишибиздин негизги багыттары"
+
+#: templates/main/about.html:29
+msgid "Мы верим"
+msgstr "Биз ишенебиз"
+
+#: templates/main/about.html:36
+msgid "Наш вклад в развитие паллиативной помощи в Кыргызстане"
+msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
+
+#: templates/main/about.html:45
+msgid "Законодательство и нормативная база"
+msgstr "Мыйзамдар жана ченемдик база"
+
+#: templates/main/about.html:56
+msgid "Клинические руководства и стандарты"
+msgstr "Клиникалык колдонмолор жана стандарттар"
+
+#: templates/main/about.html:67
+msgid "Практические услуги для пациентов"
+msgstr "Бейтаптардын карточкалары"
+
+#: templates/main/about.html:78
+msgid "Подготовка медицинских специалистов"
+msgstr "Адистер үчүн колдонмо"
+
+#: templates/main/about.html:89
+msgid "Диалог и защита прав пациентов"
+msgstr "Дары-дармектер жана бейтаптын укуктары"
+
+#: templates/main/about.html:100
+msgid "Международное сотрудничество"
+msgstr "Кызматташтык"
+
+#: templates/main/about.html:112
 msgid ""
-"<ul><li>Избавление от боли современными и законными методами.</"
-"li><li>Поддержка семьи и тех, кто ухаживает за близкими.</li><li>Юридическая "
-"грамотность врачей при работе с препаратами.</li><li>Мультидисциплинарный "
-"подход: врачи, фармацевты, психологи.</li></ul>"
+"Наш вклад — это не отдельные мероприятия, а последовательная работа над тем, "
+"чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана."
 msgstr ""
-"<ul><li>Оорудан заманбап жана мыйзамдуу ыкмалар менен арылуу.</li><li>Үй-"
-"бүлөнү жана жакындарына кароочуларды колдоо.</li><li>Дарыгерлердин дары-"
-"дармектер менен иштөөдөгү укуктук сабаттуулугу.</li><li>Көп тармактуу "
-"мамиле: дарыгерлер, фармацевттер, психологдор.</li></ul>"
-
-#: templates/main/about.html:21
-msgid "Что мы делаем"
-msgstr "Биз эмне кылабыз"
-
-#: templates/main/about.html:23
-msgid ""
-"Мы объединяем государственные органы, частные клиники, фармацевтов и "
-"волонтёров в единую сеть, строя мост между законом и реальным пациентом."
-msgstr ""
-"Биз мамлекеттик органдарды, жеке клиникаларды, фармацевттерди жана "
-"волонтёрлорду бирдиктүү тармакка бириктирип, мыйзам менен чыныгы пациенттин "
-"ортосунда көпүрө курабыз."
-
-#: templates/main/about.html:26
-msgid "История организации и команда"
-msgstr "Уюмдун тарыхы жана командасы"
-
-#: templates/main/about.html:28
-msgid ""
-"Подробную информацию об истории организации и команде мы дополним по мере "
-"наполнения сайта контентом."
-msgstr ""
-"Уюмдун тарыхы жана командасы жөнүндө толук маалыматты сайт мазмун менен "
-"толукталган сайын кошобуз."
+"Биздин салымыбыз — бул өзүнчө иш-чаралар эмес, паллиативдик жардам "
+"Кыргызстандын саламаттык сактоо системасынын бир бөлүгүнө айланышы үчүн "
+"ырааттуу жүргүзүлүп жаткан иш."
 
 #: templates/main/consultation.html:3
 msgid "Контакты — Паллиатив.kg"
@@ -1130,6 +1171,42 @@ msgid ""
 "Чтобы удалить свои данные, оставьте заявку по номеру WhatsApp или адресу "
 "электронной почты, указанным на странице"
 msgstr ""
+
+#: templates/main/search_results.html:16
+#, fuzzy
+#| msgid "Введите пароль"
+msgid "Введите поисковый запрос"
+msgstr "Сырсөздү киргизиңиз"
+
+#: templates/main/search_results.html:19
+msgid "Найти"
+msgstr ""
+
+#: templates/main/search_results.html:26
+msgid "Введите не менее 2 символов для поиска."
+msgstr ""
+
+#: templates/main/search_results.html:28
+#, fuzzy
+#| msgid "Введите пароль"
+msgid "Введите поисковый запрос."
+msgstr "Сырсөздү киргизиңиз"
+
+#: templates/main/search_results.html:92
+msgid "По вашему запросу ничего не найдено."
+msgstr ""
+
+#: templates/main/team.html:5
+msgid ""
+"Учредители, руководство и команда Ассоциации паллиативной и хосписной помощи "
+"Кыргызской Республики."
+msgstr ""
+"Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясынын "
+"уюштуруучулары, жетекчилиги жана командасы."
+
+#: templates/main/team.html:33
+msgid "Фотография появится позже"
+msgstr "Сүрөт кийинчерээк кошулат"
 
 #: templates/news/post_detail.html:35
 msgid "Вернуться к новостям"
@@ -2607,27 +2684,3 @@ msgstr ""
 #, python-format
 msgid "Can't detect language for the text \"%s\" given."
 msgstr ""
-
-#~ msgid "Написать в WhatsApp"
-#~ msgstr "WhatsApp аркылуу жазуу"
-
-#~ msgid "Открыть карту"
-#~ msgstr "Картаны ачуу"
-
-#~ msgid "Обратная связь"
-#~ msgstr "Кайтарым байланыш"
-
-#~ msgid "Здесь будет размещена форма обратной связи."
-#~ msgstr "Бул жерде кайтарым байланыш формасы жайгаштырылат."
-
-#~ msgid "Избавление от боли современными и законными методами."
-#~ msgstr "Оорудан заманбап жана мыйзамдуу ыкмалар менен арылуу."
-
-#~ msgid "Поддержка семьи и тех, кто ухаживает за близкими."
-#~ msgstr "Үй-бүлөнү жана жакындарына кароочуларды колдоо."
-
-#~ msgid "Юридическая грамотность врачей при работе с препаратами."
-#~ msgstr "Дарыгерлердин дары-дармектер менен иштөөдөгү укуктук сабаттуулугу."
-
-#~ msgid "Мультидисциплинарный подход: врачи, фармацевты, психологи."
-#~ msgstr "Көп тармактуу мамиле: дарыгерлер, фармацевттер, психологдор."
