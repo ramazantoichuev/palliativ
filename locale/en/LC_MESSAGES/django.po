@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-25 08:56+0000\n"
+"POT-Creation-Date: 2026-09-26 13:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -186,7 +186,7 @@ msgstr "English"
 msgid "Зарегистрировано"
 msgstr "Registrate"
 
-#: events/apps.py:7 events/models.py:19 templates/base.html:130
+#: events/apps.py:7 events/models.py:19 templates/base.html:168
 #: templates/events/event_detail.html:12 templates/events/event_list.html:6
 #: templates/main/home.html:42 templates/main/search_results.html:54
 msgid "Мероприятия"
@@ -287,7 +287,7 @@ msgstr "Main information"
 msgid "Управление заявкой"
 msgstr "Request management"
 
-#: main/apps.py:8 templates/base.html:106
+#: main/apps.py:8 templates/base.html:144
 msgid "Главная"
 msgstr "Home page"
 
@@ -430,7 +430,7 @@ msgstr "Team and Leadership"
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
-#: news/apps.py:8 news/models/posts.py:51 templates/base.html:124
+#: news/apps.py:8 news/models/posts.py:51 templates/base.html:162
 #: templates/main/home.html:41 templates/main/search_results.html:34
 #: templates/news/post_list.html:7
 msgid "Новости"
@@ -505,7 +505,7 @@ msgstr ""
 "Thank you! Your symptoms have been updated. Below are materials that may "
 "help"
 
-#: resources/apps.py:8 templates/base.html:136
+#: resources/apps.py:8 templates/base.html:174
 #: templates/main/search_results.html:74
 #: templates/resources/resource_list.html:7
 msgid "Ресурсы"
@@ -646,7 +646,7 @@ msgid "Уже есть аккаунт?"
 msgstr "Already have an account?"
 
 #: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-#: templates/accounts/patient_register.html:82 templates/base.html:181
+#: templates/accounts/patient_register.html:82 templates/base.html:219
 msgid "Войти"
 msgstr "Log in"
 
@@ -798,7 +798,7 @@ msgstr ""
 msgid "Паллиатив.kg — паллиативная и хосписная помощь в Кыргызстане"
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/base.html:54
+#: templates/base.html:60
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -814,81 +814,90 @@ msgstr ""
 "            a dignified quality of life at any stage.\n"
 "             "
 
-#: templates/base.html:57
+#: templates/base.html:63
 msgid "Паллиатив.kg"
 msgstr "About us - Palliative.kg"
 
-#: templates/base.html:79
+#: templates/base.html:85
 msgid "Закрыть"
 msgstr "Close"
 
-#: templates/base.html:91 templates/main/contacts.html:57
+#: templates/base.html:97 templates/main/contacts.html:57
 msgid "Ассоциация паллиативной и хосписной помощи"
 msgstr "Association of Palliative and Hospice Care"
 
-#: templates/base.html:96
+#: templates/base.html:103
+msgid "Оставить заявку на консультацию"
+msgstr "Submit a consultation request"
+
+#: templates/base.html:104 templates/main/contacts.html:63
+#: templates/main/home.html:52
+msgid "Оставить заявку"
+msgstr "Submit a request"
+
+#: templates/base.html:110
+msgid "Выбор языка"
+msgstr "Language selection"
+
+#: templates/base.html:133
 msgid "Открыть меню"
 msgstr "Open menu"
 
-#: templates/base.html:112
+#: templates/base.html:150
 msgid "О нас"
 msgstr "About us"
 
-#: templates/base.html:118
+#: templates/base.html:156
 msgid "Команда"
 msgstr "Team"
 
-#: templates/base.html:141
+#: templates/base.html:179
 msgid "Участие"
 msgstr "Participation"
 
-#: templates/base.html:147
+#: templates/base.html:185
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/base.html:153 templates/main/contacts.html:4
+#: templates/base.html:191 templates/main/contacts.html:4
 #: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
 msgid "Контакты"
 msgstr ""
 
-#: templates/base.html:159 templates/patients/patient_dashboard.html:6
+#: templates/base.html:197 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
 msgstr "My card"
 
-#: templates/base.html:165 templates/patients/doctor_dashboard.html:6
+#: templates/base.html:203 templates/patients/doctor_dashboard.html:6
 msgid "Мои пациенты"
 msgstr "My patients"
 
-#: templates/base.html:174
+#: templates/base.html:212
 msgid "Выйти"
 msgstr "Log out"
 
-#: templates/base.html:194 templates/base.html:195
+#: templates/base.html:232 templates/base.html:233
 #: templates/main/search_results.html:7
 msgid "Поиск"
 msgstr ""
 
-#: templates/base.html:208
-msgid "Выбор языка"
-msgstr "Language selection"
-
-#: templates/base.html:238
+#: templates/base.html:256
 msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/base.html:240 templates/main/contacts.html:12
+#: templates/base.html:258 templates/main/contacts.html:12
 msgid "г. Бишкек, ул. Юдахина 61"
 msgstr "Bishkek, 61 Yudakhin St."
 
-#: templates/base.html:245
+#: templates/base.html:263
 msgid "Написать нам"
 msgstr "Contact us"
 
-#: templates/base.html:248
+#: templates/base.html:266
 msgid "Политика обработки данных"
 msgstr "Data Processing Policy"
 
-#: templates/base.html:252
+#: templates/base.html:270
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
@@ -1067,10 +1076,6 @@ msgstr ""
 msgid "Как нас найти"
 msgstr "How to find us"
 
-#: templates/main/contacts.html:63
-msgid "Нужна консультация"
-msgstr "Need a consultation"
-
 #: templates/main/home.html:4
 msgid "Главная — Паллиатив.kg"
 msgstr "Main page - Palliative.kg"
@@ -1118,9 +1123,17 @@ msgid "Протоколы, лекции и справочные материал
 msgstr ""
 "Protocols, lectures and reference materials for taking care of patients"
 
-#: templates/main/home.html:43
-msgid "Оставить заявку"
-msgstr "Submit a request"
+#: templates/main/home.html:47
+msgid "Нужна помощь или консультация?"
+msgstr "Need help or a consultation?"
+
+#: templates/main/home.html:49
+msgid ""
+"Оставьте заявку — специалисты Ассоциации свяжутся с вами и подскажут, как "
+"получить паллиативную помощь."
+msgstr ""
+"Submit a request — the Association's specialists will contact you and "
+"explain how to receive palliative care."
 
 #: templates/main/privacy_policy.html:4
 msgid "Политика обработки данных — Паллиатив.kg"
