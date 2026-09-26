@@ -4,6 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from common.turnstile_form import TurnstileFormMixin
+
 User = get_user_model()
 
 
@@ -62,7 +64,7 @@ class BaseRegistrationForm(forms.ModelForm):
         return user
 
 
-class PatientRegistrationForm(BaseRegistrationForm):
+class PatientRegistrationForm(TurnstileFormMixin, BaseRegistrationForm):
     role = User.Role.PATIENT
 
     class Meta(BaseRegistrationForm.Meta):
@@ -77,7 +79,7 @@ class PatientRegistrationForm(BaseRegistrationForm):
         return phone
 
 
-class DoctorApplicationForm(BaseRegistrationForm):
+class DoctorApplicationForm(TurnstileFormMixin, BaseRegistrationForm):
     role = User.Role.DOCTOR
 
     class Meta(BaseRegistrationForm.Meta):

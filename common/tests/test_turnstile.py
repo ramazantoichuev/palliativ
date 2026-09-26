@@ -1,6 +1,8 @@
 from unittest.mock import patch
-from django.test import SimpleTestCase
+
 import requests
+from django.test import SimpleTestCase
+
 from common.turnstile import verify_turnstile_token
 
 

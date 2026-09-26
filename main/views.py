@@ -9,7 +9,6 @@ from common.notifications import notify_admins, send_confirmation
 from events.models import Event
 from news.models.posts import Post
 from resources.models.resources import Resource
-from common.turnstile_form import TurnstileFormMixin
 
 from .forms import ConsultationForm
 from .models.consultation import ConsultationRequest
@@ -91,7 +90,8 @@ class TeamView(TemplateView):
         ]
         return context
 
-class ConsultationCreateView(TurnstileFormMixin, SuccessMessageMixin, CreateView):
+# Create your views here.
+class ConsultationCreateView(SuccessMessageMixin, CreateView):
     model = ConsultationRequest
     form_class = ConsultationForm
     template_name = "main/consultation.html"
@@ -114,3 +114,4 @@ class ConsultationCreateView(TurnstileFormMixin, SuccessMessageMixin, CreateView
             'Ваша заявка принята, мы свяжемся с вами.',
         )
         return response
+

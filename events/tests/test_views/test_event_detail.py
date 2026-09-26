@@ -1,4 +1,5 @@
 import tempfile
+from unittest.mock import patch
 
 from django.core import mail
 from django.test import TestCase, override_settings
@@ -25,7 +26,19 @@ class TestEventDetailView(TestCase):
             "full_name": "Иванов Иван Иванович",
             "email": "ivan@example.com",
             "phone": "+996700123456",
+            "cf-turnstile-response": "dummy_token",
         }
+
+    def setUp(self):
+        super().setUp()
+        self.turnstile_patcher = patch(
+            "common.turnstile_form.verify_turnstile_token", return_value=True
+        )
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
 
     def test_page_opens_and_uses_expected_template(self):
         response = self.client.get(self.url)
@@ -63,8 +76,6 @@ class TestEventDetailView(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
-        # Логотип в base.html — тоже <img>, поэтому проверяем отсутствие
-        # именно изображения события: его тег содержит alt с названием события.
         self.assertNotContains(response, f'alt="{self.event.title}"')
 
     def test_event_image_is_rendered_when_present(self):
@@ -115,8 +126,20 @@ class TestEventDetailView(TestCase):
     def test_invalid_post_does_not_create_registration(self):
         response = self.client.post(
             self.url,
-            data={"full_name": "", "email": "not-an-email", "phone": ""},
+            data={
+                "full_name": "",
+                "email": "not-an-email",
+                "phone": "",
+                "cf-turnstile-response": "dummy_token",
+            },
         )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(EventRegistration.objects.exists())
+
+    def test_invalid_turnstile_does_not_create_registration(self):
+        with patch("common.turnstile_form.verify_turnstile_token", return_value=False):
+            response = self.client.post(self.url, data=self.valid_data)
 
         self.assertEqual(response.status_code, 200)
         self.assertFalse(EventRegistration.objects.exists())

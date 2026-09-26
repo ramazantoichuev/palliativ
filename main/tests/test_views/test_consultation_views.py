@@ -14,7 +14,9 @@ def build_valid_data():
         'phone': '0555123456',
         'email': 'test@example.com',
         'topic': 'medical_help',
+        'cf-turnstile-response': 'dummy_token',
     }
+
 
 @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
 class TestConsultationCreateViewNotifications(TestCase):
@@ -35,6 +37,7 @@ class TestConsultationCreateViewNotifications(TestCase):
             'phone': '+996700123456',
             'email': 'client@example.com',
             'topic': 'medical_help',
+            'cf-turnstile-response': 'dummy_token',
         }
 
     def test_valid_submission_sends_admin_notification_and_confirmation(self):
@@ -101,6 +104,7 @@ class ConsultationCreateViewTest(TestCase):
         response = self.client.post(self.url, data=data)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.context['form'].errors)
+
 
 class MainPagesTest(TestCase):
     def test_home_page_returns_200(self):

@@ -254,6 +254,56 @@ ruff check . --fix
 pyproject.toml только по договорённости в команде.
 
 
+
+Защита форм капчей (Cloudflare Turnstile)
+Капчой защищены 4 формы: заявка на консультацию, регистрация на мероприятие, 
+регистрация пациента, заявка врача/волонтёра. 
+Проверка вынесена в один переиспользуемый миксин, а не продублирована 
+в каждой форме:
+common/turnstile.py        
+verify_turnstile_token() — HTTP-запрос к Cloudflare,
+fail-open при 5xx или сетевой ошибке (сервис недоступен — форма всё 
+равно проходит, чтобы не блокировать пользователей)
+common/turnstile_form.py    TurnstileFormMixin — подключается к форме, вызывает
+                             verify_turnstile_token() в clean()
+Подключение к форме:
+
+```bash
+class SomeForm(TurnstileFormMixin, forms.ModelForm):
+```
+Миксин подключается только к форме, не к view — clean() вызывается 
+Как патчить капчу в тестах
+Функция вызывается только внутри common/turnstile_form.py, 
+поэтому путь патча всегда один и тот же — независимо от того, 
+какая форма тестируется:Django внутри form.is_valid(), и подключение 
+к CreateView/DetailView не имеет эффекта.
+```bash
+from unittest.mock import patch
+@patch("common.turnstile_form.verify_turnstile_token", return_value=True)
+class SomeFormTests(TestCase):
+    def test_something(self, mock_verify):
+```
+При @patch на уровне класса каждый test_* метод обязан 
+принимать параметр мока (mock_verify) — иначе TypeError: 
+takes N positional arguments but N+1 were given.
+
+Во все тестовые данные форм добавляйте "cf-turnstile-response": 
+"dummy_token" для реалистичности (значение не важно, раз функция замокана).
+
+Общий миксин для проверки самой капчи
+
+common/tests/tests_mixins.py → 
+FormTurnstileIntegrationMixin — 
+даёт 3 готовых теста (валидный токен / невалидный токен / fail-open) для любой формы:
+
+```bash
+from common.tests.tests_mixins import FormTurnstileIntegrationMixin
+
+class SomeFormTurnstileTests(FormTurnstileIntegrationMixin, TestCase):
+    form_class = SomeForm
+    base_form_data = {...}  # все обязательные поля, без cf-turnstile-response
+    turnstile_patch_path = "common.turnstile_form.verify_turnstile_token"
+```
 Запуск проекта через ngrok
 
 Для локальной разработки с внешним доступом (вебхуки, тестирование на других устройствах) используется статический домен ngrok.
@@ -296,6 +346,8 @@ https://hatchling-causal-doornail.ngrok-free.dev
 Убедись, что в config/settings.py домен добавлен в ALLOWED_HOSTS:
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hatchling-causal-doornail.ngrok-free.dev']
+
+
 
 
 
