@@ -41,6 +41,12 @@
             {{ event.content|linebreaks }}
         </div>
 
-        {% include 'partial/form.html' with form_title=_('Регистрация на мероприятие') btn_txt=_('Записаться') extra_classes='shadow-sm' %}
+        {% if is_past %}
+            <div class="alert alert-secondary my-5" role="alert">
+                {% translate "Регистрация на это мероприятие закрыта" %}
+            </div>
+        {% else %}
+            {% include 'partial/form.html' with form_title=_('Регистрация на мероприятие') btn_txt=_('Записаться') extra_classes='shadow-sm' %}
+        {% endif %}
     </article>
 {% endblock %}
