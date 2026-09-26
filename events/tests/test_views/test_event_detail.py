@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils import timezone
 
 from events.models import EventRegistration
-from events.tests.factories import EventFactory, make_image
+from events.tests.factories import EventFactory, PastEventFactory, make_image
 
 
 class TestEventDetailView(TestCase):
@@ -132,8 +132,72 @@ class TestEventDetailView(TestCase):
 
     @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
     def test_invalid_registration_sends_no_email(self):
-        invalid_data = {**self.valid_data, 'email': ''}
+        invalid_data = {**self.valid_data, 'email': 'not-an-email'}
 
         self.client.post(self.url, data=invalid_data)
 
+        self.assertEqual(len(mail.outbox), 0)
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_registration_without_email_succeeds_and_notifies_only_admin(self):
+        data = {**self.valid_data, 'email': ''}
+
+        response = self.client.post(self.url, data=data)
+
+        self.assertRedirects(response, self.url)
+        registration = EventRegistration.objects.get()
+        self.assertEqual(registration.email, '')
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, ['admin@example.com'])
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_registration_with_email_sends_both_emails(self):
+        self.client.post(self.url, data=self.valid_data)
+
+        self.assertEqual(len(mail.outbox), 2)
+        recipients = [msg.to[0] for msg in mail.outbox]
+        self.assertCountEqual(recipients, ['admin@example.com', 'ivan@example.com'])
+
+    def test_email_field_is_marked_optional(self):
+        response = self.client.get(self.url)
+
+        self.assertContains(response, 'необязательно')
+
+class TestPastEventDetailView(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.past_event = PastEventFactory(slug="past")
+        cls.upcoming_event = EventFactory(slug="upcoming")
+        cls.past_url = reverse("events:event_detail", args=[cls.past_event.slug])
+        cls.upcoming_url = reverse(
+            "events:event_detail", args=[cls.upcoming_event.slug]
+        )
+        cls.valid_data = {
+            "full_name": "Иванов Иван Иванович",
+            "email": "ivan@example.com",
+            "phone": "+996700123456",
+        }
+
+    def test_past_event_page_does_not_render_registration_form(self):
+        response = self.client.get(self.past_url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'name="full_name"')
+        self.assertNotContains(response, "article-form")
+        self.assertContains(response, "Регистрация на это мероприятие закрыта")
+
+    def test_upcoming_event_page_renders_registration_form(self):
+        response = self.client.get(self.upcoming_url)
+
+        self.assertContains(response, 'name="full_name"')
+        self.assertNotContains(response, "Регистрация на это мероприятие закрыта")
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_direct_post_to_past_event_does_not_create_registration(self):
+        response = self.client.post(self.past_url, data=self.valid_data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(EventRegistration.objects.exists())
+        self.assertTrue(response.context["form"].errors)
         self.assertEqual(len(mail.outbox), 0)

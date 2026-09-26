@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-26 11:54+0000\n"
+"POT-Creation-Date: 2026-09-26 13:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,7 +64,7 @@ msgstr "Education or Place of Study"
 msgid "Профессиональные навыки"
 msgstr "Professional skills"
 
-#: accounts/forms.py:100 accounts/models.py:29 events/models.py:45
+#: accounts/forms.py:100 accounts/models.py:29 events/models.py:50
 #: main/models/consultation.py:20 templates/main/contacts.html:20
 msgid "Email"
 msgstr "Email"
@@ -181,49 +181,59 @@ msgstr "English"
 msgid "Зарегистрировано"
 msgstr "Registrate"
 
-#: events/apps.py:7 events/models.py:19 templates/base.html:162
+#: events/apps.py:7 events/models.py:20 templates/base.html:162
 #: templates/events/event_detail.html:12 templates/events/event_list.html:6
 #: templates/main/home.html:42 templates/main/home.html:71
 #: templates/main/search_results.html:54
 msgid "Мероприятия"
 msgstr "Events"
 
-#: events/models.py:9 news/models/posts.py:24 resources/models/resources.py:35
+#: events/forms.py:12
+msgid "Email (необязательно)"
+msgstr ""
+
+#: events/models.py:10 news/models/posts.py:24 resources/models/resources.py:35
 msgid "Заголовок"
 msgstr "Title"
 
-#: events/models.py:11 news/models/posts.py:28 resources/models/resources.py:37
+#: events/models.py:12 news/models/posts.py:28 resources/models/resources.py:37
 msgid "Описание"
 msgstr "Description"
 
-#: events/models.py:12 news/models/posts.py:26
+#: events/models.py:13 news/models/posts.py:26
 msgid "Текст"
 msgstr "Text"
 
-#: events/models.py:18 templates/events/event_form.html:6
+#: events/models.py:19 templates/events/event_form.html:6
 msgid "Мероприятие"
 msgstr "Event"
 
-#: events/models.py:44
+#: events/models.py:49
 msgid "ФИО"
 msgstr "Full name"
 
-#: events/models.py:46 main/models/consultation.py:19
+#: events/models.py:51 main/models/consultation.py:19
 #: templates/main/contacts.html:15
 msgid "Телефон"
 msgstr "Phone"
 
-#: events/models.py:48
+#: events/models.py:53
 msgid "Рассмотрено"
 msgstr "Reviewed"
 
-#: events/models.py:51 templates/events/event_detail.html:44
+#: events/models.py:56 templates/events/event_detail.html:49
 msgid "Регистрация на мероприятие"
 msgstr "Registration on event"
 
-#: events/models.py:52
+#: events/models.py:57
 msgid "Регистрации на мероприятия"
 msgstr "Event registrations"
+
+#: events/views.py:65 templates/events/event_detail.html:46
+#, fuzzy
+#| msgid "Регистрация на мероприятие"
+msgid "Регистрация на это мероприятие закрыта"
+msgstr "Registration on event"
 
 #: faq/models.py:6
 msgid "Вопрос"
@@ -785,6 +795,12 @@ msgid "Паллиатив.kg — паллиативная и хосписная 
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
 #: templates/base.html:54
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — "
+#| "поддержка пациентов, обучение специалистов и развитие паллиативной помощи "
+#| "в Кыргызстане."
 msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка "
 "пациентов, обучение специалистов и развитие паллиативной помощи в "
@@ -902,7 +918,7 @@ msgstr "Date"
 msgid "Место проведения"
 msgstr "Location"
 
-#: templates/events/event_detail.html:44
+#: templates/events/event_detail.html:49
 msgid "Записаться"
 msgstr "Sign up"
 
