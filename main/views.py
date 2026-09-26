@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.urls import reverse, reverse_lazy
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, TemplateView
 
@@ -18,6 +19,14 @@ from .models.team import TeamMember
 class HomeView(TemplateView):
     template_name = "main/home.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["latest_posts"] = Post.objects.order_by("-created_at")[:3]
+        context["upcoming_events"] = Event.objects.filter(
+            event_date__gte=timezone.now()
+        ).order_by("event_date")[:3]
+        return context
+
 
 class AboutView(TemplateView):
     template_name = "main/about.html"
@@ -30,14 +39,12 @@ class ContactsView(TemplateView):
 class PrivacyPolicyView(TemplateView):
     template_name = "main/privacy_policy.html"
 
-
 class SearchResultsView(TemplateView):
     template_name = "main/search_results.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         search_query = self.request.GET.get("q", "").strip()
-
         context["query"] = search_query
         context["news_results"] = Post.objects.none()
         context["event_results"] = Event.objects.none()
