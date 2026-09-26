@@ -96,6 +96,12 @@ class MainPagesTest(TestCase):
         response = self.client.get(reverse('main:about'))
         self.assertEqual(response.status_code, 200)
 
+    def test_consultation_page_shows_manual_processing_disclaimer(self):
+        response = self.client.get(reverse('main:new-consultation'))
+
+        self.assertContains(response, 'обработка заявок не автоматизирована')
+        self.assertContains(response, 'в течение одного рабочего дня')
+
     def test_contacts_page_returns_200(self):
         response = self.client.get(reverse('main:contacts'))
         self.assertEqual(response.status_code, 200)

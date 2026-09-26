@@ -14,6 +14,15 @@ class ConsultationForm(forms.ModelForm):
     class Meta:
         model = ConsultationRequest
         fields = ["first_name", "phone", "email", "topic"]
+        widgets = {
+            "first_name": forms.TextInput(
+                attrs={"placeholder": _("Айгуль Асанова")}
+            ),
+            # Пример должен проходить clean_phone (кыргызстанский формат),
+            # а не копировать +7(999) 999-9999 из макета.
+            "phone": forms.TextInput(attrs={"placeholder": "0555123456"}),
+            "email": forms.EmailInput(attrs={"placeholder": "aigul@example.com"}),
+        }
 
     def clean_phone(self):
         phone = self.cleaned_data.get("phone")
