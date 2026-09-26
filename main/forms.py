@@ -4,13 +4,15 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from common.turnstile_form import TurnstileFormMixin
+
 from .models.consultation import ConsultationRequest
 
 BISHKEK_CODE = "312"
 OBLAST_CENTER_CODES = {"3222", "3422", "3522", "3622", "3722", "3922"}
 
 
-class ConsultationForm(forms.ModelForm):
+class ConsultationForm(TurnstileFormMixin, forms.ModelForm):
     class Meta:
         model = ConsultationRequest
         fields = ["first_name", "phone", "email", "topic"]

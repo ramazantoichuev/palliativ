@@ -1,5 +1,8 @@
+from unittest.mock import patch
+
 from django.test import TestCase
 
+from common.tests.tests_mixins import FormTurnstileIntegrationMixin
 from main.forms import ConsultationForm
 
 
@@ -9,11 +12,11 @@ def build_form_data(phone):
         "phone": phone,
         "email": "test@example.com",
         "topic": "medical_help",
+        "cf-turnstile-response": "dummy_token",
     }
-
-
+@patch("common.turnstile_form.verify_turnstile_token", return_value=True)
 class ConsultationFormMobileNumbersTests(TestCase):
-    def test_valid_mobile_numbers_by_operator_code(self):
+    def test_valid_mobile_numbers_by_operator_code(self, mock_verify):
         valid_codes = [
             "50",
             "51",
@@ -39,7 +42,7 @@ class ConsultationFormMobileNumbersTests(TestCase):
                 self.assertTrue(is_valid, form.errors)
                 self.assertEqual(form.cleaned_data["phone"], f"+996{code}1234567")
 
-    def test_mobile_number_with_plus_996_format_is_valid(self):
+    def test_mobile_number_with_plus_996_format_is_valid(self, mock_verify):
         form = ConsultationForm(data=build_form_data("+996555123456"))
 
         is_valid = form.is_valid()
@@ -47,7 +50,7 @@ class ConsultationFormMobileNumbersTests(TestCase):
         self.assertTrue(is_valid, form.errors)
         self.assertEqual(form.cleaned_data["phone"], "+996555123456")
 
-    def test_mobile_number_with_spaces_and_dashes_is_normalized(self):
+    def test_mobile_number_with_spaces_and_dashes_is_normalized(self, mock_verify):
         form = ConsultationForm(data=build_form_data("0 555-123-456"))
 
         is_valid = form.is_valid()
@@ -55,7 +58,7 @@ class ConsultationFormMobileNumbersTests(TestCase):
         self.assertTrue(is_valid, form.errors)
         self.assertEqual(form.cleaned_data["phone"], "+996555123456")
 
-    def test_unknown_operator_code_is_invalid(self):
+    def test_unknown_operator_code_is_invalid(self, mock_verify):
         form = ConsultationForm(data=build_form_data("0123456789"))
 
         is_valid = form.is_valid()
@@ -63,9 +66,10 @@ class ConsultationFormMobileNumbersTests(TestCase):
         self.assertFalse(is_valid)
         self.assertIn("phone", form.errors)
 
-
+@patch("common.turnstile_form.verify_turnstile_token", return_value=True)
 class ConsultationFormLandlineNumbersTests(TestCase):
-    def test_bishkek_landline_number_is_valid(self):
+
+    def test_bishkek_landline_number_is_valid(self, mock_verify):
         form = ConsultationForm(data=build_form_data("0312555123"))
 
         is_valid = form.is_valid()
@@ -73,7 +77,7 @@ class ConsultationFormLandlineNumbersTests(TestCase):
         self.assertTrue(is_valid, form.errors)
         self.assertEqual(form.cleaned_data["phone"], "+996312555123")
 
-    def test_oblast_center_landline_numbers_are_valid(self):
+    def test_oblast_center_landline_numbers_are_valid(self, mock_verify):
         oblast_codes = {
             "3222": "Ош",
             "3422": "Талас",
@@ -93,14 +97,14 @@ class ConsultationFormLandlineNumbersTests(TestCase):
                 self.assertTrue(is_valid, form.errors)
                 self.assertEqual(form.cleaned_data["phone"], f"+996{code}12345")
 
-    def test_landline_number_with_wrong_length_is_invalid(self):
+    def test_landline_number_with_wrong_length_is_invalid(self, mock_verify):
         form = ConsultationForm(data=build_form_data("032221234"))
         is_valid = form.is_valid()
 
         self.assertFalse(is_valid)
         self.assertIn("phone", form.errors)
 
-    def test_unrecognized_city_code_is_invalid(self):
+    def test_unrecognized_city_code_is_invalid(self, mock_verify):
         form = ConsultationForm(data=build_form_data("0399912345"))
 
         # Act
@@ -111,8 +115,9 @@ class ConsultationFormLandlineNumbersTests(TestCase):
         self.assertIn("phone", form.errors)
 
 
+@patch("common.turnstile_form.verify_turnstile_token", return_value=True)
 class ConsultationFormGeneralValidationTests(TestCase):
-    def test_missing_first_name_is_invalid(self):
+    def test_missing_first_name_is_invalid(self, mock_verify):
         data = build_form_data("0555123456")
         data["first_name"] = ""
         form = ConsultationForm(data=data)
@@ -122,7 +127,7 @@ class ConsultationFormGeneralValidationTests(TestCase):
         self.assertFalse(is_valid)
         self.assertIn("first_name", form.errors)
 
-    def test_invalid_email_is_invalid(self):
+    def test_invalid_email_is_invalid(self, mock_verify):
         data = build_form_data("0555123456")
         data["email"] = "not-an-email"
         form = ConsultationForm(data=data)
@@ -132,7 +137,7 @@ class ConsultationFormGeneralValidationTests(TestCase):
         self.assertFalse(is_valid)
         self.assertIn("email", form.errors)
 
-    def test_invalid_topic_choice_is_invalid(self):
+    def test_invalid_topic_choice_is_invalid(self, mock_verify):
         data = build_form_data("0555123456")
         data["topic"] = "not_a_real_topic"
         form = ConsultationForm(data=data)
@@ -141,3 +146,14 @@ class ConsultationFormGeneralValidationTests(TestCase):
 
         self.assertFalse(is_valid)
         self.assertIn("topic", form.errors)
+
+
+class ConsultationFormTurnstileTests(FormTurnstileIntegrationMixin, TestCase):
+    form_class = ConsultationForm
+    base_form_data = {
+        "first_name": "Айгуль",
+        "phone": "0555123456",
+        "email": "test@example.com",
+        "topic": "medical_help",
+    }
+    turnstile_patch_path = "common.turnstile_form.verify_turnstile_token"

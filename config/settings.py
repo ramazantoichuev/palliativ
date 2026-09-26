@@ -24,6 +24,8 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG=env('DEBUG')
 
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+TURNSTILE_SITE_KEY = env('TURNSTILE_SITE_KEY', default='1x00000000000000000000AA')
+TURNSTILE_SECRET_KEY = env('TURNSTILE_SECRET_KEY', default='1x00000000000000000000000000000000U')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -100,6 +102,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "main.context_processors.analytics",
+                "main.context_processors.turnstile_keys",
             ],
         },
     },
