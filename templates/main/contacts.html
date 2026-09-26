@@ -9,54 +9,66 @@
 
         <h4 class="fw-bold">{% translate "Адрес" %}</h4>
         <p>
-            {% translate "г. Бишкек, ул. Юдахина 61" %}
+            {{ site_contacts.address }}
         </p>
 
+        {% if site_contacts.phone %}
         <h4 class="fw-bold mt-4">{% translate "Телефон" %}</h4>
         <p>
-            <a href="tel:+996312214015">0312 214015</a>
+            <a href="tel:{{ site_contacts.phone }}">{{ site_contacts.phone_display }}</a>
         </p>
+        {% endif %}
 
+        {% if site_contacts.email %}
         <h4 class="fw-bold mt-4">{% translate "Email" %}</h4>
         <p>
-            <a href="mailto:info@palliativ.kg">info@palliativ.kg</a>
+            <a href="mailto:{{ site_contacts.email }}">{{ site_contacts.email }}</a>
         </p>
+        {% endif %}
 
+        {% if site_contacts.whatsapp_url %}
         <h4 class="fw-bold mt-4">{% translate "WhatsApp" %}</h4>
         <p>
-            <a href="https://wa.me/996555922604"
+            <a href="{{ site_contacts.whatsapp_url }}"
                 target="_blank"
                 rel="noopener noreferrer">
-                +996 555 922 604
+                {{ site_contacts.whatsapp_display|default:site_contacts.whatsapp_url }}
             </a>
         </p>
+        {% endif %}
 
+        {% if site_contacts.instagram_url %}
         <h4 class="fw-bold mt-4">{% translate "Instagram" %}</h4>
         <p>
-            <a href="https://www.instagram.com/palliativecare_kg"
+            <a href="{{ site_contacts.instagram_url }}"
                target="_blank"
                rel="noopener noreferrer">
-                palliativecare_kg
+                {{ site_contacts.instagram_handle }}
             </a>
         </p>
+        {% endif %}
 
+        {% if site_contacts.facebook_url %}
         <h4 class="fw-bold mt-4">{% translate "Facebook" %}</h4>
         <p>
-            <a href="https://www.facebook.com/palliativecare.kg"
+            <a href="{{ site_contacts.facebook_url }}"
                 target="_blank"
                 rel="noopener noreferrer">
-                palliativecare.kg
+                {{ site_contacts.facebook_handle }}
             </a>
         </p>
+        {% endif %}
 
+        {% if site_contacts.twogis_url %}
         <h4 class="fw-bold mt-4">{% translate "Как нас найти" %}</h4>
         <p>
-            <a href="https://2gis.kg/bishkek/geo/70000001117702816"
+            <a href="{{ site_contacts.twogis_url }}"
                target="_blank"
                rel="noopener noreferrer">
                 {% translate "Ассоциация паллиативной и хосписной помощи" %}
             </a>
         </p>
+        {% endif %}
 
         <div class="mt-5">
             <a href="{% url 'main:new-consultation' %}" class="btn btn-primary">

@@ -249,16 +249,21 @@
             <div class="fw-bold">
                 {% translate "Ассоциация паллиативной и хосписной помощи Кыргызской Республики" %}
             </div>
-            <small>{% translate "г. Бишкек, ул. Юдахина 61" %}</small>
+            <small>{{ site_contacts.address }}</small>
         </div>
         <div class="text-center d-flex flex-column align-items-center gap-1">
             <div class="small">
-                <a href="tel:+996312214015" class="text-light">0312 214015</a>
-                <span class="mx-1">·</span>
-                <a href="mailto:info@palliativ.kg" class="text-light">info@palliativ.kg</a>
+                {% if site_contacts.phone %}
+                    <a href="tel:{{ site_contacts.phone }}" class="text-light">{{ site_contacts.phone_display }}</a>
+                {% endif %}
+                {% if site_contacts.phone and site_contacts.email %}<span class="mx-1">·</span>{% endif %}
+                {% if site_contacts.email %}
+                    <a href="mailto:{{ site_contacts.email }}" class="text-light">{{ site_contacts.email }}</a>
+                {% endif %}
             </div>
             <div class="d-flex gap-3 fs-5">
-                <a href="https://wa.me/996555922604"
+                {% if site_contacts.whatsapp_url %}
+                <a href="{{ site_contacts.whatsapp_url }}"
                    class="text-light"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -266,7 +271,9 @@
                    title="{% translate 'WhatsApp' %}">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="https://www.facebook.com/palliativecare.kg"
+                {% endif %}
+                {% if site_contacts.facebook_url %}
+                <a href="{{ site_contacts.facebook_url }}"
                    class="text-light"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -274,7 +281,9 @@
                    title="{% translate 'Facebook' %}">
                     <i class="fab fa-facebook"></i>
                 </a>
-                <a href="https://www.instagram.com/palliativecare_kg"
+                {% endif %}
+                {% if site_contacts.instagram_url %}
+                <a href="{{ site_contacts.instagram_url }}"
                    class="text-light"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -282,6 +291,7 @@
                    title="{% translate 'Instagram' %}">
                     <i class="fab fa-instagram"></i>
                 </a>
+                {% endif %}
             </div>
         </div>
         <div class="text-center text-md-end">
