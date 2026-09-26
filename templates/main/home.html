@@ -40,7 +40,6 @@
         <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
             <a href="{% url 'news:post_list' %}" class="btn btn-outline-primary">{% translate "Новости" %}</a>
             <a href="{% url 'events:event_list' %}" class="btn btn-outline-primary">{% translate "Мероприятия" %}</a>
-            <a href="{% url 'main:new-consultation' %}" class="btn btn-primary">{% translate "Оставить заявку" %}</a>
         </div>
     </section>
         {% if latest_posts %}
@@ -88,4 +87,13 @@
         </div>
     </section>
     {% endif %}
+    <section class="text-center bg-light border rounded-3 p-4 p-md-5 mt-4">
+        <h2 class="h3 fw-bold mb-2">{% translate "Нужна помощь или консультация?" %}</h2>
+        <p class="lead col-lg-8 mx-auto mb-4">
+            {% blocktranslate %}Оставьте заявку — специалисты Ассоциации свяжутся с вами и подскажут, как получить паллиативную помощь.{% endblocktranslate %}
+        </p>
+        <a href="{% url 'main:new-consultation' %}" class="btn btn-primary btn-lg">
+            {% translate "Оставить заявку" %}
+        </a>
+    </section>
 {% endblock %}
