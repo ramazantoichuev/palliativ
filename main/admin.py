@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
 from accounts.models import BaseUser
+from .models.system_settings import SystemSettings
 
 from .models.consultation import ConsultationRequest
 from .models.editable_text_block import EditableTextBlock
@@ -48,6 +49,25 @@ class EditableTextBlockAdmin(TranslationAdmin):
     def has_delete_permission(self, request, obj=None):
         return self.has_module_permission(request)
 
+@admin.register(SystemSettings)
+class SystemSettingsAdmin(admin.ModelAdmin):
+    list_display = ("patient_registration_enabled", "doctor_registration_enabled")
+
+    def has_module_permission(self, request):
+        return request.user.is_authenticated and (
+            request.user.is_superuser
+            or getattr(request.user, "role", "")
+            in (BaseUser.Role.ADMIN, BaseUser.Role.MANAGER)
+        )
+
+    def has_add_permission(self, request):
+        return self.has_module_permission(request) and not SystemSettings.objects.exists()
+
+    def has_change_permission(self, request, obj=None):
+        return self.has_module_permission(request)
+
+    def has_delete_permission(self, request, obj=None):
+        return self.has_module_permission(request)
 
 @admin.register(TeamMember)
 class TeamMemberAdmin(TranslationAdmin):

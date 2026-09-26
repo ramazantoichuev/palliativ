@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% translate "Регистрация недоступна — Паллиатив.kg" %}{% endblock %}
+{% block content %}
+<div class="container-fluid px-4 px-md-5 py-5">
+    <div class="alert alert-warning" role="alert">
+        {{ message }}
+    </div>
+</div>
+{% endblock %}
