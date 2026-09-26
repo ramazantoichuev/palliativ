@@ -8,4 +8,4 @@ class NewsConfig(AppConfig):
     verbose_name = _('Новости')
 
     def ready(self):
-        pass
+        import news.signals  # noqa: F401

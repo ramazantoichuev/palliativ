@@ -8,4 +8,4 @@ class ResourcesConfig(AppConfig):
     verbose_name = _('Ресурсы')
 
     def ready(self):
-        pass
+        import resources.signals  # noqa: F401
