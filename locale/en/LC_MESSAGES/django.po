@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-26 13:05+0000\n"
+"POT-Creation-Date: 2026-09-26 13:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,7 +196,7 @@ msgstr ""
 msgid "Заголовок"
 msgstr "Title"
 
-#: events/models.py:12 news/models/posts.py:28 resources/models/resources.py:37
+#: events/models.py:11 news/models/posts.py:28 resources/models/resources.py:37
 msgid "Описание"
 msgstr "Description"
 
@@ -808,7 +808,9 @@ msgid ""
 msgstr ""
 "            Association of Palliative and Hospice Care of the Kyrgyz "
 "Republic.\n"
-"            We bring together doctors, clinics, and families to ensure a dignified quality of life at any stage."
+"            We bring together doctors, clinics, and families to ensure\n"
+"            a dignified quality of life at any stage.\n"
+"             "
 
 #: templates/base.html:57
 msgid "Паллиатив.kg"
@@ -885,15 +887,30 @@ msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 msgid "г. Бишкек, ул. Юдахина 61"
 msgstr "Bishkek, 61 Yudakhin St."
 
-#: templates/base.html:257
+#: templates/base.html:265 templates/base.html:266
+#: templates/main/contacts.html:25
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: templates/base.html:273 templates/base.html:274
+#: templates/main/contacts.html:43
+msgid "Facebook"
+msgstr ""
+
+#: templates/base.html:281 templates/base.html:282
+#: templates/main/contacts.html:34
+msgid "Instagram"
+msgstr ""
+
+#: templates/base.html:289
 msgid "Написать нам"
 msgstr "Contact us"
 
-#: templates/base.html:260
+#: templates/base.html:292
 msgid "Политика обработки данных"
 msgstr "Data Processing Policy"
 
-#: templates/base.html:264
+#: templates/base.html:296
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
@@ -1047,18 +1064,6 @@ msgstr "Data Processing Policy"
 #: templates/main/contacts.html:10
 msgid "Адрес"
 msgstr "Address"
-
-#: templates/main/contacts.html:25
-msgid "WhatsApp"
-msgstr "WhatsApp"
-
-#: templates/main/contacts.html:34
-msgid "Instagram"
-msgstr ""
-
-#: templates/main/contacts.html:43
-msgid "Facebook"
-msgstr ""
 
 #: templates/main/contacts.html:52
 msgid "Как нас найти"

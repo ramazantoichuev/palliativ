@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-26 13:05+0000\n"
+"POT-Creation-Date: 2026-09-26 13:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,7 +196,7 @@ msgstr ""
 msgid "Заголовок"
 msgstr "Башкы тема"
 
-#: events/models.py:12 news/models/posts.py:28 resources/models/resources.py:37
+#: events/models.py:11 news/models/posts.py:28 resources/models/resources.py:37
 msgid "Описание"
 msgstr "Сүрөттөлүшү"
 
@@ -802,7 +802,12 @@ msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка "
 "пациентов, обучение специалистов и развитие паллиативной помощи в "
 "Кыргызстане."
-msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы. Биз ар кандай баскычта татыктуу жашоо сапатын камсыз кылуу үчүн дарыгерлерди, клиникаларды жана үй-бүлөлөрдү бириктиребиз."
+msgstr ""
+"            Кыргыз Республикасынын паллиативдик жана хоспистик жардам\n"
+"            ассоциациясы. Биз ар кандай баскычта татыктуу жашоо сапатын\n"
+"            камсыз кылуу үчүн дарыгерлерди, клиникаларды жана\n"
+"            үй-бүлөлөрдү бириктиребиз.\n"
+"             "
 
 #: templates/base.html:57
 msgid "Паллиатив.kg"
@@ -879,15 +884,30 @@ msgstr "Кыргыз Республикасынын паллиативдик ж�
 msgid "г. Бишкек, ул. Юдахина 61"
 msgstr "Бишкек ш., Юдахин көч. 61"
 
-#: templates/base.html:257
+#: templates/base.html:265 templates/base.html:266
+#: templates/main/contacts.html:25
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: templates/base.html:273 templates/base.html:274
+#: templates/main/contacts.html:43
+msgid "Facebook"
+msgstr ""
+
+#: templates/base.html:281 templates/base.html:282
+#: templates/main/contacts.html:34
+msgid "Instagram"
+msgstr ""
+
+#: templates/base.html:289
 msgid "Написать нам"
 msgstr "Бизге жазыңыз"
 
-#: templates/base.html:260
+#: templates/base.html:292
 msgid "Политика обработки данных"
 msgstr "Маалыматтарды иштетүү саясаты"
 
-#: templates/base.html:264
+#: templates/base.html:296
 msgid "Все права защищены."
 msgstr "Бардык укуктар корголгон."
 
@@ -1036,18 +1056,6 @@ msgstr "Маалыматтарды иштетүү саясаты"
 #: templates/main/contacts.html:10
 msgid "Адрес"
 msgstr "Дарек"
-
-#: templates/main/contacts.html:25
-msgid "WhatsApp"
-msgstr "WhatsApp"
-
-#: templates/main/contacts.html:34
-msgid "Instagram"
-msgstr ""
-
-#: templates/main/contacts.html:43
-msgid "Facebook"
-msgstr ""
 
 #: templates/main/contacts.html:52
 msgid "Как нас найти"
