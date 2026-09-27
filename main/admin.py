@@ -3,10 +3,10 @@ from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
 from accounts.models import BaseUser
-from .models.system_settings import SystemSettings
 
 from .models.consultation import ConsultationRequest
 from .models.editable_text_block import EditableTextBlock
+from .models.system_settings import SystemSettings
 from .models.team import TeamMember
 
 

@@ -2,9 +2,9 @@ from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import TemplateView
-from django.utils.translation import gettext_lazy as _
 
 from common.notifications import notify_admins
 from main.models.system_settings import SystemSettings

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-26 13:05+0000\n"
+"POT-Creation-Date: 2026-09-27 09:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,64 +16,64 @@ msgstr ""
 msgid "Аккаунты"
 msgstr ""
 
-#: accounts/forms.py:12
+#: accounts/forms.py:14
 msgid "Айгуль"
 msgstr "Айгүл"
 
-#: accounts/forms.py:13
+#: accounts/forms.py:15
 msgid "Токтосунова"
 msgstr "Токтосунова"
 
-#: accounts/forms.py:14
+#: accounts/forms.py:16
 msgid "example@gmail.com"
 msgstr "example@gmail.com"
 
-#: accounts/forms.py:15
+#: accounts/forms.py:17
 msgid "+996 700 123 456"
 msgstr "+996 700 123 456"
 
-#: accounts/forms.py:16
+#: accounts/forms.py:18
 msgid "Минимум 8 символов"
 msgstr "Кеминде 8 белги"
 
-#: accounts/forms.py:17
+#: accounts/forms.py:19
 msgid "Повторите пароль"
 msgstr "Сырсөздү кайталаңыз"
 
-#: accounts/forms.py:19 accounts/forms.py:110
+#: accounts/forms.py:21 accounts/forms.py:112
 msgid "Пароль"
 msgstr "Сырсөз"
 
-#: accounts/forms.py:21
+#: accounts/forms.py:23
 msgid "Подтверждение пароля"
 msgstr "Сырсөздү ырастоо"
 
-#: accounts/forms.py:43
+#: accounts/forms.py:45
 msgid "Пароли не совпадают."
 msgstr "Сырсөздөр дал келбейт."
 
-#: accounts/forms.py:75
+#: accounts/forms.py:77
 msgid "Пользователь с таким номером телефона уже зарегистрирован."
 msgstr "Бул телефон номери менен колдонуучу мурунтан эле катталган."
 
-#: accounts/forms.py:86 accounts/models.py:89
+#: accounts/forms.py:88 accounts/models.py:89
 msgid "Образование или место учебы"
 msgstr "Билими же окуу мекмеси"
 
-#: accounts/forms.py:87
+#: accounts/forms.py:89
 msgid "Профессиональные навыки"
 msgstr "Кесиптик көндүмдөр"
 
-#: accounts/forms.py:100 accounts/models.py:29 events/models.py:50
+#: accounts/forms.py:102 accounts/models.py:29 events/models.py:50
 #: main/models/consultation.py:20 templates/main/contacts.html:20
 msgid "Email"
 msgstr "Email"
 
-#: accounts/forms.py:104
+#: accounts/forms.py:106
 msgid "Введите email"
 msgstr "Email киргизиңиз"
 
-#: accounts/forms.py:114
+#: accounts/forms.py:116
 msgid "Введите пароль"
 msgstr "Сырсөздү киргизиңиз"
 
@@ -148,6 +148,17 @@ msgstr "Диагноз"
 msgid "Пациенты"
 msgstr "Бейтап"
 
+#: accounts/views.py:32
+msgid "Регистрация пациентов временно приостановлена. Попробуйте позже."
+msgstr "Пациенттерди каттоо убактылуу токтотулду. Кийинчерээк аракет кылыңыз."
+
+#: accounts/views.py:54
+msgid "Регистрация врачей временно приостановлена. Попробуйте позже."
+msgstr "Врачтарды каттоо убактылуу токтотулду. Кийинчерээк аракет кылыңыз."
+#: common/turnstile_form.py:15
+msgid "Ошибка проверки безопасности. Пожалуйста, попробуйте еще раз."
+msgstr "Коопсуздукту текшерүү катасы. Сураныч, кайра аракет кылыңыз."
+
 #: common/validators.py:11
 #, python-format
 msgid "Размер изображения не должен превышать %(limit)s МБ."
@@ -165,15 +176,15 @@ msgstr "Сүрөттүн чоңдугу чоң жагы боюнча %(limit)s �
 msgid "Размер файла не должен превышать %(limit)s МБ."
 msgstr "Файлдын көлөмү %(limit)s МБдан ашпашы керек."
 
-#: config/settings.py:144
+#: config/settings.py:147
 msgid "Russian"
 msgstr "Орусча"
 
-#: config/settings.py:145
+#: config/settings.py:148
 msgid "Kyrgyz"
 msgstr "Кыргызча"
 
-#: config/settings.py:146
+#: config/settings.py:149
 msgid "English"
 msgstr "Англисче"
 
@@ -188,7 +199,7 @@ msgstr "Катталуу"
 msgid "Мероприятия"
 msgstr "Иш-чаралар"
 
-#: events/forms.py:12
+#: events/forms.py:14
 msgid "Email (необязательно)"
 msgstr ""
 
@@ -230,10 +241,8 @@ msgid "Регистрации на мероприятия"
 msgstr "Иш-чараларга каттоолор"
 
 #: events/views.py:65 templates/events/event_detail.html:46
-#, fuzzy
-#| msgid "Регистрация на мероприятие"
 msgid "Регистрация на это мероприятие закрыта"
-msgstr "Иш-чарага каттоо"
+msgstr "Бул иш-чарага катталуу жабылган"
 
 #: faq/models.py:6
 msgid "Вопрос"
@@ -284,11 +293,11 @@ msgstr "Көп берилүүчү суроолор"
 msgid "Вопросы пока не добавлены."
 msgstr "Суроолор азырынча кошула элек."
 
-#: main/admin.py:22
+#: main/admin.py:23
 msgid "Основная информация"
 msgstr "Негизги маалымат"
 
-#: main/admin.py:25
+#: main/admin.py:26
 msgid "Управление заявкой"
 msgstr "Билдирмени башкаруу"
 
@@ -296,7 +305,7 @@ msgstr "Билдирмени башкаруу"
 msgid "Главная"
 msgstr "Башкы бет"
 
-#: main/forms.py:26
+#: main/forms.py:28
 msgid ""
 "Неверный формат номера. Введите номер в формате: 0555123456 (мобильный) или "
 "0312123456 (городской, Бишкек)"
@@ -304,7 +313,7 @@ msgstr ""
 "Телефон номеринин форматы туура эмес. Номерди мындай форматта киргизиңиз: "
 "0555123456 (мобилдик) же 0312123456 (шаардык, Бишкек)"
 
-#: main/forms.py:54
+#: main/forms.py:56
 msgid ""
 "Неверный код оператора или города. Проверьте правильность ввода номера "
 "мобильного или городского телефона Кыргызстана."
@@ -353,7 +362,6 @@ msgid "Заявка на консультацию"
 msgstr "Консультация алууга билдирме"
 
 #: main/models/consultation.py:31
-#, fuzzy
 #| msgid "Заявка на консультацию"
 msgid "Заявки на консультацию"
 msgstr "Консультация алууга билдирме"
@@ -378,6 +386,22 @@ msgstr "Редакциялануучу тексттик блок"
 msgid "Редактируемые текстовые блоки"
 msgstr "Редакциялануучу тексттик блоктор"
 
+#: main/models/system_settings.py:7
+#| msgid "Регистрация пациента"
+msgid "Регистрация пациентов включена"
+msgstr "Пациенттерди каттоо иштетилген"
+
+#: main/models/system_settings.py:10
+#| msgid "Регистрация пациента"
+msgid "Регистрация врачей включена"
+msgstr "Врачтарды каттоо иштетилген"
+
+#: main/models/system_settings.py:14 main/models/system_settings.py:15
+#: main/models/system_settings.py:18
+#| msgid "Справочные материалы"
+msgid "Системные настройки"
+msgstr "Тутум жөндөөлөрү"
+
 #: main/models/team.py:10
 msgid "Учредители"
 msgstr "Уюштуруучулар"
@@ -399,14 +423,10 @@ msgid "ФИО / название организации"
 msgstr ""
 
 #: main/models/team.py:16
-#, fuzzy
-#| msgid "Новость"
 msgid "Должность"
 msgstr "Жаңылык"
 
 #: main/models/team.py:17
-#, fuzzy
-#| msgid "Основная информация"
 msgid "Краткая информация"
 msgstr "Негизги маалымат"
 
@@ -426,7 +446,7 @@ msgstr ""
 msgid "Команда и руководство"
 msgstr "Команда жана жетекчилик"
 
-#: main/views.py:105
+#: main/views.py:106
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Консультация алууга билдирмеңиз ийгиликтүү жөнөтүлдү!"
 
@@ -661,7 +681,7 @@ msgid "Создайте аккаунт, чтобы пользоваться во
 msgstr "Ассоциациянын мүмкүнчүлүктөрүн колдонуу үчүн аккаунт түзүңүз."
 
 #: templates/accounts/patient_register.html:71
-#: templates/accounts/register_type.html:71
+#: templates/accounts/register_type.html:47
 msgid "Зарегистрироваться"
 msgstr "Катталуу"
 
@@ -679,11 +699,15 @@ msgstr ""
 msgid "Членство / Участие"
 msgstr "Мүчөлүк / Катышуу"
 
-#: templates/accounts/register_type.html:14
+#: templates/accounts/register_type.html:13
 msgid "Выберите подходящий вариант участия в ассоциации."
 msgstr "Ассоциацияга катышуунун сизге ылайыктуу вариантын тандаңыз."
 
-#: templates/accounts/register_type.html:25
+#: templates/accounts/register_type.html:19
+msgid "Регистрация временно недоступна, попробуйте позже."
+msgstr "Иш-чарага каттоо"
+
+#: templates/accounts/register_type.html:28
 msgid "Стать пациентом"
 msgstr "Бейтап катары катталуу"
 
@@ -693,46 +717,52 @@ msgid ""
 msgstr ""
 "Ассоциациянын мүмкүнчүлүктөрүнө жана кызматтарына жетүү үчүн катталыңыз."
 
-#: templates/accounts/register_type.html:33
-#: templates/accounts/register_type.html:92
+#: templates/accounts/register_type.html:31
+#: templates/accounts/register_type.html:66
 msgid "Преимущества"
 msgstr "Артыкчылыктар"
 
-#: templates/accounts/register_type.html:38
+#: templates/accounts/register_type.html:33
 msgid "Избавление от боли"
 msgstr "Ооруну басаңдатуу"
 
-#: templates/accounts/register_type.html:41
+#: templates/accounts/register_type.html:34
 msgid "Современные методы позволяют купировать даже самую сильную боль."
 msgstr "Заманбап ыкмалар эң катуу ооруну да басаңдатууга мүмкүндүк берет."
 
-#: templates/accounts/register_type.html:45
+#: templates/accounts/register_type.html:35
 msgid "Поддержка семьи"
 msgstr "Үй-бүлөгө колдоо"
 
-#: templates/accounts/register_type.html:48
+#: templates/accounts/register_type.html:36
 msgid "Знания и психологическая опора для близких, ухаживающих за больным."
 msgstr "Бейтапка кам көргөн жакындар үчүн билим жана психологиялык колдоо."
 
-#: templates/accounts/register_type.html:52
+#: templates/accounts/register_type.html:37
 msgid "Права пациента"
 msgstr "Бейтаптын укуктары"
 
-#: templates/accounts/register_type.html:55
+#: templates/accounts/register_type.html:38
 msgid "Как получить нужные лекарства от боли и другие права пациента."
 msgstr ""
 "Ооруну басаңдатуучу керектүү дары-дармектерди жана бейтаптын башка укуктарын "
 "кантип алууга болот."
 
-#: templates/accounts/register_type.html:64
+#: templates/accounts/register_type.html:43
 msgid "Перейти в личный кабинет"
 msgstr "Жеке кабинетке өтүү"
 
-#: templates/accounts/register_type.html:84
+#: templates/accounts/register_type.html:51
+
+#| msgid "Регистрация на мероприятие"
+msgid "Регистрация временно недоступна"
+msgstr "Каттоо убактылуу жеткиликсиз"
+
+#: templates/accounts/register_type.html:63
 msgid "Стать врачом"
 msgstr "Дарыгер болуу"
 
-#: templates/accounts/register_type.html:88
+#: templates/accounts/register_type.html:64
 msgid ""
 "Отправьте заявку на вступление. Заявка будет рассмотрена администратором "
 "ассоциации. Доступ к личному кабинету предоставляется после одобрения заявки."
@@ -741,39 +771,44 @@ msgstr ""
 "тарабынан каралат. Жеке кабинетке кирүү укугу билдирме бекитилгенден кийин "
 "берилет."
 
-#: templates/accounts/register_type.html:97
+#: templates/accounts/register_type.html:68
 msgid "Безопасность"
 msgstr "Коопсуздук"
 
-#: templates/accounts/register_type.html:100
+#: templates/accounts/register_type.html:69
 msgid "Доступ к юридическим алгоритмам выписки рецептов и учёта препаратов."
 msgstr ""
 "Рецепт жазуунун жана дары-дармектерди эсепке алуунун укуктук алгоритмдерине "
 "жетүү."
 
-#: templates/accounts/register_type.html:104
+#: templates/accounts/register_type.html:70
 msgid "Репутация"
 msgstr "Репутация"
 
-#: templates/accounts/register_type.html:107
+#: templates/accounts/register_type.html:71
 msgid "Станьте частью международного сообщества (EAPC, IAHPC)."
 msgstr "Эл аралык коомчулуктун (EAPC, IAHPC) мүчөсү болуңуз."
 
-#: templates/accounts/register_type.html:111
+#: templates/accounts/register_type.html:72
 msgid "Развитие"
 msgstr "Өнүгүү"
 
-#: templates/accounts/register_type.html:114
+#: templates/accounts/register_type.html:73
 msgid "Обучение персонала навыкам «медицины комфорта»."
 msgstr "Персоналды «жайлуулук медицинасы» көндүмдөрүнө окутуу."
 
-#: templates/accounts/register_type.html:123
+#: templates/accounts/register_type.html:78
 msgid "Перейти в кабинет"
 msgstr "Кабинетке өтүү"
 
-#: templates/accounts/register_type.html:130
+#: templates/accounts/register_type.html:82
 msgid "Подать заявку"
 msgstr "Билдирме берүү"
+
+#: templates/accounts/registration_disabled.html:3
+#| msgid "Ресурсы — Паллиатив.kg"
+msgid "Регистрация недоступна — Паллиатив.kg"
+msgstr "Каттоо убактылуу жеткиликсиз — Паллиатив.kg"
 
 #: templates/accounts/waiting_403.html:5
 msgid "Аккаунт на проверке"
@@ -802,7 +837,10 @@ msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка "
 "пациентов, обучение специалистов и развитие паллиативной помощи в "
 "Кыргызстане."
-msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы. Биз ар кандай баскычта татыктуу жашоо сапатын камсыз кылуу үчүн дарыгерлерди, клиникаларды жана үй-бүлөлөрдү бириктиребиз."
+msgstr ""
+"Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы. Биз "
+"ар кандай баскычта татыктуу жашоо сапатын камсыз кылуу үчүн дарыгерлерди, "
+"клиникаларды жана үй-бүлөлөрдү бириктиребиз."
 
 #: templates/base.html:57
 msgid "Паллиатив.kg"
@@ -1104,13 +1142,11 @@ msgstr ""
 "Пациенттерге кароо боюнча протоколдор, лекциялар жана справочный материалдар."
 
 #: templates/main/home.html:65
-#, fuzzy
 #| msgid "Новости"
 msgid "Все новости"
 msgstr "Жаңылыктар"
 
 #: templates/main/home.html:86
-#, fuzzy
 #| msgid "Мероприятия"
 msgid "Все мероприятия"
 msgstr "Иш-чаралар"
@@ -1194,7 +1230,6 @@ msgid ""
 msgstr ""
 
 #: templates/main/search_results.html:16
-#, fuzzy
 #| msgid "Введите пароль"
 msgid "Введите поисковый запрос"
 msgstr "Сырсөздү киргизиңиз"
@@ -1208,14 +1243,13 @@ msgid "Введите не менее 2 символов для поиска."
 msgstr ""
 
 #: templates/main/search_results.html:28
-#, fuzzy
 #| msgid "Введите пароль"
 msgid "Введите поисковый запрос."
 msgstr "Сырсөздү киргизиңиз"
 
 #: templates/main/search_results.html:92
 msgid "По вашему запросу ничего не найдено."
-msgstr ""
+msgstr "Сиздин суранычыңыз боюнча эч нерсе табылган жок."
 
 #: templates/main/team.html:5
 msgid ""
