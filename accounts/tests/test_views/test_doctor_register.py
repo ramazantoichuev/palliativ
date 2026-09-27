@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from django.core import mail
 from django.test import TestCase, override_settings
 from django.urls import reverse
@@ -6,6 +8,17 @@ from accounts.tests.factories import User
 
 
 class TestDoctorRegisterView(TestCase):
+    def setUp(self):
+        super().setUp()
+        self.turnstile_patcher = patch(
+            "common.turnstile_form.verify_turnstile_token", return_value=True
+        )
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
+
     def test_get_doctor_register_view(self):
         url = reverse("accounts:doctor_register")
         response = self.client.get(url)
@@ -27,6 +40,7 @@ class TestDoctorRegisterView(TestCase):
                 "phone": "+996700000070",
                 "education": "КГМА, лечебное дело",
                 "skills": "Паллиативная помощь",
+                "cf-turnstile-response": "dummy_token",
             },
         )
         self.assertEqual(response.status_code, 200)
@@ -48,6 +62,7 @@ class TestDoctorRegisterView(TestCase):
                 "phone": "+996700000070",
                 "education": "КГМА, лечебное дело",
                 "skills": "Паллиативная помощь",
+                "cf-turnstile-response": "dummy_token",
             },
         )
         response = self.client.get(url)
@@ -67,10 +82,31 @@ class TestDoctorRegisterView(TestCase):
                 "phone": "+996700000072",
                 "education": "Мед",
                 "skills": "Уход",
+                "cf-turnstile-response": "dummy_token",
             },
         )
         self.assertEqual(response.status_code, 200)
         self.assertFalse(User.objects.filter(email="doctor3@test.kg").exists())
+
+    def test_invalid_turnstile_does_not_create_user(self):
+        url = reverse("accounts:doctor_register")
+        with patch("common.turnstile_form.verify_turnstile_token", return_value=False):
+            response = self.client.post(
+                url,
+                data={
+                    "email": "doctor4@test.kg",
+                    "first_name": "Врач",
+                    "last_name": "Четвёртый",
+                    "password1": "1qaz@WSX29",
+                    "password2": "1qaz@WSX29",
+                    "phone": "+996700000073",
+                    "education": "Мед",
+                    "skills": "Уход",
+                    "cf-turnstile-response": "bad_token",
+                },
+            )
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(User.objects.filter(email="doctor4@test.kg").exists())
 
     @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
     def test_post_doctor_register_view_sends_admin_notification(self):
@@ -85,6 +121,7 @@ class TestDoctorRegisterView(TestCase):
             "phone": "+996700000071",
             "education": "КГМА, лечебное дело",
             "skills": "Паллиативная помощь",
+            "cf-turnstile-response": "bad_token",
         }
 
         self.client.post(url, data=data)

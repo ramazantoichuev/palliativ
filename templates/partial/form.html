@@ -6,6 +6,7 @@
         <form action="" id="article-form" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form form layout="floating" %}
+            {% include 'partial/turnstile_widget.html' %}
         </form>
     </div>
     <div class="card-footer text-end py-3">
