@@ -11,6 +11,17 @@ User = get_user_model()
 
 
 class TestPatientRegisterView(TestCase):
+    def setUp(self):
+        super().setUp()
+        self.turnstile_patcher = mock.patch(
+            "common.turnstile_form.verify_turnstile_token", return_value=True
+        )
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
+
     @classmethod
     def setUpTestData(cls):
         cls.user = UserFactory()
@@ -35,6 +46,7 @@ class TestPatientRegisterView(TestCase):
                 "password1": "1qaz@WSX29",
                 "password2": "1qaz@WSX29",
                 "phone": "+996700123456",
+                "cf-turnstile-response": "dummy_token",
             },
         )
 
@@ -54,6 +66,7 @@ class TestPatientRegisterView(TestCase):
                 "password1": "1qaz@WSX29",
                 "password2": "different",
                 "phone": "+996700123457",
+                "cf-turnstile-response": "dummy_token",
             },
         )
 
@@ -73,6 +86,7 @@ class TestPatientRegisterView(TestCase):
             "password1": "1qaz@WSX29",
             "password2": "1qaz@WSX29",
             "phone": "+996700123458",
+            "cf-turnstile-response": "dummy_token",
         }
 
         # Act
@@ -81,6 +95,24 @@ class TestPatientRegisterView(TestCase):
         # Assert
         self.assertEqual(len(mail.outbox), 1)
         self.assertIn('notify_patient@mail.ru', mail.outbox[0].body)
+
+    def test_invalid_turnstile_does_not_create_user(self):
+        url = reverse("accounts:patient_register")
+        with mock.patch("common.turnstile_form.verify_turnstile_token", return_value=False):
+            response = self.client.post(
+                url,
+                data={
+                    "email": "bad_turnstile@mail.ru",
+                    "first_name": "Bad",
+                    "last_name": "Turnstile",
+                    "password1": "1qaz@WSX29",
+                    "password2": "1qaz@WSX29",
+                    "phone": "+996700123460",
+                    "cf-turnstile-response": "bad_token",
+                },
+            )
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(User.objects.filter(email="bad_turnstile@mail.ru").exists())
 
     @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
     def test_post_invalid_patient_register_does_not_send_email(self):
@@ -93,6 +125,7 @@ class TestPatientRegisterView(TestCase):
             "password1": "1qaz@WSX29",
             "password2": "different",
             "phone": "+996700123459",
+            "cf-turnstile-response": "dummy_token",
         }
 
         self.client.post(url, data=data)

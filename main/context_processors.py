@@ -10,6 +10,13 @@ def analytics(request):
     }
 
 
+def turnstile_keys(request):
+    #Глобально добавляет публичный ключ Cloudflare Turnstile во все шаблоны.
+    return {
+        'TURNSTILE_SITE_KEY': settings.TURNSTILE_SITE_KEY
+    }
+
+
 def site_contacts(request):
     """Контакты Ассоциации для футера (base.html) и страницы «Контакты»."""
     from .models.site_contacts import SiteContacts
