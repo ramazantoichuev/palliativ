@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
+from django.utils.translation import gettext as _
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -52,18 +53,30 @@ class EventDetailView(FormMixin, DetailView):
     def get_success_url(self):
         return reverse("events:event_detail", kwargs={"slug": self.object.slug})
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_past"] = self.object.is_past
+        return context
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
+        if self.object.is_past:
+            form.add_error(None, _("Регистрация на это мероприятие закрыта"))
+            return self.form_invalid(form)
         if form.is_valid():
             registration = form.save(commit=False)
             registration.event = self.object
             registration.save()
             admin_url = request.build_absolute_uri(
-            reverse('admin:events_eventregistration_change', args=[registration.pk]))
+                reverse('admin:events_eventregistration_change', args=[registration.pk]))
             notify_admins('Новая регистрация на мероприятие', f'Событие: {self.object.title}\nАдминка: {admin_url}')
-            send_confirmation(registration.email, 'Регистрация на мероприятие принята',
-                              f'Вы зарегистрированы на «{self.object.title}».')
+            if registration.email:
+                send_confirmation(
+                    registration.email,
+                    'Регистрация на мероприятие принята',
+                    f'Вы зарегистрированы на «{self.object.title}».',
+                )
             return self.form_valid(form)
         return self.form_invalid(form)
 

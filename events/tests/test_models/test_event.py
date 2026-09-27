@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.utils.text import slugify
 
 from events.models import Event
+from events.tests.factories import EventFactory, PastEventFactory
 
 
 class TestEvent(TestCase):
@@ -26,3 +27,13 @@ class TestEvent(TestCase):
         url = self.event.get_absolute_url()
 
         self.assertEqual(url, f"/events/{self.event.slug}/")
+
+    def test_is_past_true_for_past_event(self):
+        event = PastEventFactory()
+
+        self.assertTrue(event.is_past)
+
+    def test_is_past_false_for_upcoming_event(self):
+        event = EventFactory()
+
+        self.assertFalse(event.is_past)
