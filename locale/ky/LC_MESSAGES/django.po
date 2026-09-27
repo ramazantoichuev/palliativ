@@ -909,6 +909,30 @@ msgid "Политика обработки данных"
 msgstr "Маалыматтарды иштетүү саясаты"
 
 #: templates/base.html:270
+#: templates/base.html:265 templates/base.html:266
+#: templates/main/contacts.html:25
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: templates/base.html:273 templates/base.html:274
+#: templates/main/contacts.html:43
+msgid "Facebook"
+msgstr ""
+
+#: templates/base.html:281 templates/base.html:282
+#: templates/main/contacts.html:34
+msgid "Instagram"
+msgstr ""
+
+#: templates/base.html:289
+msgid "Написать нам"
+msgstr "Бизге жазыңыз"
+
+#: templates/base.html:292
+msgid "Политика обработки данных"
+msgstr "Маалыматтарды иштетүү саясаты"
+
+#: templates/base.html:296
 msgid "Все права защищены."
 msgstr "Бардык укуктар корголгон."
 
@@ -1069,18 +1093,6 @@ msgstr "Маалыматтарды иштетүү саясаты"
 #: templates/main/contacts.html:10
 msgid "Адрес"
 msgstr "Дарек"
-
-#: templates/main/contacts.html:25
-msgid "WhatsApp"
-msgstr "WhatsApp"
-
-#: templates/main/contacts.html:34
-msgid "Instagram"
-msgstr ""
-
-#: templates/main/contacts.html:43
-msgid "Facebook"
-msgstr ""
 
 #: templates/main/contacts.html:52
 msgid "Как нас найти"
