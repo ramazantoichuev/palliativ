@@ -8,16 +8,19 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from transliterate import translit
 
+from common.choices import ImageProcessingStatus
 from common.validators import validate_resource_file_size
 
 
 class Resource(models.Model):
     AUDIENCE_SPECIALIST = "specialist"
     AUDIENCE_CAREGIVER = "caregiver"
+    AUDIENCE_PEDIATRIC = "pediatric"
 
     AUDIENCE_CHOICES = [
         (AUDIENCE_SPECIALIST, _("Руководство для специалистов")),
         (AUDIENCE_CAREGIVER, _("Советы ухаживающим")),
+        (AUDIENCE_PEDIATRIC, _("Паллиативная педиатрия")),
     ]
 
     SUBCATEGORY_CHOICES = [
@@ -93,6 +96,13 @@ class ResourceFile(models.Model):
         ],
     )
 
+    processing_status = models.CharField(
+        _('Статус обработки файла'),
+        max_length=20,
+        choices=ImageProcessingStatus.choices,
+        default=ImageProcessingStatus.SKIPPED,
+        blank=True,
+    )
     class Meta:
         verbose_name = _("Файл ресурса")
         verbose_name_plural = _("Файлы ресурса")

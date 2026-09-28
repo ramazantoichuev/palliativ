@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 
 
 def validate_image_size(file):
@@ -13,17 +13,18 @@ def validate_image_size(file):
         )
 
 
-def validate_image_dimensions(file):
-    limit_px = settings.MAX_IMAGE_DIMENSION_PX
-    image = Image.open(file)
-    width, height = image.size
-    if width > limit_px or height > limit_px:
+def validate_image_integrity(file):
+
+    file.seek(0)
+    try:
+        image = Image.open(file)
+        image.load()
+    except (UnidentifiedImageError, OSError, ValueError):
         raise ValidationError(
-            _(
-                "Разрешение изображения не должно превышать %(limit)s пикселей по большей стороне."
-            ),
-            params={"limit": limit_px},
+            _("Файл повреждён или не является корректным изображением.")
         )
+    finally:
+        file.seek(0)
 
 
 def validate_resource_file_size(file):
@@ -33,3 +34,10 @@ def validate_resource_file_size(file):
             _("Размер файла не должен превышать %(limit)s МБ."),
             params={"limit": limit_mb},
         )
+
+def validate_image_dimensions(file):
+    """
+    Оставлена для обратной совместимости со старыми миграциями
+    (использовалась в validators= ImageField в предыдущих версиях).
+    Больше не применяется как активный валидатор.
+    """

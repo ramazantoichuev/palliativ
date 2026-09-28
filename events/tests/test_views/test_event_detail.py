@@ -1,4 +1,5 @@
 import tempfile
+from unittest.mock import patch
 
 from django.core import mail
 from django.test import TestCase, override_settings
@@ -6,7 +7,7 @@ from django.urls import reverse
 from django.utils import timezone
 
 from events.models import EventRegistration
-from events.tests.factories import EventFactory, make_image
+from events.tests.factories import EventFactory, PastEventFactory, make_image
 
 
 class TestEventDetailView(TestCase):
@@ -25,7 +26,19 @@ class TestEventDetailView(TestCase):
             "full_name": "Иванов Иван Иванович",
             "email": "ivan@example.com",
             "phone": "+996700123456",
+            "cf-turnstile-response": "dummy_token",
         }
+
+    def setUp(self):
+        super().setUp()
+        self.turnstile_patcher = patch(
+            "common.turnstile_form.verify_turnstile_token", return_value=True
+        )
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
 
     def test_page_opens_and_uses_expected_template(self):
         response = self.client.get(self.url)
@@ -63,7 +76,7 @@ class TestEventDetailView(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "<img")
+        self.assertNotContains(response, f'alt="{self.event.title}"')
 
     def test_event_image_is_rendered_when_present(self):
         with (
@@ -77,6 +90,23 @@ class TestEventDetailView(TestCase):
             )
 
             self.assertContains(response, event.image.url)
+
+    def test_og_image_meta_is_rendered_when_image_present(self):
+        with (
+            tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as media_root,
+            override_settings(MEDIA_ROOT=media_root),
+        ):
+            event = EventFactory(slug="with-og-image", image=make_image())
+
+            response = self.client.get(
+                reverse("events:event_detail", args=[event.slug])
+            )
+
+            self.assertContains(
+                response,
+                f'<meta property="og:image" '
+                f'content="http://testserver{event.image.url}">',
+            )
 
     def test_valid_post_creates_registration_for_this_event(self):
         response = self.client.post(self.url, data=self.valid_data)
@@ -96,8 +126,20 @@ class TestEventDetailView(TestCase):
     def test_invalid_post_does_not_create_registration(self):
         response = self.client.post(
             self.url,
-            data={"full_name": "", "email": "not-an-email", "phone": ""},
+            data={
+                "full_name": "",
+                "email": "not-an-email",
+                "phone": "",
+                "cf-turnstile-response": "dummy_token",
+            },
         )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(EventRegistration.objects.exists())
+
+    def test_invalid_turnstile_does_not_create_registration(self):
+        with patch("common.turnstile_form.verify_turnstile_token", return_value=False):
+            response = self.client.post(self.url, data=self.valid_data)
 
         self.assertEqual(response.status_code, 200)
         self.assertFalse(EventRegistration.objects.exists())
@@ -113,8 +155,72 @@ class TestEventDetailView(TestCase):
 
     @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
     def test_invalid_registration_sends_no_email(self):
-        invalid_data = {**self.valid_data, 'email': ''}
+        invalid_data = {**self.valid_data, 'email': 'not-an-email'}
 
         self.client.post(self.url, data=invalid_data)
 
+        self.assertEqual(len(mail.outbox), 0)
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_registration_without_email_succeeds_and_notifies_only_admin(self):
+        data = {**self.valid_data, 'email': ''}
+
+        response = self.client.post(self.url, data=data)
+
+        self.assertRedirects(response, self.url)
+        registration = EventRegistration.objects.get()
+        self.assertEqual(registration.email, '')
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, ['admin@example.com'])
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_registration_with_email_sends_both_emails(self):
+        self.client.post(self.url, data=self.valid_data)
+
+        self.assertEqual(len(mail.outbox), 2)
+        recipients = [msg.to[0] for msg in mail.outbox]
+        self.assertCountEqual(recipients, ['admin@example.com', 'ivan@example.com'])
+
+    def test_email_field_is_marked_optional(self):
+        response = self.client.get(self.url)
+
+        self.assertContains(response, 'необязательно')
+
+class TestPastEventDetailView(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.past_event = PastEventFactory(slug="past")
+        cls.upcoming_event = EventFactory(slug="upcoming")
+        cls.past_url = reverse("events:event_detail", args=[cls.past_event.slug])
+        cls.upcoming_url = reverse(
+            "events:event_detail", args=[cls.upcoming_event.slug]
+        )
+        cls.valid_data = {
+            "full_name": "Иванов Иван Иванович",
+            "email": "ivan@example.com",
+            "phone": "+996700123456",
+        }
+
+    def test_past_event_page_does_not_render_registration_form(self):
+        response = self.client.get(self.past_url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'name="full_name"')
+        self.assertNotContains(response, "article-form")
+        self.assertContains(response, "Регистрация на это мероприятие закрыта")
+
+    def test_upcoming_event_page_renders_registration_form(self):
+        response = self.client.get(self.upcoming_url)
+
+        self.assertContains(response, 'name="full_name"')
+        self.assertNotContains(response, "Регистрация на это мероприятие закрыта")
+
+    @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
+    def test_direct_post_to_past_event_does_not_create_registration(self):
+        response = self.client.post(self.past_url, data=self.valid_data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(EventRegistration.objects.exists())
+        self.assertTrue(response.context["form"].errors)
         self.assertEqual(len(mail.outbox), 0)

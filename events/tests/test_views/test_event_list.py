@@ -61,7 +61,10 @@ class TestEventListView(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "<img")
+        # Логотип в base.html — тоже <img>, поэтому проверяем отсутствие
+        # именно изображений событий: их теги содержат alt с названием события.
+        self.assertNotContains(response, f'alt="{self.upcoming.title}"')
+        self.assertNotContains(response, f'alt="{self.past.title}"')
 
     def test_event_image_is_rendered_when_present(self):
         with (

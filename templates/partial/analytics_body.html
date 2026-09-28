@@ -1,0 +1,11 @@
+{% comment %}
+Noscript-часть Google Tag Manager — по документации ставится сразу после
+открывающего <body>. Рендерится только при заполненном GOOGLE_TAG_MANAGER_ID
+(скрипт-часть — в partial/analytics.html в <head>).
+{% endcomment %}
+{% if GOOGLE_TAG_MANAGER_ID %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ GOOGLE_TAG_MANAGER_ID }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+{% endif %}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from transliterate import translit
@@ -36,13 +37,17 @@ class Event(models.Model):
     def get_absolute_url(self):
         return reverse("events:event_detail", kwargs={"slug": self.slug})
 
+    @property
+    def is_past(self):
+        return self.event_date < timezone.now()
+
 
 class EventRegistration(models.Model):
     event = models.ForeignKey(
         Event, on_delete=models.CASCADE, related_name="registrations"
     )
     full_name = models.CharField(_("ФИО"), max_length=255)
-    email = models.EmailField(_("Email"))
+    email = models.EmailField(_("Email"), blank=True)
     phone = models.CharField(_("Телефон"), max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(_("Рассмотрено"), default=False)

@@ -14,10 +14,21 @@ def build_valid_data():
         'phone': '0555123456',
         'email': 'test@example.com',
         'topic': 'medical_help',
+        'cf-turnstile-response': 'dummy_token',
     }
+
 
 @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
 class TestConsultationCreateViewNotifications(TestCase):
+    def setUp(self):
+        super().setUp()
+        self.patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
+        self.patcher.start()
+
+    def tearDown(self):
+        self.patcher.stop()
+        super().tearDown()
+
     @classmethod
     def setUpTestData(cls):
         cls.url = reverse('main:new-consultation')
@@ -26,6 +37,7 @@ class TestConsultationCreateViewNotifications(TestCase):
             'phone': '+996700123456',
             'email': 'client@example.com',
             'topic': 'medical_help',
+            'cf-turnstile-response': 'dummy_token',
         }
 
     def test_valid_submission_sends_admin_notification_and_confirmation(self):
@@ -49,7 +61,14 @@ class TestConsultationCreateViewNotifications(TestCase):
 
 class ConsultationCreateViewTest(TestCase):
     def setUp(self):
+        super().setUp()
         self.url = reverse('main:new-consultation')
+        self.turnstile_patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
+        self.turnstile_patcher.start()
+
+    def tearDown(self):
+        self.turnstile_patcher.stop()
+        super().tearDown()
 
     def test_get_consultation_page_returns_200(self):
         response = self.client.get(self.url)
@@ -96,6 +115,22 @@ class MainPagesTest(TestCase):
         response = self.client.get(reverse('main:about'))
         self.assertEqual(response.status_code, 200)
 
+    def test_consultation_page_shows_manual_processing_disclaimer(self):
+        response = self.client.get(reverse('main:new-consultation'))
+
+        self.assertContains(response, 'обработка заявок не автоматизирована')
+        self.assertContains(response, 'в течение одного рабочего дня')
+
     def test_contacts_page_returns_200(self):
         response = self.client.get(reverse('main:contacts'))
         self.assertEqual(response.status_code, 200)
+
+    def test_contacts_page_contains_actual_contact_information(self):
+        response = self.client.get(reverse('main:contacts'))
+
+        self.assertContains(response, '0312 214015')
+        self.assertContains(response, 'г. Бишкек, ул. Юдахина 61')
+        self.assertContains(response, '+996 555 922 604')
+        self.assertContains(response, 'palliativecare_kg')
+        self.assertContains(response, 'https://www.facebook.com/palliativecare.kg')
+        self.assertContains(response, 'https://2gis.kg/bishkek/geo/70000001117702816')

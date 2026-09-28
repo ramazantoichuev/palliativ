@@ -39,6 +39,7 @@ urlpatterns = [
     path("news/", include("news.urls")),
     path("patients/", include("patients.urls")),
     path("resources/", include("resources.urls")),
+    path("faq/", include("faq.urls")),
     path(
         "sitemap.xml",
         sitemap,

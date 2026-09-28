@@ -24,6 +24,8 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG=env('DEBUG')
 
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+TURNSTILE_SITE_KEY = env('TURNSTILE_SITE_KEY', default='1x00000000000000000000AA')
+TURNSTILE_SECRET_KEY = env('TURNSTILE_SECRET_KEY', default='1x00000000000000000000000000000000U')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -59,6 +61,8 @@ INSTALLED_APPS = [
     "main",
     "patients",
     "resources",
+    "faq",
+    'huey.contrib.djhuey',
 ]
 
 JAZZMIN_SETTINGS = {
@@ -98,6 +102,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "main.context_processors.analytics",
+                "main.context_processors.turnstile_keys",
             ],
         },
     },
@@ -131,7 +137,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
 #     },
 # ]
-
+HUEY = {
+    'huey_class': 'huey.RedisHuey',  # Use Redis backend
+    'name': 'articles_project',  # Unique queue name
+    'immediate': os.getenv('HUEY_IMMEDIATE', 'False') == 'True',  # If True, tasks run synchronously (great for local tests)
+    'url': os.getenv('REDIS_URL'),
+    'consumer': {
+        'workers': 2,  # Number of worker threads/processes
+        'worker_type': 'thread',  # 'thread', 'process', or 'greenlet'
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
@@ -158,15 +173,32 @@ MODELTRANSLATION_FALLBACK_LANGUAGES = ("ru",)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-MAX_IMAGE_SIZE_MB = 5
+MAX_IMAGE_SIZE_MB = 25
+MIN_IMAGE_SIZE_FOR_COMPRESSION_MB = 1
 MAX_IMAGE_DIMENSION_PX = 3000
-MAX_RESOURCE_FILE_SIZE_MB = 15
+
+MIN_RESOURCE_FILE_SIZE_FOR_COMPRESSION_MB = 2
+MAX_RESOURCE_FILE_SIZE_MB = 40
+
+
+
 DESCRIPTION_MAX_LENGTH = 2000
+
+# Analytics
+# ID счётчиков задаются через .env только на проде; при пустых значениях
+# скрипты аналитики не рендерятся вообще (см. templates/partial/analytics.html).
+GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
+GOOGLE_TAG_MANAGER_ID = os.getenv('GOOGLE_TAG_MANAGER_ID', '')
+YANDEX_METRIKA_ID = os.getenv('YANDEX_METRIKA_ID', '')
+
+# Email
+# https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

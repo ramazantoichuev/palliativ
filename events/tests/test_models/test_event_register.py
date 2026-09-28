@@ -45,3 +45,15 @@ class EventRegistrationModelTests(TestCase):
         )
 
         self.assertEqual(str(registration), f"Иванов Иван — {self.event.title}")
+
+    def test_email_is_optional(self):
+        registration = EventRegistration(
+            event=self.event,
+            full_name="Иванов Иван",
+            phone="+996700123456",
+        )
+
+        registration.full_clean()
+        registration.save()
+
+        self.assertEqual(registration.email, "")

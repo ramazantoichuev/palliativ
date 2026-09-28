@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Команда и руководство" %} — Паллиатив.kg{% endblock %}
+{% block meta_description %}{% blocktranslate %}Учредители, руководство и команда Ассоциации паллиативной и хосписной помощи Кыргызской Республики.{% endblocktranslate %}{% endblock %}
+
+{% block content %}
+    <section class="py-4">
+        <h1 class="fw-bold mb-4">{% translate "Команда и руководство" %}</h1>
+
+        {% for label, members in team_groups %}
+            {% if members %}
+                <h2 class="h4 fw-bold mt-4 mb-3">{{ label }}</h2>
+                {% if forloop.first %}
+                    <ul>
+                        {% for member in members %}
+                            <li>{{ member.full_name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="row g-4 mb-2">
+                        {% for member in members %}
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <article class="card h-100 shadow-sm">
+                                    <div class="card-body text-center">
+                                        {% if member.photo %}
+                                            <img src="{{ member.photo.url }}"
+                                                 class="rounded-circle mb-3 team-photo"
+                                                 alt="{{ member.full_name }}">
+                                        {% else %}
+                                            <svg class="rounded-circle mb-3 team-photo" viewBox="0 0 120 120"
+                                                 xmlns="http://www.w3.org/2000/svg" role="img"
+                                                 aria-label="{% translate 'Фотография появится позже' %}">
+                                                <rect width="120" height="120" fill="#e9ecef"/>
+                                                <circle cx="60" cy="46" r="20" fill="#adb5bd"/>
+                                                <path d="M24 108c0-20 16-32 36-32s36 12 36 32" fill="#adb5bd"/>
+                                            </svg>
+                                        {% endif %}
+                                        <h3 class="h5 card-title mb-1">{{ member.full_name }}</h3>
+                                        {% if member.position %}
+                                            <p class="text-muted small mb-2">{{ member.position }}</p>
+                                        {% endif %}
+                                        {% if member.bio %}
+                                            <details class="text-start small">
+                                                <summary class="text-primary mb-2">{% translate "Подробнее" %}</summary>
+                                                {{ member.bio|linebreaks }}
+                                            </details>
+                                        {% endif %}
+                                    </div>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </section>
+{% endblock %}

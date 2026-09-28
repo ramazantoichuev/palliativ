@@ -19,21 +19,46 @@
             min-height: 100vh;
             flex-direction: column;
         }
+
         main {
             flex: 1 0 auto;
         }
+
         footer a {
             color: inherit;
             text-decoration: none;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
+
+        .navbar-brand img {
+            height: 60px;
+            width: auto;
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-brand img {
+                height: 50px;
+            }
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        /* Floating labels прячут placeholder всегда; показываем примеры
+           заполнения при фокусе — label в этот момент уже всплыл наверх. */
+        .form-floating > .form-control:focus::placeholder {
+            color: var(--bs-secondary-color);
+        }
     </style>
 
-        <meta name="description" content="{% block meta_description %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
 
-    
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{% translate 'Паллиатив.kg' %}">
     <meta property="og:url" content="{% canonical_url %}">
@@ -44,9 +69,12 @@
     {% endblock %}
 
     <link rel="canonical" href="{% canonical_url %}">
+
+    {% include 'partial/analytics.html' %}
 </head>
 
 <body>
+{% include 'partial/analytics_body.html' %}
 
 {% if messages %}
     <div class="container mt-3">
@@ -61,19 +89,54 @@
 {% endif %}
 
 {% with ns=request.resolver_match.namespace un=request.resolver_match.url_name %}
-<header>
-    <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm">
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'main:home' %}">Паллиатив.kg</a>
+            <a class="navbar-brand" href="{% url 'main:home' %}">
+                <img src="{% static 'main/images/logo1_contur.png' %}"
+                     alt="{% translate 'Ассоциация паллиативной и хосписной помощи' %}">
+            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#mainNavbar" aria-controls="mainNavbar"
-                    aria-expanded="false" aria-label="{% translate 'Открыть меню' %}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-flex align-items-center gap-2 ms-auto order-lg-last">
+                <a href="{% url 'main:new-consultation' %}"
+                   class="btn btn-primary btn-sm text-nowrap"
+                   aria-label="{% translate 'Оставить заявку на консультацию' %}">
+                    {% translate "Оставить заявку" %}
+                </a>
+
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            aria-label="{% translate 'Выбор языка' %}">
+                        {{ LANGUAGE_CODE|upper }}
+                    </button>
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <li>
+                                    <button type="submit" name="language" value="{{ language.code }}"
+                                            class="dropdown-item{% if language.code == LANGUAGE_CODE %} active{% endif %}"
+                                            {% if language.code == LANGUAGE_CODE %}aria-current="true"{% endif %}>
+                                        {{ language.code|upper }} — {{ language.name_local }}
+                                    </button>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </form>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                        aria-expanded="false" aria-label="{% translate 'Открыть меню' %}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto mb-2 mb-md-0 text-center">
+                <ul class="navbar-nav ms-auto me-lg-3 mb-2 mb-lg-0 text-center">
 
                     <li class="nav-item">
                         <a class="nav-link{% if ns == 'main' and un == 'home' %} active{% endif %}"
@@ -85,6 +148,12 @@
                         <a class="nav-link{% if ns == 'main' and un == 'about' %} active{% endif %}"
                            {% if ns == 'main' and un == 'about' %}aria-current="page"{% endif %}
                            href="{% url 'main:about' %}">{% translate "О нас" %}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link{% if ns == 'main' and un == 'team' %} active{% endif %}"
+                           {% if ns == 'main' and un == 'team' %}aria-current="page"{% endif %}
+                           href="{% url 'main:team' %}">{% translate "Команда" %}</a>
                     </li>
 
                     <li class="nav-item">
@@ -111,6 +180,12 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link{% if ns == 'faq' %} active{% endif %}"
+                           {% if ns == 'faq' %}aria-current="page"{% endif %}
+                           href="{% url 'faq:faq_list' %}">{% translate "FAQ" %}</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link{% if ns == 'main' and un == 'contacts' %} active{% endif %}"
                            {% if ns == 'main' and un == 'contacts' %}aria-current="page"{% endif %}
                            href="{% url 'main:contacts' %}">{% translate "Контакты" %}</a>
@@ -131,7 +206,7 @@
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <form action="{% url 'accounts:logout' %}" method="post" class="d-inline">
+                        <form action="{% url 'accounts:logout' %}" method="post" class="d-flex justify-content-center">
                             {% csrf_token %}
                             <button type="submit" class="nav-link btn btn-link">
                                 {% translate "Выйти" %}
@@ -147,25 +222,20 @@
 
                 </ul>
 
-                <form action="{% url 'set_language' %}" method="post"
-                      class="d-flex justify-content-center ms-md-3 mb-2 mb-md-0">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
-
-                    <div class="btn-group btn-group-sm" role="group"
-                         aria-label="{% translate 'Выбор языка' %}">
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-                            <button type="submit" name="language" value="{{ language.code }}"
-                                    class="btn {% if language.code == LANGUAGE_CODE %}btn-primary{% else %}btn-outline-secondary{% endif %}"
-                                    title="{{ language.name_local }}"
-                                    {% if language.code == LANGUAGE_CODE %}aria-current="true"{% endif %}>
-                                {{ language.code|upper }}
-                            </button>
-                        {% endfor %}
-                    </div>
+                <form action="{% url 'main:search' %}" method="get"
+                      class="d-flex justify-content-center ms-lg-3 me-lg-3 mb-2 mb-lg-0">
+                    <input
+                        type="search"
+                        name="q"
+                        value="{{ request.GET.q }}"
+                        class="form-control form-control-sm"
+                        placeholder="{% translate 'Поиск' %}"
+                        aria-label="{% translate 'Поиск' %}"
+                    >
+                    <button type="submit" class="btn btn-outline-primary btn-sm ms-2">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </form>
-
             </div>
         </div>
     </nav>
@@ -187,10 +257,45 @@
             </div>
             <small>{% translate "г. Бишкек, ул. Юдахина 61" %}</small>
         </div>
-
+        <div class="text-center d-flex flex-column align-items-center gap-1">
+            <div class="small">
+                <a href="tel:+996312214015" class="text-light">0312 214015</a>
+                <span class="mx-1">·</span>
+                <a href="mailto:info@palliativ.kg" class="text-light">info@palliativ.kg</a>
+            </div>
+            <div class="d-flex gap-3 fs-5">
+                <a href="https://wa.me/996555922604"
+                   class="text-light"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="{% translate 'WhatsApp' %}"
+                   title="{% translate 'WhatsApp' %}">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.facebook.com/palliativecare.kg"
+                   class="text-light"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="{% translate 'Facebook' %}"
+                   title="{% translate 'Facebook' %}">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/palliativecare_kg"
+                   class="text-light"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="{% translate 'Instagram' %}"
+                   title="{% translate 'Instagram' %}">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
         <div class="text-center text-md-end">
             <div>
                 <a href="{% url 'main:contacts' %}">{% translate "Написать нам" %}</a>
+            </div>
+            <div>
+                <a href="{% url 'main:privacy_policy' %}">{% translate "Политика обработки данных" %}</a>
             </div>
             <small>
                 &copy; {% now "Y" %} Паллиатив.kg.

@@ -1,5 +1,6 @@
 *.sqlite3
 venv
+.venv
 virtualenv
 __pycache__
 *.pyc
@@ -11,3 +12,5 @@ uploads
 settings_local.py
 media/
 .env
+staticfiles/
+venv-esdpvenv/
