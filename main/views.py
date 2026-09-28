@@ -97,6 +97,7 @@ class TeamView(TemplateView):
         ]
         return context
 
+# Create your views here.
 class ConsultationCreateView(SuccessMessageMixin, CreateView):
     model = ConsultationRequest
     form_class = ConsultationForm
@@ -120,3 +121,4 @@ class ConsultationCreateView(SuccessMessageMixin, CreateView):
             'Ваша заявка принята, мы свяжемся с вами.',
         )
         return response
+

@@ -1,12 +1,18 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
+
+from common.turnstile_form import TurnstileFormMixin
 
 from .models import Event, EventRegistration
 
 
-class EventRegistrationForm(forms.ModelForm):
+class EventRegistrationForm(TurnstileFormMixin,forms.ModelForm):
     class Meta:
         model = EventRegistration
         fields = ["full_name", "email", "phone"]
+        labels = {
+            "email": _("Email (необязательно)"),
+        }
         widgets = {
             "full_name": forms.TextInput(attrs={"class": "form-control"}),
             "email": forms.EmailInput(attrs={"class": "form-control"}),

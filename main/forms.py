@@ -4,16 +4,27 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from common.turnstile_form import TurnstileFormMixin
+
 from .models.consultation import ConsultationRequest
 
 BISHKEK_CODE = "312"
 OBLAST_CENTER_CODES = {"3222", "3422", "3522", "3622", "3722", "3922"}
 
 
-class ConsultationForm(forms.ModelForm):
+class ConsultationForm(TurnstileFormMixin, forms.ModelForm):
     class Meta:
         model = ConsultationRequest
         fields = ["first_name", "phone", "email", "topic"]
+        widgets = {
+            "first_name": forms.TextInput(
+                attrs={"placeholder": _("Айгуль Асанова")}
+            ),
+            # Пример должен проходить clean_phone (кыргызстанский формат),
+            # а не копировать +7(999) 999-9999 из макета.
+            "phone": forms.TextInput(attrs={"placeholder": "0555123456"}),
+            "email": forms.EmailInput(attrs={"placeholder": "aigul@example.com"}),
+        }
 
     def clean_phone(self):
         phone = self.cleaned_data.get("phone")

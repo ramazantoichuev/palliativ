@@ -8,3 +8,10 @@ def analytics(request):
         'GOOGLE_TAG_MANAGER_ID': settings.GOOGLE_TAG_MANAGER_ID,
         'YANDEX_METRIKA_ID': settings.YANDEX_METRIKA_ID,
     }
+
+
+def turnstile_keys(request):
+    #Глобально добавляет публичный ключ Cloudflare Turnstile во все шаблоны.
+    return {
+        'TURNSTILE_SITE_KEY': settings.TURNSTILE_SITE_KEY
+    }
