@@ -7,6 +7,8 @@ from .models.resources import Resource, ResourceFile, ResourceVideoLink
 class ResourceFileInline(admin.TabularInline):
     model = ResourceFile
     extra = 1
+    readonly_fields = ["processing_status"]
+
 
 
 class ResourceVideoLinkInline(admin.TabularInline):

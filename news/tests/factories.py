@@ -1,5 +1,8 @@
+import io
+
 import factory
 from django.core.files.uploadedfile import SimpleUploadedFile
+from PIL import Image
 
 from news.models.posts import Category, Post
 
@@ -10,7 +13,16 @@ ONE_PIXEL_GIF = (
 
 
 def make_image(name="post.gif"):
+    """Лёгкая заглушка-картинка для тестов, где сама картинка не важна."""
     return SimpleUploadedFile(name, ONE_PIXEL_GIF, content_type="image/gif")
+
+
+def make_test_image_bytes(size=(50, 50), color='blue', fmt='JPEG', quality=90):
+    """Реальное JPEG/PNG/WEBP-изображение для тестов фонового сжатия."""
+    img = Image.new('RGB', size, color=color)
+    buf = io.BytesIO()
+    img.save(buf, format=fmt, quality=quality)
+    return buf.getvalue()
 
 
 class CategoryFactory(factory.django.DjangoModelFactory):
@@ -25,6 +37,12 @@ class PostFactory(factory.django.DjangoModelFactory):
         model = Post
 
     title = factory.Sequence(lambda n: f"Новость {n}")
+    slug = factory.Sequence(lambda n: f"novost-{n}")
     content = "Полный текст новости."
     description = "Краткое описание новости."
     category = factory.SubFactory(CategoryFactory)
+    image = factory.LazyFunction(
+        lambda: SimpleUploadedFile(
+            'test.jpg', make_test_image_bytes(), content_type='image/jpeg'
+        )
+    )

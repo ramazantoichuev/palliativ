@@ -12,4 +12,5 @@ uploads
 settings_local.py
 media/
 .env
+staticfiles/
 venv-esdpvenv/
