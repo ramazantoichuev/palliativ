@@ -49,6 +49,12 @@
             height: 120px;
             object-fit: cover;
         }
+
+        /* Floating labels прячут placeholder всегда; показываем примеры
+           заполнения при фокусе — label в этот момент уже всплыл наверх. */
+        .form-floating > .form-control:focus::placeholder {
+            color: var(--bs-secondary-color);
+        }
     </style>
 
     <meta name="description" content="{% block meta_description %}{% translate 'Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане.' %}{% endblock %}">
