@@ -42,7 +42,7 @@
             <a href="{% url 'events:event_list' %}" class="btn btn-outline-primary">{% translate "Мероприятия" %}</a>
         </div>
     </section>
-        {% if latest_posts %}
+{% if latest_posts %}
     <section class="py-4">
         <h2 class="h4 fw-bold mb-3">{% translate "Новости" %}</h2>
         <div class="row row-cols-1 row-cols-md-3 g-3">
