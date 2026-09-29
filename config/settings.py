@@ -104,6 +104,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "main.context_processors.analytics",
                 "main.context_processors.turnstile_keys",
+                "main.context_processors.site_contacts",
             ],
         },
     },
