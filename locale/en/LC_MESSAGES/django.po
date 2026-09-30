@@ -1,7 +1,9 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-27 08:01+0000\n"
 "POT-Creation-Date: 2026-09-27 09:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -200,7 +202,7 @@ msgstr "Registrate"
 msgid "Мероприятия"
 msgstr "Events"
 
-#: events/forms.py:14
+#: events/forms.py:12
 msgid "Email (необязательно)"
 msgstr ""
 
@@ -294,11 +296,11 @@ msgstr "Frequently Asked Questions"
 msgid "Вопросы пока не добавлены."
 msgstr "No questions have been added yet."
 
-#: main/admin.py:23
+#: main/admin.py:22
 msgid "Основная информация"
 msgstr "Main information"
 
-#: main/admin.py:26
+#: main/admin.py:25
 msgid "Управление заявкой"
 msgstr "Request management"
 
@@ -306,6 +308,11 @@ msgstr "Request management"
 msgid "Главная"
 msgstr "Home page"
 
+#: main/forms.py:21
+msgid "Айгуль Асанова"
+msgstr "Aigul Asanova"
+
+#: main/forms.py:37
 #: main/forms.py:28
 msgid ""
 "Неверный формат номера. Введите номер в формате: 0555123456 (мобильный) или "
@@ -314,6 +321,7 @@ msgstr ""
 "Invalid phone number format. Enter the number in the format: 0555123456 "
 "(mobile) or 0312123456 (landline, Bishkek)"
 
+#: main/forms.py:65
 #: main/forms.py:56
 msgid ""
 "Неверный код оператора или города. Проверьте правильность ввода номера "
@@ -441,7 +449,8 @@ msgstr ""
 msgid "Член команды"
 msgstr ""
 
-#: main/models/team.py:35 templates/main/team.html:4 templates/main/team.html:9
+#: main/models/team.py:35 templates/main/team.html:4
+#: templates/main/team.html:9
 msgid "Команда и руководство"
 msgstr "Team and Leadership"
 
@@ -449,7 +458,7 @@ msgstr "Team and Leadership"
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Your consultation request has been successfully submitted!"
 
-#: news/apps.py:8 news/models/posts.py:51 templates/base.html:156
+#: news/apps.py:8 news/models/posts.py:51 templates/base.html:162
 #: templates/main/home.html:41 templates/main/home.html:47
 #: templates/main/search_results.html:34 templates/news/post_list.html:7
 msgid "Новости"
@@ -480,7 +489,8 @@ msgid "Симптом"
 msgstr "Symptom"
 
 #: patients/models/patients.py:13 patients/models/patients.py:38
-#: resources/models/resources.py:49 templates/patients/doctor_dashboard.html:18
+#: resources/models/resources.py:49
+#: templates/patients/doctor_dashboard.html:18
 msgid "Симптомы"
 msgstr "Symptoms"
 
@@ -520,9 +530,10 @@ msgstr ""
 #: patients/views.py:146
 msgid "Спасибо! Симптомы обновлены, ниже — материалы, которые могут помочь"
 msgstr ""
-"Thank you! Your symptoms have been updated. Below are materials that may help"
+"Thank you! Your symptoms have been updated. Below are materials that may "
+"help"
 
-#: resources/apps.py:8 templates/base.html:168
+#: resources/apps.py:8 templates/base.html:174
 #: templates/main/search_results.html:74
 #: templates/resources/resource_list.html:7
 msgid "Ресурсы"
@@ -653,7 +664,7 @@ msgid ""
 msgstr "`Fill the form. Your application will be "
 
 #: templates/accounts/doctor_register.html:73
-#: templates/main/consultation.html:9
+#: templates/main/consultation.html:12
 msgid "Отправить заявку"
 msgstr "Submit"
 
@@ -663,7 +674,7 @@ msgid "Уже есть аккаунт?"
 msgstr "Already have an account?"
 
 #: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-#: templates/accounts/patient_register.html:82 templates/base.html:213
+#: templates/accounts/patient_register.html:82 templates/base.html:219
 msgid "Войти"
 msgstr "Log in"
 
@@ -700,7 +711,7 @@ msgstr ""
 msgid "Членство / Участие"
 msgstr "Membership / Participation"
 
-#: templates/accounts/register_type.html:13
+#: templates/accounts/register_type.html:14
 msgid "Выберите подходящий вариант участия в ассоциации."
 msgstr "Choose the membership option that suits you"
 
@@ -715,40 +726,41 @@ msgstr "Become a patient"
 
 #: templates/accounts/register_type.html:29
 msgid ""
-"Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации."
+"Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам "
+"ассоциации."
 msgstr "Register to access the association’s opportunities and services"
 
-#: templates/accounts/register_type.html:31
-#: templates/accounts/register_type.html:66
+#: templates/accounts/register_type.html:33
+#: templates/accounts/register_type.html:92
 msgid "Преимущества"
 msgstr "Benefits"
 
-#: templates/accounts/register_type.html:33
+#: templates/accounts/register_type.html:38
 msgid "Избавление от боли"
 msgstr "Pain relief"
 
-#: templates/accounts/register_type.html:34
+#: templates/accounts/register_type.html:41
 msgid "Современные методы позволяют купировать даже самую сильную боль."
 msgstr "Modern methods can relieve even the most severe pain."
 
-#: templates/accounts/register_type.html:35
+#: templates/accounts/register_type.html:45
 msgid "Поддержка семьи"
 msgstr "Family support"
 
-#: templates/accounts/register_type.html:36
+#: templates/accounts/register_type.html:48
 msgid "Знания и психологическая опора для близких, ухаживающих за больным."
 msgstr ""
 "Knowledge and psychological support for relatives caring for the patient."
 
-#: templates/accounts/register_type.html:37
+#: templates/accounts/register_type.html:52
 msgid "Права пациента"
 msgstr "Patient rights"
 
-#: templates/accounts/register_type.html:38
+#: templates/accounts/register_type.html:55
 msgid "Как получить нужные лекарства от боли и другие права пациента."
 msgstr "How to obtain the necessary pain medication and other patient rights."
 
-#: templates/accounts/register_type.html:43
+#: templates/accounts/register_type.html:64
 msgid "Перейти в личный кабинет"
 msgstr "Go to personal account"
 
@@ -762,43 +774,44 @@ msgstr "Registration for this event is closed"
 msgid "Стать врачом"
 msgstr "Become a doctor"
 
-#: templates/accounts/register_type.html:64
+#: templates/accounts/register_type.html:88
 msgid ""
 "Отправьте заявку на вступление. Заявка будет рассмотрена администратором "
-"ассоциации. Доступ к личному кабинету предоставляется после одобрения заявки."
+"ассоциации. Доступ к личному кабинету предоставляется после одобрения "
+"заявки."
 msgstr ""
 "Submit a membership application. It will be reviewed by the association "
 "administrator. Access to the personal account is granted after approval."
 
-#: templates/accounts/register_type.html:68
+#: templates/accounts/register_type.html:97
 msgid "Безопасность"
 msgstr "Safety"
 
-#: templates/accounts/register_type.html:69
+#: templates/accounts/register_type.html:100
 msgid "Доступ к юридическим алгоритмам выписки рецептов и учёта препаратов."
 msgstr "Access to legal procedures for prescribing and tracking medications."
 
-#: templates/accounts/register_type.html:70
+#: templates/accounts/register_type.html:104
 msgid "Репутация"
 msgstr "Reputation"
 
-#: templates/accounts/register_type.html:71
+#: templates/accounts/register_type.html:107
 msgid "Станьте частью международного сообщества (EAPC, IAHPC)."
 msgstr "Become part of the international community (EAPC, IAHPC)."
 
-#: templates/accounts/register_type.html:72
+#: templates/accounts/register_type.html:111
 msgid "Развитие"
 msgstr "Development"
 
-#: templates/accounts/register_type.html:73
+#: templates/accounts/register_type.html:114
 msgid "Обучение персонала навыкам «медицины комфорта»."
 msgstr "Staff training in \"comfort medicine\" skills."
 
-#: templates/accounts/register_type.html:78
+#: templates/accounts/register_type.html:123
 msgid "Перейти в кабинет"
 msgstr "Go to dashboard"
 
-#: templates/accounts/register_type.html:82
+#: templates/accounts/register_type.html:130
 msgid "Подать заявку"
 msgstr "Appley"
 
@@ -822,28 +835,25 @@ msgid ""
 "станет доступен личный кабинет."
 msgstr ""
 "The doctor registration application is under review by the association "
-"administrator. Please wait for the review to finish. Once approved, you will "
-"get access to your account."
+"administrator. Please wait for the review to finish. Once approved, you will"
+" get access to your account."
 
 #: templates/base.html:14
 msgid "Паллиатив.kg — паллиативная и хосписная помощь в Кыргызстане"
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/base.html:54
+#: templates/base.html:60
 #| msgid ""
 #| "\n"
-#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — "
-#| "поддержка пациентов, обучение специалистов и развитие паллиативной помощи "
-#| "в Кыргызстане."
+#| "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка пациентов, обучение специалистов и развитие паллиативной помощи в Кыргызстане."
 msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка "
 "пациентов, обучение специалистов и развитие паллиативной помощи в "
 "Кыргызстане."
 msgstr ""
-"            Association of Palliative and Hospice Care of the Kyrgyz "
-"Republic.\n"
-"            We bring together doctors, clinics, and families to ensure a "
-"dignified quality of life at any stage."
+"           Association of Palliative and Hospice Care of the Kyrgyz Republic.\n"
+"            We bring together doctors, clinics, and families to ensure a dignified quality of life at any stage."
+
 
 #: templates/base.html:57
 msgid "Паллиатив.kg"
@@ -928,7 +938,23 @@ msgstr "Contact us"
 msgid "Политика обработки данных"
 msgstr "Data Processing Policy"
 
-#: templates/base.html:264
+#: templates/base.html:270
+#: templates/base.html:265 templates/base.html:266
+#: templates/main/contacts.html:25
+msgid "WhatsApp"
+msgstr ""
+
+#: templates/base.html:273 templates/base.html:274
+#: templates/main/contacts.html:43
+msgid "Facebook"
+msgstr ""
+
+#: templates/base.html:281 templates/base.html:282
+#: templates/main/contacts.html:34
+msgid "Instagram"
+msgstr ""
+
+#: templates/base.html:296
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
@@ -1054,8 +1080,8 @@ msgstr "International cooperation"
 
 #: templates/main/about.html:112
 msgid ""
-"Наш вклад — это не отдельные мероприятия, а последовательная работа над тем, "
-"чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана."
+"Наш вклад — это не отдельные мероприятия, а последовательная работа над тем,"
+" чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана."
 msgstr ""
 "Our contribution is not a series of separate activities, but a consistent "
 "effort to make palliative care part of the healthcare system in Kyrgyzstan."
@@ -1070,7 +1096,17 @@ msgid ""
 "форма обратной связи."
 msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 
-#: templates/main/consultation.html:11
+#: templates/main/consultation.html:10
+msgid ""
+"Обращаем Ваше внимание, что обработка заявок не автоматизирована — с работой"
+" над почтой нам помогают наши административные волонтёры. Наш администратор "
+"ответит вам в течение одного рабочего дня."
+msgstr ""
+"Please note that requests are not processed automatically — our "
+"administrative volunteers help us handle the mail. Our administrator will "
+"reply to you within one business day."
+
+#: templates/main/consultation.html:14
 msgid "Отправляя форму, вы соглашаетесь с"
 msgstr "By submitting the form, you agree to the"
 
@@ -1081,18 +1117,6 @@ msgstr "Data Processing Policy"
 #: templates/main/contacts.html:10
 msgid "Адрес"
 msgstr "Address"
-
-#: templates/main/contacts.html:25
-msgid "WhatsApp"
-msgstr "WhatsApp"
-
-#: templates/main/contacts.html:34
-msgid "Instagram"
-msgstr ""
-
-#: templates/main/contacts.html:43
-msgid "Facebook"
-msgstr ""
 
 #: templates/main/contacts.html:52
 msgid "Как нас найти"
@@ -1109,16 +1133,13 @@ msgstr "A life without pain is everyone's right."
 #: templates/main/home.html:10
 msgid ""
 "\n"
-"            Ассоциация паллиативной и хосписной помощи Кыргызской "
-"Республики.\n"
-"            Мы объединяем врачей, клиники и семьи, чтобы обеспечить "
-"достойное\n"
+"            Ассоциация паллиативной и хосписной помощи Кыргызской Республики.\n"
+"            Мы объединяем врачей, клиники и семьи, чтобы обеспечить достойное\n"
 "            качество жизни на любом её этапе.\n"
 "             "
 msgstr ""
 "\n"
-"            Association of Palliative and Hospice Care of the Kyrgyz "
-"Republic.\n"
+"            Association of Palliative and Hospice Care of the Kyrgyz Republic.\n"
 "            We bring together doctors, clinics, and families to ensure\n"
 "            a dignified quality of life at any stage.\n"
 "             "
@@ -1183,9 +1204,9 @@ msgstr ""
 
 #: templates/main/privacy_policy.html:11
 msgid ""
-"Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи "
-"Кыргызской Республики обрабатывает персональные данные, которые вы передаёте "
-"через форму заявки на консультацию."
+"Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи"
+" Кыргызской Республики обрабатывает персональные данные, которые вы "
+"передаёте через форму заявки на консультацию."
 msgstr ""
 
 #: templates/main/privacy_policy.html:13
@@ -1256,11 +1277,11 @@ msgstr "No results found for your request."
 
 #: templates/main/team.html:5
 msgid ""
-"Учредители, руководство и команда Ассоциации паллиативной и хосписной помощи "
-"Кыргызской Республики."
+"Учредители, руководство и команда Ассоциации паллиативной и хосписной помощи"
+" Кыргызской Республики."
 msgstr ""
-"Founders, leadership and team of the Palliative and Hospice Care Association "
-"of the Kyrgyz Republic."
+"Founders, leadership and team of the Palliative and Hospice Care Association"
+" of the Kyrgyz Republic."
 
 #: templates/main/team.html:33
 msgid "Фотография появится позже"

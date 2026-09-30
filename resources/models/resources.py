@@ -8,6 +8,7 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from transliterate import translit
 
+from common.choices import ImageProcessingStatus
 from common.validators import validate_resource_file_size
 
 
@@ -95,6 +96,13 @@ class ResourceFile(models.Model):
         ],
     )
 
+    processing_status = models.CharField(
+        _('Статус обработки файла'),
+        max_length=20,
+        choices=ImageProcessingStatus.choices,
+        default=ImageProcessingStatus.SKIPPED,
+        blank=True,
+    )
     class Meta:
         verbose_name = _("Файл ресурса")
         verbose_name_plural = _("Файлы ресурса")

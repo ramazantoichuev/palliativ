@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "patients",
     "resources",
     "faq",
+    'huey.contrib.djhuey',
 ]
 
 JAZZMIN_SETTINGS = {
@@ -103,6 +104,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "main.context_processors.analytics",
                 "main.context_processors.turnstile_keys",
+                "main.context_processors.site_contacts",
             ],
         },
     },
@@ -136,7 +138,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
 #     },
 # ]
-
+HUEY = {
+    'huey_class': 'huey.RedisHuey',  # Use Redis backend
+    'name': 'articles_project',  # Unique queue name
+    'immediate': os.getenv('HUEY_IMMEDIATE', 'False') == 'True',  # If True, tasks run synchronously (great for local tests)
+    'url': os.getenv('REDIS_URL'),
+    'consumer': {
+        'workers': 2,  # Number of worker threads/processes
+        'worker_type': 'thread',  # 'thread', 'process', or 'greenlet'
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
@@ -163,14 +174,21 @@ MODELTRANSLATION_FALLBACK_LANGUAGES = ("ru",)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-MAX_IMAGE_SIZE_MB = 5
+MAX_IMAGE_SIZE_MB = 25
+MIN_IMAGE_SIZE_FOR_COMPRESSION_MB = 1
 MAX_IMAGE_DIMENSION_PX = 3000
-MAX_RESOURCE_FILE_SIZE_MB = 15
+
+MIN_RESOURCE_FILE_SIZE_FOR_COMPRESSION_MB = 2
+MAX_RESOURCE_FILE_SIZE_MB = 40
+
+
+
 DESCRIPTION_MAX_LENGTH = 2000
 
 # Analytics

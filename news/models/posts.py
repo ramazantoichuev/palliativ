@@ -6,7 +6,8 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from transliterate import translit
 
-from common.validators import validate_image_dimensions, validate_image_size
+from common.choices import ImageProcessingStatus
+from common.validators import validate_image_integrity, validate_image_size
 
 
 class Category(models.Model):
@@ -33,10 +34,17 @@ class Post(models.Model):
         blank=True,
         null=True,
         validators=[
-            FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "webp"]),
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp']),
             validate_image_size,
-            validate_image_dimensions,
+            validate_image_integrity
         ],
+    )
+    image_processing_status = models.CharField(
+        _('Статус обработки изображения'),
+        max_length=20,
+        choices=ImageProcessingStatus.choices,
+        default=ImageProcessingStatus.SKIPPED,
+        blank=True,
     )
     category = models.ForeignKey(
         Category,
