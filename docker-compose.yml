@@ -5,8 +5,7 @@ services:
     restart: always
     volumes:
       - .:/app
-    ports:
-      - "8000:8000"
+
     env_file:
       - .env
     environment:
@@ -16,6 +15,18 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    container_name: palliativ_nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - .:/app
+    depends_on:
+      - web
 
   db:
     image: postgres:18.4-alpine
