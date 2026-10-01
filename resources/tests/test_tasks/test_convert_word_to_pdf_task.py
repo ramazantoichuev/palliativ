@@ -1,4 +1,6 @@
 import os
+import shutil
+import unittest
 from unittest import mock
 
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -157,3 +159,52 @@ class WordFileVisibilityTests(TestCase):
         response = self.client.get(self.url)
 
         self.assertContains(response, rf.file.url)
+
+
+@unittest.skipUnless(
+    shutil.which("soffice"), "LibreOffice (soffice) не установлен — smoke пропущен"
+)
+class ConvertWordRealSofficeSmokeTests(TestCase):
+    """Интеграционный smoke с настоящим soffice.
+
+    Выполняется только там, где установлен LibreOffice (docker-образ,
+    локальная машина разработчика); в остальных окружениях пропускается,
+    так что требование тикета «в тестах процесс не запускается» для CI
+    сохраняется.
+    """
+
+    def test_real_docx_converts_to_valid_pdf(self):
+        import zipfile
+        from io import BytesIO
+
+        # Минимальный валидный .docx собираем на лету (zip с OOXML-структурой)
+        buf = BytesIO()
+        with zipfile.ZipFile(buf, "w") as z:
+            z.writestr(
+                "[Content_Types].xml",
+                '<?xml version="1.0"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+                '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+                '<Default Extension="xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>',
+            )
+            z.writestr(
+                "_rels/.rels",
+                '<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+                '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>',
+            )
+            z.writestr(
+                "word/document.xml",
+                '<?xml version="1.0"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+                "<w:body><w:p><w:r><w:t>Смоук-тест Ticket 92: кириллица — Бишкек.</w:t></w:r></w:p></w:body></w:document>",
+            )
+
+        rf = ResourceFile.objects.create(
+            resource=ResourceFactory(),
+            file=SimpleUploadedFile("real-smoke.docx", buf.getvalue()),
+        )
+
+        compress_resource_file_task.call_local(rf.pk)
+
+        rf.refresh_from_db()
+        self.assertEqual(rf.processing_status, ImageProcessingStatus.DONE)
+        with rf.converted_pdf.open("rb") as f:
+            self.assertEqual(f.read(5), b"%PDF-")
