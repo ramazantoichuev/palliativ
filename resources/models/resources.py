@@ -29,6 +29,7 @@ class Resource(models.Model):
         ("npa", _("НПА (Нормативно-правовые акты)")),
         ("care_feeding", _("Уход и кормление")),
         ("psychologist_tips", _("Советы психолога")),
+        ("pain_management", _("Управление болью")),
         ("meds_rights", _("Лекарства и права пациента")),
         ("social_support", _("Соцподдержка")),
     ]
@@ -137,5 +138,3 @@ class ResourceVideoLink(models.Model):
             if match:
                 return f'https://www.youtube.com/embed/{match.group(1)}'
         return None
-
-

@@ -78,3 +78,27 @@ class ResourceListViewTest(TestCase):
     def test_empty_result_correct_state(self):
         response = self.client.get(self.url, {'subcategory': 'psychologist_tips'})
         self.assertEqual(response.status_code, 200)
+
+    def test_filter_by_audience_and_pain_management_subcategory(self):
+        ResourceFactory(
+            audience=Resource.AUDIENCE_CAREGIVER,
+            subcategory='pain_management',
+            title='Про управление болью',
+        )
+        ResourceFactory(
+            audience=Resource.AUDIENCE_CAREGIVER,
+            subcategory='meds_rights',
+            title='Про лекарства',
+        )
+
+        response = self.client.get(self.url, {
+            'audience': Resource.AUDIENCE_CAREGIVER,
+            'subcategory': 'pain_management',
+        })
+
+        self.assertContains(response, 'Про управление болью')
+        self.assertNotContains(response, 'Про лекарства')
+
+    def test_pain_management_empty_result_does_not_break_page(self):
+        response = self.client.get(self.url, {'subcategory': 'pain_management'})
+        self.assertEqual(response.status_code, 200)

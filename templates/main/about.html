@@ -9,13 +9,17 @@
 {% block content %}
 <section class="py-5">
     <div class="container mb-5">
-        <h1 class="fw-bold mb-4">{% translate "Об Ассоциации" %}</h1>
+        <h1 class="fw-bold mb-4">
+            {% get_text_block "about_page_title" fallback=_("Об Ассоциации") %}
+        </h1>
         <div class="p-4 bg-light rounded-3 shadow-sm lead">
             {% get_text_block "about_intro" fallback=_("Пожалуйста, заполните это поле.") %}
         </div>
     </div>
     <div class="container mb-5">
-        <h2 class="fw-bold mb-4">{% translate "Основные направления нашей работы" %}</h2>
+        <h2 class="fw-bold mb-4">
+            {% get_text_block "about_work_directions_heading" fallback=_("Основные направления нашей работы") %}
+        </h2>
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col-12 w-100">
                 <div class="p-3 border-start border-4 border-info bg-white shadow-sm rounded-end">
@@ -26,14 +30,18 @@
     </div>
     <div class="container py-5 mb-5 rounded-3">
         <div class="container text-center">
-            <h3 class="fw-bold mb-3">{% translate "Мы верим" %}</h3>
+            <h3 class="fw-bold mb-3">
+                {% get_text_block "about_belief_heading" fallback=_("Мы верим") %}
+            </h3>
             <div class="fs-5 mx-auto" style="max-width: 800px;">
                 {% get_text_block "about_belief" fallback=_("Пожалуйста, заполните это поле.") %}
             </div>
         </div>
     </div>
     <div class="container mb-5">
-        <h2 class="fw-bold mb-3">{% translate "Наш вклад в развитие паллиативной помощи в Кыргызстане" %}</h2>
+        <h2 class="fw-bold mb-3">
+            {% get_text_block "about_contribution_heading" fallback=_("Наш вклад в развитие паллиативной помощи в Кыргызстане") %}
+        </h2>
         <div class="text-muted mb-4 lead">
             {% get_text_block "about_contribution_intro" fallback=_("Пожалуйста, заполните это поле.")%}
         </div>
