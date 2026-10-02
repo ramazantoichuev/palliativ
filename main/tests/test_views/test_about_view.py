@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from main.models.editable_text_block import EditableTextBlock
 
+
 class AboutViewTest(TestCase):
 
     def setUp(self):
