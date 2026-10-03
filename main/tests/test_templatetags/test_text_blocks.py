@@ -63,6 +63,18 @@ class TestGetTextBlockTag(TestCase):
 
         self.assertIn("Только по-русски.", html)
 
+    def test_soft_deleted_block_renders_fallback_instead_of_content(self):
+        block = EditableTextBlock.objects.create(
+            slug="deleted_block", content_ru="Скрытый контент"
+        )
+        block.soft_delete()
+
+        html = render_tag(
+            '{% get_text_block "deleted_block" fallback="Запасной текст" %}'
+        )
+
+        self.assertIn("Запасной текст", html)
+        self.assertNotIn("Скрытый контент", html)
 
 class TestEditableTextBlockAdminAccess(TestCase):
 
@@ -99,3 +111,4 @@ class TestEditableTextBlockAdminAccess(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 403)
+
