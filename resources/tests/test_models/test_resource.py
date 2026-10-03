@@ -17,6 +17,15 @@ class ResourceModelTest(TestCase):
         resource = ResourceFactory(subcategory='npa')
         self.assertEqual(resource.subcategory, 'npa')
 
+    def test_pain_management_subcategory_can_be_saved(self):
+        resource = ResourceFactory(
+            audience=Resource.AUDIENCE_CAREGIVER, subcategory='pain_management'
+        )
+
+        resource.refresh_from_db()
+
+        self.assertEqual(resource.subcategory, 'pain_management')
+
     def test_symptoms_relation(self):
         symptom = SymptomFactory(name='Боль')
         resource = ResourceFactory(symptoms=[symptom])

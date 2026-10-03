@@ -1,38 +1,66 @@
 {% extends 'base.html' %}
 {% load i18n static %}
+{% load text_blocks %}
 
 {% block title %}{% translate "Главная — Паллиатив.kg" %}{% endblock %}
 
 {% block content %}
     <section class="text-center py-5">
-        <h1 class="display-5 fw-bold">{% translate "Жизнь без боли — это право каждого." %}</h1>
+        <h1 class="display-5 fw-bold">
+            {% get_text_block "home_hero_title" fallback=_("Жизнь без боли — это право каждого.") %}
+        </h1>
         <p class="lead col-lg-8 mx-auto mt-3">
-            {% blocktranslate %}
-            Ассоциация паллиативной и хосписной помощи Кыргызской Республики.
-            Мы объединяем врачей, клиники и семьи, чтобы обеспечить достойное
-            качество жизни на любом её этапе.
-             {% endblocktranslate %}
+            {% get_text_block "home_hero_subtitle" fallback=_("Ассоциация паллиативной и хосписной помощи Кыргызской Республики. Мы объединяем врачей, клиники и семьи, чтобы обеспечить достойное качество жизни на любом её этапе.") %}
         </p>
     </section>
 
     <section class="row g-4 py-4">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="p-4 border rounded h-100">
-                <h5 class="fw-bold">{% translate "Для пациентов" %}</h5>
-                <p class="mb-0">{% translate "Информация о том, как получить помощь и куда обратиться." %}</p>
+                <h5 class="fw-bold">
+                    {% get_text_block "home_card_patients_title" fallback=_("Для пациентов") %}
+                </h5>
+                <div class="list-group list-group-flush">
+                    <a href="{% url 'resources:resource_list' %}?audience=caregiver"
+                       class="list-group-item list-group-item-action">
+                        <div class="fw-semibold">
+                            {% get_text_block "home_card_care_tips_title" fallback=_("Советы по уходу") %}
+                        </div>
+                        <small class="text-muted">
+                            {% get_text_block "home_card_care_tips_desc" fallback=_("Как ухаживать за больным дома: кормление, гигиена, психологическая поддержка.") %}
+                        </small>
+                    </a>
+                    <a href="{% url 'resources:resource_list' %}?audience=caregiver&subcategory=pain_management"
+                       class="list-group-item list-group-item-action">
+                        <div class="fw-semibold">
+                            {% get_text_block "home_card_pain_management_title" fallback=_("Управление болью") %}
+                        </div>
+                        <small class="text-muted">
+                            {% get_text_block "home_card_pain_management_desc" fallback=_("Что такое боль, когда нужно обращаться к врачу, и ваше право на обезболивание.") %}
+                        </small>
+                    </a>
+                    <a href="{% url 'resources:resource_list' %}?audience=caregiver&subcategory=meds_rights"
+                       class="list-group-item list-group-item-action">
+                        <div class="fw-semibold">
+                            {% get_text_block "home_card_meds_access_title" fallback=_("Доступ к услугам и лекарственным средствам") %}
+                        </div>
+                        <small class="text-muted">
+                            {% get_text_block "home_card_meds_access_desc" fallback=_("Как получить помощь паллиативного врача, право на стационарную помощь и рецепт.") %}
+                        </small>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="p-4 border rounded h-100">
-                <h5 class="fw-bold">{% translate 'Для клиник' %}</h5>
-                <p class="mb-0">{% translate 'Присоединяйтесь к сети паллиативной помощи в вашем регионе.' %}</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-4 border rounded h-100">
-                <h5 class="fw-bold">{% translate 'Для врачей' %}</h5>
-                <p class="mb-0">{% translate 'Протоколы, лекции и справочные материалы по уходу за пациентами.' %}</p>
-            </div>
+        <div class="col-md-6">
+            <a href="{% url 'resources:resource_list' %}?audience=specialist"
+               class="p-4 border rounded h-100 d-block text-decoration-none text-dark">
+                <h5 class="fw-bold">
+                    {% get_text_block "home_card_doctors_title" fallback=_("Для врачей") %}
+                </h5>
+                <p class="mb-0">
+                    {% get_text_block "home_card_doctors_desc" fallback=_("Протоколы, лекции и справочные материалы по уходу за пациентами.") %}
+                </p>
+            </a>
         </div>
     </section>
 
