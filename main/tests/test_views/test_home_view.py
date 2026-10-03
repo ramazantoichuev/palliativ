@@ -1,4 +1,6 @@
-from django.test import TestCase
+import tempfile
+
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from events.tests.factories import EventFactory, PastEventFactory
@@ -41,3 +43,17 @@ class HomeViewTest(TestCase):
         self.assertEqual(len(response.context["upcoming_events"]), 0)
         self.assertNotContains(response, "Все новости")
         self.assertNotContains(response, "Все мероприятия")
+
+    def test_post_without_image_renders_placeholder_on_home(self):
+        with (
+            tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as media_root,
+            override_settings(MEDIA_ROOT=media_root),
+        ):
+            PostFactory(image=None)
+            response = self.client.get(self.url)
+            self.assertContains(response, "main/images/news-placeholder.jpg")
+
+    def test_event_without_image_renders_placeholder_on_home(self):
+        EventFactory()
+        response = self.client.get(self.url)
+        self.assertContains(response, "main/images/event-placeholder.jpg")
