@@ -1,6 +1,7 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
+from simple_history.admin import SimpleHistoryAdmin
 
 from accounts.models import BaseUser
 
@@ -28,11 +29,14 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
     )
     readonly_fields = ("created_at",)
 
+
 @admin.register(EditableTextBlock)
-class EditableTextBlockAdmin(TranslationAdmin):
-    list_display = ("slug",)
+class EditableTextBlockAdmin(SimpleHistoryAdmin, TranslationAdmin):
+    list_display = ("slug", "is_deleted", "deleted_at")
+    list_filter = ("is_deleted",)
     search_fields = ("slug", "content")
     ordering = ("slug",)
+    actions = ["restore_selected"]
 
     def has_module_permission(self, request):
         return request.user.is_authenticated and (
@@ -49,6 +53,61 @@ class EditableTextBlockAdmin(TranslationAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return self.has_module_permission(request)
+
+    def get_queryset(self, request):
+        qs = self.model.all_objects.get_queryset()
+        ordering = self.get_ordering(request)
+        if ordering:
+            qs = qs.order_by(*ordering)
+        return qs
+
+    def get_readonly_fields(self, request, obj=None):
+        readonly = list(super().get_readonly_fields(request, obj))
+        if obj is not None:
+            readonly.append("slug")
+        return readonly
+
+    def delete_model(self, request, obj):
+        obj.soft_delete()
+
+    def delete_queryset(self, request, queryset):
+        queryset.soft_delete()
+
+    @admin.action(description=_("Восстановить выбранные"))
+    def restore_selected(self, request, queryset):
+        restored_count = 0
+        conflict_slugs = []
+
+        for obj in queryset:
+            if not obj.is_deleted:
+                continue
+            conflict_exists = (
+                EditableTextBlock.all_objects
+                .filter(slug=obj.slug, is_deleted=False)
+                .exclude(pk=obj.pk)
+                .exists()
+            )
+            if conflict_exists:
+                conflict_slugs.append(obj.slug)
+                continue
+            obj.restore()
+            restored_count += 1
+
+        if restored_count:
+            self.message_user(
+                request,
+                _("Восстановлено записей: %(count)s.") % {"count": restored_count},
+                level=messages.SUCCESS,
+            )
+        if conflict_slugs:
+            self.message_user(
+                request,
+                _(
+                    "Не удалось восстановить: slug уже занят другой активной "
+                    "записью — %(slugs)s."
+                ) % {"slugs": ", ".join(conflict_slugs)},
+                level=messages.ERROR,
+            )
 
 @admin.register(SystemSettings)
 class SystemSettingsAdmin(admin.ModelAdmin):
