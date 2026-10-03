@@ -11,7 +11,9 @@
     <h4 class="mt-4">{% translate "Файлы" %}</h4>
     <ul>
         {% for f in resource.files.all %}
-        <li><a href="{{ f.file.url }}" target="_blank">{{ f.file.name }}</a></li>
+            {% if f.public_file %}
+        <li><a href="{{ f.public_file.url }}" target="_blank">{{ f.public_file.name }}</a></li>
+            {% endif %}
         {% endfor %}
     </ul>
     {% endif %}

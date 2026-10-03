@@ -57,7 +57,7 @@ class TestEventListView(TestCase):
             response, reverse("events:event_detail", args=[self.past.slug])
         )
 
-    def test_event_without_image_renders_without_img_tag(self):
+    def test_event_without_image_renders_placeholder(self):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
@@ -65,6 +65,7 @@ class TestEventListView(TestCase):
         # именно изображений событий: их теги содержат alt с названием события.
         self.assertNotContains(response, f'alt="{self.upcoming.title}"')
         self.assertNotContains(response, f'alt="{self.past.title}"')
+        self.assertContains(response, "main/images/event-placeholder.jpg")
 
     def test_event_image_is_rendered_when_present(self):
         with (

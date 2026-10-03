@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 {% block title %}{% translate "Новости — Паллиатив.kg" %}{% endblock %}
 {% block meta_description %}{% blocktranslate %}Новости и публикации Ассоциации паллиативной и хосписной помощи Кыргызской Республики.{% endblocktranslate %}{% endblock %}
 {% block content %}
@@ -44,16 +44,16 @@
     {% for post in posts %}
        <div class="col-12 col-sm-6 col-lg-4 mb-4">
             <article class="card h-100 shadow-sm">
-                {% if post.image %}
-                    <div style="position: relative; height: 200px; overflow: hidden;">
-                        <img src="{{ post.image.url }}" alt="" aria-hidden="true"
-                             style="position: absolute; inset: 0; width: 100%; height: 100%;
-                                    object-fit: cover; filter: blur(18px) brightness(0.9); transform: scale(1.15);">
-                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}"
-                             style="position: relative; z-index: 1; max-width: 100%; max-height: 100%;
-                                    object-fit: contain; display: block; margin: 0 auto; height: 100%;">
-                    </div>
-                {% endif %}
+                <div style="position: relative; height: 200px; overflow: hidden;">
+                    <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'main/images/news-placeholder.jpg' %}{% endif %}"
+                        alt="" aria-hidden="true"
+                        style="position: absolute; inset: 0; width: 100%; height: 100%;
+                                object-fit: cover; filter: blur(18px) brightness(0.9); transform: scale(1.15);">
+                    <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'main/images/news-placeholder.jpg' %}{% endif %}"
+                        class="card-img-top" alt="{% if post.image %}{{ post.title }}{% else %}{% endif %}"
+                        style="position: relative; z-index: 1; max-width: 100%; max-height: 100%;
+                                object-fit: contain; display: block; margin: 0 auto; height: 100%;">
+                </div>
                 <div class="card-body">
                     <div class="text-muted small mb-2">
                         <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"d.m.Y" }}</time>

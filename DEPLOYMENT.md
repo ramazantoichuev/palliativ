@@ -74,7 +74,7 @@ docker run hello-world
 Шаги сборки:
 
 Отключение записи .pyc-файлов и буферизации вывода Python (PYTHONDONTWRITEBYTECODE, PYTHONUNBUFFERED).
-Установка системных пакетов, нужных для сборки: build-essential, libpq-dev (для PostgreSQL-драйвера), curl, ghostscript.
+Установка системных пакетов, нужных для сборки: build-essential, libpq-dev (для PostgreSQL-драйвера), curl, ghostscript, libreoffice-writer и fonts-dejavu (конвертация Word-файлов ресурсов в PDF командой soffice --headless, Ticket 92).
 Установка Python-зависимостей из requirements.txt.
 Копирование кода проекта в /app.
 entrypoint.sh делается исполняемым и используется как ENTRYPOINT.
