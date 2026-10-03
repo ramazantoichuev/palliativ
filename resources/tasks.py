@@ -5,6 +5,8 @@ import tempfile
 from io import BytesIO
 
 from django.conf import settings
+from django.core.files.storage import default_storage
+from django.db import transaction
 from huey.contrib.djhuey import lock_task, task
 from PIL import Image
 
@@ -213,3 +215,21 @@ def compress_resource_file_task(resource_file_id: int):
         ResourceFile.objects.filter(pk=resource_file_id).update(
             processing_status=ImageProcessingStatus.FAILED
         )
+
+logger = logging.getLogger(__name__)
+
+@task()
+def delete_file_task(path):
+    if not path:
+        return
+    try:
+        if default_storage.exists(path):
+            default_storage.delete(path)
+    except Exception:
+        logger.exception("Не удалось удалить файл %s", path)
+
+
+def enqueue_file_deletion(*paths):
+    for p in paths:
+        if p:
+            transaction.on_commit(lambda p=p: delete_file_task(p))
