@@ -24,3 +24,4 @@ typing_extensions==4.16.0
 tzdata==2026.3
 certifi==2026.7.22
 requests==2.32.3
+django-simple-history==3.13.0
