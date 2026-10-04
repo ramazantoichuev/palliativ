@@ -34,6 +34,7 @@ TURNSTILE_SECRET_KEY = env('TURNSTILE_SECRET_KEY', default='1x000000000000000000
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "37.139.26.171",
     "hatchling-causal-doornail.ngrok-free.dev",
     "penpal-unnamable-snowy.ngrok-free.dev",
 ]

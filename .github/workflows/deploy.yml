@@ -130,5 +130,15 @@ jobs:
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull
             docker compose up -d
-            sleep 5
-            curl -f http://localhost/ || (echo "Health check failed" && exit 1)
+            docker compose restart nginx
+            for i in $(seq 1 30); do
+              if curl -fsS -o /dev/null http://localhost/; then
+                echo "Health check OK"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "Health check failed"
+            docker compose ps
+            docker compose logs --tail 50 web nginx
+            exit 1
