@@ -30,11 +30,29 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
     readonly_fields = ("created_at",)
 
 
+class PageFilter(admin.SimpleListFilter):
+    title = _("Страница")
+    parameter_name = "page"
+
+    PAGES = {
+        "home": _("Главная"),
+        "about": _("О нас"),
+    }
+
+    def lookups(self, request, model_admin):
+        return list(self.PAGES.items())
+
+    def queryset(self, request, queryset):
+        if self.value() in self.PAGES:
+            return queryset.filter(slug__startswith=f"{self.value()}_")
+        return queryset
+
+
 @admin.register(EditableTextBlock)
 class EditableTextBlockAdmin(SimpleHistoryAdmin, TranslationAdmin):
-    list_display = ("slug", "is_deleted", "deleted_at")
-    list_filter = ("is_deleted",)
     search_fields = ("slug", "content")
+    list_display = ("slug", "is_deleted", "deleted_at")
+    list_filter = ("is_deleted", PageFilter)
     ordering = ("slug",)
     actions = ["restore_selected"]
 
@@ -46,13 +64,14 @@ class EditableTextBlockAdmin(SimpleHistoryAdmin, TranslationAdmin):
         )
 
     def has_add_permission(self, request):
-        return self.has_module_permission(request)
+        return False
 
     def has_change_permission(self, request, obj=None):
         return self.has_module_permission(request)
 
     def has_delete_permission(self, request, obj=None):
         return self.has_module_permission(request)
+
 
     def get_queryset(self, request):
         qs = self.model.all_objects.get_queryset()
@@ -71,7 +90,8 @@ class EditableTextBlockAdmin(SimpleHistoryAdmin, TranslationAdmin):
         obj.soft_delete()
 
     def delete_queryset(self, request, queryset):
-        queryset.soft_delete()
+        for obj in queryset:
+            obj.soft_delete()
 
     @admin.action(description=_("Восстановить выбранные"))
     def restore_selected(self, request, queryset):
