@@ -78,6 +78,11 @@ class Resource(models.Model):
     def get_absolute_url(self):
         return reverse("resources:resource_detail", kwargs={"slug": self.slug})
 
+    @property
+    def public_files(self):
+        """Файлы, доступные посетителю (Word — только готовой PDF-версией)."""
+        return [f.public_file for f in self.files.all() if f.public_file]
+
 
 class ResourceFile(models.Model):
     resource = models.ForeignKey(
