@@ -1,4 +1,6 @@
-from django.test import TestCase
+import tempfile
+
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from events.tests.factories import EventFactory, PastEventFactory
@@ -41,3 +43,54 @@ class HomeViewTest(TestCase):
         self.assertEqual(len(response.context["upcoming_events"]), 0)
         self.assertNotContains(response, "Все новости")
         self.assertNotContains(response, "Все мероприятия")
+
+    def test_clinics_card_removed(self):
+        response = self.client.get(self.url)
+
+        self.assertNotContains(response, "Для клиник")
+
+    def test_patients_card_has_three_clickable_links(self):
+        response = self.client.get(self.url)
+        self.assertContains(
+            response, 'href="/resources/?audience=caregiver"'
+        )
+        self.assertContains(
+            response,
+            'href="/resources/?audience=caregiver&subcategory=pain_management"',
+        )
+        self.assertContains(
+            response,
+            'href="/resources/?audience=caregiver&subcategory=meds_rights"',
+        )
+
+    def test_doctors_card_is_fully_clickable(self):
+        response = self.client.get(self.url)
+        self.assertContains(response, 'href="/resources/?audience=specialist"')
+
+    def test_text_blocks_render_from_fallback_when_no_db_record(self):
+        from main.models.editable_text_block import EditableTextBlock
+        EditableTextBlock.objects.filter(slug="home_hero_title").delete()
+        response = self.client.get(self.url)
+        self.assertContains(response, "Жизнь без боли")
+
+    def test_text_blocks_render_from_db_when_present(self):
+        from main.models.editable_text_block import EditableTextBlock
+        EditableTextBlock.objects.update_or_create(
+            slug="home_hero_title", defaults={"content": "Кастомный заголовок"}
+        )
+        response = self.client.get(self.url)
+        self.assertContains(response, "Кастомный заголовок")
+        
+    def test_post_without_image_renders_placeholder_on_home(self):
+        with (
+            tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as media_root,
+            override_settings(MEDIA_ROOT=media_root),
+        ):
+            PostFactory(image=None)
+            response = self.client.get(self.url)
+            self.assertContains(response, "main/images/news-placeholder.jpg")
+
+    def test_event_without_image_renders_placeholder_on_home(self):
+        EventFactory()
+        response = self.client.get(self.url)
+        self.assertContains(response, "main/images/event-placeholder.jpg")

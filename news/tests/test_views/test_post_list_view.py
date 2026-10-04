@@ -1,7 +1,10 @@
-from django.test import TestCase
+import tempfile
+
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from news.models import Category, Post
+from news.tests.factories import make_image
 
 
 class PostListViewTest(TestCase):
@@ -54,3 +57,22 @@ class PostListViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "test")
+
+    def test_post_without_image_renders_placeholder(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "main/images/news-placeholder.jpg")
+
+    def test_post_with_image_does_not_render_placeholder(self):
+        with (
+            tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as media_root,
+            override_settings(MEDIA_ROOT=media_root),
+        ):
+            Post.objects.all().delete()
+            post = Post.objects.create(
+                title="С картинкой", slug="s-kartinkoy", content="content",
+                description="description", category=self.category, image=make_image(),
+            )
+            response = self.client.get(self.url)
+            self.assertContains(response, post.image.url)
+            self.assertNotContains(response, "main/images/news-placeholder.jpg")

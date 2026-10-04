@@ -34,20 +34,23 @@ class CompressResourceFileTaskMissingObjectTests(TestCase):
 
 @override_settings(**TEST_OVERRIDES)
 class CompressResourceFileTaskDocDocxTests(TestCase):
-    def test_docx_is_always_skipped_without_processing(self):
+    def test_docx_goes_to_word_conversion_not_compression(self):
+        """С Ticket 92 Word не пропускается, а конвертируется в PDF."""
         resource = ResourceFactory()
         rf = ResourceFile.objects.create(
             resource=resource,
             file=SimpleUploadedFile('doc.docx', b'x' * 2000, content_type='application/octet-stream'),
         )
         with mock.patch('resources.tasks._compress_image') as mocked_image, \
-             mock.patch('resources.tasks._compress_pdf') as mocked_pdf:
+             mock.patch('resources.tasks._compress_pdf') as mocked_pdf, \
+             mock.patch('resources.tasks._convert_word_to_pdf', return_value=True) as mocked_word:
             compress_resource_file_task.call_local(rf.pk)
 
         mocked_image.assert_not_called()
         mocked_pdf.assert_not_called()
+        mocked_word.assert_called_once()
         rf.refresh_from_db()
-        self.assertEqual(rf.processing_status, ImageProcessingStatus.SKIPPED)
+        self.assertEqual(rf.processing_status, ImageProcessingStatus.DONE)
 
 
 @override_settings(**TEST_OVERRIDES)

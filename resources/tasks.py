@@ -12,9 +12,11 @@ logger = logging.getLogger(__name__)
 
 IMAGE_EXTENSIONS = ('jpg', 'jpeg', 'png', 'webp')
 PDF_EXTENSIONS = ('pdf',)
-SKIP_EXTENSIONS = ('doc', 'docx')
+WORD_EXTENSIONS = ('doc', 'docx')
 
 GHOSTSCRIPT_TIMEOUT_SECONDS = 180
+# Конвертация Word заметно медленнее сжатия PDF — отдельный, больший таймаут.
+SOFFICE_TIMEOUT_SECONDS = 300
 
 
 def _get_extension(filename: str) -> str:
@@ -120,6 +122,55 @@ def _compress_pdf(resource_file, original_size: int) -> bool:
             os.remove(tmp_output_path)
 
 
+def _convert_word_to_pdf(resource_file) -> bool:
+    """Готовит PDF-версию Word-файла в converted_pdf; оригинал не трогает.
+
+    Любой сбой soffice поднимает исключение — задача пометит файл FAILED.
+    """
+    from django.core.files.base import ContentFile
+
+    storage_path = resource_file.file.storage.path(resource_file.file.name)
+
+    with tempfile.TemporaryDirectory() as out_dir:
+        result = subprocess.run(
+            [
+                'soffice',
+                '--headless',
+                '--convert-to',
+                'pdf',
+                '--outdir',
+                out_dir,
+                storage_path,
+            ],
+            timeout=SOFFICE_TIMEOUT_SECONDS,
+            capture_output=True,
+        )
+
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"soffice failed for ResourceFile id={resource_file.pk}: "
+                f"{result.stderr.decode(errors='replace')}"
+            )
+
+        base_name = os.path.splitext(os.path.basename(storage_path))[0]
+        output_path = os.path.join(out_dir, f'{base_name}.pdf')
+        if not os.path.exists(output_path) or os.path.getsize(output_path) == 0:
+            raise RuntimeError(
+                f"soffice produced no PDF for ResourceFile id={resource_file.pk}"
+            )
+
+        with open(output_path, 'rb') as pdf_file:
+            resource_file.converted_pdf.save(
+                f'{base_name}.pdf', ContentFile(pdf_file.read()), save=False
+            )
+
+    type(resource_file).objects.filter(pk=resource_file.pk).update(
+        converted_pdf=resource_file.converted_pdf.name
+    )
+    return True
+
+
+
 @task()
 @lock_task('compress-resource-file-{0}')
 def compress_resource_file_task(resource_file_id: int):
@@ -145,13 +196,9 @@ def compress_resource_file_task(resource_file_id: int):
         extension = _get_extension(resource_file.file.name)
         original_size = resource_file.file.size
 
-        if extension in SKIP_EXTENSIONS:
-            ResourceFile.objects.filter(pk=resource_file_id).update(
-                processing_status=ImageProcessingStatus.SKIPPED
-            )
-            return
-
-        if extension in IMAGE_EXTENSIONS:
+        if extension in WORD_EXTENSIONS:
+            changed = _convert_word_to_pdf(resource_file)
+        elif extension in IMAGE_EXTENSIONS:
             changed = _compress_image(resource_file, original_size)
         elif extension in PDF_EXTENSIONS:
             changed = _compress_pdf(resource_file, original_size)

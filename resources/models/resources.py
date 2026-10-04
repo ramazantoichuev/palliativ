@@ -29,6 +29,7 @@ class Resource(models.Model):
         ("npa", _("НПА (Нормативно-правовые акты)")),
         ("care_feeding", _("Уход и кормление")),
         ("psychologist_tips", _("Советы психолога")),
+        ("pain_management", _("Управление болью")),
         ("meds_rights", _("Лекарства и права пациента")),
         ("social_support", _("Соцподдержка")),
     ]
@@ -77,6 +78,11 @@ class Resource(models.Model):
     def get_absolute_url(self):
         return reverse("resources:resource_detail", kwargs={"slug": self.slug})
 
+    @property
+    def public_files(self):
+        """Файлы, доступные посетителю (Word — только готовой PDF-версией)."""
+        return [f.public_file for f in self.files.all() if f.public_file]
+
 
 class ResourceFile(models.Model):
     resource = models.ForeignKey(
@@ -103,12 +109,34 @@ class ResourceFile(models.Model):
         default=ImageProcessingStatus.SKIPPED,
         blank=True,
     )
+    converted_pdf = models.FileField(
+        _("PDF-версия (из Word)"),
+        upload_to="resources/files/converted/",
+        blank=True,
+        null=True,
+    )
+
     class Meta:
         verbose_name = _("Файл ресурса")
         verbose_name_plural = _("Файлы ресурса")
 
     def __str__(self):
         return self.file.name
+
+    @property
+    def is_word_source(self):
+        name = self.file.name or ""
+        return name.rsplit(".", 1)[-1].lower() in ("doc", "docx") if "." in name else False
+
+    @property
+    def public_file(self):
+        """Файл для посетителя: Word отдаём только готовой PDF-версией,
+        остальное — как есть; необработанный Word скрываем."""
+        if not self.is_word_source:
+            return self.file
+        if self.converted_pdf and self.processing_status == ImageProcessingStatus.DONE:
+            return self.converted_pdf
+        return None
 
 
 class ResourceVideoLink(models.Model):
@@ -137,5 +165,3 @@ class ResourceVideoLink(models.Model):
             if match:
                 return f'https://www.youtube.com/embed/{match.group(1)}'
         return None
-
-
