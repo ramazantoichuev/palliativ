@@ -4,7 +4,9 @@ services:
     container_name: palliativ_web
     restart: always
     volumes:
-      - .:/app
+      # Код приложения живёт в образе; наружу вынесены только статика и медиа
+      - static_volume:/app/staticfiles
+      - ./media:/app/media
 
     env_file:
       - .env
@@ -24,7 +26,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - .:/app
+      - static_volume:/app/staticfiles:ro
+      - ./media:/app/media:ro
     depends_on:
       - web
 
@@ -59,7 +62,8 @@ services:
     image: ghcr.io/ramazantoichuev/palliativ:latest
     container_name: palliativ_huey
     volumes:
-      - .:/app
+      # huey пишет в media сжатые изображения и PDF-версии Word-файлов
+      - ./media:/app/media
     env_file:
       - .env
     environment:
@@ -74,3 +78,4 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
