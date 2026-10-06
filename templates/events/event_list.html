@@ -9,7 +9,7 @@
     <div class="row g-4">
         {% for event in upcoming_events %}
             <div class="col-12 col-sm-6 col-lg-4">
-                <article class="card h-100 shadow-sm">
+                <article class="card card-soft card-stripe-events h-100">
                     <img src="{% if event.image %}{{ event.image.url }}{% else %}{% static 'main/images/event-placeholder.jpg' %}{% endif %}"
                         class="card-img-top" alt="{% if event.image %}{{ event.title }}{% else %}{% endif %}"
                         style="height: 200px; object-fit: cover;">
@@ -42,7 +42,7 @@
         <div class="row g-4">
             {% for event in past_events %}
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <article class="card h-100 shadow-sm opacity-75">
+                    <article class="card card-soft card-stripe-events h-100 opacity-75">
                         <img src="{% if event.image %}{{ event.image.url }}{% else %}{% static 'main/images/event-placeholder.jpg' %}{% endif %}"
                         class="card-img-top" alt="{% if event.image %}{{ event.title }}{% else %}{% endif %}"
                         style="height: 200px; object-fit: cover;">
