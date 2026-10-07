@@ -22,6 +22,7 @@
     --soft-green-hover: #7FA485; /* hover осветляет: тёмный текст остаётся читаемым */
     --soft-green-dark:  #4E6B54; /* зелёный текст на светлом, 5.9:1 */
     --on-soft-green:    #10231A; /* текст на зелёном фоне, 4.5:1 */
+    --light-on-blue:    #EAF0F6; /* светлые ссылки/текст на deep-blue, 10.2:1 */
 }
 
 /* --- Переопределение переменных Bootstrap 5.3 ---
@@ -102,10 +103,42 @@
     color: var(--soft-green-dark) !important;
 }
 
-/* Активный пункт выпадающих меню (переключатель языка) */
+/* Активный пункт выпадающих меню */
 .dropdown-menu {
     --bs-dropdown-link-active-bg: var(--deep-blue);
     --bs-dropdown-link-active-color: var(--on-deep-blue);
+}
+
+/* --- Тёмный навбар по Figma-референсу (Ticket 103) ---
+   Селектор с [data-bs-theme] — чтобы перебить специфичность
+   встроенного тёмного варианта Bootstrap */
+header .navbar[data-bs-theme="dark"] {
+    --bs-navbar-color: var(--light-on-blue);
+    --bs-navbar-hover-color: var(--mustard);
+    --bs-navbar-active-color: var(--mustard);
+}
+
+/* «Выйти» в меню свёрстан как .btn-link — на тёмном фоне ведёт себя
+   как обычная ссылка навигации */
+header .navbar .btn-link.nav-link {
+    --bs-btn-color: var(--light-on-blue);
+    --bs-btn-hover-color: var(--mustard);
+    --bs-btn-active-color: var(--mustard);
+}
+
+/* «Таблетки» на тёмном навбаре: переключатель языка и кнопка поиска.
+   Активный язык залит горчичным с тёмным текстом (6.7:1). */
+.navbar-pill {
+    --bs-btn-color: var(--light-on-blue);
+    --bs-btn-border-color: rgba(234, 240, 246, 0.5);
+    --bs-btn-hover-color: var(--mustard);
+    --bs-btn-hover-bg: transparent;
+    --bs-btn-hover-border-color: var(--mustard);
+    --bs-btn-active-color: var(--on-mustard);
+    --bs-btn-active-bg: var(--mustard);
+    --bs-btn-active-border-color: var(--mustard);
+    --bs-btn-focus-shadow-rgb: 212, 160, 23;
+    border-radius: 50rem;
 }
 
 /* Пагинация: ссылки и активная страница в брендовом синем */
