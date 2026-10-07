@@ -4,7 +4,8 @@ services:
     container_name: palliativ_web
     restart: always
     volumes:
-      - .:/app
+      # Код приложения живёт в образе; наружу вынесены только статика и медиа
+      - static_volume:/app/staticfiles
       - ./media:/app/media
 
     env_file:
@@ -61,7 +62,6 @@ services:
     container_name: palliativ_huey
     volumes:
       - .:/app
-      - ./media:/app/media
     env_file:
       - .env
     environment:
