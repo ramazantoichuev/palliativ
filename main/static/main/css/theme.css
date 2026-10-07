@@ -1,0 +1,185 @@
+/* Брендовая палитра сайта (Ticket 101).
+   Единственное место, где определены фирменные цвета: правка оттенка
+   здесь применяется ко всему сайту без изменения шаблонов.
+   Подключается в base.html ПОСЛЕ bootstrap.min.css. */
+
+:root {
+    --mustard:    #D4A017; /* акцент, кнопки CTA, брендовые элементы */
+    --deep-blue:  #1B3A5C; /* контрастный фон, навбар, hero */
+    --soft-green: #6B8F71; /* вторичный акцент (бейджи карточек, CTA-секция) */
+    --warm-gray:  #3A3A38; /* текст в футере, заголовки карточек */
+    --bg:         #FFFFFF;
+    --text:       #232323;
+
+    /* Производные оттенки: контраст WCAG AA (см. PR — расчёты).
+       Горчичный на белом даёт лишь 2.4:1, поэтому для текста и контуров
+       на светлом фоне используется затемнённый вариант. */
+    --mustard-dark:     #8C6D12; /* акцентный текст/контур на светлом, 4.9:1 */
+    --mustard-hover:    #BB8D12; /* hover акцентных кнопок */
+    --on-mustard:       #2A2200; /* текст на горчичном фоне, 6.7:1 */
+    --deep-blue-hover:  #16304D;
+    --on-deep-blue:     #FFFFFF; /* 11.6:1 */
+    --soft-green-hover: #7FA485; /* hover осветляет: тёмный текст остаётся читаемым */
+    --soft-green-dark:  #4E6B54; /* зелёный текст на светлом, 5.9:1 */
+    --on-soft-green:    #10231A; /* текст на зелёном фоне, 4.5:1 */
+}
+
+/* --- Переопределение переменных Bootstrap 5.3 ---
+   Стандартные классы (.btn-primary, .bg-dark, .text-dark, ссылки и т.д.)
+   подхватывают брендовые цвета без правки разметки. */
+:root {
+    --bs-primary: var(--mustard);
+    --bs-primary-rgb: 212, 160, 23;
+    --bs-primary-text-emphasis: var(--mustard-dark);
+    --bs-dark: var(--deep-blue);
+    --bs-dark-rgb: 27, 58, 92;
+    --bs-success: var(--soft-green);
+    --bs-success-rgb: 107, 143, 113;
+    --bs-success-text-emphasis: var(--soft-green-dark);
+    --bs-body-color: var(--text);
+    --bs-body-bg: var(--bg);
+    --bs-link-color: var(--deep-blue);
+    --bs-link-color-rgb: 27, 58, 92;
+    --bs-link-hover-color: var(--deep-blue-hover);
+    --bs-link-hover-color-rgb: 22, 48, 77;
+    --bs-focus-ring-color: rgba(212, 160, 23, 0.35);
+}
+
+/* Цвета кнопок Bootstrap запечены в переменные самих компонентов,
+   одного :root недостаточно — переопределяем на уровне классов. */
+.btn-primary {
+    --bs-btn-bg: var(--mustard);
+    --bs-btn-border-color: var(--mustard);
+    --bs-btn-color: var(--on-mustard);
+    --bs-btn-hover-bg: var(--mustard-hover);
+    --bs-btn-hover-border-color: var(--mustard-hover);
+    --bs-btn-hover-color: var(--on-mustard);
+    --bs-btn-active-bg: var(--mustard-hover);
+    --bs-btn-active-border-color: var(--mustard-hover);
+    --bs-btn-active-color: var(--on-mustard);
+    --bs-btn-disabled-bg: var(--mustard);
+    --bs-btn-disabled-border-color: var(--mustard);
+    --bs-btn-disabled-color: var(--on-mustard);
+    --bs-btn-focus-shadow-rgb: 212, 160, 23;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--mustard-dark);
+    --bs-btn-border-color: var(--mustard);
+    --bs-btn-hover-bg: var(--mustard);
+    --bs-btn-hover-border-color: var(--mustard);
+    --bs-btn-hover-color: var(--on-mustard);
+    --bs-btn-active-bg: var(--mustard);
+    --bs-btn-active-border-color: var(--mustard);
+    --bs-btn-active-color: var(--on-mustard);
+    --bs-btn-disabled-color: var(--mustard-dark);
+    --bs-btn-focus-shadow-rgb: 212, 160, 23;
+}
+
+.btn-success {
+    --bs-btn-bg: var(--soft-green);
+    --bs-btn-border-color: var(--soft-green);
+    --bs-btn-color: var(--on-soft-green);
+    --bs-btn-hover-bg: var(--soft-green-hover);
+    --bs-btn-hover-border-color: var(--soft-green-hover);
+    --bs-btn-hover-color: var(--on-soft-green);
+    --bs-btn-active-bg: var(--soft-green-hover);
+    --bs-btn-active-border-color: var(--soft-green-hover);
+    --bs-btn-active-color: var(--on-soft-green);
+    --bs-btn-disabled-bg: var(--soft-green);
+    --bs-btn-disabled-border-color: var(--soft-green);
+    --bs-btn-disabled-color: var(--on-soft-green);
+    --bs-btn-focus-shadow-rgb: 107, 143, 113;
+}
+
+/* Утилиты цвета текста: у Bootstrap они с !important, поэтому и здесь.
+   Чистый горчичный/зелёный на белом не проходят AA — используем тёмные оттенки. */
+.text-primary {
+    color: var(--mustard-dark) !important;
+}
+
+.text-success {
+    color: var(--soft-green-dark) !important;
+}
+
+/* Активный пункт выпадающих меню (переключатель языка) */
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: var(--deep-blue);
+    --bs-dropdown-link-active-color: var(--on-deep-blue);
+}
+
+/* Пагинация: ссылки и активная страница в брендовом синем */
+.pagination {
+    --bs-pagination-color: var(--deep-blue);
+    --bs-pagination-hover-color: var(--deep-blue-hover);
+    --bs-pagination-focus-color: var(--deep-blue-hover);
+    --bs-pagination-active-bg: var(--deep-blue);
+    --bs-pagination-active-border-color: var(--deep-blue);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+}
+
+/* Фокус полей форм: горчичный вместо дефолтного синего
+   (у Bootstrap эти цвета запечены, переменных нет) */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--mustard);
+    box-shadow: 0 0 0 0.25rem rgba(212, 160, 23, 0.25);
+}
+
+.form-check-input:focus {
+    border-color: var(--mustard);
+    box-shadow: 0 0 0 0.25rem rgba(212, 160, 23, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--deep-blue);
+    border-color: var(--deep-blue);
+}
+
+/* Заголовки карточек — тёплый серый по утверждённой палитре */
+.card-title {
+    color: var(--warm-gray);
+}
+
+/* --- Общие стили сайта (перенесены из inline-блока base.html) --- */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.navbar-brand img {
+    height: 60px;
+    width: auto;
+}
+
+@media (max-width: 767.98px) {
+    .navbar-brand img {
+        height: 50px;
+    }
+}
+
+.team-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Floating labels прячут placeholder всегда; показываем примеры
+   заполнения при фокусе — label в этот момент уже всплыл наверх. */
+.form-floating > .form-control:focus::placeholder {
+    color: var(--bs-secondary-color);
+}
