@@ -26,8 +26,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - static_volume:/app/staticfiles:ro
-      - ./media:/app/media:ro
+      - .:/app
     depends_on:
       - web
 
@@ -62,8 +61,7 @@ services:
     image: ghcr.io/ramazantoichuev/palliativ:latest
     container_name: palliativ_huey
     volumes:
-      # huey пишет в media сжатые изображения и PDF-версии Word-файлов
-      - ./media:/app/media
+      - .:/app
     env_file:
       - .env
     environment:
@@ -78,4 +76,3 @@ services:
 
 volumes:
   postgres_data:
-  static_volume:
