@@ -8,7 +8,7 @@ class DarkNavbarTests(TestCase):
     def test_navbar_uses_dark_brand_background(self):
         response = self.client.get(reverse("main:home"))
 
-        self.assertContains(response, 'navbar navbar-expand-lg bg-dark')
+        self.assertContains(response, 'navbar navbar-expand-xl bg-dark')
         self.assertNotContains(response, "navbar-light bg-white")
 
     def test_language_pills_rendered_for_all_languages(self):

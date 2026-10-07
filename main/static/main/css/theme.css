@@ -126,6 +126,19 @@ header .navbar .btn-link.nav-link {
     --bs-btn-active-color: var(--mustard);
 }
 
+/* Узкие экраны: шапка в два яруса — логотип по центру,
+   ниже кнопки враспор на всю ширину (бургер у правого края) */
+@media (max-width: 575.98px) {
+    header .navbar-brand {
+        margin-inline: auto;
+    }
+
+    header .navbar .header-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
 /* «Таблетки» на тёмном навбаре: переключатель языка и кнопка поиска.
    Активный язык залит горчичным с тёмным текстом (6.7:1). */
 .navbar-pill {
