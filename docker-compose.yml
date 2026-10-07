@@ -5,6 +5,7 @@ services:
     restart: always
     volumes:
       - .:/app
+      - ./media:/app/media
 
     env_file:
       - .env
@@ -60,6 +61,7 @@ services:
     container_name: palliativ_huey
     volumes:
       - .:/app
+      - ./media:/app/media
     env_file:
       - .env
     environment:
