@@ -82,12 +82,7 @@
             </a>
         </div>
     </section>
-
     <section class="text-center py-4">
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-            <a href="{% url 'news:post_list' %}" class="btn btn-outline-primary">{% translate "Новости" %}</a>
-            <a href="{% url 'events:event_list' %}" class="btn btn-outline-primary">{% translate "Мероприятия" %}</a>
-        </div>
     </section>
 {% if latest_posts %}
     <section class="py-4">
