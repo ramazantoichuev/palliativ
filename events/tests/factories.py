@@ -3,7 +3,7 @@ from datetime import timedelta
 import factory
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils import timezone
-
+from news.tests.factories import make_test_image_bytes
 from events.models import Event
 
 # Минимальный валидный GIF 1x1 — чтобы ImageField принял файл без внешних фикстур.
@@ -29,7 +29,11 @@ class EventFactory(factory.django.DjangoModelFactory):
     content = "Подробная программа мероприятия."
     location = "г. Бишкек, ул. Юдахина 61"
     event_date = factory.LazyFunction(lambda: timezone.now() + timedelta(days=7))
-
+    image = factory.LazyFunction(
+        lambda: SimpleUploadedFile(
+            "event.jpg", make_test_image_bytes(), content_type="image/jpeg"
+        )
+    )
 
 class PastEventFactory(EventFactory):
     """Мероприятие с датой в прошлом — попадает в past_events."""
