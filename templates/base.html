@@ -48,14 +48,14 @@
 
 {% with ns=request.resolver_match.namespace un=request.resolver_match.url_name %}
 <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+    <nav class="navbar navbar-expand-xl bg-dark shadow-sm" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="{% url 'main:home' %}">
                 <img src="{% static 'main/images/logo1_contur.png' %}"
                      alt="{% translate 'Ассоциация паллиативной и хосписной помощи' %}">
             </a>
-            <div class="d-flex align-items-center gap-2 ms-auto order-lg-last">
-                <button class="btn btn-outline-secondary btn-sm" type="button"
+            <div class="header-controls d-flex align-items-center gap-2 ms-auto order-xl-last">
+                <button class="btn btn-sm navbar-pill" type="button"
                         id="headerSearchToggle"
                         aria-label="{% translate 'Поиск' %}"
                         aria-expanded="false"
@@ -68,29 +68,22 @@
                     {% translate "Оставить заявку" %}
                 </a>
 
-                <div class="dropdown">
-                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false"
-                            aria-label="{% translate 'Выбор языка' %}">
-                        {{ LANGUAGE_CODE|upper }}
-                    </button>
-                    <form action="{% url 'set_language' %}" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            {% get_language_info_list for LANGUAGES as languages %}
-                            {% for language in languages %}
-                                <li>
-                                    <button type="submit" name="language" value="{{ language.code }}"
-                                            class="dropdown-item{% if language.code == LANGUAGE_CODE %} active{% endif %}"
-                                            {% if language.code == LANGUAGE_CODE %}aria-current="true"{% endif %}>
-                                        {{ language.code|upper }} — {{ language.name_local }}
-                                    </button>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </form>
-                </div>
+                <form action="{% url 'set_language' %}" method="post"
+                      class="d-flex gap-1"
+                      aria-label="{% translate 'Выбор языка' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <button type="submit" name="language" value="{{ language.code }}"
+                                class="btn btn-sm navbar-pill{% if language.code == LANGUAGE_CODE %} active{% endif %}"
+                                {% if language.code == LANGUAGE_CODE %}aria-current="true"{% endif %}
+                                aria-label="{{ language.name_local }}"
+                                lang="{{ language.code }}">
+                            {{ language.code|upper }}
+                        </button>
+                    {% endfor %}
+                </form>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#mainNavbar" aria-controls="mainNavbar"
@@ -100,7 +93,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto me-lg-3 mb-2 mb-lg-0 text-center">
+                <ul class="navbar-nav ms-auto me-xl-3 mb-2 mb-xl-0 text-center">
 
                     <li class="nav-item">
                         <a class="nav-link{% if ns == 'main' and un == 'home' %} active{% endif %}"
