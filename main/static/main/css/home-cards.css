@@ -1,3 +1,59 @@
+.card-soft {
+  border: 0;
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.card-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg);
+  flex-shrink: 0;
+}
+.card-badge svg { width: 22px; height: 22px; }
+.card-badge--mustard    { background: var(--mustard); color: var(--text-on-mustard); }
+.card-badge--soft-green { background: var(--soft-green); }
+.card-badge--deep-blue  { background: var(--deep-blue); }
+
+.card-stripe-news   { border-top: 5px solid var(--soft-green); }
+.card-stripe-events { border-top: 5px solid var(--deep-blue); }
+
+.hero-photo-wrap { position: relative; }
+.hero-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.cta-accent {
+  position: relative;
+  overflow: hidden;
+  background: var(--mustard);
+  color: var(--text-on-mustard);
+}
+.cta-accent > * { position: relative; z-index: 1; }
+.cta-accent h2,
+.cta-accent p { color: var(--text-on-mustard); }
+.cta-accent::before,
+.cta-accent::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+.cta-accent::before { width: 260px; height: 260px; top: -90px; right: -60px; }
+.cta-accent::after  { width: 160px; height: 160px; bottom: -60px; left: 8%; }
+
 .event-date-overlay {
     position: absolute; inset: 0;
     display: flex; flex-direction: column;

@@ -43,7 +43,7 @@
    <div class="row justify-content-center mt-4">
     {% for post in posts %}
        <div class="col-12 col-sm-6 col-lg-4 mb-4">
-            <article class="card h-100 shadow-sm">
+           <article class="card card-soft card-stripe-news h-100">
                 <div style="position: relative; height: 200px; overflow: hidden;">
                     <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'main/images/news-placeholder.jpg' %}{% endif %}"
                         alt="" aria-hidden="true"
