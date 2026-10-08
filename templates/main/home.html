@@ -127,9 +127,7 @@
             {% for event in upcoming_events %}
             <div class="col">
                 <div class="card card-soft card-stripe-events h-100">
-                    <img src="{% if event.image %}{{ event.image.url }}{% else %}{% static 'main/images/event-placeholder.jpg' %}{% endif %}"
-                        class="card-img-top" alt="{% if event.image %}{{ event.title }}{% else %}{% endif %}"
-                        style="height: 200px; object-fit: cover;">
+                    {% include "events/_event_card_image.html" %}
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{ event.get_absolute_url }}" class="text-decoration-none">{{ event.title }}</a></h5>
                         <p class="text-muted small">{{ event.event_date|date:"d.m.Y H:i" }}</p>
