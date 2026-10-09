@@ -54,3 +54,26 @@ def cleanup_post_image(sender, instance, **kwargs):
 @receiver(post_delete, sender=Event)
 def cleanup_event_image(sender, instance, **kwargs):
     enqueue_file_deletion(instance.image.name if instance.image else None)
+
+
+
+@receiver(pre_save, sender=Event)
+def track_event_image_change(sender, instance, **kwargs):
+    instance._old_file_paths = None
+    if not instance.pk:
+        return
+    old = Event.objects.only('image').filter(pk=instance.pk).first()
+    if not old:
+        return
+    old_name = old.image.name if old.image else None
+    new_name = instance.image.name if instance.image else None
+    if old_name and old_name != new_name:
+        instance._old_file_paths = [old_name]
+
+
+@receiver(post_save, sender=Event)
+def cleanup_replaced_event_image(sender, instance, **kwargs):
+    old_paths = getattr(instance, "_old_file_paths", None)
+    if old_paths:
+        enqueue_file_deletion(*old_paths)
+        instance._old_file_paths = None

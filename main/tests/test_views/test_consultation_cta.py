@@ -29,11 +29,13 @@ class TestConsultationCta(TestCase):
         self.assertNotContains(response, "Нужна консультация")
         self.assertContains(response, "Оставить заявку")
 
-    def test_language_switcher_is_dropdown_not_button_group(self):
+    def test_language_switcher_is_pills_not_dropdown(self):
+        """С Ticket 103 переключатель языка — «таблетки» RU/KY/EN,
+        dropdown из Ticket 77 убран по Figma-референсу."""
         response = self.client.get(reverse("main:home"))
 
-        self.assertContains(response, "dropdown-menu")
-        self.assertNotContains(response, "btn-group")
+        self.assertContains(response, "navbar-pill")
+        self.assertNotContains(response, "dropdown-toggle")
 
     def test_navbar_is_sticky(self):
         response = self.client.get(reverse("main:home"))

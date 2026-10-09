@@ -18,8 +18,9 @@ class TestEventListView(TestCase):
             title="Школа паллиативной помощи",
             slug="school",
             location="г. Бишкек, ул. Юдахина 61",
+            image=None,
         )
-        cls.past = PastEventFactory(title="Прошедшая конференция", slug="past-conf")
+        cls.past = PastEventFactory(title="Прошедшая конференция", slug="past-conf", image=None)
 
     def test_page_opens_and_uses_expected_template(self):
         response = self.client.get(self.url)

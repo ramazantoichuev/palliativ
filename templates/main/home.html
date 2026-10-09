@@ -5,21 +5,35 @@
 {% block title %}{% translate "Главная — Паллиатив.kg" %}{% endblock %}
 
 {% block content %}
-    <section class="text-center py-5">
-        <h1 class="display-5 fw-bold">
-            {% get_text_block "home_hero_title" fallback=_("Жизнь без боли — это право каждого.") %}
-        </h1>
-        <p class="lead col-lg-8 mx-auto mt-3">
-            {% get_text_block "home_hero_subtitle" fallback=_("Ассоциация паллиативной и хосписной помощи Кыргызской Республики. Мы объединяем врачей, клиники и семьи, чтобы обеспечить достойное качество жизни на любом её этапе.") %}
-        </p>
+        <section class="py-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6 text-center text-lg-start">
+                <h1 class="display-5 fw-bold">
+                    {% get_text_block "home_hero_title" fallback=_("Жизнь без боли — это право каждого.") %}
+                </h1>
+                <p class="lead mt-3">
+                    {% get_text_block "home_hero_subtitle" fallback=_("Ассоциация паллиативной и хосписной помощи Кыргызской Республики. Мы объединяем врачей, клиники и семьи, чтобы обеспечить достойное качество жизни на любом её этапе.") %}
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-photo-wrap">
+                    <img src="{% static 'main/images/hero-photo.jpg' %}" class="hero-photo" alt="">
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="row g-4 py-4">
         <div class="col-md-6">
-            <div class="p-4 border rounded h-100">
-                <h5 class="fw-bold">
-                    {% get_text_block "home_card_patients_title" fallback=_("Для пациентов") %}
-                </h5>
+            <div class="card-soft p-4 h-100">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <span class="card-badge card-badge--mustard">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </span>
+                    <h5 class="fw-bold mb-0">
+                        {% get_text_block "home_card_patients_title" fallback=_("Для пациентов") %}
+                    </h5>
+                </div>
                 <div class="list-group list-group-flush">
                     <a href="{% url 'resources:resource_list' %}?audience=caregiver"
                        class="list-group-item list-group-item-action">
@@ -53,22 +67,22 @@
         </div>
         <div class="col-md-6">
             <a href="{% url 'resources:resource_list' %}?audience=specialist"
-               class="p-4 border rounded h-100 d-block text-decoration-none text-dark">
-                <h5 class="fw-bold">
-                    {% get_text_block "home_card_doctors_title" fallback=_("Для врачей") %}
-                </h5>
+               class="card-soft p-4 h-100 d-block text-decoration-none text-dark">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <span class="card-badge card-badge--deep-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </span>
+                    <h5 class="fw-bold mb-0">
+                        {% get_text_block "home_card_doctors_title" fallback=_("Для врачей") %}
+                    </h5>
+                </div>
                 <p class="mb-0">
                     {% get_text_block "home_card_doctors_desc" fallback=_("Протоколы, лекции и справочные материалы по уходу за пациентами.") %}
                 </p>
             </a>
         </div>
     </section>
-
     <section class="text-center py-4">
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-            <a href="{% url 'news:post_list' %}" class="btn btn-outline-primary">{% translate "Новости" %}</a>
-            <a href="{% url 'events:event_list' %}" class="btn btn-outline-primary">{% translate "Мероприятия" %}</a>
-        </div>
     </section>
 {% if latest_posts %}
     <section class="py-4">
@@ -76,7 +90,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-3">
             {% for post in latest_posts %}
             <div class="col">
-                <div class="card h-100">
+                <div class="card card-soft card-stripe-news h-100">
                     <div style="position: relative; height: 200px; overflow: hidden;">
                         <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'main/images/news-placeholder.jpg' %}{% endif %}"
                             alt="" aria-hidden="true"
@@ -107,10 +121,8 @@
         <div class="row row-cols-1 row-cols-md-3 g-3">
             {% for event in upcoming_events %}
             <div class="col">
-                <div class="card h-100">
-                    <img src="{% if event.image %}{{ event.image.url }}{% else %}{% static 'main/images/event-placeholder.jpg' %}{% endif %}"
-                        class="card-img-top" alt="{% if event.image %}{{ event.title }}{% else %}{% endif %}"
-                        style="height: 200px; object-fit: cover;">
+                <div class="card card-soft card-stripe-events h-100">
+                    {% include "events/_event_card_image.html" %}
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{ event.get_absolute_url }}" class="text-decoration-none">{{ event.title }}</a></h5>
                         <p class="text-muted small">{{ event.event_date|date:"d.m.Y H:i" }}</p>
@@ -125,12 +137,12 @@
         </div>
     </section>
     {% endif %}
-    <section class="text-center bg-light border rounded-3 p-4 p-md-5 mt-4">
+<section class="text-center cta-accent rounded-4 p-4 p-md-5 mt-4">
         <h2 class="h3 fw-bold mb-2">{% translate "Нужна помощь или консультация?" %}</h2>
         <p class="lead col-lg-8 mx-auto mb-4">
             {% blocktranslate %}Оставьте заявку — специалисты Ассоциации свяжутся с вами и подскажут, как получить паллиативную помощь.{% endblocktranslate %}
         </p>
-        <a href="{% url 'main:new-consultation' %}" class="btn btn-primary btn-lg">
+        <a href="{% url 'main:new-consultation' %}" class="btn btn-dark btn-lg">
             {% translate "Оставить заявку" %}
         </a>
     </section>
