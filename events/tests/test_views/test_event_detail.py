@@ -20,6 +20,7 @@ class TestEventDetailView(TestCase):
             description="Двухдневный семинар для медицинских работников.",
             content="В программе: лекции и разбор клинических случаев.",
             location="г. Бишкек, ул. Юдахина 61",
+            image=None,
         )
         cls.url = reverse("events:event_detail", args=[cls.event.slug])
         cls.valid_data = {
