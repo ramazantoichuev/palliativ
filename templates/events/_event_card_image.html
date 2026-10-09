@@ -1,0 +1,18 @@
+{% load static %}
+<div class="event-card-media position-relative">
+    {% if event.image %}
+        <img src="{{ event.image.url }}" alt="{{ event.title }}"
+             class="card-img-top" style="height: 200px; object-fit: cover;">
+        <div class="event-date-badge" aria-hidden="true">
+            <span class="event-date-badge__day">{{ event.event_date|date:"j" }}</span>
+            <span class="event-date-badge__month">{{ event.event_date|date:"M" }}</span>
+        </div>
+    {% else %}
+        <img src="{% static 'main/images/event-placeholder.jpg' %}" alt=""
+             class="card-img-top" style="height: 200px; object-fit: cover;">
+        <div class="event-date-overlay" aria-hidden="true">
+            <span class="event-date-overlay__day">{{ event.event_date|date:"j" }}</span>
+            <span class="event-date-overlay__month">{{ event.event_date|date:"E" }}</span>
+        </div>
+    {% endif %}
+</div>
