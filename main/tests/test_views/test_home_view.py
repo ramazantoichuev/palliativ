@@ -91,6 +91,6 @@ class HomeViewTest(TestCase):
             self.assertContains(response, "main/images/news-placeholder.jpg")
 
     def test_event_without_image_renders_placeholder_on_home(self):
-        EventFactory()
+        EventFactory(image=None)
         response = self.client.get(self.url)
         self.assertContains(response, "main/images/event-placeholder.jpg")
