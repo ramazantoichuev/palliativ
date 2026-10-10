@@ -1,5 +1,6 @@
 from django.template import Context, Template
 from django.test import TestCase
+from django.urls import reverse
 from django.utils import translation
 
 from accounts.models import BaseUser
@@ -97,6 +98,31 @@ class TestEditableTextBlockAdminAccess(TestCase):
             is_staff=True,
             phone="+996700000002",
         )
+        cls.admin = BaseUser.objects.create_user(
+            username="admin",
+            email="admin@example.com",
+            password="x",
+            role=BaseUser.Role.ADMIN,
+            is_staff=True,
+            phone="+996700000003",
+        )
+
+        cls.patient = BaseUser.objects.create_user(
+            username="patient",
+            email="patient@example.com",
+            password="x",
+            role=BaseUser.Role.PATIENT,
+            is_staff=True,
+            phone="+996700000004",
+        )
+        cls.block = EditableTextBlock.objects.create(
+            slug="access_test",
+            content_ru="Тестовый текст",
+        )
+        cls.change_url = reverse(
+            "admin:main_editabletextblock_change",
+            args=[cls.block.pk],
+        )
 
     def test_manager_can_open_blocks_list(self):
         self.client.force_login(self.manager)
@@ -109,6 +135,48 @@ class TestEditableTextBlockAdminAccess(TestCase):
         self.client.force_login(self.doctor)
 
         response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_admin_can_open_blocks_list(self):
+        self.client.force_login(self.admin)
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_patient_is_denied(self):
+        self.client.force_login(self.patient)
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_admin_can_open_block_edit_page(self):
+        self.client.force_login(self.admin)
+
+        response = self.client.get(self.change_url)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_manager_can_open_block_edit_page(self):
+        self.client.force_login(self.manager)
+
+        response = self.client.get(self.change_url)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_doctor_cannot_open_block_edit_page(self):
+        self.client.force_login(self.doctor)
+
+        response = self.client.get(self.change_url)
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_patient_cannot_open_block_edit_page(self):
+        self.client.force_login(self.patient)
+
+        response = self.client.get(self.change_url)
 
         self.assertEqual(response.status_code, 403)
 

@@ -86,7 +86,7 @@ class EditableTextBlockAdminTests(TestCase):
         )
 
         reloaded = EditableTextBlock.all_objects.get(pk=deleted_block.pk)
-        self.assertTrue(reloaded.is_deleted)  # восстановление не произошло
+        self.assertTrue(reloaded.is_deleted)
         messages = [str(m) for m in get_messages(response.wsgi_request)]
         self.assertTrue(any("Не удалось восстановить" in m for m in messages))
 
@@ -100,10 +100,153 @@ class EditableTextBlockAdminTests(TestCase):
 
         self.assertNotContains(response, 'name="slug"')
 
-    def test_slug_is_editable_when_creating_new_block(self):
+    def test_add_page_returns_403(self):
         response = self.client.get(
             reverse("admin:main_editabletextblock_add"),
             SERVER_NAME="127.0.0.1",
         )
 
-        self.assertContains(response, 'name="slug"')
+        self.assertEqual(response.status_code, 403)
+
+    def test_add_button_is_not_displayed(self):
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Добавить")
+
+    def test_post_to_add_page_does_not_create_block(self):
+        response = self.client.post(
+            reverse("admin:main_editabletextblock_add"),
+            data={
+                "slug": "new_test_block",
+                "content_ru": "Новый текст",
+            },
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertFalse(
+            EditableTextBlock.all_objects.filter(
+                slug="new_test_block"
+            ).exists()
+        )
+
+
+    def test_page_filter_home_shows_only_home_blocks(self):
+        EditableTextBlock.objects.create(slug="home_title", content_ru="Главная")
+        EditableTextBlock.objects.create(slug="about_title", content_ru="О нас")
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            {"page": "home"},
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "home_title")
+        self.assertNotContains(response, "about_title")
+
+    def test_page_filter_about_shows_only_about_blocks(self):
+        EditableTextBlock.objects.create(slug="home_title", content_ru="Главная")
+        EditableTextBlock.objects.create(slug="about_title", content_ru="О нас")
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            {"page": "about"},
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "about_title")
+        self.assertNotContains(response, "home_title")
+
+    def test_page_filter_without_value_shows_all_blocks(self):
+        EditableTextBlock.objects.create(slug="home_title", content_ru="Главная")
+        EditableTextBlock.objects.create(slug="about_title", content_ru="О нас")
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "home_title")
+        self.assertContains(response, "about_title")
+
+    def test_page_filter_unknown_value_shows_all_blocks(self):
+        EditableTextBlock.objects.create(slug="home_title", content_ru="Главная")
+        EditableTextBlock.objects.create(slug="about_title", content_ru="О нас")
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            {"page": "unknown"},
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "home_title")
+        self.assertContains(response, "about_title")
+
+    def test_page_filter_includes_soft_deleted_blocks(self):
+        block = EditableTextBlock.objects.create(
+            slug="home_deleted_title",
+            content_ru="Удалённый блок",
+        )
+        block.soft_delete()
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            {"page": "home"},
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "home_deleted_title")
+
+    def test_search_finds_block_by_slug(self):
+        EditableTextBlock.objects.create(
+            slug="home_unique_title",
+            content_ru="Текст",
+        )
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            {"q": "unique_title"},
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "home_unique_title")
+
+    def test_search_finds_block_by_content(self):
+        EditableTextBlock.objects.create(
+            slug="home_search_test",
+            content_ru="УникальныйПоисковыйТекст",
+        )
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            {"q": "УникальныйПоисковыйТекст"},
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "home_search_test")
+
+    def test_search_with_no_matches_returns_empty_list(self):
+        EditableTextBlock.objects.create(
+            slug="home_existing_block",
+            content_ru="Существующий текст",
+        )
+
+        response = self.client.get(
+            reverse("admin:main_editabletextblock_changelist"),
+            {"q": "no_such_block_987654"},
+            SERVER_NAME="127.0.0.1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "home_existing_block")
