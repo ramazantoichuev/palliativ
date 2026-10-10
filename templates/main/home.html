@@ -82,12 +82,7 @@
             </a>
         </div>
     </section>
-
     <section class="text-center py-4">
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-            <a href="{% url 'news:post_list' %}" class="btn btn-outline-primary">{% translate "Новости" %}</a>
-            <a href="{% url 'events:event_list' %}" class="btn btn-outline-primary">{% translate "Мероприятия" %}</a>
-        </div>
     </section>
 {% if latest_posts %}
     <section class="py-4">
@@ -127,9 +122,7 @@
             {% for event in upcoming_events %}
             <div class="col">
                 <div class="card card-soft card-stripe-events h-100">
-                    <img src="{% if event.image %}{{ event.image.url }}{% else %}{% static 'main/images/event-placeholder.jpg' %}{% endif %}"
-                        class="card-img-top" alt="{% if event.image %}{{ event.title }}{% else %}{% endif %}"
-                        style="height: 200px; object-fit: cover;">
+                    {% include "events/_event_card_image.html" %}
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{ event.get_absolute_url }}" class="text-decoration-none">{{ event.title }}</a></h5>
                         <p class="text-muted small">{{ event.event_date|date:"d.m.Y H:i" }}</p>
