@@ -3,11 +3,11 @@ from unittest import mock
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.test import TestCase, override_settings
-from resources.tests.mixins import MediaCleanupTestMixin
 
 from resources.models.resources import ResourceFile
 from resources.tasks import delete_file_task
 from resources.tests.factories import ResourceFactory
+from resources.tests.mixins import MediaCleanupTestMixin
 
 TEST_OVERRIDES = dict(
     MIN_RESOURCE_FILE_SIZE_FOR_COMPRESSION_MB=0.001,  # ~1 КБ
