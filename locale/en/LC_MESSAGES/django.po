@@ -15,7 +15,7 @@ msgstr ""
 
 #: accounts/apps.py:8
 msgid "Аккаунты"
-msgstr ""
+msgstr "Accounts"
 
 #: accounts/forms.py:14
 msgid "Айгуль"
@@ -125,11 +125,7 @@ msgstr "Phone Number"
 
 #: accounts/models.py:49
 msgid "Пользователь"
-msgstr "Filter"
-
-#: accounts/models.py:50
-msgid "Пользователи"
-msgstr "Filter"
+msgstr "User"
 
 #: accounts/models.py:91
 msgid "Навыки"
@@ -159,30 +155,24 @@ msgid "Регистрация врачей временно приостанов
 msgstr "Doctor registration is temporarily suspended. Please try again later."
 
 #: common/choices.py:6
-#, fuzzy
-#| msgid "Вперед"
 msgid "В очереди"
-msgstr "Forward"
+msgstr "In queue"
 
 #: common/choices.py:7
 msgid "Обрабатывается"
-msgstr ""
+msgstr "Processing"
 
 #: common/choices.py:8
-#, fuzzy
-#| msgid "В работе"
 msgid "Обработано"
-msgstr "In progress"
+msgstr "Processed"
 
 #: common/choices.py:9
-#, fuzzy
-#| msgid "Политика обработки данных"
 msgid "Ошибка обработки"
-msgstr "Data Processing Policy"
+msgstr "Processing error"
 
 #: common/choices.py:10
 msgid "Сжатие не требуется"
-msgstr ""
+msgstr "Compression not required"
 
 #: common/turnstile_form.py:15
 msgid "Ошибка проверки безопасности. Пожалуйста, попробуйте еще раз."
@@ -195,12 +185,7 @@ msgstr "The image size must not exceed %(limit)s MB."
 
 #: common/validators.py:24
 msgid "Файл повреждён или не является корректным изображением."
-msgstr ""
-
-#: common/validators.py:34
-#, python-format
-msgid "Размер файла не должен превышать %(limit)s МБ."
-msgstr "The file size must not exceed %(limit)s MB."
+msgstr "The file is corrupted or is not a valid image."
 
 #: config/settings.py:158
 msgid "Russian"
@@ -216,7 +201,7 @@ msgstr "English"
 
 #: events/admin.py:27
 msgid "Зарегистрировано"
-msgstr "Registrate"
+msgstr "Registered"
 
 #: events/apps.py:7 events/models.py:20 templates/base.html:174
 #: templates/events/event_detail.html:12 templates/events/event_list.html:6
@@ -227,7 +212,7 @@ msgstr "Events"
 
 #: events/forms.py:14
 msgid "Email (необязательно)"
-msgstr ""
+msgstr "Email (optional)"
 
 #: events/models.py:10 news/models/posts.py:25
 #: resources/models/resources.py:37
@@ -418,42 +403,36 @@ msgid "Редактируемые текстовые блоки"
 msgstr "Editable text blocks"
 
 #: main/models/site_contacts.py:9
-#, fuzzy
-#| msgid "Видео-ссылки"
 msgid "Телефон для tel:-ссылки"
-msgstr "Video links"
+msgstr "Phone number for tel:-link"
 
 #: main/models/site_contacts.py:11
 msgid "В формате +996312214015"
-msgstr ""
+msgstr "In +996312214015 format"
 
 #: main/models/site_contacts.py:14
 msgid "Телефон (отображаемый текст)"
-msgstr ""
+msgstr "Phone (display text)"
 
 #: main/models/site_contacts.py:17
 msgid "Ссылка WhatsApp"
-msgstr ""
+msgstr "WhatsApp link"
 
 #: main/models/site_contacts.py:19
 msgid "WhatsApp (отображаемый текст)"
-msgstr ""
+msgstr "WhatsApp (display text)"
 
 #: main/models/site_contacts.py:21
-#, fuzzy
-#| msgid "Ссылка на YouTube"
 msgid "Ссылка Facebook"
-msgstr "YouTube link"
+msgstr "Facebook link"
 
 #: main/models/site_contacts.py:22
 msgid "Ссылка Instagram"
-msgstr ""
+msgstr "Instagram link"
 
 #: main/models/site_contacts.py:23
-#, fuzzy
-#| msgid "Ссылка на YouTube"
 msgid "Ссылка на 2ГИС"
-msgstr "YouTube link"
+msgstr "2GIS link"
 
 #: main/models/site_contacts.py:24 templates/main/contacts.html:10
 msgid "Адрес"
@@ -461,10 +440,8 @@ msgstr "Address"
 
 #: main/models/site_contacts.py:27 main/models/site_contacts.py:28
 #: main/models/site_contacts.py:31
-#, fuzzy
-#| msgid "Контакты — Паллиатив.kg"
 msgid "Контакты сайта"
-msgstr "Contacts — Palliative.kg"
+msgstr "Site contacts"
 
 #: main/models/system_settings.py:7
 msgid "Регистрация пациентов включена"
@@ -497,7 +474,7 @@ msgstr "Association Team"
 
 #: main/models/team.py:15
 msgid "ФИО / название организации"
-msgstr ""
+msgstr "Full name / organization name"
 
 #: main/models/team.py:16
 msgid "Должность"
@@ -513,16 +490,16 @@ msgstr "Category"
 
 #: main/models/team.py:22
 msgid "Фотография"
-msgstr ""
+msgstr "Photo"
 
 #: main/models/team.py:34
 msgid "Член команды"
-msgstr ""
+msgstr "Team member"
 
 #: main/models/team.py:35 templates/main/team.html:4
 #: templates/main/team.html:9
 msgid "Команда и руководство"
-msgstr "Team and Leadership"
+msgstr "Team and leadership"
 
 #: main/views.py:106
 msgid "Ваша заявка на консультацию успешно отправлена!"
@@ -547,10 +524,8 @@ msgid "Картинка"
 msgstr "Image"
 
 #: news/models/posts.py:43
-#, fuzzy
-#| msgid "Порядок отображения"
 msgid "Статус обработки изображения"
-msgstr "Display order"
+msgstr "Image processing status"
 
 #: news/models/posts.py:58
 msgid "Новость"
@@ -648,10 +623,8 @@ msgid "Советы психолога"
 msgstr "Psychologist's advice"
 
 #: resources/models/resources.py:32 templates/main/home.html:36
-#, fuzzy
-#| msgid "Управление заявкой"
 msgid "Управление болью"
-msgstr "Request management"
+msgstr "Pain management"
 
 #: resources/models/resources.py:33
 msgid "Лекарства и права пациента"
@@ -663,7 +636,7 @@ msgstr "Social support"
 
 #: resources/models/resources.py:41
 msgid "Слаг"
-msgstr ""
+msgstr "Slug"
 
 #: resources/models/resources.py:44
 msgid "Целевая аудитория"
@@ -694,14 +667,12 @@ msgid "Файл"
 msgstr "File"
 
 #: resources/models/resources.py:106
-#, fuzzy
-#| msgid "Политика обработки данных"
 msgid "Статус обработки файла"
-msgstr "Data Processing Policy"
+msgstr "File processing status"
 
 #: resources/models/resources.py:113
 msgid "PDF-версия (из Word)"
-msgstr ""
+msgstr "PDF version (from Word)"
 
 #: resources/models/resources.py:120
 msgid "Файл ресурса"
@@ -798,6 +769,8 @@ msgid ""
 "Станьте волонтёром, врачом или зарегистрируйтесь как пациент Ассоциации "
 "паллиативной и хосписной помощи."
 msgstr ""
+"Become a volunteer, a doctor, or register as a patient of the Palliative "
+"and Hospice Care Association."
 
 #: templates/accounts/register_type.html:10
 msgid "Членство / Участие"
@@ -955,7 +928,7 @@ msgstr "Association of Palliative and Hospice Care"
 #: templates/base.html:102 templates/base.html:242 templates/base.html:243
 #: templates/main/search_results.html:7
 msgid "Поиск"
-msgstr ""
+msgstr "Search"
 
 #: templates/base.html:109
 msgid "Оставить заявку на консультацию"
@@ -993,7 +966,7 @@ msgstr "FAQ"
 #: templates/base.html:197 templates/main/contacts.html:4
 #: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
 msgid "Контакты"
-msgstr ""
+msgstr "Contacts"
 
 #: templates/base.html:203 templates/patients/patient_dashboard.html:6
 msgid "Моя карточка"
@@ -1014,17 +987,17 @@ msgstr "Palliative and Hospice Care Association of the Kyrgyz Republic"
 #: templates/base.html:285 templates/base.html:286
 #: templates/main/contacts.html:30
 msgid "WhatsApp"
-msgstr ""
+msgstr "WhatsApp"
 
 #: templates/base.html:295 templates/base.html:296
 #: templates/main/contacts.html:52
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: templates/base.html:305 templates/base.html:306
 #: templates/main/contacts.html:41
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: templates/base.html:314
 msgid "Написать нам"
@@ -1077,6 +1050,8 @@ msgid ""
 "Расписание мероприятий, вебинаров и тренингов Ассоциации паллиативной и "
 "хосписной помощи."
 msgstr ""
+"Schedule of events, webinars, and trainings of the Palliative and Hospice "
+"Care Association."
 
 #: templates/events/event_list.html:8
 msgid "Предстоящие мероприятия"
@@ -1131,11 +1106,11 @@ msgstr "Our contribution to the development of palliative care in Kyrgyzstan"
 
 #: templates/main/about.html:53
 msgid "Законодательство и нормативная база"
-msgstr ""
+msgstr "Legislation and regulatory framework"
 
 #: templates/main/about.html:64
 msgid "Клинические руководства и стандарты"
-msgstr ""
+msgstr "Clinical guidelines and standards"
 
 #: templates/main/about.html:75
 msgid "Практические услуги для пациентов"
@@ -1202,55 +1177,47 @@ msgid "Жизнь без боли — это право каждого."
 msgstr "A life without pain is everyone's right."
 
 #: templates/main/home.html:13
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "            Ассоциация паллиативной и хосписной помощи Кыргызской Республики.\n"
-#| "            Мы объединяем врачей, клиники и семьи, чтобы обеспечить достойное\n"
-#| "            качество жизни на любом её этапе.\n"
-#| "             "
 msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики. Мы "
 "объединяем врачей, клиники и семьи, чтобы обеспечить достойное качество "
 "жизни на любом её этапе."
 msgstr ""
-"\n"
-"            Association of Palliative and Hospice Care of the Kyrgyz Republic.\n"
-"            We bring together doctors, clinics, and families to ensure\n"
-"            a dignified quality of life at any stage.\n"
-"             "
+"Palliative and Hospice Care Association of the Kyrgyz Republic. We unite "
+"doctors, clinics, and families to ensure a decent quality of life at any "
+"stage."
 
 #: templates/main/home.html:21
 msgid "Для пациентов"
 msgstr "For patients"
 
 #: templates/main/home.html:27
-#, fuzzy
-#| msgid "Советы психолога"
 msgid "Советы по уходу"
-msgstr "Psychologist's advice"
+msgstr "Caregiving tips"
 
 #: templates/main/home.html:30
 msgid ""
 "Как ухаживать за больным дома: кормление, гигиена, психологическая "
 "поддержка."
 msgstr ""
+"How to care for a patient at home: feeding, hygiene, psychological support."
 
 #: templates/main/home.html:39
 msgid ""
 "Что такое боль, когда нужно обращаться к врачу, и ваше право на "
 "обезболивание."
 msgstr ""
+"What pain is, when to consult a doctor, and your right to pain relief."
 
 #: templates/main/home.html:45
 msgid "Доступ к услугам и лекарственным средствам"
-msgstr ""
+msgstr "Access to services and medicines"
 
 #: templates/main/home.html:48
 msgid ""
 "Как получить помощь паллиативного врача, право на стационарную помощь и "
 "рецепт."
 msgstr ""
+"How to get palliative care, the right to inpatient care and a prescription."
 
 #: templates/main/home.html:58
 msgid "Для врачей"
@@ -1288,11 +1255,11 @@ msgstr "Data Processing Policy — Palliative.kg"
 #: templates/main/privacy_policy.html:5
 msgid ""
 "Политика обработки персональных данных при заполнении формы консультации."
-msgstr ""
+msgstr "Personal data processing policy when filling out the consultation form."
 
 #: templates/main/privacy_policy.html:9
 msgid "Политика обработки персональных данных"
-msgstr ""
+msgstr "Personal Data Processing Policy"
 
 #: templates/main/privacy_policy.html:11
 msgid ""
@@ -1300,68 +1267,74 @@ msgid ""
 " Кыргызской Республики обрабатывает персональные данные, которые вы "
 "передаёте через форму заявки на консультацию."
 msgstr ""
+"This document describes how the Palliative and Hospice Care Association "
+"of the Kyrgyz Republic processes personal data that you provide through "
+"the consultation request form."
 
 #: templates/main/privacy_policy.html:13
 msgid "Какие данные собираются"
-msgstr ""
+msgstr "What data is collected"
 
 #: templates/main/privacy_policy.html:14
 msgid "Имя, номер телефона, адрес электронной почты, тема обращения."
-msgstr ""
+msgstr "Name, phone number, email address, topic of inquiry."
 
 #: templates/main/privacy_policy.html:16
 msgid "Цель обработки"
-msgstr ""
+msgstr "Purpose of processing"
 
 #: templates/main/privacy_policy.html:17
 msgid ""
-"Данные используются исключительно для того, чтобы связаться с вами по вашей "
+"Данные используются исключительно для того, чтобы связаться with вами по вашей "
 "заявке на консультацию."
 msgstr ""
+"The data is used exclusively to contact you regarding your consultation request."
 
 #: templates/main/privacy_policy.html:19
 msgid "Кто имеет доступ"
-msgstr ""
+msgstr "Who has access"
 
 #: templates/main/privacy_policy.html:20
 msgid "Доступ к заявкам имеют сотрудники Ассоциации с ролью «Менеджер»."
-msgstr ""
+msgstr "Association employees with the \"Manager\" role have access to requests."
 
 #: templates/main/privacy_policy.html:22
 msgid "Срок хранения"
-msgstr ""
+msgstr "Retention period"
 
 #: templates/main/privacy_policy.html:23
 msgid ""
 "Данные заявки хранятся в течение 3 (трёх) лет с момента обращения, после "
 "чего удаляются."
 msgstr ""
+"The request data is stored for 3 (three) years from the date of inquiry, after which it is deleted."
 
 #: templates/main/privacy_policy.html:25
 msgid "Как удалить свои данные"
-msgstr ""
+msgstr "How to delete your data"
 
 #: templates/main/privacy_policy.html:26
 msgid ""
 "Чтобы удалить свои данные, оставьте заявку по номеру WhatsApp или адресу "
 "электронной почты, указанным на странице"
 msgstr ""
+"To delete your data, leave a request via the WhatsApp number or email address specified on the page"
 
 #: templates/main/search_results.html:16
 msgid "Введите поисковый запрос"
-msgstr "Enter your password"
+msgstr "Enter search query"
 
 #: templates/main/search_results.html:19
 msgid "Найти"
-msgstr ""
+msgstr "Search"
 
 #: templates/main/search_results.html:26
 msgid "Введите не менее 2 символов для поиска."
-msgstr ""
+msgstr "Enter at least 2 characters to search."
 
 #: templates/main/search_results.html:28
 msgid "Введите поисковый запрос."
-msgstr "Enter your password"
+msgstr "Enter a search query."
 
 #: templates/main/search_results.html:92
 msgid "По вашему запросу ничего не найдено."
@@ -1518,6 +1491,8 @@ msgid ""
 "Справочные материалы для специалистов и ухаживающих — уход за пациентами, "
 "симптомы, консультации."
 msgstr ""
+"Reference materials for specialists and caregivers — patient care, "
+"symptoms, consultations."
 
 #: templates/resources/resource_list.html:12
 msgid "Все"
@@ -1534,13 +1509,6 @@ msgstr "All symptoms"
 #: templates/resources/resource_list.html:62
 msgid "В этой подкатегории пока нет материалов."
 msgstr "There are no material in this subcategory"
-
-#, python-format
-#~ msgid ""
-#~ "Разрешение изображения не должно превышать %(limit)s пикселей по большей "
-#~ "стороне."
-#~ msgstr ""
-#~ "The image resolution must not exceed %(limit)s pixels on the longer side."
 
 #~ msgid "г. Бишкек, ул. Юдахина 61"
 #~ msgstr "Bishkek, 61 Yudakhin St."
