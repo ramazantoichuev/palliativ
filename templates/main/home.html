@@ -36,7 +36,7 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{% url 'resources:resource_list' %}?audience=caregiver"
-                       class="list-group-item list-group-item-action">
+                       class="list-group-item list-group-item-action card-link-item">
                         <div class="fw-semibold">
                             {% get_text_block "home_card_care_tips_title" fallback=_("Советы по уходу") %}
                         </div>
@@ -45,7 +45,7 @@
                         </small>
                     </a>
                     <a href="{% url 'resources:resource_list' %}?audience=caregiver&subcategory=pain_management"
-                       class="list-group-item list-group-item-action">
+                       class="list-group-item list-group-item-action card-link-item">
                         <div class="fw-semibold">
                             {% get_text_block "home_card_pain_management_title" fallback=_("Управление болью") %}
                         </div>
@@ -54,7 +54,7 @@
                         </small>
                     </a>
                     <a href="{% url 'resources:resource_list' %}?audience=caregiver&subcategory=meds_rights"
-                       class="list-group-item list-group-item-action">
+                       class="list-group-item list-group-item-action card-link-item">
                         <div class="fw-semibold">
                             {% get_text_block "home_card_meds_access_title" fallback=_("Доступ к услугам и лекарственным средствам") %}
                         </div>
@@ -67,18 +67,13 @@
         </div>
         <div class="col-md-6">
             <a href="{% url 'resources:resource_list' %}?audience=specialist"
-               class="card-soft p-4 h-100 d-block text-decoration-none text-dark">
-                <div class="d-flex align-items-center gap-3 mb-3">
-                    <span class="card-badge card-badge--deep-blue">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    </span>
-                    <h5 class="fw-bold mb-0">
-                        {% get_text_block "home_card_doctors_title" fallback=_("Для врачей") %}
-                    </h5>
-                </div>
-                <p class="mb-0">
-                    {% get_text_block "home_card_doctors_desc" fallback=_("Протоколы, лекции и справочные материалы по уходу за пациентами.") %}
-                </p>
+               class="card-soft card-tile p-4 h-100 text-decoration-none">
+                <span class="card-badge card-badge--deep-blue card-badge--lg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </span>
+                <h5 class="fw-bold mb-0">{% get_text_block "home_card_doctors_title" fallback=_("Для врачей") %}</h5>
+                <p class="mb-0">{% get_text_block "home_card_doctors_desc" fallback=_("Протоколы, лекции и справочные материалы по уходу за пациентами.") %}</p>
+                <span class="card-tile__arrow" aria-hidden="true">→</span>
             </a>
         </div>
     </section>
