@@ -22,3 +22,16 @@ def site_contacts(request):
     from .models.site_contacts import SiteContacts
 
     return {"site_contacts": SiteContacts.load()}
+
+
+def registration_open(request):
+    """Пункт «Участие» в шапке виден, пока включена хотя бы одна регистрация."""
+    from .models.system_settings import SystemSettings
+
+    system_settings = SystemSettings.load()
+    return {
+        "registration_open": (
+            system_settings.patient_registration_enabled
+            or system_settings.doctor_registration_enabled
+        )
+    }
