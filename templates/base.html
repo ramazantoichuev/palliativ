@@ -132,10 +132,12 @@
                            href="{% url 'resources:resource_list' %}">{% translate "Ресурсы" %}</a>
                     </li>
 
+                    {% if registration_open %}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{% url 'accounts:register_type' %}">{% translate "Участие" %}</a>
                     </li>
+                    {% endif %}
 
                     <li class="nav-item">
                         <a class="nav-link{% if ns == 'faq' %} active{% endif %}"
