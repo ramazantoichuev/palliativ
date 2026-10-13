@@ -76,6 +76,9 @@
 .page-title { margin-top: 3rem; }
 .card-badge i { font-size: 1.25rem; }
 
+/* Текст статьи: газетный кегль вместо fs-5 + двойного межстрочного */
+.article-body { font-size: 1.125rem; line-height: 1.7; }
+
 @media (hover: hover) {
   .card-hover { transition: transform .2s ease, box-shadow .2s ease; }
   .card-hover:hover,

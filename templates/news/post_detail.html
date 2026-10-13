@@ -8,7 +8,7 @@
 {% endif %}
 {% endblock %}
 {% block content %}
-    <article class="col-12 col-lg-10 mx-auto">
+    <article class="col-12 col-lg-8 mx-auto">
         <h1 class="mb-3 fw-bold">{{ post.title }}</h1>
 
         <div class="text-muted mb-4 d-flex align-items-center gap-2">
@@ -23,10 +23,10 @@
                 <img src="{{ post.image.url }}" class="img-fluid rounded shadow" alt="{{ post.title }}" style="max-height: 550px; width: 100%; object-fit: cover;">
             </div>
         {% endif %}
-            <div class="description fs-4 lh-lg mb-4 text-secondary">
+            <div class="description lead mb-4 text-secondary">
                 {{ post.description|linebreaks }}
             </div>
-            <div class="content fs-5 lh-lg mb-5 text-dark">
+            <div class="content article-body mb-5 text-dark">
                 {{ post.content|linebreaks }}
             </div>
 
