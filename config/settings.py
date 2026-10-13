@@ -108,6 +108,7 @@ TEMPLATES = [
                 "main.context_processors.analytics",
                 "main.context_processors.turnstile_keys",
                 "main.context_processors.site_contacts",
+                "main.context_processors.registration_open",
             ],
         },
     },

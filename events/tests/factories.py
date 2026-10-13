@@ -3,8 +3,9 @@ from datetime import timedelta
 import factory
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils import timezone
-from news.tests.factories import make_test_image_bytes
+
 from events.models import Event
+from news.tests.factories import make_test_image_bytes
 
 # Минимальный валидный GIF 1x1 — чтобы ImageField принял файл без внешних фикстур.
 ONE_PIXEL_GIF = (
