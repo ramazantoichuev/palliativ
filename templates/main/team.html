@@ -5,8 +5,7 @@
 {% block meta_description %}{% blocktranslate %}Учредители, руководство и команда Ассоциации паллиативной и хосписной помощи Кыргызской Республики.{% endblocktranslate %}{% endblock %}
 
 {% block content %}
-    <section class="py-4">
-        <h1 class="fw-bold mb-4">{% translate "Команда и руководство" %}</h1>
+    <h1 class="page-title fw-bold mb-4">{% translate "Команда и руководство" %}</h1>
 
         {% for label, members in team_groups %}
             {% if members %}
@@ -21,7 +20,7 @@
                     <div class="row g-4 mb-2">
                         {% for member in members %}
                             <div class="col-12 col-sm-6 col-lg-4">
-                                <article class="card h-100 shadow-sm">
+                                <article class="card card-soft h-100">
                                     <div class="card-body text-center">
                                         {% if member.photo %}
                                             <img src="{{ member.photo.url }}"
@@ -54,5 +53,4 @@
                 {% endif %}
             {% endif %}
         {% endfor %}
-    </section>
 {% endblock %}

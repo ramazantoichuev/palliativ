@@ -71,3 +71,20 @@
 }
 .event-date-badge__day   { display: block; font-size: 1.25rem; font-weight: 700; line-height: 1.1; color: var(--deep-blue, #1B3A5C); }
 .event-date-badge__month { display: block; font-size: .7rem; text-transform: uppercase; color: var(--deep-blue, #1B3A5C); }
+
+/* --- Единая раскладка страниц и hover карточек (Ticket 113) --- */
+.page-title { margin-top: 3rem; }
+.card-badge i { font-size: 1.25rem; }
+
+@media (hover: hover) {
+  .card-hover { transition: transform .2s ease, box-shadow .2s ease; }
+  .card-hover:hover,
+  .card-hover:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(27, 58, 92, .18);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-hover { transition: none; }
+  .card-hover:hover { transform: none; }
+}
