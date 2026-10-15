@@ -57,12 +57,72 @@ class RegisterTypeViewTests(TestCase):
         self.assertNotContains(response, reverse("accounts:patient_register"))
         self.assertNotContains(response, reverse("accounts:doctor_register"))
 
-    def test_participation_link_stays_in_navigation_when_both_disabled(self):
+
+class ParticipationNavItemTests(TestCase):
+    """Пункт «Участие» в шапке скрыт, когда выключены обе регистрации (Ticket 110).
+
+    Проверяем точный маркер ссылки меню href="...": в canonical/og:url адрес
+    начинается с http://, поэтому совпадение возможно только для пункта меню.
+    """
+
+    nav_link_marker = 'href="/accounts/participation/"'
+
+    def setUp(self):
+        super().setUp()
+        self.home_url = reverse("main:home")
+
+    def test_link_shown_when_both_registrations_enabled(self):
+        SystemSettings.objects.create(
+            patient_registration_enabled=True,
+            doctor_registration_enabled=True,
+        )
+
+        response = self.client.get(self.home_url)
+
+        self.assertContains(response, self.nav_link_marker)
+
+    def test_link_shown_when_only_patient_registration_enabled(self):
+        SystemSettings.objects.create(
+            patient_registration_enabled=True,
+            doctor_registration_enabled=False,
+        )
+
+        response = self.client.get(self.home_url)
+
+        self.assertContains(response, self.nav_link_marker)
+
+    def test_link_shown_when_only_doctor_registration_enabled(self):
+        SystemSettings.objects.create(
+            patient_registration_enabled=False,
+            doctor_registration_enabled=True,
+        )
+
+        response = self.client.get(self.home_url)
+
+        self.assertContains(response, self.nav_link_marker)
+
+    def test_link_hidden_when_both_registrations_disabled(self):
         SystemSettings.objects.create(
             patient_registration_enabled=False,
             doctor_registration_enabled=False,
         )
 
-        response = self.client.get(self.url)
+        response = self.client.get(self.home_url)
 
-        self.assertContains(response, self.url)
+        self.assertNotContains(response, self.nav_link_marker)
+        # остальные пункты меню на месте
+        self.assertContains(response, 'href="/about/"')
+        self.assertContains(response, 'href="/contacts/"')
+
+    def test_direct_access_still_returns_200_when_both_disabled(self):
+        SystemSettings.objects.create(
+            patient_registration_enabled=False,
+            doctor_registration_enabled=False,
+        )
+
+        response = self.client.get(reverse("accounts:register_type"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response, "Регистрация временно недоступна, попробуйте позже."
+        )
