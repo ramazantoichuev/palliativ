@@ -4,76 +4,105 @@
 {% block title %}{% translate "Контакты" %} — Паллиатив.kg{% endblock %}
 
 {% block content %}
-    <section class="py-4">
-        <h1 class="fw-bold mb-4">{% translate "Контакты" %}</h1>
+    <h1 class="page-title fw-bold mb-4">{% translate "Контакты" %}</h1>
 
-        <h4 class="fw-bold">{% translate "Адрес" %}</h4>
-        <p>
-            {{ site_contacts.address }}
-        </p>
-
-        {% if site_contacts.phone %}
-        <h4 class="fw-bold mt-4">{% translate "Телефон" %}</h4>
-        <p>
-            <a href="tel:{{ site_contacts.phone }}">{{ site_contacts.phone_display }}</a>
-        </p>
+    {# Адрес: не ссылка, поэтому div. Кнопка 2ГИС только при заполненном twogis_url #}
+    <div class="card-soft contact-address p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+            <span class="card-badge card-badge--mustard" aria-hidden="true"><i class="fas fa-location-dot"></i></span>
+            <div>
+                <span class="lbl d-block">{% translate "Адрес" %}</span>
+                <span class="val">{{ site_contacts.address }}</span>
+            </div>
+        </div>
+        {% if site_contacts.twogis_url %}
+        <a class="btn btn-outline-primary btn-sm flex-shrink-0 align-self-start align-self-md-auto"
+           href="{{ site_contacts.twogis_url }}"
+           target="_blank"
+           rel="noopener noreferrer">
+            {% translate "Как нас найти в 2ГИС" %}
+            <i class="fas fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+        </a>
         {% endif %}
+    </div>
 
-        {% if site_contacts.email %}
-        <h4 class="fw-bold mt-4">{% translate "Email" %}</h4>
-        <p>
-            <a href="mailto:{{ site_contacts.email }}">{{ site_contacts.email }}</a>
-        </p>
-        {% endif %}
+    <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-4">
+            <a class="card-soft contact-card" href="tel:{{ site_contacts.phone }}">
+                <span class="card-badge card-badge--soft-green" aria-hidden="true"><i class="fas fa-phone"></i></span>
+                <span>
+                    <span class="lbl d-block">{% translate "Телефон" %}</span>
+                    <span class="val">{{ site_contacts.phone_display }}</span>
+                </span>
+            </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <a class="card-soft contact-card" href="mailto:{{ site_contacts.email }}">
+                <span class="card-badge card-badge--deep-blue" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+                <span>
+                    <span class="lbl d-block">{% translate "Email" %}</span>
+                    <span class="val">{{ site_contacts.email }}</span>
+                </span>
+            </a>
+        </div>
 
         {% if site_contacts.whatsapp_url %}
-        <h4 class="fw-bold mt-4">{% translate "WhatsApp" %}</h4>
-        <p>
-            <a href="{{ site_contacts.whatsapp_url }}"
-                target="_blank"
-                rel="noopener noreferrer">
-                {{ site_contacts.whatsapp_display|default:site_contacts.whatsapp_url }}
+        <div class="col-12 col-md-6 col-lg-4">
+            <a class="card-soft contact-card"
+               href="{{ site_contacts.whatsapp_url }}"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span class="card-badge card-badge--soft-green" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+                <span>
+                    <span class="lbl d-block">{% translate "WhatsApp" %}</span>
+                    <span class="val">{{ site_contacts.whatsapp_display|default:site_contacts.whatsapp_url }}</span>
+                </span>
             </a>
-        </p>
+        </div>
         {% endif %}
 
         {% if site_contacts.instagram_url %}
-        <h4 class="fw-bold mt-4">{% translate "Instagram" %}</h4>
-        <p>
-            <a href="{{ site_contacts.instagram_url }}"
+        <div class="col-12 col-md-6 col-lg-4">
+            <a class="card-soft contact-card"
+               href="{{ site_contacts.instagram_url }}"
                target="_blank"
                rel="noopener noreferrer">
-                {{ site_contacts.instagram_handle }}
+                <span class="card-badge card-badge--mustard" aria-hidden="true"><i class="fab fa-instagram"></i></span>
+                <span>
+                    <span class="lbl d-block">{% translate "Instagram" %}</span>
+                    <span class="val">{% if site_contacts.instagram_handle %}@{{ site_contacts.instagram_handle }}{% else %}{{ site_contacts.instagram_url }}{% endif %}</span>
+                </span>
             </a>
-        </p>
+        </div>
         {% endif %}
 
         {% if site_contacts.facebook_url %}
-        <h4 class="fw-bold mt-4">{% translate "Facebook" %}</h4>
-        <p>
-            <a href="{{ site_contacts.facebook_url }}"
-                target="_blank"
-                rel="noopener noreferrer">
-                {{ site_contacts.facebook_handle }}
-            </a>
-        </p>
-        {% endif %}
-
-        {% if site_contacts.twogis_url %}
-        <h4 class="fw-bold mt-4">{% translate "Как нас найти" %}</h4>
-        <p>
-            <a href="{{ site_contacts.twogis_url }}"
+        <div class="col-12 col-md-6 col-lg-4">
+            <a class="card-soft contact-card"
+               href="{{ site_contacts.facebook_url }}"
                target="_blank"
                rel="noopener noreferrer">
-                {% translate "Ассоциация паллиативной и хосписной помощи" %}
-            </a>
-        </p>
-        {% endif %}
-
-        <div class="mt-5">
-            <a href="{% url 'main:new-consultation' %}" class="btn btn-primary">
-                {% translate "Оставить заявку" %}
+                <span class="card-badge card-badge--deep-blue" aria-hidden="true"><i class="fab fa-facebook-f"></i></span>
+                <span>
+                    <span class="lbl d-block">{% translate "Facebook" %}</span>
+                    <span class="val">{% if site_contacts.facebook_handle %}{{ site_contacts.facebook_handle }}{% else %}{{ site_contacts.facebook_url }}{% endif %}</span>
+                </span>
             </a>
         </div>
-    </section>
+        {% endif %}
+
+        {# Последняя ячейка сетки: CTA, выводится всегда #}
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="contact-cta d-flex align-items-center justify-content-between gap-3">
+                <div>
+                    <h2 class="h6 fw-bold mb-1">{% translate "Нужна консультация?" %}</h2>
+                    <p class="sub small mb-0">{% translate "Мы свяжемся с вами" %}</p>
+                </div>
+                <a href="{% url 'main:new-consultation' %}" class="btn btn-primary btn-sm flex-shrink-0">
+                    {% translate "Оставить заявку" %}
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

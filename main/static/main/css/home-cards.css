@@ -71,3 +71,73 @@
 }
 .event-date-badge__day   { display: block; font-size: 1.25rem; font-weight: 700; line-height: 1.1; color: var(--deep-blue, #1B3A5C); }
 .event-date-badge__month { display: block; font-size: .7rem; text-transform: uppercase; color: var(--deep-blue, #1B3A5C); }
+
+/* Contacts page (Ticket 116) */
+.contact-card,
+.contact-address {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  height: 100%;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+/* min-width: 0 нужен, чтобы длинный email переносился, а не раздувал flex-ячейку */
+.contact-card > span:last-child { min-width: 0; }
+
+.contact-card .card-badge i,
+.contact-address .card-badge i { font-size: 1.1rem; }
+
+.contact-card .lbl,
+.contact-address .lbl {
+  font-size: .75rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+.contact-card .val,
+.contact-address .val {
+  font-weight: 700;
+  color: var(--deep-blue);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (hover: hover) {
+  a.contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    background: color-mix(in srgb, var(--mustard) 10%, var(--bg));
+  }
+}
+
+/* .card-soft имеет overflow: hidden, поэтому контур фокуса рисуем внутрь */
+a.contact-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  background: color-mix(in srgb, var(--mustard) 10%, var(--bg));
+  outline: 2px solid var(--mustard-dark);
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card { transition: none; }
+  a.contact-card:hover,
+  a.contact-card:focus-visible { transform: none; }
+}
+
+.contact-cta {
+  height: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--deep-blue);
+  color: var(--on-deep-blue);
+}
+.contact-cta .sub { color: var(--light-on-blue); }
