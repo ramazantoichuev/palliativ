@@ -26,7 +26,8 @@ class TestConsultationCta(TestCase):
     def test_cta_text_is_unified_on_contacts_page(self):
         response = self.client.get(reverse("main:contacts"))
 
-        self.assertNotContains(response, "Нужна консультация")
+        self.assertContains(response, "Нужна консультация?")
+        self.assertContains(response, "Мы свяжемся с вами")
         self.assertContains(response, "Оставить заявку")
 
     def test_language_switcher_is_pills_not_dropdown(self):
