@@ -3,11 +3,9 @@
 {% block title %}{% translate "Новости — Паллиатив.kg" %}{% endblock %}
 {% block meta_description %}{% blocktranslate %}Новости и публикации Ассоциации паллиативной и хосписной помощи Кыргызской Республики.{% endblocktranslate %}{% endblock %}
 {% block content %}
-<div class="container-fluid my-4 p-4 px-0 rounded-0 news-header-block">
-    <h1 class="fw-bold mb-4 text-center"> {% translate "Новости" %}
-    </h1>
+    <h1 class="page-title fw-bold mb-4">{% translate "Новости" %}</h1>
 
-    <form method="get" class="row g-3 p-4 bg-light border rounded-3 shadow-sm">
+    <form method="get" class="row g-3 card-soft p-4">
         <div class="col-md-3">
             <label for="category_id" class="form-label fw-semibold">
                 {% translate "Категория:" %}
@@ -39,11 +37,10 @@
             <a href="{% url 'news:post_list' %}" class="btn btn-outline-secondary px-4">{% translate "Сбросить" %}</a>
         </div>
     </form>
-</div>
    <div class="row justify-content-center mt-4">
     {% for post in posts %}
        <div class="col-12 col-sm-6 col-lg-4 mb-4">
-           <article class="card card-soft card-stripe-news h-100">
+           <article class="card card-soft card-stripe-news card-hover h-100">
                 <div style="position: relative; height: 200px; overflow: hidden;">
                     <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'main/images/news-placeholder.jpg' %}{% endif %}"
                         alt="" aria-hidden="true"
@@ -69,7 +66,7 @@
                     <p class="card-text text-secondary">{{ post.description|truncatewords:20 }}</p>
                 </div>
                 <div class="card-footer bg-transparent border-top-0">
-                    <a href="{{ post.get_absolute_url }}" class="btn btn-outline-primary btn-sm">
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-outline-primary btn-sm stretched-link">
                         {% translate "Читать дальше" %}
                     </a>
                 </div>
