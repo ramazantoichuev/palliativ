@@ -94,7 +94,7 @@
 
 .card-link-item {
   position: relative; padding-right: 3rem;
-  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--mustard) 12%, #fff);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--mustard) 12%, var(--white));
   --bs-list-group-action-hover-color: var(--deep-blue);
 }
 .card-link-item::after {
@@ -114,18 +114,22 @@
 }
 
 @media (hover: hover) {
-  .card-tile:hover, .card-tile:focus-visible {
+  .card-tile:hover,
+  .card-tile:focus-visible {
     transform: translateY(-3px);
-    background: color-mix(in srgb, var(--mustard) 12%, #fff);
-    box-shadow: 0 12px 32px rgba(27, 58, 92, .18),
+    background: color-mix(in srgb, var(--mustard) 12%, var(--white));
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--deep-blue) 18%, transparent),
                 inset 0 0 0 2px color-mix(in srgb, var(--mustard) 55%, transparent);
   }
   .card-tile:hover .card-tile__arrow,
   .card-tile:focus-visible .card-tile__arrow {
-    background: var(--deep-blue); color: #fff; transform: translateX(3px);
+    background: var(--deep-blue);
+    color: var(--white);
+    transform: translateX(3px);
   }
-    .card-link-item:hover::after {
-    background: var(--mustard); transform: translateX(3px);
+  .card-link-item:hover::after {
+    background: var(--mustard);
+    transform: translateX(3px);
   }
   .card-link-item:hover::before {
     border-color: var(--text-on-mustard);
@@ -135,12 +139,23 @@
 .card-tile:focus-visible, .card-link-item:focus-visible {
   outline: 2px solid var(--mustard); outline-offset: 3px;
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .card-tile, .card-tile__arrow, .card-link-item::after, .card-link-item::before { transition: none; }
-  .card-tile:hover { transform: none; }
+  .card-tile,
+  .card-tile__arrow,
+  .card-link-item::after,
+  .card-link-item::before { transition: none; }
+
+  .card-tile:hover,
+  .card-tile:focus-visible { transform: none; }
+
+  .card-tile:hover .card-tile__arrow,
+  .card-tile:focus-visible .card-tile__arrow,
+  .card-link-item:hover::after,
+  .card-link-item:hover::before { transform: translate(0, -50%) rotate(45deg); }
 }
 
-.card-soft .d-flex > h5 {
+.home-card-header > h5 {
   line-height: 1.2;
   padding-top: .9rem;
 }
