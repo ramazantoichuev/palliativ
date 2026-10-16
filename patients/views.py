@@ -20,10 +20,10 @@ class DoctorPatientListView(LoginRequiredMixin, ListView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.role != BaseUser.Role.DOCTOR:
-            raise PermissionDenied("Доступ разрешен только врачам.")
+            raise PermissionDenied(_("Доступ разрешен только врачам."))
         if not hasattr(request.user, "doctor_profile"):
             raise PermissionDenied(
-                "Ваш профиль врача еще не зарегистрирован в базе данных."
+                _("Ваш профиль врача еще не зарегистрирован в базе данных.")
             )
         return super().dispatch(request, *args, **kwargs)
 
@@ -76,7 +76,7 @@ class PatientCardDetailView(LoginRequiredMixin, ListView):
             return self.handle_no_permission()
 
         if request.user.role != BaseUser.Role.PATIENT:
-            raise PermissionDenied("Доступ разрешен только пациентам.")
+            raise PermissionDenied(_("Доступ разрешен только пациентам."))
 
         return super().dispatch(request, *args, **kwargs)
 
@@ -97,7 +97,7 @@ class SymptomSurveyView(LoginRequiredMixin, View):
             return self.handle_no_permission()
 
         if request.user.role != BaseUser.Role.PATIENT:
-            raise PermissionDenied("Доступ разрешен только пациентам.")
+            raise PermissionDenied(_("Доступ разрешен только пациентам."))
 
         return super().dispatch(request, *args, **kwargs)
 

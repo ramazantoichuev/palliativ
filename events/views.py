@@ -70,12 +70,18 @@ class EventDetailView(FormMixin, DetailView):
             registration.save()
             admin_url = request.build_absolute_uri(
                 reverse('admin:events_eventregistration_change', args=[registration.pk]))
-            notify_admins('Новая регистрация на мероприятие', f'Событие: {self.object.title}\nАдминка: {admin_url}')
+            notify_admins(
+                _('Новая регистрация на мероприятие'),
+                _('Событие: {title}\nАдминка: {url}').format(
+                    title=self.object.title,
+                    url=admin_url
+                )
+            )
             if registration.email:
                 send_confirmation(
                     registration.email,
-                    'Регистрация на мероприятие принята',
-                    f'Вы зарегистрированы на «{self.object.title}».',
+                    _('Регистрация на мероприятие принята'),
+                    _('Вы зарегистрированы на «{title}».').format(title=self.object.title),
                 )
             return self.form_valid(form)
         return self.form_invalid(form)
