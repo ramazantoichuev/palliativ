@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.utils.translation import gettext_lazy as _
 
 from .models import BaseUser, DoctorProfile, PatientProfile
 
@@ -8,13 +9,13 @@ from .models import BaseUser, DoctorProfile, PatientProfile
 class DoctorProfileInline(admin.StackedInline):
     model = DoctorProfile
     can_delete = False
-    verbose_name_plural = "Медицинский профиль врача"
+    verbose_name_plural = _("Медицинский профиль врача")
 
 
 class PatientProfileInline(admin.StackedInline):
     model = PatientProfile
     can_delete = False
-    verbose_name_plural = "Медицинская карта пациента"
+    verbose_name_plural = _("Медицинская карта пациента")
 
 
 @admin.register(BaseUser)
@@ -31,11 +32,11 @@ class BaseUserAdmin(UserAdmin):
     )
     list_filter = ("role", "is_approved", "is_staff")
     fieldsets = UserAdmin.fieldsets + (
-        ("Системная роль", {"fields": ("role", "is_approved")}),
+        (_("Системная роль"), {"fields": ("role", "is_approved")}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
-            "Выбор роли для нового пользователя",
+            _("Выбор роли для нового пользователя"),
             {
                 "fields": (
                     "first_name",
