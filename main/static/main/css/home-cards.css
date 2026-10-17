@@ -212,3 +212,38 @@
   line-height: 1.2;
   padding-top: .9rem;
 }
+
+/* Resources page (Ticket 116) */
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem 1rem;
+  margin-bottom: .5rem;
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--deep-blue) 4%, var(--white));
+}
+.file-row__icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--deep-blue);
+  color: var(--white);
+}
+.file-row__icon--image { background: var(--soft-green); }
+.file-row__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.file-row__download { flex-shrink: 0; }
+
+@media (max-width: 575.98px) {
+  .file-row { flex-wrap: wrap; }
+  .file-row__name { flex-basis: calc(100% - 52px); }
+  .file-row__download { margin-left: 48px; }
+}
