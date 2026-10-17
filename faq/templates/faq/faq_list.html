@@ -5,8 +5,7 @@
 {% block meta_description %}{% blocktranslate %}Ответы на часто задаваемые вопросы о паллиативной помощи, мероприятиях и ресурсах Ассоциации.{% endblocktranslate %}{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="mb-4">{% translate "Часто задаваемые вопросы" %}</h2>
+    <h1 class="page-title fw-bold mb-4">{% translate "Часто задаваемые вопросы" %}</h1>
 
     {% if faq_items %}
     <div class="accordion" id="faqAccordion">
@@ -31,5 +30,4 @@
     {% else %}
     <p>{% translate "Вопросы пока не добавлены." %}</p>
     {% endif %}
-</div>
 {% endblock %}

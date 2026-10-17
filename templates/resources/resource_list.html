@@ -3,8 +3,7 @@
 {% block title %}{% translate "Ресурсы — Паллиатив.kg" %}{% endblock %}
 {% block meta_description %}{% blocktranslate %}Справочные материалы для специалистов и ухаживающих — уход за пациентами, симптомы, консультации.{% endblocktranslate %}{% endblock %}
 {% block content %}
-<div class="container mt-5">
-    <h2>{% translate "Ресурсы" %}</h2>
+    <h1 class="page-title fw-bold mb-4">{% translate "Ресурсы" %}</h1>
 
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">
@@ -43,14 +42,14 @@
     <div class="row">
         {% for resource in resources %}
         <div class="col-md-4 mb-4 d-flex">
-            <div class="card h-100 w-100">
+            <div class="card card-soft card-hover h-100 w-100">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">
                         <a href="{{ resource.get_absolute_url }}" class="text-decoration-none text-dark">
                             {{ resource.title }}</a>
                     </h5>
                     <p class="card-text">{{ resource.description|truncatewords:20 }}</p>
-                    <a href="{{resource.get_absolute_url  }}" class="btn btn-outline-primary btn-sm mt-auto align-self-start">
+                    <a href="{{resource.get_absolute_url  }}" class="btn btn-outline-primary btn-sm mt-auto align-self-start stretched-link">
                         {% translate "Подробнее" %}
                     </a>
                 </div>
@@ -61,5 +60,4 @@
     {% else %}
     <p>{% translate "В этой подкатегории пока нет материалов." %}</p>
     {% endif %}
-</div>
 {% endblock %}

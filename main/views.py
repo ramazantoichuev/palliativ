@@ -111,14 +111,23 @@ class ConsultationCreateView(SuccessMessageMixin, CreateView):
             reverse('admin:main_consultationrequest_change', args=[self.object.pk])
         )
         notify_admins(
-            'Новая заявка на консультацию',
-            f'Имя: {self.object.first_name}\nТелефон: {self.object.phone}\n'
-            f'Тема: {self.object.get_topic_display()}\nАдминка: {admin_url}',
+            _('Новая заявка на консультацию'),
+            _(
+                'Имя: {first_name}\n'
+                'Телефон: {phone}\n'
+                'Тема: {topic}\n'
+                'Админка: {url}'
+            ).format(
+                first_name=self.object.first_name,
+                phone=self.object.phone,
+                topic=self.object.get_topic_display(),
+                url=admin_url
+            ),
         )
         send_confirmation(
             self.object.email,
-            'Заявка на консультацию принята',
-            'Ваша заявка принята, мы свяжемся с вами.',
+            _('Заявка на консультацию принята'),
+            _('Ваша заявка принята, мы свяжемся с вами.'),
         )
         return response
 

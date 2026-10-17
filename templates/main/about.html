@@ -7,119 +7,133 @@
 {% endblock %}
 
 {% block content %}
-<section class="py-5">
-    <div class="container mb-5">
-        <h1 class="fw-bold mb-4">
-            {% get_text_block "about_page_title" fallback=_("Об Ассоциации") %}
-        </h1>
-        <div class="p-4 bg-light rounded-3 shadow-sm lead">
-            {% get_text_block "about_intro" fallback=_("Пожалуйста, заполните это поле.") %}
-        </div>
+<div class="mb-5">
+    <h1 class="page-title fw-bold mb-4">
+        {% get_text_block "about_page_title" fallback=_("Об Ассоциации") %}
+    </h1>
+    <div class="p-4 bg-light rounded-3 shadow-sm lead">
+        {% get_text_block "about_intro" fallback=_("Пожалуйста, заполните это поле.") %}
     </div>
-    <div class="container mb-5">
-        <h2 class="fw-bold mb-4">
-            {% get_text_block "about_work_directions_heading" fallback=_("Основные направления нашей работы") %}
-        </h2>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col-12 w-100">
-                <div class="p-3 border-start border-4 border-info bg-white shadow-sm rounded-end">
-                    {% get_text_block "about_work_directions" fallback=_("Пожалуйста, заполните это поле.") %}
-                </div>
+</div>
+<div class="mb-5">
+    <h2 class="fw-bold mb-4">
+        {% get_text_block "about_work_directions_heading" fallback=_("Основные направления нашей работы") %}
+    </h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col-12 w-100">
+            <div class="p-3 border-start border-4 border-primary bg-white shadow-sm rounded-end">
+                {% get_text_block "about_work_directions" fallback=_("Пожалуйста, заполните это поле.") %}
             </div>
         </div>
     </div>
-    <div class="container py-5 mb-5 rounded-3">
-        <div class="container text-center">
-            <h3 class="fw-bold mb-3">
-                {% get_text_block "about_belief_heading" fallback=_("Мы верим") %}
-            </h3>
-            <div class="fs-5 mx-auto" style="max-width: 800px;">
-                {% get_text_block "about_belief" fallback=_("Пожалуйста, заполните это поле.") %}
+</div>
+<div class="text-center py-5 mb-5">
+    <h3 class="fw-bold mb-3">
+        {% get_text_block "about_belief_heading" fallback=_("Мы верим") %}
+    </h3>
+    <div class="fs-5 mx-auto" style="max-width: 800px;">
+        {% get_text_block "about_belief" fallback=_("Пожалуйста, заполните это поле.") %}
+    </div>
+</div>
+<div class="mb-5">
+    <h2 class="fw-bold mb-3">
+        {% get_text_block "about_contribution_heading" fallback=_("Наш вклад в развитие паллиативной помощи в Кыргызстане") %}
+    </h2>
+    <div class="text-muted mb-4 lead">
+        {% get_text_block "about_contribution_intro" fallback=_("Пожалуйста, заполните это поле.")%}
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="col">
+            <div class="card card-soft h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3" aria-hidden="true">
+                        <span class="card-badge card-badge--mustard"><i class="fas fa-scale-balanced"></i></span>
+                        <span class="display-6 fw-bold text-primary opacity-50">01</span>
+                    </div>
+                    <h5 class="card-title fw-bold">{% translate "Законодательство и нормативная база" %}</h5>
+                    <div class="card-text small text-secondary">
+                        {% get_text_block "about_contribution_01" fallback=_("Пожалуйста, заполните это поле.") %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-soft h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3" aria-hidden="true">
+                        <span class="card-badge card-badge--deep-blue"><i class="fas fa-book-medical"></i></span>
+                        <span class="display-6 fw-bold text-primary opacity-50">02</span>
+                    </div>
+                    <h5 class="card-title fw-bold">{% translate "Клинические руководства и стандарты" %}</h5>
+                    <div class="card-text small text-secondary">
+                        {% get_text_block "about_contribution_02" fallback=_("Пожалуйста, заполните это поле.") %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-soft h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3" aria-hidden="true">
+                        <span class="card-badge card-badge--soft-green"><i class="fas fa-hand-holding-heart"></i></span>
+                        <span class="display-6 fw-bold text-primary opacity-50">03</span>
+                    </div>
+                    <h5 class="card-title fw-bold">{% translate "Практические услуги для пациентов" %}</h5>
+                    <div class="card-text small text-secondary">
+                        {% get_text_block "about_contribution_03" fallback=_("Пожалуйста, заполните это поле.") %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-soft h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3" aria-hidden="true">
+                        <span class="card-badge card-badge--mustard"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="display-6 fw-bold text-primary opacity-50">04</span>
+                    </div>
+                    <h5 class="card-title fw-bold">{% translate "Подготовка медицинских специалистов" %}</h5>
+                    <div class="card-text small text-secondary">
+                        {% get_text_block "about_contribution_04" fallback=_("Пожалуйста, заполните это поле.") %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-soft h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3" aria-hidden="true">
+                        <span class="card-badge card-badge--deep-blue"><i class="fas fa-comments"></i></span>
+                        <span class="display-6 fw-bold text-primary opacity-50">05</span>
+                    </div>
+                    <h5 class="card-title fw-bold">{% translate "Диалог и защита прав пациентов" %}</h5>
+                    <div class="card-text small text-secondary">
+                        {% get_text_block "about_contribution_05" fallback=_("Пожалуйста, заполните это поле.") %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-soft h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3" aria-hidden="true">
+                        <span class="card-badge card-badge--soft-green"><i class="fas fa-globe"></i></span>
+                        <span class="display-6 fw-bold text-primary opacity-50">06</span>
+                    </div>
+                    <h5 class="card-title fw-bold">{% translate "Международное сотрудничество" %}</h5>
+                    <div class="card-text small text-secondary">
+                        {% get_text_block "about_contribution_06" fallback=_("Пожалуйста, заполните это поле.") %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container mb-5">
-        <h2 class="fw-bold mb-3">
-            {% get_text_block "about_contribution_heading" fallback=_("Наш вклад в развитие паллиативной помощи в Кыргызстане") %}
-        </h2>
-        <div class="text-muted mb-4 lead">
-            {% get_text_block "about_contribution_intro" fallback=_("Пожалуйста, заполните это поле.")%}
-        </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body">
-                        <div class="display-6 fw-bold text-primary mb-2">01</div>
-                        <h5 class="card-title fw-bold">{% translate "Законодательство и нормативная база" %}</h5>
-                        <div class="card-text small text-secondary">
-                            {% get_text_block "about_contribution_01" fallback=_("Пожалуйста, заполните это поле.") %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body">
-                        <div class="display-6 fw-bold text-primary mb-2">02</div>
-                        <h5 class="card-title fw-bold">{% translate "Клинические руководства и стандарты" %}</h5>
-                        <div class="card-text small text-secondary">
-                            {% get_text_block "about_contribution_02" fallback=_("Пожалуйста, заполните это поле.") %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body">
-                        <div class="display-6 fw-bold text-primary mb-2">03</div>
-                        <h5 class="card-title fw-bold">{% translate "Практические услуги для пациентов" %}</h5>
-                        <div class="card-text small text-secondary">
-                            {% get_text_block "about_contribution_03" fallback=_("Пожалуйста, заполните это поле.") %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body">
-                        <div class="display-6 fw-bold text-primary mb-2">04</div>
-                        <h5 class="card-title fw-bold">{% translate "Подготовка медицинских специалистов" %}</h5>
-                        <div class="card-text small text-secondary">
-                            {% get_text_block "about_contribution_04" fallback=_("Пожалуйста, заполните это поле.") %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body">
-                        <div class="display-6 fw-bold text-primary mb-2">05</div>
-                        <h5 class="card-title fw-bold">{% translate "Диалог и защита прав пациентов" %}</h5>
-                        <div class="card-text small text-secondary">
-                            {% get_text_block "about_contribution_05" fallback=_("Пожалуйста, заполните это поле.") %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body">
-                        <div class="display-6 fw-bold text-primary mb-2">06</div>
-                        <h5 class="card-title fw-bold">{% translate "Международное сотрудничество" %}</h5>
-                        <div class="card-text small text-secondary">
-                            {% get_text_block "about_contribution_06" fallback=_("Пожалуйста, заполните это поле.") %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>
+<div class="mt-5">
+    <div class="p-4 border-start border-primary border-4 bg-light rounded-end">
+        <p class="lead mb-0 fw-bold">
+            {% translate "Наш вклад — это не отдельные мероприятия, а последовательная работа над тем, чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана." %}
+        </p>
     </div>
-    <div class="container mt-5">
-        <div class="p-4 border-start border-primary border-4 bg-light rounded-end">
-            <p class="lead mb-0 fw-bold">
-                {% translate "Наш вклад — это не отдельные мероприятия, а последовательная работа над тем, чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана." %}
-            </p>
-        </div>
-    </div>
-</section>
+</div>
 {% endblock %}

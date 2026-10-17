@@ -2,6 +2,7 @@ import tempfile
 
 from django.test import TestCase, override_settings
 from django.urls import reverse
+from django.utils import translation
 
 from news.models import Category, Post
 from news.tests.factories import make_image
@@ -53,6 +54,10 @@ class PostListViewTest(TestCase):
         self.assertEqual(list(response.context["posts"]), [])
 
     def test_title_en_empty_falls_back_to_ru(self):
+        # LocaleMiddleware активирует en на весь поток; без отката язык
+        # утекает в следующие тесты (порядко-зависимые падения)
+        self.addCleanup(translation.activate, "ru")
+
         self.client.cookies["django_language"] = "en"
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
