@@ -1,12 +1,12 @@
 import tempfile
 
+from django.conf import settings
 from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import translation
 
 from news.models import Category, Post
 from news.tests.factories import make_image
-from django.conf import settings
 
 
 class PostListViewTest(TestCase):
@@ -98,12 +98,6 @@ class PostListViewTest(TestCase):
         response = self._get_in_russian()
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Ещё")
-
-    def test_eight_categories_show_more_button(self):
-        self._set_category_count(8)
-        response = self._get_in_russian()
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Ещё 3")
 
     def test_eight_categories_show_more_button(self):
         self._set_category_count(8)

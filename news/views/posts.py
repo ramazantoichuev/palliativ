@@ -2,7 +2,6 @@ from django.views.generic import DetailView, ListView
 
 from news.models.posts import Category, Post
 
-
 NEWS_CATEGORY_VISIBLE = 5
 NEWS_CATEGORY_MORE_THRESHOLD = 7
 
