@@ -1,4 +1,5 @@
 import re
+import os
 
 from django.conf import settings
 from django.core.validators import FileExtensionValidator
@@ -97,6 +98,18 @@ class Resource(models.Model):
     def public_files(self):
         """Файлы, доступные посетителю (Word — только готовой PDF-версией)."""
         return [f.public_file for f in self.files.all() if f.public_file]
+
+    @property
+    def public_kind(self):
+        """Тип публичного файла: 'pdf', 'image', 'other' или None, если файл скрыт."""
+        public = self.public_file
+        return file_kind(public.name) if public else None
+
+    @property
+    def public_name(self):
+        """Имя публичного файла без пути, для показа посетителю."""
+        public = self.public_file
+        return os.path.basename(public.name) if public else ""
 
 
 class ResourceFile(models.Model):

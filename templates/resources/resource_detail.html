@@ -3,19 +3,28 @@
 {% block title %}{{ resource.title }}{% endblock %}
 {% block meta_description %}{{ resource.description|truncatechars:160 }}{% endblock %}
 {% block content %}
-<div class="container mt-5">
-    <h2>{{ resource.title }}</h2>
+    <h1 class="page-title fw-bold mb-4">{{ resource.title }}</h1>
     <p>{{ resource.description }}</p>
 
     {% if resource.files.all %}
-    <h4 class="mt-4">{% translate "Файлы" %}</h4>
-    <ul>
+    <h2 class="h4 mt-4">{% translate "Файлы" %}</h2>
+    <div class="mb-3">
         {% for f in resource.files.all %}
             {% if f.public_file %}
-        <li><a href="{{ f.public_file.url }}" target="_blank">{{ f.public_file.name }}</a></li>
+            <div class="file-row">
+                <span class="file-row__icon file-row__icon--{{ f.public_kind }}" aria-hidden="true">
+                    {% if f.public_kind == "pdf" %}<i class="fa-solid fa-file-pdf"></i>
+                    {% elif f.public_kind == "image" %}<i class="fa-solid fa-image"></i>
+                    {% else %}<i class="fa-solid fa-file"></i>{% endif %}
+                </span>
+                <a href="{{ f.public_file.url }}" target="_blank" rel="noopener"
+                   class="file-row__name">{{ f.public_name }}</a>
+                <a href="{{ f.public_file.url }}" download
+                   class="btn btn-outline-primary btn-sm file-row__download">{% translate "Скачать" %}</a>
+            </div>
             {% endif %}
         {% endfor %}
-    </ul>
+    </div>
     {% if resource.public_files|length > 1 %}
     <a href="{% url 'resources:resource_download_all' resource.slug %}"
        class="btn btn-outline-primary">
@@ -25,7 +34,7 @@
     {% endif %}
 
     {% if resource.videos.all %}
-    <h4 class="mt-4">{% translate "Видео" %}</h4>
+    <h2 class="h4 mt-4">{% translate "Видео" %}</h2>
     <div class="row">
         {% for v in resource.videos.all %}
             {% with embed_url=v.get_embed_url %}
@@ -46,5 +55,4 @@
     {% if not resource.files.all and not resource.videos.all %}
     <p class="text-muted">{% translate "Дополнительных материалов нет." %}</p>
     {% endif %}
-</div>
-{% endblock %}>
+{% endblock %}
