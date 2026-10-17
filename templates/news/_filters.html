@@ -1,0 +1,92 @@
+{% load i18n %}
+
+<div class="card-soft p-4 mb-4" style="overflow: visible;">
+  <nav aria-label="{% trans 'Категории' %}" class="d-flex flex-wrap gap-2 mb-4">
+    <a href="?{% querystring category_id=None page=None %}"
+       class="filter-chip {% if not active_category %}active{% endif %}"
+       {% if not active_category %}aria-current="true"{% endif %}>
+      {% trans "Все" %}
+    </a>
+    {% for c in visible_categories %}
+      <a href="?{% querystring category_id=c.id page=None %}"
+         class="filter-chip {% if active_category.id == c.id %}active{% endif %}"
+         {% if active_category.id == c.id %}aria-current="true"{% endif %}>
+        {{ c.name }}
+      </a>
+    {% endfor %}
+    {% if more_categories %}
+      <details class="chip-more" id="more-categories-details">
+        <summary class="filter-chip" role="button" tabindex="0">
+          {% blocktrans count counter=more_categories|length %}Ещё {{ counter }}{% plural %}Ещё {{ counter }}{% endblocktrans %}
+        </summary>
+        <div class="chip-pop d-flex flex-wrap gap-2">
+          {% for c in more_categories %}
+            <a href="?{% querystring category_id=c.id page=None %}"
+               class="filter-chip {% if active_category.id == c.id %}active{% endif %}"
+               {% if active_category.id == c.id %}aria-current="true"{% endif %}>
+              {{ c.name }}
+            </a>
+          {% endfor %}
+        </div>
+      </details>
+    {% endif %}
+  </nav>
+  {% with d_from=request.GET.date_from d_to=request.GET.date_to %}
+  <form method="get" action="" class="d-none d-md-flex align-items-center gap-2">
+    {% if active_category %}
+      <input type="hidden" name="category_id" value="{{ active_category.id }}">
+    {% endif %}
+    <span class="fw-medium me-1">{% trans "Период" %}</span>
+    <input type="date" name="date_from" value="{{ d_from|default:'' }}" class="form-control form-control-sm d-inline-block w-auto">
+    <span>—</span>
+    <input type="date" name="date_to" value="{{ d_to|default:'' }}" class="form-control form-control-sm d-inline-block w-auto">
+    <button type="submit" class="btn btn-primary btn-sm ms-2">{% trans "Применить" %}</button>
+    <a href="?{% querystring date_from=None date_to=None page=None %}" class="btn btn-link btn-sm text-decoration-none">{% trans "Сбросить" %}</a>
+  </form>
+  <div class="d-block d-md-none">
+    <button class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-between mb-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mobilePeriodForm"
+            aria-expanded="{% if d_from or d_to %}true{% else %}false{% endif %}"
+            aria-controls="mobilePeriodForm">
+      <span class="d-flex align-items-center gap-2">
+        {% trans "Period" as t_period %}{{ t_period }} ▾
+        {% if d_from or d_to %}
+          <span class="period-dot"></span>
+          <small class="text-muted">{{ d_from|default:"..." }} — {{ d_to|default:"..." }}</small>
+        {% endif %}
+      </span>
+    </button>
+    <div class="collapse {% if d_from or d_to %}show{% endif %}" id="mobilePeriodForm">
+      <form method="get" action="" class="p-3 border rounded bg-light">
+        {% if active_category %}
+          <input type="hidden" name="category_id" value="{{ active_category.id }}">
+        {% endif %}
+        <div class="row g-2 mb-3">
+          <div class="col-6">
+            <label class="form-label small mb-1 fw-semibold">{% trans "С" %}</label>
+            <input type="date" name="date_from" value="{{ d_from|default:'' }}" class="form-control form-control-sm">
+          </div>
+          <div class="col-6">
+            <label class="form-label small mb-1 fw-semibold">{% trans "По" %}</label>
+            <input type="date" name="date_to" value="{{ d_to|default:'' }}" class="form-control form-control-sm">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm w-100 mb-2">{% trans "Применить" %}</button>
+        <div class="text-center">
+          <a href="?{% querystring date_from=None date_to=None page=None %}" class="btn btn-link btn-sm text-decoration-none text-muted">{% trans "Сбросить" %}</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% endwith %}
+</div>
+<script>
+  document.getElementById('more-categories-details')?.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && this.hasAttribute('open')) {
+      this.removeAttribute('open');
+      this.querySelector('summary').focus();
+    }
+  });
+</script>
