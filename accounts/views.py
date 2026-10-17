@@ -45,7 +45,13 @@ class PatientRegisterView(RegistrationGateMixin, View):
             user = form.save()
             login(request, user)
             admin_url = request.build_absolute_uri(reverse("admin:accounts_baseuser_change", args=[user.pk]))
-            notify_admins("Новая регистрация пациента", f"Email: {user.email}\nАдминка: {admin_url}")
+            notify_admins(
+                _("Новая регистрация пациента"),
+                _("Email: {email}\nАдминка: {url}").format(
+                    email=user.email,
+                    url=admin_url
+                )
+            )
             return redirect("main:about")
         return render(request, "accounts/patient_register.html", {"form": form})
 
@@ -66,7 +72,13 @@ class DoctorRegisterView(RegistrationGateMixin, View):
         if form.is_valid():
             user = form.save()
             admin_url = request.build_absolute_uri(reverse("admin:accounts_baseuser_change", args=[user.pk]))
-            notify_admins("Новая заявка врача/волонтёра", f"Email: {user.email}\nАдминка: {admin_url}")
+            notify_admins(
+                _("Новая заявка врача/волонтёра"),
+                _("Email: {email}\nАдминка: {url}").format(
+                    email=user.email,
+                    url=admin_url
+                )
+            )
             return render(request, "accounts/doctor_application_sent.html")
         return render(request, "accounts/doctor_register.html", {"form": form})
 

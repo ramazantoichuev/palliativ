@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import translation
 
 
 class TestConsultationCta(TestCase):
@@ -44,6 +45,10 @@ class TestConsultationCta(TestCase):
         self.assertContains(response, "sticky-top")
 
     def test_language_switch_still_works(self):
+        # LocaleMiddleware активирует en на весь поток; без отката язык
+        # утекает в следующие тесты (порядко-зависимые падения)
+        self.addCleanup(translation.activate, "ru")
+
         response = self.client.post(
             reverse("set_language"),
             {"language": "en", "next": "/"},
