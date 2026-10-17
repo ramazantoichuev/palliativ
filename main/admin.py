@@ -1,4 +1,5 @@
 from django.contrib import admin, messages
+from django.db.models import Case, IntegerField, Value, When
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 from simple_history.admin import SimpleHistoryAdmin
@@ -12,14 +13,65 @@ from .models.system_settings import SystemSettings
 from .models.team import TeamMember
 
 
+STATUS_PRIORITY = Case(
+    When(status="new", then=Value(0)),
+    When(status="in_progress", then=Value(1)),
+    default=Value(2),
+    output_field=IntegerField(),
+)
+
+ACTIVE_STATUSES = ("new", "in_progress")
+
+
+class StatusGroupFilter(admin.SimpleListFilter):
+    title = _("Статус заявки")
+    parameter_name = "status_group"
+
+    def lookups(self, request, model_admin):
+        return [
+            ("active", _("Активные")),
+            *ConsultationRequest.STATUS_CHOICES,
+        ]
+
+    def value(self):
+        return super().value() or "active"
+
+    def choices(self, changelist):
+        current = self.value()
+        for lookup, title in self.lookup_choices:
+            if lookup == "active":
+                # «Активные» — состояние по умолчанию: параметр убираем из URL
+                query = changelist.get_query_string(remove=[self.parameter_name])
+            else:
+                query = changelist.get_query_string({self.parameter_name: lookup})
+            yield {
+                "selected": current == lookup,
+                "query_string": query,
+                "display": title,
+            }
+        yield {
+            "selected": current == "all",
+            "query_string": changelist.get_query_string({self.parameter_name: "all"}),
+            "display": _("Все"),
+        }
+
+    def queryset(self, request, queryset):
+        value = self.value()
+        if value == "active":
+            return queryset.filter(status__in=ACTIVE_STATUSES)
+        if value == "all":
+            return queryset
+        return queryset.filter(status=value)
+
+
 # Register your models here.
 @admin.register(ConsultationRequest)
 class ConsultationRequestAdmin(admin.ModelAdmin):
     list_display = ("first_name", "phone", "email", "topic", "status", "created_at")
     list_editable = ("status",)
-    list_filter = ("status", "topic", "created_at")
+    list_filter = (StatusGroupFilter, "topic", "created_at")
     search_fields = ("first_name", "phone", "email")
-    ordering = ("-created_at",)
+    actions = ["mark_in_progress", "mark_closed", "mark_rejected"]
     fieldsets = (
         (
             _("Основная информация"),
@@ -28,6 +80,37 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
         (_("Управление заявкой"), {"fields": ("status", "created_at")}),
     )
     readonly_fields = ("created_at",)
+
+    def get_queryset(self, request):
+        # super().get_queryset() сам вызывает order_by(get_ordering()) до появления
+        # аннотации, поэтому собираем queryset вручную: сначала annotate, потом order_by
+        qs = self.model._default_manager.get_queryset().annotate(
+            _status_priority=STATUS_PRIORITY
+        )
+        return qs.order_by(*self.get_ordering(request))
+
+    def get_ordering(self, request):
+        return ["_status_priority", "-created_at", "-pk"]
+
+    def _bulk_set_status(self, request, queryset, status):
+        updated = queryset.update(status=status)
+        self.message_user(
+            request,
+            _("Обновлено заявок: %(count)s") % {"count": updated},
+            level=messages.SUCCESS,
+        )
+
+    @admin.action(description=_("Взять в работу"))
+    def mark_in_progress(self, request, queryset):
+        self._bulk_set_status(request, queryset, "in_progress")
+
+    @admin.action(description=_("Отметить рассмотренными"))
+    def mark_closed(self, request, queryset):
+        self._bulk_set_status(request, queryset, "closed")
+
+    @admin.action(description=_("Отклонить"))
+    def mark_rejected(self, request, queryset):
+        self._bulk_set_status(request, queryset, "rejected")
 
 
 class PageFilter(admin.SimpleListFilter):

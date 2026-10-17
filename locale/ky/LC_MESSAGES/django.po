@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 12:34+0000\n"
+"POT-Creation-Date: 2026-10-17 22:46+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,168 +13,169 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: accounts/admin.py:12
+#: .\accounts\admin.py:12
 msgid "Медицинский профиль врача"
 msgstr "Дарыгердин медициналык профили"
 
-#: accounts/admin.py:18
+#: .\accounts\admin.py:18
 msgid "Медицинская карта пациента"
 msgstr "Бейтаптын медициналык картасы"
 
-#: accounts/admin.py:35
+#: .\accounts\admin.py:35
 msgid "Системная роль"
 msgstr "Системалык рол"
 
-#: accounts/admin.py:39
+#: .\accounts\admin.py:39
 msgid "Выбор роли для нового пользователя"
 msgstr "Жаңы колдонуучу үчүн ролду тандоо"
 
-#: accounts/apps.py:8
+#: .\accounts\apps.py:8
 msgid "Аккаунты"
 msgstr "Аккаунттар"
 
-#: accounts/forms.py:14
+#: .\accounts\forms.py:14
 msgid "Айгуль"
 msgstr "Айгүл"
 
-#: accounts/forms.py:15
+#: .\accounts\forms.py:15
 msgid "Токтосунова"
 msgstr "Токтосунова "
 
-#: accounts/forms.py:16
+#: .\accounts\forms.py:16
 msgid "example@gmail.com"
 msgstr "example@gmail.com"
 
-#: accounts/forms.py:17
+#: .\accounts\forms.py:17
 msgid "+996 700 123 456"
 msgstr "+996 700 123 456"
 
-#: accounts/forms.py:18
+#: .\accounts\forms.py:18
 msgid "Минимум 8 символов"
 msgstr "Кеминде 8 белги"
 
-#: accounts/forms.py:19
+#: .\accounts\forms.py:19
 msgid "Повторите пароль"
 msgstr "Сырсөздү кайталаңыз"
 
-#: accounts/forms.py:21 accounts/forms.py:112
+#: .\accounts\forms.py:21 .\accounts\forms.py:112
 msgid "Пароль"
 msgstr "Сырсөз"
 
-#: accounts/forms.py:23
+#: .\accounts\forms.py:23
 msgid "Подтверждение пароля"
 msgstr "Сырсөздү ырастоо"
 
-#: accounts/forms.py:45
+#: .\accounts\forms.py:45
 msgid "Пароли не совпадают."
 msgstr "Сырсөздөр дал келбейт."
 
-#: accounts/forms.py:77
+#: .\accounts\forms.py:77
 msgid "Пользователь с таким номером телефона уже зарегистрирован."
 msgstr "Бул телефон номери менен колдонуучу мурунтан эле катталган."
 
-#: accounts/forms.py:88 accounts/models.py:89
+#: .\accounts\forms.py:88 .\accounts\models.py:89
 msgid "Образование или место учебы"
 msgstr "Билими же окуу мекемеси"
 
-#: accounts/forms.py:89
+#: .\accounts\forms.py:89
 msgid "Профессиональные навыки"
 msgstr "Кесиптик көндүмдөр"
 
-#: accounts/forms.py:102 accounts/models.py:29 events/models.py:50
-#: main/models/consultation.py:20 main/models/site_contacts.py:16
-#: templates/main/contacts.html:23
+#: .\accounts\forms.py:102 .\accounts\models.py:29 .\events\models.py:50
+#: .\main\models\consultation.py:20 .\main\models\site_contacts.py:16
+#: .\templates\main\contacts.html:22
 msgid "Email"
 msgstr "Email"
 
-#: accounts/forms.py:106
+#: .\accounts\forms.py:106
 msgid "Введите email"
 msgstr "Email киргизиңиз"
 
-#: accounts/forms.py:116
+#: .\accounts\forms.py:116
 msgid "Введите пароль"
 msgstr "Сырсөздү киргизиңиз"
 
-#: accounts/models.py:13
+#: .\accounts\models.py:13
 msgid "Администратор"
 msgstr "Администратор"
 
-#: accounts/models.py:14
+#: .\accounts\models.py:14
 msgid "Модератор"
 msgstr "Модератор"
 
-#: accounts/models.py:15
+#: .\accounts\models.py:15
 msgid "Менеджер"
 msgstr "Менеджер"
 
-#: accounts/models.py:16 accounts/models.py:94
+#: .\accounts\models.py:16 .\accounts\models.py:94
 msgid "Врач"
 msgstr "Дарыгер"
 
-#: accounts/models.py:17 accounts/models.py:108 patients/models/patients.py:24
+#: .\accounts\models.py:17 .\accounts\models.py:108
+#: .\patients\models\patients.py:24
 msgid "Пациент"
 msgstr "Бейтап"
 
-#: accounts/models.py:24
+#: .\accounts\models.py:24
 msgid "Роль"
 msgstr "Ролу"
 
-#: accounts/models.py:26
+#: .\accounts\models.py:26
 msgid "Одобрен"
 msgstr "Уруксат берилди"
 
-#: accounts/models.py:27 main/models/consultation.py:18
+#: .\accounts\models.py:27 .\main\models\consultation.py:18
 msgid "Имя"
 msgstr "Аты"
 
-#: accounts/models.py:28
+#: .\accounts\models.py:28
 msgid "Фамилия"
 msgstr "Фамилиясы"
 
-#: accounts/models.py:33
+#: .\accounts\models.py:33
 msgid "Номер телефона должен быть в формате: '+996XXXXXXXXX' (всего 12 цифр)."
 msgstr ""
 "Телефон номери бул форматта болушу керек: '+996XXXXXXXXX' (бардыгы 12 цифра)."
 
-#: accounts/models.py:37
+#: .\accounts\models.py:37
 msgid "Номер телефона"
 msgstr "Телефон номери"
 
-#: accounts/models.py:49
+#: .\accounts\models.py:49
 msgid "Пользователь"
 msgstr "Колдонуучу"
 
-#: accounts/models.py:50
+#: .\accounts\models.py:50
 msgid "Пользователи"
 msgstr "Колдонуучулар"
 
-#: accounts/models.py:91
+#: .\accounts\models.py:91
 msgid "Навыки"
 msgstr "Көндүмдөр"
 
-#: accounts/models.py:95
+#: .\accounts\models.py:95
 msgid "Врачи"
 msgstr "Дарыгерлер"
 
-#: accounts/models.py:105 patients/models/patients.py:34
-#: templates/patients/doctor_dashboard.html:16
-#: templates/patients/patient_dashboard.html:12
+#: .\accounts\models.py:105 .\patients\models\patients.py:34
+#: .\templates\patients\doctor_dashboard.html:16
+#: .\templates\patients\patient_dashboard.html:12
 msgid "Диагноз"
 msgstr "Диагноз"
 
-#: accounts/models.py:109 patients/apps.py:7
+#: .\accounts\models.py:109 .\patients\apps.py:7
 msgid "Пациенты"
 msgstr "Бейтаптар"
 
-#: accounts/views.py:32
+#: .\accounts\views.py:32
 msgid "Регистрация пациентов временно приостановлена. Попробуйте позже."
 msgstr "Пациенттерди каттоо убактылуу токтотулду. Кийинчерээк аракет кылыңыз."
 
-#: accounts/views.py:49
+#: .\accounts\views.py:49
 msgid "Новая регистрация пациента"
 msgstr "Жаңы бейтапты каттоо"
 
-#: accounts/views.py:50 accounts/views.py:77
+#: .\accounts\views.py:50 .\accounts\views.py:77
 #, python-brace-format
 msgid ""
 "Email: {email}\n"
@@ -183,124 +184,126 @@ msgstr ""
 "Email: {email}\n"
 "Админ панель: {url}"
 
-#: accounts/views.py:60
+#: .\accounts\views.py:60
 msgid "Регистрация врачей временно приостановлена. Попробуйте позже."
 msgstr "Дарыгерлерди каттоо убактылуу токтотулду. Кийинчерээк аракет кылыңыз."
 
-#: accounts/views.py:76
+#: .\accounts\views.py:76
 msgid "Новая заявка врача/волонтёра"
 msgstr "Жаңы дарыгер/ыктыярчы арызы"
 
-#: common/choices.py:6
+#: .\common\choices.py:6
 msgid "В очереди"
 msgstr "Кезекте"
 
-#: common/choices.py:7
+#: .\common\choices.py:7
 msgid "Обрабатывается"
 msgstr "Каралууда"
 
-#: common/choices.py:8
+#: .\common\choices.py:8
 msgid "Обработано"
 msgstr "Каралды"
 
-#: common/choices.py:9
+#: .\common\choices.py:9
 msgid "Ошибка обработки"
 msgstr "Кароодогу ката"
 
-#: common/choices.py:10
+#: .\common\choices.py:10
 msgid "Сжатие не требуется"
 msgstr "Кысуу талап кылынбайт"
 
-#: common/turnstile_form.py:15
+#: .\common\turnstile_form.py:15
 msgid "Ошибка проверки безопасности. Пожалуйста, попробуйте еще раз."
 msgstr "Коопсуздукту текшерүү катасы. Сураныч, кайра аракет кылыңыз."
 
-#: common/validators.py:11
+#: .\common\validators.py:11
 #, python-format
 msgid "Размер изображения не должен превышать %(limit)s МБ."
 msgstr "Сүрөттүн көлөмү %(limit)s МБдан ашпашы керек."
 
-#: common/validators.py:24
+#: .\common\validators.py:24
 msgid "Файл повреждён или не является корректным изображением."
 msgstr "Файл бузулган же сүрөт туура форматында эмес."
 
-#: common/validators.py:34
+#: .\common\validators.py:34
 #, python-format
 msgid "Размер файла не должен превышать %(limit)s МБ."
 msgstr "Файлдын көлөмү %(limit)s МБдан ашпашы керек."
 
-#: config/settings.py:162
+#: .\config\settings.py:162
 msgid "Russian"
 msgstr "Орусча"
 
-#: config/settings.py:163
+#: .\config\settings.py:163
 msgid "Kyrgyz"
 msgstr "Кыргызча"
 
-#: config/settings.py:164
+#: .\config\settings.py:164
 msgid "English"
 msgstr "Англисче"
 
-#: events/admin.py:27
+#: .\events\admin.py:27
 msgid "Зарегистрировано"
 msgstr "Катталды"
 
-#: events/apps.py:7 events/models.py:20 templates/base.html:126
-#: templates/events/event_detail.html:12 templates/events/event_list.html:6
-#: templates/main/home.html:120 templates/main/search_results.html:54
+#: .\events\apps.py:7 .\events\models.py:20 .\templates\base.html:126
+#: .\templates\events\event_detail.html:12 .\templates\events\event_list.html:6
+#: .\templates\main\home.html:115 .\templates\main\search_results.html:54
 msgid "Мероприятия"
 msgstr "Иш-чаралар"
 
-#: events/forms.py:14
+#: .\events\forms.py:14
 msgid "Email (необязательно)"
 msgstr "Email (милдеттүү эмес)"
 
-#: events/models.py:10 news/models/posts.py:25 resources/models/resources.py:37
+#: .\events\models.py:10 .\news\models\posts.py:25
+#: .\resources\models\resources.py:37
 msgid "Заголовок"
 msgstr "Башкы тема"
 
-#: events/models.py:12 news/models/posts.py:29 resources/models/resources.py:39
+#: .\events\models.py:12 .\news\models\posts.py:29
+#: .\resources\models\resources.py:39
 msgid "Описание"
 msgstr "Сүрөттөлүшү"
 
-#: events/models.py:13 news/models/posts.py:27
+#: .\events\models.py:13 .\news\models\posts.py:27
 msgid "Текст"
 msgstr "Текст"
 
-#: events/models.py:19 templates/events/event_form.html:6
+#: .\events\models.py:19 .\templates\events\event_form.html:6
 msgid "Мероприятие"
 msgstr "Иш-чара"
 
-#: events/models.py:49
+#: .\events\models.py:49
 msgid "ФИО"
 msgstr "Аты-жөнү"
 
-#: events/models.py:51 main/models/consultation.py:19
-#: templates/main/contacts.html:16
+#: .\events\models.py:51 .\main\models\consultation.py:19
+#: .\templates\main\contacts.html:15
 msgid "Телефон"
 msgstr "Телефон"
 
-#: events/models.py:53
+#: .\events\models.py:53
 msgid "Рассмотрено"
 msgstr "Каралды"
 
-#: events/models.py:56 templates/events/event_detail.html:49
+#: .\events\models.py:56 .\templates\events\event_detail.html:49
 msgid "Регистрация на мероприятие"
 msgstr "Иш-чарага каттоо"
 
-#: events/models.py:57
+#: .\events\models.py:57
 msgid "Регистрации на мероприятия"
 msgstr "Иш-чараларга каттоолор"
 
-#: events/views.py:65 templates/events/event_detail.html:46
+#: .\events\views.py:65 .\templates\events\event_detail.html:46
 msgid "Регистрация на это мероприятие закрыта"
 msgstr "Бул иш-чарага катталуу жабылган"
 
-#: events/views.py:74
+#: .\events\views.py:74
 msgid "Новая регистрация на мероприятие"
 msgstr "Иш-чарага жаңы каттоо"
 
-#: events/views.py:75
+#: .\events\views.py:75
 #, python-brace-format
 msgid ""
 "Событие: {title}\n"
@@ -309,49 +312,49 @@ msgstr ""
 "Иш-чара: {title}\n"
 "Админка: {url}"
 
-#: events/views.py:83
+#: .\events\views.py:83
 msgid "Регистрация на мероприятие принята"
 msgstr "Иш-чарага каттоо кабыл алынды"
 
-#: events/views.py:84
+#: .\events\views.py:84
 #, python-brace-format
 msgid "Вы зарегистрированы на «{title}»."
 msgstr "Сиз «{title}» иш-чарасына катталдыңыз."
 
-#: faq/models.py:6
+#: .\faq\models.py:6
 msgid "Вопрос"
 msgstr "Суроо"
 
-#: faq/models.py:7
+#: .\faq\models.py:7
 msgid "Ответ"
 msgstr "Жооп"
 
-#: faq/models.py:8
+#: .\faq\models.py:8
 msgid "Активен"
 msgstr "Активдүү"
 
-#: faq/models.py:9 main/models/team.py:31
+#: .\faq\models.py:9 .\main\models\team.py:31
 msgid "Порядок отображения"
 msgstr "Көрсөтүү тартиби"
 
-#: faq/models.py:10 news/models/posts.py:55 patients/models/patients.py:39
-#: resources/models/resources.py:56
+#: .\faq\models.py:10 .\news\models\posts.py:55
+#: .\patients\models\patients.py:39 .\resources\models\resources.py:56
 msgid "Дата создания"
 msgstr "Түзүлгөн күнү"
 
-#: faq/models.py:13
+#: .\faq\models.py:13
 msgid "Вопрос FAQ"
 msgstr "FAQ суроосу"
 
-#: faq/models.py:14
+#: .\faq\models.py:14
 msgid "Вопросы FAQ"
 msgstr "FAQ суроолору"
 
-#: faq/templates/faq/faq_list.html:4
+#: .\faq\templates\faq\faq_list.html:4
 msgid "Часто задаваемые вопросы — Паллиатив.kg"
 msgstr "Көп берилүүчү суроолор — Паллиатив.kg"
 
-#: faq/templates/faq/faq_list.html:5
+#: .\faq\templates\faq\faq_list.html:5
 msgid ""
 "Ответы на часто задаваемые вопросы о паллиативной помощи, мероприятиях и "
 "ресурсах Ассоциации."
@@ -359,44 +362,74 @@ msgstr ""
 "Паллиативдик жардам, иш-чаралар жана Ассоциациянын ресурстары жөнүндө көп "
 "берилүүчү суроолорго жооптор."
 
-#: faq/templates/faq/faq_list.html:9
+#: .\faq\templates\faq\faq_list.html:8
 msgid "Часто задаваемые вопросы"
 msgstr "Көп берилүүчү суроолор"
 
-#: faq/templates/faq/faq_list.html:32
+#: .\faq\templates\faq\faq_list.html:31
 msgid "Вопросы пока не добавлены."
 msgstr "Суроолор азырынча кошула элек."
 
-#: main/admin.py:25
+#: .\main\admin.py:27 .\main\models\consultation.py:24
+msgid "Статус заявки"
+msgstr "Билдирменин статусу"
+
+#: .\main\admin.py:32
+#, fuzzy
+#| msgid "Активен"
+msgid "Активные"
+msgstr "Активдүү"
+
+#: .\main\admin.py:54 .\templates\resources\resource_list.html:11
+msgid "Все"
+msgstr "Баары"
+
+#: .\main\admin.py:76
 msgid "Основная информация"
 msgstr "Негизги маалымат"
 
-#: main/admin.py:28
+#: .\main\admin.py:79
 msgid "Управление заявкой"
 msgstr "Билдирмени башкаруу"
 
-#: main/admin.py:34
+#: .\main\admin.py:93
+msgid "Обновлено заявок: %(count)s"
+msgstr "Жаңыртылган арыздар: %(count)s"
+
+#: .\main\admin.py:97
+msgid "Взять в работу"
+msgstr "Жумушка алуу"
+
+#: .\main\admin.py:101
+msgid "Отметить рассмотренными"
+msgstr "Каралды деп белгилөө"
+
+#: .\main\admin.py:105
+msgid "Отклонить"
+msgstr "Четке кагуу"
+
+#: .\main\admin.py:111
 msgid "Страница"
 msgstr "Баракча"
 
-#: main/admin.py:38 main/apps.py:8 templates/base.html:102
+#: .\main\admin.py:115 .\main\apps.py:8 .\templates\base.html:102
 msgid "Главная"
 msgstr "Башкы бет"
 
-#: main/admin.py:39 templates/base.html:108
+#: .\main\admin.py:116 .\templates\base.html:108
 msgid "О нас"
 msgstr "Биз жөнүндө"
 
-#: main/admin.py:96
+#: .\main\admin.py:173
 msgid "Восстановить выбранные"
 msgstr "Тандалгандарды калыбына келтирүү"
 
-#: main/admin.py:119
+#: .\main\admin.py:196
 #, python-format
 msgid "Восстановлено записей: %(count)s."
 msgstr "Калыбына келтирилген жазуулар: %(count)s."
 
-#: main/admin.py:126
+#: .\main\admin.py:203
 #, python-format
 msgid ""
 "Не удалось восстановить: slug уже занят другой активной записью — %(slugs)s."
@@ -404,11 +437,11 @@ msgstr ""
 "Калыбына келтирүү мүмкүн болгон жок: slug башка активдүү жазуу тарабынан "
 "ээленген — %(slugs)s."
 
-#: main/forms.py:21
+#: .\main\forms.py:21
 msgid "Айгуль Асанова"
 msgstr "Айгүл Асанова"
 
-#: main/forms.py:37
+#: .\main\forms.py:37
 msgid ""
 "Неверный формат номера. Введите номер в формате: 0555123456 (мобильный) или "
 "0312123456 (городской, Бишкек)"
@@ -416,7 +449,7 @@ msgstr ""
 "Телефон номеринин форматы туура эмес. Номерди мындай форматта киргизиңиз: "
 "0555123456 (мобилдик) же 0312123456 (шаардык, Бишкек)"
 
-#: main/forms.py:65
+#: .\main\forms.py:65
 msgid ""
 "Неверный код оператора или города. Проверьте правильность ввода номера "
 "мобильного или городского телефона Кыргызстана."
@@ -424,185 +457,182 @@ msgstr ""
 "Оператордун же шаардын коду туура эмес. Кыргызстандын мобилдик же шаардык "
 "телефон номери туура киргизилгенин текшериңиз."
 
-#: main/models/consultation.py:7
+#: .\main\models\consultation.py:7
 msgid "Медицинская помощь"
 msgstr "Медициналык жардам"
 
-#: main/models/consultation.py:8
+#: .\main\models\consultation.py:8
 msgid "Сотрудничество"
 msgstr "Кызматташтык"
 
-#: main/models/consultation.py:9
+#: .\main\models\consultation.py:9
 msgid "Партнерство"
 msgstr "Өнөктөштүк"
 
-#: main/models/consultation.py:12
+#: .\main\models\consultation.py:12
 msgid "Новая"
 msgstr "Жаңы"
 
-#: main/models/consultation.py:13
+#: .\main\models\consultation.py:13
 msgid "В работе"
 msgstr "Каралууда"
 
-#: main/models/consultation.py:14
+#: .\main\models\consultation.py:14
 msgid "Рассмотрена"
 msgstr "Каралды"
 
-#: main/models/consultation.py:15
+#: .\main\models\consultation.py:15
 msgid "Отклонена"
 msgstr "Тетке кагылды"
 
-#: main/models/consultation.py:21
+#: .\main\models\consultation.py:21
 msgid "Тема обращения"
 msgstr "Кайрылуунун темасы"
 
-#: main/models/consultation.py:24
-msgid "Статус заявки"
-msgstr "Билдирменин статусу"
-
-#: main/models/consultation.py:30 templates/main/consultation.html:12
+#: .\main\models\consultation.py:30 .\templates\main\consultation.html:11
 msgid "Заявка на консультацию"
 msgstr "Консультация алууга билдирме"
 
-#: main/models/consultation.py:31
+#: .\main\models\consultation.py:31
 msgid "Заявки на консультацию"
 msgstr "Консультация алууга билдирме"
 
-#: main/models/editable_text_block.py:27
+#: .\main\models\editable_text_block.py:27
 msgid "Уникальный идентификатор (Slug)"
 msgstr "Уникалдуу идентификатор (Slug)"
 
-#: main/models/editable_text_block.py:30
+#: .\main\models\editable_text_block.py:30
 msgid "Используется разработчиком в шаблонах"
 msgstr "Иштеп чыгуучу тарабынан шаблондордо колдонулат"
 
-#: main/models/editable_text_block.py:32
+#: .\main\models\editable_text_block.py:32
 msgid "Содержимое текста"
 msgstr "Үй-бүлөгө колдоо"
 
-#: main/models/editable_text_block.py:34
+#: .\main\models\editable_text_block.py:34
 msgid "Удалён"
 msgstr "Өчүрүлдү"
 
-#: main/models/editable_text_block.py:35
+#: .\main\models\editable_text_block.py:35
 msgid "Дата удаления"
 msgstr "Өчүрүлгөн күнү"
 
-#: main/models/editable_text_block.py:41
+#: .\main\models\editable_text_block.py:41
 msgid "Редактируемый текстовый блок"
 msgstr "Редакциялануучу тексттик блок"
 
-#: main/models/editable_text_block.py:42
+#: .\main\models\editable_text_block.py:42
 msgid "Редактируемые текстовые блоки"
 msgstr "Редакциялануучу тексттик блоктор"
 
-#: main/models/site_contacts.py:9
+#: .\main\models\site_contacts.py:9
 msgid "Телефон для tel:-ссылки"
 msgstr "tel:-шилтемеси үчүн телефон"
 
-#: main/models/site_contacts.py:11
+#: .\main\models\site_contacts.py:11
 msgid "В формате +996312214015"
 msgstr "+996312214015 форматында"
 
-#: main/models/site_contacts.py:14
+#: .\main\models\site_contacts.py:14
 msgid "Телефон (отображаемый текст)"
 msgstr "Телефон (көрүнүүчү текст)"
 
-#: main/models/site_contacts.py:17
+#: .\main\models\site_contacts.py:17
 msgid "Ссылка WhatsApp"
 msgstr "WhatsApp шилтемеси"
 
-#: main/models/site_contacts.py:19
+#: .\main\models\site_contacts.py:19
 msgid "WhatsApp (отображаемый текст)"
 msgstr "WhatsApp (көрүнүүчү текст)"
 
-#: main/models/site_contacts.py:21
+#: .\main\models\site_contacts.py:21
 msgid "Ссылка Facebook"
 msgstr "Facebook шилтемеси"
 
-#: main/models/site_contacts.py:22
+#: .\main\models\site_contacts.py:22
 msgid "Ссылка Instagram"
 msgstr "Instagram шилтемеси"
 
-#: main/models/site_contacts.py:23
+#: .\main\models\site_contacts.py:23
 msgid "Ссылка на 2ГИС"
 msgstr "2ГИС шилтемеси"
 
-#: main/models/site_contacts.py:24 templates/main/contacts.html:10
+#: .\main\models\site_contacts.py:24 .\templates\main\contacts.html:9
 msgid "Адрес"
 msgstr "Дарек"
 
-#: main/models/site_contacts.py:27 main/models/site_contacts.py:28
-#: main/models/site_contacts.py:31
+#: .\main\models\site_contacts.py:27 .\main\models\site_contacts.py:28
+#: .\main\models\site_contacts.py:31
 msgid "Контакты сайта"
 msgstr "Сайттын байланыштары"
 
-#: main/models/system_settings.py:7
+#: .\main\models\system_settings.py:7
 msgid "Регистрация пациентов включена"
 msgstr "Пациенттерди каттоо иштетилген"
 
-#: main/models/system_settings.py:10
+#: .\main\models\system_settings.py:10
 msgid "Регистрация врачей включена"
 msgstr "Врачтарды каттоо иштетилген"
 
-#: main/models/system_settings.py:14 main/models/system_settings.py:15
-#: main/models/system_settings.py:18
+#: .\main\models\system_settings.py:14 .\main\models\system_settings.py:15
+#: .\main\models\system_settings.py:18
 msgid "Системные настройки"
 msgstr "Тутум жөндөөлөрү"
 
-#: main/models/team.py:10
+#: .\main\models\team.py:10
 msgid "Учредители"
 msgstr "Уюштуруучулар"
 
-#: main/models/team.py:11
+#: .\main\models\team.py:11
 msgid "Посол Доброй воли"
 msgstr "Ак ниет элчиси"
 
-#: main/models/team.py:12
+#: .\main\models\team.py:12
 msgid "Управляющий совет"
 msgstr "Башкаруу кеңеши"
 
-#: main/models/team.py:13
+#: .\main\models\team.py:13
 msgid "Команда Ассоциации"
 msgstr "Ассоциациянын командасы"
 
-#: main/models/team.py:15
+#: .\main\models\team.py:15
 msgid "ФИО / название организации"
 msgstr "Аты-жөнү / уюмдун аталышы"
 
-#: main/models/team.py:16
+#: .\main\models\team.py:16
 msgid "Должность"
 msgstr "Жаңылык"
 
-#: main/models/team.py:17
+#: .\main\models\team.py:17
 msgid "Краткая информация"
 msgstr "Негизги маалымат"
 
-#: main/models/team.py:19 news/models/posts.py:17 news/models/posts.py:51
+#: .\main\models\team.py:19 .\news\models\posts.py:17 .\news\models\posts.py:51
 msgid "Категория"
 msgstr "Категория"
 
-#: main/models/team.py:22
+#: .\main\models\team.py:22
 msgid "Фотография"
 msgstr "Сүрөт"
 
-#: main/models/team.py:34
+#: .\main\models\team.py:34
 msgid "Член команды"
 msgstr "Команданын мүчөсү"
 
-#: main/models/team.py:35 templates/main/team.html:4 templates/main/team.html:9
+#: .\main\models\team.py:35 .\templates\main\team.html:4
+#: .\templates\main\team.html:8
 msgid "Команда и руководство"
 msgstr "Команда жана жетекчилик"
 
-#: main/views.py:106
+#: .\main\views.py:106
 msgid "Ваша заявка на консультацию успешно отправлена!"
 msgstr "Консультация алууга билдирмеңиз ийгиликтүү жөнөтүлдү!"
 
-#: main/views.py:114
+#: .\main\views.py:114
 msgid "Новая заявка на консультацию"
 msgstr "Консультацияга жаңы суроо-талап"
 
-#: main/views.py:116
+#: .\main\views.py:116
 #, python-brace-format
 msgid ""
 "Имя: {first_name}\n"
@@ -615,282 +645,287 @@ msgstr ""
 "Тема: {topic}\n"
 "Админка: {url}"
 
-#: main/views.py:129
+#: .\main\views.py:129
 msgid "Заявка на консультацию принята"
 msgstr "Консультацияга суроо-талап кабыл алынды"
 
-#: main/views.py:130
+#: .\main\views.py:130
 msgid "Ваша заявка принята, мы свяжемся с вами."
 msgstr "Сиздин суроо-талабыңыз кабыл алынды, биз сиз менен байланышабыз."
 
-#: news/apps.py:8 news/models/posts.py:59 templates/base.html:120
-#: templates/main/home.html:89 templates/main/search_results.html:34
-#: templates/news/post_list.html:7
+#: .\news\apps.py:8 .\news\models\posts.py:59 .\templates\base.html:120
+#: .\templates\main\home.html:84 .\templates\main\search_results.html:34
+#: .\templates\news\post_list.html:6
 msgid "Новости"
 msgstr "Жаңылыктар"
 
-#: news/models/posts.py:14
+#: .\news\models\posts.py:14
 msgid "Название"
 msgstr "Аталышы"
 
-#: news/models/posts.py:18
+#: .\news\models\posts.py:18
 msgid "Категории"
 msgstr "Категориялар"
 
-#: news/models/posts.py:32
+#: .\news\models\posts.py:32
 msgid "Картинка"
 msgstr "Сүрөт"
 
-#: news/models/posts.py:43
+#: .\news\models\posts.py:43
 msgid "Статус обработки изображения"
 msgstr "Сүрөттү иштетүү статусу"
 
-#: news/models/posts.py:58
+#: .\news\models\posts.py:58
 msgid "Новость"
 msgstr "Жаңылык"
 
-#: patients/models/patients.py:9
+#: .\patients\models\patients.py:9
 msgid "Название симптома"
 msgstr "Симптомдун аталышы"
 
-#: patients/models/patients.py:12
+#: .\patients\models\patients.py:12
 msgid "Симптом"
 msgstr "Оорунун белгиси"
 
-#: patients/models/patients.py:13 patients/models/patients.py:38
-#: resources/models/resources.py:51 templates/patients/doctor_dashboard.html:18
+#: .\patients\models\patients.py:13 .\patients\models\patients.py:38
+#: .\resources\models\resources.py:51
+#: .\templates\patients\doctor_dashboard.html:18
 msgid "Симптомы"
 msgstr "Оорунун белгилери"
 
-#: patients/models/patients.py:32 templates/patients/patient_dashboard.html:30
+#: .\patients\models\patients.py:32
+#: .\templates\patients\patient_dashboard.html:30
 msgid "Лечащий врач"
 msgstr "Дарылоочу дарыгер"
 
-#: patients/models/patients.py:35 templates/patients/patient_dashboard.html:13
+#: .\patients\models\patients.py:35
+#: .\templates\patients\patient_dashboard.html:13
 msgid "Принимаемые препараты"
 msgstr "Колдонулуп жаткан препараттар"
 
-#: patients/models/patients.py:36 templates/patients/patient_dashboard.html:14
+#: .\patients\models\patients.py:36
+#: .\templates\patients\patient_dashboard.html:14
 msgid "Противопоказания"
 msgstr "Каршы көрсөтмөлөр"
 
-#: patients/models/patients.py:37
+#: .\patients\models\patients.py:37
 msgid "Ранее проведенное лечение"
 msgstr "Мурда жүргүзүлгөн дарылоо"
 
-#: patients/models/patients.py:40
+#: .\patients\models\patients.py:40
 msgid "Дата изменения"
 msgstr "Өзгөртүлгөн күнү"
 
-#: patients/models/patients.py:43
+#: .\patients\models\patients.py:43
 msgid "Карточка пациента"
 msgstr "Бейтаптын карточкасы"
 
-#: patients/models/patients.py:44
+#: .\patients\models\patients.py:44
 msgid "Карточки пациентов"
 msgstr "Бейтаптардын карточкалары"
 
-#: patients/views.py:23
+#: .\patients\views.py:23
 msgid "Доступ разрешен только врачам."
 msgstr "Кирүү укугу дарыгерлерге гана берилет."
 
-#: patients/views.py:26
+#: .\patients\views.py:26
 msgid "Ваш профиль врача еще не зарегистрирован в базе данных."
 msgstr "Сиздин дарыгер профилиңиз маалымат базасында али каттала элек."
 
-#: patients/views.py:79 patients/views.py:100
+#: .\patients\views.py:79 .\patients\views.py:100
 msgid "Доступ разрешен только пациентам."
 msgstr "Кирүү укугу бейтаптарга гана берилет."
 
-#: patients/views.py:117 patients/views.py:134
+#: .\patients\views.py:117 .\patients\views.py:134
 msgid "Карточка ещё не заведена — с вами свяжется сотрудник"
 msgstr "Карточка азырынча түзүлө элек — сиз менен кызматкер байланышат"
 
-#: patients/views.py:146
+#: .\patients\views.py:146
 msgid "Спасибо! Симптомы обновлены, ниже — материалы, которые могут помочь"
 msgstr ""
 "Рахмат! Симптомдор жаңыртылды, төмөндө жардам бере турган материалдар бар"
 
-#: resources/apps.py:8 templates/base.html:132
-#: templates/main/search_results.html:74
-#: templates/resources/resource_list.html:7
+#: .\resources\apps.py:8 .\templates\base.html:132
+#: .\templates\main\search_results.html:74
+#: .\templates\resources\resource_list.html:6
 msgid "Ресурсы"
 msgstr "Ресурстар"
 
-#: resources/models/resources.py:21
+#: .\resources\models\resources.py:21
 msgid "Руководство для специалистов"
 msgstr "Адистер үчүн колдонмо"
 
-#: resources/models/resources.py:22
+#: .\resources\models\resources.py:22
 msgid "Советы ухаживающим"
 msgstr "Карап-багуучуларга кеңештер"
 
-#: resources/models/resources.py:23
+#: .\resources\models\resources.py:23
 msgid "Паллиативная педиатрия"
 msgstr "Балдар паллиативдик жардамы"
 
-#: resources/models/resources.py:27
+#: .\resources\models\resources.py:27
 msgid "Контроль симптомов"
 msgstr "Симптомдорду көзөмөлдөө"
 
-#: resources/models/resources.py:28
+#: .\resources\models\resources.py:28
 msgid "Уход в конце жизни"
 msgstr "Өмүрүнүн акырындагы кам көрүү"
 
-#: resources/models/resources.py:29
+#: .\resources\models\resources.py:29
 msgid "НПА (Нормативно-правовые акты)"
 msgstr "УРA (Укуктук-нормативдик актылар)"
 
-#: resources/models/resources.py:30
+#: .\resources\models\resources.py:30
 msgid "Уход и кормление"
 msgstr "Кам көрүү жана тамактандыруу"
 
-#: resources/models/resources.py:31
+#: .\resources\models\resources.py:31
 msgid "Советы психолога"
 msgstr "Психологдун кеңештери"
 
-#: resources/models/resources.py:32 templates/main/home.html:50
+#: .\resources\models\resources.py:32 .\templates\main\home.html:50
 msgid "Управление болью"
 msgstr "Ооруну башкаруу"
 
-#: resources/models/resources.py:33
+#: .\resources\models\resources.py:33
 msgid "Лекарства и права пациента"
 msgstr "Дары-дармектер жана бейтаптын укуктары"
 
-#: resources/models/resources.py:34
+#: .\resources\models\resources.py:34
 msgid "Соцподдержка"
 msgstr "Социалдык колдоо"
 
-#: resources/models/resources.py:41
+#: .\resources\models\resources.py:41
 msgid "Слаг"
 msgstr "Слаг"
 
-#: resources/models/resources.py:44
+#: .\resources\models\resources.py:44
 msgid "Целевая аудитория"
 msgstr "Максаттуу аудитория"
 
-#: resources/models/resources.py:47
+#: .\resources\models\resources.py:47
 msgid "Подкатегория"
 msgstr "Ички категория"
 
-#: resources/models/resources.py:57
+#: .\resources\models\resources.py:57
 msgid "Дата обновления"
 msgstr "Жаңыланган күнү"
 
-#: resources/models/resources.py:60
+#: .\resources\models\resources.py:60
 msgid "Справочный материал"
 msgstr "Маалымдама материал"
 
-#: resources/models/resources.py:61
+#: .\resources\models\resources.py:61
 msgid "Справочные материалы"
 msgstr "Маалымдама материалдар"
 
-#: resources/models/resources.py:92 resources/models/resources.py:147
+#: .\resources\models\resources.py:92 .\resources\models\resources.py:147
 msgid "Ресурс"
 msgstr "Ресурс"
 
-#: resources/models/resources.py:95
+#: .\resources\models\resources.py:95
 msgid "Файл"
 msgstr "Файл"
 
-#: resources/models/resources.py:106
+#: .\resources\models\resources.py:106
 msgid "Статус обработки файла"
 msgstr "Файлды иштетүү статусу"
 
-#: resources/models/resources.py:113
+#: .\resources\models\resources.py:113
 msgid "PDF-версия (из Word)"
 msgstr "PDF-версиясы (Word-дон)"
 
-#: resources/models/resources.py:120
+#: .\resources\models\resources.py:120
 msgid "Файл ресурса"
 msgstr "Ресурстун файлы"
 
-#: resources/models/resources.py:121
+#: .\resources\models\resources.py:121
 msgid "Файлы ресурса"
 msgstr "Ресурстун файлдары"
 
-#: resources/models/resources.py:150
+#: .\resources\models\resources.py:150
 msgid "Ссылка на YouTube"
 msgstr "YouTube шилтемеси"
 
-#: resources/models/resources.py:153
+#: .\resources\models\resources.py:153
 msgid "Видео-ссылка"
 msgstr "Видео шилтеме"
 
-#: resources/models/resources.py:154
+#: .\resources\models\resources.py:154
 msgid "Видео-ссылки"
 msgstr "Видео шилтемелер"
 
-#: templates/accounts/doctor_application_sent.html:3
+#: .\templates\accounts\doctor_application_sent.html:3
 msgid "Заявка отправлена"
 msgstr "Билдирме жөнөтүлдү"
 
-#: templates/accounts/doctor_application_sent.html:7
+#: .\templates\accounts\doctor_application_sent.html:7
 msgid "Спасибо!"
 msgstr "Рахмат!"
 
-#: templates/accounts/doctor_application_sent.html:8
+#: .\templates\accounts\doctor_application_sent.html:8
 msgid "Ваша заявка успешно отправлена и находится на модерации."
 msgstr "Билдирмеңиз ийгиликтүү жөнөтүлдү жана модерацияда турат."
 
-#: templates/accounts/doctor_application_sent.html:9
-#: templates/accounts/waiting_403.html:22
+#: .\templates\accounts\doctor_application_sent.html:9
+#: .\templates\accounts\waiting_403.html:22
 msgid "На главную"
 msgstr "Башкы бетке"
 
-#: templates/accounts/doctor_register.html:5
+#: .\templates\accounts\doctor_register.html:5
 msgid "Заявка врача/волонтёра"
 msgstr "Дарыгердин/волонтердун билдирмеси"
 
-#: templates/accounts/doctor_register.html:21
+#: .\templates\accounts\doctor_register.html:19
 msgid "Заявка на регистрацию Врача"
 msgstr "Дарыгерди каттоо үчүн билдирме"
 
-#: templates/accounts/doctor_register.html:25
+#: .\templates\accounts\doctor_register.html:23
 msgid ""
 "Заполните форму. Ваша заявка будет рассмотрена администратором ассоциации."
 msgstr ""
 "Форманы толтуруңуз. Билдирмеңиз ассоциациянын администратору тарабынан "
 "каралат."
 
-#: templates/accounts/doctor_register.html:73
-#: templates/main/consultation.html:12
+#: .\templates\accounts\doctor_register.html:71
+#: .\templates\main\consultation.html:11
 msgid "Отправить заявку"
 msgstr "Билдирмени жөнөтүү"
 
-#: templates/accounts/doctor_register.html:80
-#: templates/accounts/patient_register.html:78
+#: .\templates\accounts\doctor_register.html:78
+#: .\templates\accounts\patient_register.html:76
 msgid "Уже есть аккаунт?"
 msgstr "Аккаунтуңуз барбы?"
 
-#: templates/accounts/doctor_register.html:84 templates/accounts/login.html:6
-#: templates/accounts/patient_register.html:82 templates/base.html:179
+#: .\templates\accounts\doctor_register.html:82
+#: .\templates\accounts\login.html:6
+#: .\templates\accounts\patient_register.html:80 .\templates\base.html:179
 msgid "Войти"
 msgstr "Кирүү"
 
-#: templates/accounts/login.html:5
+#: .\templates\accounts\login.html:5
 msgid "Логин"
 msgstr "Логин"
 
-#: templates/accounts/patient_register.html:5
-#: templates/accounts/patient_register.html:21
+#: .\templates\accounts\patient_register.html:5
+#: .\templates\accounts\patient_register.html:19
 msgid "Регистрация пациента"
 msgstr "Бейтапты каттоо"
 
-#: templates/accounts/patient_register.html:25
+#: .\templates\accounts\patient_register.html:23
 msgid "Создайте аккаунт, чтобы пользоваться возможностями ассоциации."
 msgstr "Ассоциациянын мүмкүнчүлүктөрүн колдонуу үчүн аккаунт түзүңүз."
 
-#: templates/accounts/patient_register.html:71
-#: templates/accounts/register_type.html:47
+#: .\templates\accounts\patient_register.html:69
+#: .\templates\accounts\register_type.html:46
 msgid "Зарегистрироваться"
 msgstr "Катталуу"
 
-#: templates/accounts/register_type.html:3
+#: .\templates\accounts\register_type.html:3
 msgid "Участие — Паллиатив.kg"
 msgstr "Биз жөнүндө — Паллиатив.kg"
 
-#: templates/accounts/register_type.html:4
+#: .\templates\accounts\register_type.html:4
 msgid ""
 "Станьте волонтёром, врачом или зарегистрируйтесь как пациент Ассоциации "
 "паллиативной и хосписной помощи."
@@ -898,73 +933,73 @@ msgstr ""
 "Паллиативдик жана хоспистик жардам көрсөтүү ассоциациясынын волонтеру, "
 "дарыгери болуңуз же бейтап катары катталыңыз."
 
-#: templates/accounts/register_type.html:10
+#: .\templates\accounts\register_type.html:9
 msgid "Членство / Участие"
 msgstr "Мүчөлүк / Катышуу"
 
-#: templates/accounts/register_type.html:13
+#: .\templates\accounts\register_type.html:12
 msgid "Выберите подходящий вариант участия в ассоциации."
 msgstr "Ассоциацияга катышуунун сизге ылайыктуу вариантын тандаңыз."
 
-#: templates/accounts/register_type.html:19
+#: .\templates\accounts\register_type.html:18
 msgid "Регистрация временно недоступна, попробуйте позже."
 msgstr "Иш-чарага каттоо"
 
-#: templates/accounts/register_type.html:28
+#: .\templates\accounts\register_type.html:27
 msgid "Стать пациентом"
 msgstr "Бейтап катары катталуу"
 
-#: templates/accounts/register_type.html:29
+#: .\templates\accounts\register_type.html:28
 msgid ""
 "Зарегистрируйтесь, чтобы получить доступ к возможностям и услугам ассоциации."
 msgstr ""
 "Ассоциациянын мүмкүнчүлүктөрүнө жана кызматтарына жетүү үчүн катталыңыз."
 
-#: templates/accounts/register_type.html:31
-#: templates/accounts/register_type.html:66
+#: .\templates\accounts\register_type.html:30
+#: .\templates\accounts\register_type.html:65
 msgid "Преимущества"
 msgstr "Артыкчылыктар"
 
-#: templates/accounts/register_type.html:33
+#: .\templates\accounts\register_type.html:32
 msgid "Избавление от боли"
 msgstr "Ооруну басаңдатуу"
 
-#: templates/accounts/register_type.html:34
+#: .\templates\accounts\register_type.html:33
 msgid "Современные методы позволяют купировать даже самую сильную боль."
 msgstr "Заманбап ыкмалар эң катуу ооруну да басаңдатууга мүмкүндүк берет."
 
-#: templates/accounts/register_type.html:35
+#: .\templates\accounts\register_type.html:34
 msgid "Поддержка семьи"
 msgstr "Үй-бүлөгө колдоо"
 
-#: templates/accounts/register_type.html:36
+#: .\templates\accounts\register_type.html:35
 msgid "Знания и психологическая опора для близких, ухаживающих за больным."
 msgstr "Бейтапка кам көргөн жакындар үчүн билим жана психологиялык колдоо."
 
-#: templates/accounts/register_type.html:37
+#: .\templates\accounts\register_type.html:36
 msgid "Права пациента"
 msgstr "Бейтаптын укуктары"
 
-#: templates/accounts/register_type.html:38
+#: .\templates\accounts\register_type.html:37
 msgid "Как получить нужные лекарства от боли и другие права пациента."
 msgstr ""
 "Ооруну басаңдатуучу керектүү дары-дармектерди жана бейтаптын башка укуктарын "
 "кантип алууга болот."
 
-#: templates/accounts/register_type.html:43
+#: .\templates\accounts\register_type.html:42
 msgid "Перейти в личный кабинет"
 msgstr "Жеке кабинетке өтүү"
 
-#: templates/accounts/register_type.html:51
-#: templates/accounts/register_type.html:86
+#: .\templates\accounts\register_type.html:50
+#: .\templates\accounts\register_type.html:85
 msgid "Регистрация временно недоступна"
 msgstr "Каттоо убактылуу жеткиликсиз"
 
-#: templates/accounts/register_type.html:63
+#: .\templates\accounts\register_type.html:62
 msgid "Стать врачом"
 msgstr "Дарыгер болуу"
 
-#: templates/accounts/register_type.html:64
+#: .\templates\accounts\register_type.html:63
 msgid ""
 "Отправьте заявку на вступление. Заявка будет рассмотрена администратором "
 "ассоциации. Доступ к личному кабинету предоставляется после одобрения заявки."
@@ -973,53 +1008,53 @@ msgstr ""
 "тарабынан каралат. Жеке кабинетке кирүү укугу билдирме бекитилгенден кийин "
 "берилет."
 
-#: templates/accounts/register_type.html:68
+#: .\templates\accounts\register_type.html:67
 msgid "Безопасность"
 msgstr "Коопсуздук"
 
-#: templates/accounts/register_type.html:69
+#: .\templates\accounts\register_type.html:68
 msgid "Доступ к юридическим алгоритмам выписки рецептов и учёта препаратов."
 msgstr ""
 "Рецепт жазуунун жана дары-дармектерди эсепке алуунун укуктук алгоритмдерине "
 "жетүү."
 
-#: templates/accounts/register_type.html:70
+#: .\templates\accounts\register_type.html:69
 msgid "Репутация"
 msgstr "Репутация"
 
-#: templates/accounts/register_type.html:71
+#: .\templates\accounts\register_type.html:70
 msgid "Станьте частью международного сообщества (EAPC, IAHPC)."
 msgstr "Эл аралык коомчулуктун (EAPC, IAHPC) мүчөсү болуңуз."
 
-#: templates/accounts/register_type.html:72
+#: .\templates\accounts\register_type.html:71
 msgid "Развитие"
 msgstr "Өнүгүү"
 
-#: templates/accounts/register_type.html:73
+#: .\templates\accounts\register_type.html:72
 msgid "Обучение персонала навыкам «медицины комфорта»."
 msgstr "Персоналды «жайлуулук медицинасы» көндүмдөрүнө окутуу."
 
-#: templates/accounts/register_type.html:78
+#: .\templates\accounts\register_type.html:77
 msgid "Перейти в кабинет"
 msgstr "Кабинетке өтүү"
 
-#: templates/accounts/register_type.html:82
+#: .\templates\accounts\register_type.html:81
 msgid "Подать заявку"
 msgstr "Билдирме берүү"
 
-#: templates/accounts/registration_disabled.html:3
+#: .\templates\accounts\registration_disabled.html:3
 msgid "Регистрация недоступна — Паллиатив.kg"
 msgstr "Каттоо убактылуу жеткиликсиз — Паллиатив.kg"
 
-#: templates/accounts/waiting_403.html:5
+#: .\templates\accounts\waiting_403.html:5
 msgid "Аккаунт на проверке"
 msgstr "Аккаунт текшерилүүдө"
 
-#: templates/accounts/waiting_403.html:14
+#: .\templates\accounts\waiting_403.html:14
 msgid "Ваш аккаунт ожидает проверки"
 msgstr "Сиздин аккаунтуңуз текшерүүнү күтүүдө"
 
-#: templates/accounts/waiting_403.html:18
+#: .\templates\accounts\waiting_403.html:18
 msgid ""
 "Заявка на регистрацию врача находится на модерации у администратора "
 "ассоциации. Пожалуйста, подождите завершения проверки. После одобрения вам "
@@ -1029,11 +1064,11 @@ msgstr ""
 "турат. Текшерүү аяктаганча күтүңүз. Бекитилгенден кийин жеке кабинетиңиз "
 "жеткиликтүү болот."
 
-#: templates/base.html:17
+#: .\templates\base.html:17
 msgid "Паллиатив.kg — паллиативная и хосписная помощь в Кыргызстане"
 msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:19
+#: .\templates\base.html:19
 msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики — поддержка "
 "пациентов, обучение специалистов и развитие паллиативной помощи в "
@@ -1043,135 +1078,135 @@ msgstr ""
 "ар кандай баскычта татыктуу жашоо сапатын камсыз кылуу үчүн дарыгерлерди, "
 "клиникаларды жана үй-бүлөлөрдү бириктиребиз."
 
-#: templates/base.html:22
+#: .\templates\base.html:22
 msgid "Паллиатив.kg"
 msgstr "Паллиатив.kg"
 
-#: templates/base.html:44
+#: .\templates\base.html:44
 msgid "Закрыть"
 msgstr "Жабуу"
 
-#: templates/base.html:56 templates/main/contacts.html:68
+#: .\templates\base.html:56 .\templates\main\contacts.html:67
 msgid "Ассоциация паллиативной и хосписной помощи"
 msgstr "Паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:61 templates/base.html:196 templates/base.html:197
-#: templates/main/search_results.html:7
+#: .\templates\base.html:61 .\templates\base.html:196 .\templates\base.html:197
+#: .\templates\main\search_results.html:7
 msgid "Поиск"
 msgstr "Издөө"
 
-#: templates/base.html:68
+#: .\templates\base.html:68
 msgid "Оставить заявку на консультацию"
 msgstr "Консультацияга билдирме калтыруу"
 
-#: templates/base.html:69 templates/main/contacts.html:75
-#: templates/main/home.html:146
+#: .\templates\base.html:69 .\templates\main\contacts.html:74
+#: .\templates\main\home.html:141
 msgid "Оставить заявку"
 msgstr "Билдирме калтыруу"
 
-#: templates/base.html:74
+#: .\templates\base.html:74
 msgid "Выбор языка"
 msgstr "Тилди тандоо"
 
-#: templates/base.html:91
+#: .\templates\base.html:91
 msgid "Открыть меню"
 msgstr "Менюну ачуу"
 
-#: templates/base.html:114
+#: .\templates\base.html:114
 msgid "Команда"
 msgstr "Команда"
 
-#: templates/base.html:138
+#: .\templates\base.html:138
 msgid "Участие"
 msgstr "Катышуу"
 
-#: templates/base.html:145
+#: .\templates\base.html:145
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/base.html:151 templates/main/contacts.html:4
-#: templates/main/contacts.html:8 templates/main/privacy_policy.html:26
+#: .\templates\base.html:151 .\templates\main\contacts.html:4
+#: .\templates\main\contacts.html:7 .\templates\main\privacy_policy.html:26
 msgid "Контакты"
 msgstr "Байланыштар"
 
-#: templates/base.html:157 templates/patients/patient_dashboard.html:6
+#: .\templates\base.html:157 .\templates\patients\patient_dashboard.html:6
 msgid "Моя карточка"
 msgstr "Менин китепчем"
 
-#: templates/base.html:163 templates/patients/doctor_dashboard.html:6
+#: .\templates\base.html:163 .\templates\patients\doctor_dashboard.html:6
 msgid "Мои пациенты"
 msgstr "Менин пациенттерим"
 
-#: templates/base.html:172
+#: .\templates\base.html:172
 msgid "Выйти"
 msgstr "Чыгуу"
 
-#: templates/base.html:219
+#: .\templates\base.html:219
 msgid "Ассоциация паллиативной и хосписной помощи Кыргызской Республики"
 msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/base.html:239 templates/base.html:240
-#: templates/main/contacts.html:30
+#: .\templates\base.html:239 .\templates\base.html:240
+#: .\templates\main\contacts.html:29
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: templates/base.html:249 templates/base.html:250
-#: templates/main/contacts.html:52
+#: .\templates\base.html:249 .\templates\base.html:250
+#: .\templates\main\contacts.html:51
 msgid "Facebook"
 msgstr "Facebook"
 
-#: templates/base.html:259 templates/base.html:260
-#: templates/main/contacts.html:41
+#: .\templates\base.html:259 .\templates\base.html:260
+#: .\templates\main\contacts.html:40
 msgid "Instagram"
 msgstr "Instagram"
 
-#: templates/base.html:268
+#: .\templates\base.html:268
 msgid "Написать нам"
 msgstr "Бизге жазыңыз"
 
-#: templates/base.html:271
+#: .\templates\base.html:271
 msgid "Политика обработки данных"
 msgstr "Маалыматтарды иштетүү саясаты"
 
-#: templates/base.html:275
+#: .\templates\base.html:275
 msgid "Все права защищены."
 msgstr "Бардык укуктар корголгон."
 
-#: templates/events/event_confirm_delete.html:6
+#: .\templates\events\event_confirm_delete.html:6
 msgid "Удалить мероприятие"
 msgstr "Иш-чараны өчүрүү"
 
-#: templates/events/event_confirm_delete.html:7
+#: .\templates\events\event_confirm_delete.html:7
 msgid "Вы уверены, что хотите удалить"
 msgstr "Өчүрүүнү каалайсызбы"
 
-#: templates/events/event_confirm_delete.html:10
+#: .\templates\events\event_confirm_delete.html:10
 msgid "Удалить"
 msgstr "Өчүрүү"
 
-#: templates/events/event_detail.html:19
+#: .\templates\events\event_detail.html:19
 msgid "Дата"
 msgstr "Күнү"
 
-#: templates/events/event_detail.html:26 templates/events/event_list.html:22
-#: templates/events/event_list.html:53
+#: .\templates\events\event_detail.html:26
+#: .\templates\events\event_list.html:22 .\templates\events\event_list.html:53
 msgid "Место проведения"
 msgstr "Өткөрүлүүчү орду"
 
-#: templates/events/event_detail.html:49
+#: .\templates\events\event_detail.html:49
 msgid "Записаться"
 msgstr "Жазылуу"
 
-#: templates/events/event_form.html:10
-#: templates/patients/symptom_survey.html:16
+#: .\templates\events\event_form.html:10
+#: .\templates\patients\symptom_survey.html:16
 msgid "Сохранить"
 msgstr "Сактоо"
 
-#: templates/events/event_list.html:3
+#: .\templates\events\event_list.html:3
 msgid "Мероприятия — Паллиатив.kg"
 msgstr "Башкы бет — Паллиатив.kg"
 
-#: templates/events/event_list.html:4
+#: .\templates\events\event_list.html:4
 msgid ""
 "Расписание мероприятий, вебинаров и тренингов Ассоциации паллиативной и "
 "хосписной помощи."
@@ -1179,24 +1214,24 @@ msgstr ""
 "Паллиативдик жана хоспистик жардам көрсөтүү ассоциациясынын иш-чараларынын, "
 "вебинарларынын жана тренингдеринин расписаниеси."
 
-#: templates/events/event_list.html:8
+#: .\templates\events\event_list.html:8
 msgid "Предстоящие мероприятия"
 msgstr "Алдыдагы иш-чаралар"
 
-#: templates/events/event_list.html:26 templates/events/event_list.html:57
-#: templates/main/team.html:45 templates/resources/resource_list.html:54
+#: .\templates\events\event_list.html:26 .\templates\events\event_list.html:57
+#: .\templates\main\team.html:44 .\templates\resources\resource_list.html:53
 msgid "Подробнее"
 msgstr "Кененирээк"
 
-#: templates/events/event_list.html:33
+#: .\templates\events\event_list.html:33
 msgid "Пока нет предстоящих мероприятий"
 msgstr "Азырынча алдыдагы иш-чаралар жок"
 
-#: templates/events/event_list.html:39
+#: .\templates\events\event_list.html:39
 msgid "Прошедшие мероприятия"
 msgstr "Өткөн иш-чаралар"
 
-#: templates/main/about.html:6
+#: .\templates\main\about.html:6
 msgid ""
 "Ассоциация паллиативной и хосписной помощи — профессиональное объединение, "
 "содействующее развитию доступной и качественной паллиативной помощи в "
@@ -1206,55 +1241,55 @@ msgstr ""
 "жеткиликтүү жана сапаттуу паллиативдик жардамдын өнүгүшүнө көмөк көрсөткөн "
 "кесиптик бирикме."
 
-#: templates/main/about.html:13
+#: .\templates\main\about.html:12
 msgid "Об Ассоциации"
 msgstr "Ассоциация жөнүндө"
 
-#: templates/main/about.html:16 templates/main/about.html:26
-#: templates/main/about.html:37 templates/main/about.html:46
-#: templates/main/about.html:55 templates/main/about.html:66
-#: templates/main/about.html:77 templates/main/about.html:88
-#: templates/main/about.html:99 templates/main/about.html:110
+#: .\templates\main\about.html:15 .\templates\main\about.html:25
+#: .\templates\main\about.html:35 .\templates\main\about.html:43
+#: .\templates\main\about.html:55 .\templates\main\about.html:69
+#: .\templates\main\about.html:83 .\templates\main\about.html:97
+#: .\templates\main\about.html:111 .\templates\main\about.html:125
 msgid "Пожалуйста, заполните это поле."
 msgstr "Сураныч, бул талааны толтуруңуз."
 
-#: templates/main/about.html:21
+#: .\templates\main\about.html:20
 msgid "Основные направления нашей работы"
 msgstr "Ишибиздин негизги багыттары"
 
-#: templates/main/about.html:34
+#: .\templates\main\about.html:32
 msgid "Мы верим"
 msgstr "Биз ишенебиз"
 
-#: templates/main/about.html:43
+#: .\templates\main\about.html:40
 msgid "Наш вклад в развитие паллиативной помощи в Кыргызстане"
 msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/main/about.html:53
+#: .\templates\main\about.html:53
 msgid "Законодательство и нормативная база"
 msgstr "Мыйзамдар жана ченемдик база"
 
-#: templates/main/about.html:64
+#: .\templates\main\about.html:67
 msgid "Клинические руководства и стандарты"
 msgstr "Клиникалык колдонмолор жана стандарттар"
 
-#: templates/main/about.html:75
+#: .\templates\main\about.html:81
 msgid "Практические услуги для пациентов"
 msgstr "Бейтаптардын карточкалары"
 
-#: templates/main/about.html:86
+#: .\templates\main\about.html:95
 msgid "Подготовка медицинских специалистов"
 msgstr "Адистер үчүн колдонмо"
 
-#: templates/main/about.html:97
+#: .\templates\main\about.html:109
 msgid "Диалог и защита прав пациентов"
 msgstr "Дары-дармектер жана бейтаптын укуктары"
 
-#: templates/main/about.html:108
+#: .\templates\main\about.html:123
 msgid "Международное сотрудничество"
 msgstr "Эл аралык кызматташтык"
 
-#: templates/main/about.html:120
+#: .\templates\main\about.html:135
 msgid ""
 "Наш вклад — это не отдельные мероприятия, а последовательная работа над тем, "
 "чтобы паллиативная помощь стала частью системы здравоохранения Кыргызстана."
@@ -1263,17 +1298,17 @@ msgstr ""
 "Кыргызстандын саламаттык сактоо системасынын бир бөлүгүнө айланышы үчүн "
 "ырааттуу жүргүзүлүп жаткан иш."
 
-#: templates/main/consultation.html:3
+#: .\templates\main\consultation.html:3
 msgid "Контакты — Паллиатив.kg"
 msgstr "Биз жөнүндө — Паллиатив.kg"
 
-#: templates/main/consultation.html:4
+#: .\templates\main\consultation.html:4
 msgid ""
 "Свяжитесь с Ассоциацией паллиативной и хосписной помощи — контакты, адрес, "
 "форма обратной связи."
 msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
 
-#: templates/main/consultation.html:10
+#: .\templates\main\consultation.html:9
 msgid ""
 "Обращаем Ваше внимание, что обработка заявок не автоматизирована — с работой "
 "над почтой нам помогают наши административные волонтёры. Наш администратор "
@@ -1283,27 +1318,27 @@ msgstr ""
 "бизге административдик волонтёрлор жардам берет. Администраторубуз сизге бир "
 "жумуш күнүнүн ичинде жооп берет."
 
-#: templates/main/consultation.html:14
+#: .\templates\main\consultation.html:13
 msgid "Отправляя форму, вы соглашаетесь с"
 msgstr "Форманы жөнөтүү менен сиз макулдугуңузду билдиресиз:"
 
-#: templates/main/consultation.html:15
+#: .\templates\main\consultation.html:14
 msgid "Политикой обработки данных"
 msgstr "Маалыматтарды иштетүү саясаты"
 
-#: templates/main/contacts.html:63
+#: .\templates\main\contacts.html:62
 msgid "Как нас найти"
 msgstr "Бизди кантип табууга болот"
 
-#: templates/main/home.html:5
+#: .\templates\main\home.html:5
 msgid "Главная — Паллиатив.kg"
 msgstr "Башкы бет — Паллиатив.kg"
 
-#: templates/main/home.html:12
+#: .\templates\main\home.html:12
 msgid "Жизнь без боли — это право каждого."
 msgstr "Оорусуз жашоо — бул ар бир адамдын укугу."
 
-#: templates/main/home.html:15
+#: .\templates\main\home.html:15
 msgid ""
 "Ассоциация паллиативной и хосписной помощи Кыргызской Республики. Мы "
 "объединяем врачей, клиники и семьи, чтобы обеспечить достойное качество "
@@ -1313,22 +1348,22 @@ msgstr ""
 "жашоонун каалаган баскычында татыктуу жашоо сапатын камсыз кылуу үчүн "
 "дарыгерлерди, клиникаларды жана үй-бүлөлөрдү бириктиребиз."
 
-#: templates/main/home.html:34
+#: .\templates\main\home.html:34
 msgid "Для пациентов"
 msgstr "Бейтаптар үчүн"
 
-#: templates/main/home.html:41
+#: .\templates\main\home.html:41
 msgid "Советы по уходу"
 msgstr "Кароо боюнча кеңештер"
 
-#: templates/main/home.html:44
+#: .\templates\main\home.html:44
 msgid ""
 "Как ухаживать за больным дома: кормление, гигиена, психологическая поддержка."
 msgstr ""
 "Бейтапты үйдө кантип багуу керек: тамактандыруу, гигиена, психологиялык "
 "колдоо."
 
-#: templates/main/home.html:53
+#: .\templates\main\home.html:53
 msgid ""
 "Что такое боль, когда нужно обращаться к врачу, и ваше право на "
 "обезболивание."
@@ -1336,11 +1371,11 @@ msgstr ""
 "Оору деген эмне, качан дарыгерге кайрылуу керек жана ооруну басаңдатууга "
 "болгон укугуңуз."
 
-#: templates/main/home.html:59
+#: .\templates\main\home.html:59
 msgid "Доступ к услугам и лекарственным средствам"
 msgstr "Кызматтарга жана дары-дармектерге жеткиликтүүлүк"
 
-#: templates/main/home.html:62
+#: .\templates\main\home.html:62
 msgid ""
 "Как получить помощь паллиативного врача, право на стационарную помощь и "
 "рецепт."
@@ -1348,28 +1383,28 @@ msgstr ""
 "Паллиативдик дарыгердин жардамын кантип алуу керек, стационардык жардамга "
 "жана рецептке болгон укук."
 
-#: templates/main/home.html:76
+#: .\templates\main\home.html:74
 msgid "Для врачей"
 msgstr "Дарыгерлерге"
 
-#: templates/main/home.html:80
+#: .\templates\main\home.html:75
 msgid "Протоколы, лекции и справочные материалы по уходу за пациентами."
 msgstr ""
 "Пациенттерге кароо боюнча протоколдор, лекциялар жана справочный материалдар."
 
-#: templates/main/home.html:114
+#: .\templates\main\home.html:109
 msgid "Все новости"
 msgstr "Жаңылыктар"
 
-#: templates/main/home.html:136
+#: .\templates\main\home.html:131
 msgid "Все мероприятия"
 msgstr "Иш-чаралар"
 
-#: templates/main/home.html:141
+#: .\templates\main\home.html:136
 msgid "Нужна помощь или консультация?"
 msgstr "Жардам же консультация керекпи?"
 
-#: templates/main/home.html:143
+#: .\templates\main\home.html:138
 msgid ""
 "Оставьте заявку — специалисты Ассоциации свяжутся с вами и подскажут, как "
 "получить паллиативную помощь."
@@ -1377,21 +1412,21 @@ msgstr ""
 "Билдирме калтырыңыз — Ассоциациянын адистери сиз менен байланышып, "
 "паллиативдик жардамды кантип алууну айтып беришет."
 
-#: templates/main/privacy_policy.html:4
+#: .\templates\main\privacy_policy.html:4
 msgid "Политика обработки данных — Паллиатив.kg"
 msgstr "Маалыматтарды иштетүү саясаты — Паллиатив.kg"
 
-#: templates/main/privacy_policy.html:5
+#: .\templates\main\privacy_policy.html:5
 msgid ""
 "Политика обработки персональных данных при заполнении формы консультации."
 msgstr ""
 "Консультация алуу формасын толтурууда жеке маалыматтарды иштетүү саясаты."
 
-#: templates/main/privacy_policy.html:9
+#: .\templates\main\privacy_policy.html:9
 msgid "Политика обработки персональных данных"
 msgstr "Жеке маалыматтарды иштетүү саясаты"
 
-#: templates/main/privacy_policy.html:11
+#: .\templates\main\privacy_policy.html:11
 msgid ""
 "Настоящий документ описывает, как Ассоциация паллиативной и хосписной помощи "
 "Кыргызской Республики обрабатывает персональные данные, которые вы передаёте "
@@ -1401,20 +1436,20 @@ msgstr ""
 "көрсөтүү ассоциациясы сиз консультация алууга билдирме толтуруу формасы "
 "аркылуу берген жеке маалыматтарды кантип иштетерин сүрөттөйт."
 
-#: templates/main/privacy_policy.html:13
+#: .\templates\main\privacy_policy.html:13
 msgid "Какие данные собираются"
 msgstr "Кандай маалыматтар чогултулат"
 
-#: templates/main/privacy_policy.html:14
+#: .\templates\main\privacy_policy.html:14
 msgid "Имя, номер телефона, адрес электронной почты, тема обращения."
 msgstr ""
 "Аты-жөнү, телефон номери, электрондук почта дареги, кайрылуунун темасы."
 
-#: templates/main/privacy_policy.html:16
+#: .\templates\main\privacy_policy.html:16
 msgid "Цель обработки"
 msgstr "Иштетүүнүн максаты"
 
-#: templates/main/privacy_policy.html:17
+#: .\templates\main\privacy_policy.html:17
 msgid ""
 "Данные используются исключительно для того, чтобы связаться с вами по вашей "
 "заявке на консультацию."
@@ -1422,21 +1457,21 @@ msgstr ""
 "Маалыматтар сиздин консультация алуу билдирмеңиз боюнча сиз менен байланышуу "
 "үчүн гана колдонулат."
 
-#: templates/main/privacy_policy.html:19
+#: .\templates\main\privacy_policy.html:19
 msgid "Кто имеет доступ"
 msgstr "Кимдер кире алат"
 
-#: templates/main/privacy_policy.html:20
+#: .\templates\main\privacy_policy.html:20
 msgid "Доступ к заявкам имеют сотрудники Ассоциации с ролью «Менеджер»."
 msgstr ""
 "Билдирмелерге Ассоциациянын «Менеджер» ролундагы кызматкерлери гана кире "
 "алышат."
 
-#: templates/main/privacy_policy.html:22
+#: .\templates\main\privacy_policy.html:22
 msgid "Срок хранения"
 msgstr "Сактоо мөөнөтү"
 
-#: templates/main/privacy_policy.html:23
+#: .\templates\main\privacy_policy.html:23
 msgid ""
 "Данные заявки хранятся в течение 3 (трёх) лет с момента обращения, после "
 "чего удаляются."
@@ -1444,11 +1479,11 @@ msgstr ""
 "Билдирменин маалыматтары кайрылган учурдан тартып 3 (үч) жыл бою сакталат, "
 "андан кийин өчүрүлөт."
 
-#: templates/main/privacy_policy.html:25
+#: .\templates\main\privacy_policy.html:25
 msgid "Как удалить свои данные"
 msgstr "Өз маалыматтарын кантип өчүрүү керек"
 
-#: templates/main/privacy_policy.html:26
+#: .\templates\main\privacy_policy.html:26
 msgid ""
 "Чтобы удалить свои данные, оставьте заявку по номеру WhatsApp или адресу "
 "электронной почты, указанным на странице"
@@ -1456,27 +1491,27 @@ msgstr ""
 "Маалыматтарыңызды өчүрүү үчүн баракчада көрсөтүлгөн WhatsApp номери же "
 "электрондук почта дареги аркылуу билдирме калтырыңыз"
 
-#: templates/main/search_results.html:16
+#: .\templates\main\search_results.html:16
 msgid "Введите поисковый запрос"
 msgstr "Издөө сурамын киргизиңиз"
 
-#: templates/main/search_results.html:19
+#: .\templates\main\search_results.html:19
 msgid "Найти"
 msgstr "Табуу"
 
-#: templates/main/search_results.html:26
+#: .\templates\main\search_results.html:26
 msgid "Введите не менее 2 символов для поиска."
 msgstr "Издөө үчүн кеминде 2 символ киргизиңиз."
 
-#: templates/main/search_results.html:28
+#: .\templates\main\search_results.html:28
 msgid "Введите поисковый запрос."
 msgstr "Издөө сурамын киргизиңиз."
 
-#: templates/main/search_results.html:92
+#: .\templates\main\search_results.html:92
 msgid "По вашему запросу ничего не найдено."
 msgstr "Сиздин суранычыңыз боюнча эч нерсе табылган жок."
 
-#: templates/main/team.html:5
+#: .\templates\main\team.html:5
 msgid ""
 "Учредители, руководство и команда Ассоциации паллиативной и хосписной помощи "
 "Кыргызской Республики."
@@ -1484,19 +1519,19 @@ msgstr ""
 "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясынын "
 "уюштуруучулары, жетекчилиги жана командасы."
 
-#: templates/main/team.html:33
+#: .\templates\main\team.html:32
 msgid "Фотография появится позже"
 msgstr "Сүрөт кийинчерээк кошулат"
 
-#: templates/news/post_detail.html:35
+#: .\templates\news\post_detail.html:34
 msgid "Вернуться к новостям"
 msgstr "Жаңылыктарга кайтуу"
 
-#: templates/news/post_list.html:3
+#: .\templates\news\post_list.html:3
 msgid "Новости — Паллиатив.kg"
 msgstr "Биз жөнүндө — Паллиатив.kg"
 
-#: templates/news/post_list.html:4
+#: .\templates\news\post_list.html:4
 msgid ""
 "Новости и публикации Ассоциации паллиативной и хосписной помощи Кыргызской "
 "Республики."
@@ -1504,127 +1539,129 @@ msgstr ""
 "Кыргыз Республикасынын паллиативдик жана хоспистик жардам көрсөтүү "
 "ассоциациясынын жаңылыктары жана басылмалары."
 
-#: templates/news/post_list.html:13
+#: .\templates\news\post_list.html:11
 msgid "Категория:"
 msgstr "Категория:"
 
-#: templates/news/post_list.html:17
+#: .\templates\news\post_list.html:15
 msgid "Все категории"
 msgstr "Бардык категориялар"
 
-#: templates/news/post_list.html:28
+#: .\templates\news\post_list.html:26
 msgid "Дата от:"
 msgstr "Күнүнөн:"
 
-#: templates/news/post_list.html:33
+#: .\templates\news\post_list.html:31
 msgid "Дата до:"
 msgstr "Күнүнө чейин:"
 
-#: templates/news/post_list.html:38
+#: .\templates\news\post_list.html:36
 msgid "Фильтровать"
 msgstr "Чыпкалоо"
 
-#: templates/news/post_list.html:39
+#: .\templates\news\post_list.html:37
 msgid "Сбросить"
 msgstr "Түшүрүү"
 
-#: templates/news/post_list.html:73
+#: .\templates\news\post_list.html:70
 msgid "Читать дальше"
 msgstr "Толугу менен окуу"
 
-#: templates/news/post_list.html:82
+#: .\templates\news\post_list.html:79
 msgid "Новостей пока нет."
 msgstr "Азырынча жаңылыктар жок."
 
-#: templates/partial/pagination.html:2
+#: .\templates\partial\pagination.html:2
 msgid "Навигация по страницам"
 msgstr "Барактар боюнча чабыттоо"
 
-#: templates/partial/pagination.html:5
+#: .\templates\partial\pagination.html:5
 msgid "В начало"
 msgstr "Башына"
 
-#: templates/partial/pagination.html:12 templates/partial/pagination.html:17
+#: .\templates\partial\pagination.html:12
+#: .\templates\partial\pagination.html:17
 msgid "Назад"
 msgstr "Артка"
 
-#: templates/partial/pagination.html:23
+#: .\templates\partial\pagination.html:23
 msgid "Стр."
 msgstr "Бет"
 
-#: templates/partial/pagination.html:29
+#: .\templates\partial\pagination.html:29
 msgid "из"
 msgstr "ичинен"
 
-#: templates/partial/pagination.html:40 templates/partial/pagination.html:45
+#: .\templates\partial\pagination.html:40
+#: .\templates\partial\pagination.html:45
 msgid "Вперед"
 msgstr "Алга"
 
-#: templates/partial/pagination.html:49
+#: .\templates\partial\pagination.html:49
 msgid "В конец"
 msgstr "Аягына"
 
-#: templates/patients/doctor_dashboard.html:22
-#: templates/patients/patient_dashboard.html:20
+#: .\templates\patients\doctor_dashboard.html:22
+#: .\templates\patients\patient_dashboard.html:20
 msgid "не указаны"
 msgstr "көрсөтүлгөн эмес"
 
-#: templates/patients/doctor_dashboard.html:28
-#: templates/patients/patient_dashboard.html:36
+#: .\templates\patients\doctor_dashboard.html:28
+#: .\templates\patients\patient_dashboard.html:36
 msgid "Рекомендованные материалы"
 msgstr "Сунушталган материалдар"
 
-#: templates/patients/doctor_dashboard.html:45
-#: templates/patients/patient_dashboard.html:53
+#: .\templates\patients\doctor_dashboard.html:45
+#: .\templates\patients\patient_dashboard.html:53
 msgid "Нет подходящих материалов по текущим симптомам."
 msgstr "Учурдагы симптомдорго ылайыктуу материалдар жок."
 
-#: templates/patients/doctor_dashboard.html:47
-#: templates/patients/patient_dashboard.html:55
+#: .\templates\patients\doctor_dashboard.html:47
+#: .\templates\patients\patient_dashboard.html:55
 msgid "Симптомы не указаны."
 msgstr "Белгилер көрсөтүлгөн эмес."
 
-#: templates/patients/doctor_dashboard.html:61
+#: .\templates\patients\doctor_dashboard.html:61
 msgid "За вами пока не закреплено ни одного пациента."
 msgstr "Азырынча сизге бир дагы пациент бекитилген эмес."
 
-#: templates/patients/patient_dashboard.html:16
+#: .\templates\patients\patient_dashboard.html:16
 msgid "Текущие симптомы"
 msgstr "Учурдагы симптомдор"
 
-#: templates/patients/patient_dashboard.html:25
+#: .\templates\patients\patient_dashboard.html:25
 msgid "Отметить самочувствие"
 msgstr "Өзүңүздү кандай сезип жатканыңызды белгилөө"
 
-#: templates/patients/patient_dashboard.html:68
+#: .\templates\patients\patient_dashboard.html:68
 msgid "У вас пока нет созданной карточки."
 msgstr "Сизде азырынча түзүлгөн карта жок."
 
-#: templates/patients/symptom_survey.html:8
+#: .\templates\patients\symptom_survey.html:8
 msgid "Как вы себя чувствуете?"
 msgstr "Өзүңүздү кандай сезип жатасыз?"
 
-#: templates/resources/resource_detail.html:11
+#: .\templates\resources\resource_detail.html:11
 msgid "Файлы"
 msgstr "Файлдар"
 
-#: templates/resources/resource_detail.html:22
+#: .\templates\resources\resource_detail.html:22
 msgid "Скачать все файлы (ZIP)"
 msgstr "Бардык файлдарды жүктөп алуу (ZIP)"
 
-#: templates/resources/resource_detail.html:28
+#: .\templates\resources\resource_detail.html:28
 msgid "Видео"
 msgstr "Видео"
 
-#: templates/resources/resource_detail.html:47
+#: .\templates\resources\resource_detail.html:47
 msgid "Дополнительных материалов нет."
 msgstr "Кошумча материалдар жок."
 
-#: templates/resources/resource_list.html:3
+#: .\templates\resources\resource_list.html:3
 msgid "Ресурсы — Паллиатив.kg"
 msgstr "Ресурстар — Паллиатив.kg"
 
-#: templates/resources/resource_list.html:4
+#: .\templates\resources\resource_list.html:4
 msgid ""
 "Справочные материалы для специалистов и ухаживающих — уход за пациентами, "
 "симптомы, консультации."
@@ -1632,19 +1669,15 @@ msgstr ""
 "Адистер жана бейтаптарды багуучулар үчүн маалымдама материалдары — "
 "бейтаптарды багуу, симптомдор, консультациялар."
 
-#: templates/resources/resource_list.html:12
-msgid "Все"
-msgstr "Бардыгы"
-
-#: templates/resources/resource_list.html:26
+#: .\templates\resources\resource_list.html:25
 msgid "Все подкатегории"
 msgstr "Бардык подкатегориялар"
 
-#: templates/resources/resource_list.html:34
+#: .\templates\resources\resource_list.html:33
 msgid "Все симптомы"
 msgstr "Бардык симптомдор"
 
-#: templates/resources/resource_list.html:62
+#: .\templates\resources\resource_list.html:61
 msgid "В этой подкатегории пока нет материалов."
 msgstr "Бул подкатегорияда азырынча материалдар жок"
 
