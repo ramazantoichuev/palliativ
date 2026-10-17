@@ -6,6 +6,7 @@ from django.utils import translation
 
 from news.models import Category, Post
 from news.tests.factories import make_image
+from django.conf import settings
 
 
 class PostListViewTest(TestCase):
@@ -81,3 +82,31 @@ class PostListViewTest(TestCase):
             response = self.client.get(self.url)
             self.assertContains(response, post.image.url)
             self.assertNotContains(response, "main/images/news-placeholder.jpg")
+
+    def _set_category_count(self, total):
+        for i in range(Category.objects.count(), total):
+            Category.objects.create(name=f"cat{i}")
+        self.assertEqual(Category.objects.count(), total)
+
+    def _get_in_russian(self):
+        self.addCleanup(translation.activate, "ru")
+        self.client.cookies[settings.LANGUAGE_COOKIE_NAME] = "ru"
+        return self.client.get(self.url)
+
+    def test_up_to_seven_categories_have_no_more_button(self):
+        self._set_category_count(7)
+        response = self._get_in_russian()
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Ещё")
+
+    def test_eight_categories_show_more_button(self):
+        self._set_category_count(8)
+        response = self._get_in_russian()
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Ещё 3")
+
+    def test_eight_categories_show_more_button(self):
+        self._set_category_count(8)
+        response = self._get_in_russian()
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Ещё 3")
