@@ -223,6 +223,16 @@
   border-radius: .75rem;
   background: color-mix(in srgb, var(--deep-blue) 4%, var(--white));
 }
+.resource-kind {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  color: var(--deep-blue);
+  background: color-mix(in srgb, var(--deep-blue) 8%, var(--white));
+}
 .file-row__icon {
   flex-shrink: 0;
   width: 36px;
@@ -246,4 +256,26 @@
   .file-row { flex-wrap: wrap; }
   .file-row__name { flex-basis: calc(100% - 52px); }
   .file-row__download { margin-left: 48px; }
+}
+.filter-panel { padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; overflow: visible; }
+.filter-group-label {
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--bs-secondary-color); margin-bottom: .5rem;
+}
+.chip-scroll { display: flex; flex-wrap: wrap; gap: .5rem; }
+.filter-chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .35rem .9rem; border-radius: 999px;
+  border: 1px solid var(--deep-blue); background: transparent;
+  color: var(--deep-blue); text-decoration: none; line-height: 1.4;
+}
+.filter-chip:hover { background: color-mix(in srgb, var(--mustard) 12%, var(--white)); }
+.filter-chip.is-active { background: var(--deep-blue); color: var(--white); }
+.filter-more { padding: .75rem; min-width: 18rem; }
+.filter-more .filter-chip { margin: 0 .35rem .5rem 0; }
+.filter-symptom { border-top: 1px solid var(--bs-border-color); padding-top: 1rem; }
+
+@media (max-width: 767.98px) {
+  .chip-scroll { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .25rem; }
+  .chip-scroll > * { flex-shrink: 0; }
 }
