@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.generic import DetailView, ListView
 
+from .constants import RESOURCES_PER_PAGE
 from .models.resources import Resource
 
 logger = logging.getLogger(__name__)
@@ -17,10 +18,14 @@ class ResourceListView(ListView):
     model = Resource
     template_name = "resources/resource_list.html"
     context_object_name = "resources"
-    paginate_by = 12
+    paginate_by = RESOURCES_PER_PAGE
 
     def get_queryset(self):
-        queryset = Resource.objects.all().order_by("-created_at")
+        queryset = (
+            Resource.objects.all()
+            .prefetch_related("files", "videos")
+            .order_by("-created_at")
+        )
 
         audience = self.request.GET.get("audience")
         subcategory = self.request.GET.get("subcategory")
