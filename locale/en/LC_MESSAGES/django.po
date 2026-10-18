@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 11:52+0000\n"
+"POT-Creation-Date: 2026-10-18 14:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1483,34 +1483,31 @@ msgid "Все"
 msgstr "All"
 
 #: templates/news/_filters.html:20
+#, python-format
 msgid "Ещё %(counter)s"
 msgid_plural "Ещё %(counter)s"
 msgstr[0] "%(counter)s more"
 msgstr[1] "%(counter)s more"
 
-#: templates/news/_filters.html:39
+#: templates/news/_filters.html:39 templates/news/_filters.html:56
 msgid "Период"
 msgstr "Period"
 
-#: templates/news/_filters.html:43 templates/news/_filters.html:76
-msgid "Применить"
-msgstr "Apply"
-
-#: templates/news/_filters.html:44 templates/news/_filters.html:78
-msgid "Сбросить"
-msgstr "Reset"
-
-#: templates/news/_filters.html:54
-msgid "Period"
-msgstr "Period"
-
-#: templates/news/_filters.html:68
+#: templates/news/_filters.html:40 templates/news/_filters.html:70
 msgid "С"
 msgstr "From"
 
-#: templates/news/_filters.html:72
+#: templates/news/_filters.html:43 templates/news/_filters.html:74
 msgid "По"
 msgstr "To"
+
+#: templates/news/_filters.html:45 templates/news/_filters.html:78
+msgid "Применить"
+msgstr "Apply"
+
+#: templates/news/_filters.html:46 templates/news/_filters.html:80
+msgid "Сбросить"
+msgstr "Reset"
 
 #: templates/news/post_detail.html:34
 msgid "Вернуться к новостям"
@@ -1536,31 +1533,32 @@ msgstr "Read more"
 msgid "Новостей пока нет."
 msgstr "No news available yet."
 
-#: templates/partial/pagination.html:2
+#: templates/partial/pagination.html:3
 msgid "Навигация по страницам"
 msgstr "Page navigation"
 
-#: templates/partial/pagination.html:5
+#: templates/partial/pagination.html:6
 msgid "В начало"
 msgstr "To the first page"
 
-#: templates/partial/pagination.html:12 templates/partial/pagination.html:17
+#: templates/partial/pagination.html:13 templates/partial/pagination.html:18
 msgid "Назад"
 msgstr "Back"
 
-#: templates/partial/pagination.html:23
+#: templates/partial/pagination.html:24
 msgid "Стр."
 msgstr "Page"
 
-#: templates/partial/pagination.html:29
-msgid "из"
-msgstr "of"
+#: templates/partial/pagination.html:30
+#, python-format
+msgid "из %(total)s"
+msgstr "of %(total)s"
 
-#: templates/partial/pagination.html:40 templates/partial/pagination.html:45
+#: templates/partial/pagination.html:46 templates/partial/pagination.html:51
 msgid "Вперед"
 msgstr "Forward"
 
-#: templates/partial/pagination.html:49
+#: templates/partial/pagination.html:55
 msgid "В конец"
 msgstr "To the last page"
 
@@ -1643,15 +1641,3 @@ msgstr "All symptoms"
 #: templates/resources/resource_list.html:61
 msgid "В этой подкатегории пока нет материалов."
 msgstr "There are no material in this subcategory"
-
-#~ msgid "г. Бишкек, ул. Юдахина 61"
-#~ msgstr "Bishkek, 61 Yudakhin St."
-
-#~ msgid "Информация о том, как получить помощь и куда обратиться."
-#~ msgstr "Information on how to receive help and whom to contact"
-
-#~ msgid "Для клиник"
-#~ msgstr "For clinics"
-
-#~ msgid "Присоединяйтесь к сети паллиативной помощи в вашем регионе."
-#~ msgstr "Join the network of palliative help in your region"

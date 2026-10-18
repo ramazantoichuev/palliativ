@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 11:52+0000\n"
+"POT-Creation-Date: 2026-10-18 14:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1498,29 +1498,25 @@ msgid "Ещё %(counter)s"
 msgid_plural "Ещё %(counter)s"
 msgstr[0] "Дагы %(counter)s"
 
-#: templates/news/_filters.html:39
+#: templates/news/_filters.html:39 templates/news/_filters.html:56
 msgid "Период"
 msgstr "Мөөнөтү"
 
-#: templates/news/_filters.html:43 templates/news/_filters.html:76
-msgid "Применить"
-msgstr "Колдонуу"
-
-#: templates/news/_filters.html:44 templates/news/_filters.html:78
-msgid "Сбросить"
-msgstr "Түшүрүү"
-
-#: templates/news/_filters.html:54
-msgid "Period"
-msgstr "Мөөнөтү"
-
-#: templates/news/_filters.html:68
+#: templates/news/_filters.html:40 templates/news/_filters.html:70
 msgid "С"
 msgstr "Баштап"
 
-#: templates/news/_filters.html:72
+#: templates/news/_filters.html:43 templates/news/_filters.html:74
 msgid "По"
 msgstr "Чейин"
+
+#: templates/news/_filters.html:45 templates/news/_filters.html:78
+msgid "Применить"
+msgstr "Колдонуу"
+
+#: templates/news/_filters.html:46 templates/news/_filters.html:80
+msgid "Сбросить"
+msgstr "Түшүрүү"
 
 #: templates/news/post_detail.html:34
 msgid "Вернуться к новостям"
@@ -1546,31 +1542,32 @@ msgstr "Толугу менен окуу"
 msgid "Новостей пока нет."
 msgstr "Азырынча жаңылыктар жок."
 
-#: templates/partial/pagination.html:2
+#: templates/partial/pagination.html:3
 msgid "Навигация по страницам"
 msgstr "Барактар боюнча чабыттоо"
 
-#: templates/partial/pagination.html:5
+#: templates/partial/pagination.html:6
 msgid "В начало"
 msgstr "Башына"
 
-#: templates/partial/pagination.html:12 templates/partial/pagination.html:17
+#: templates/partial/pagination.html:13 templates/partial/pagination.html:18
 msgid "Назад"
 msgstr "Артка"
 
-#: templates/partial/pagination.html:23
+#: templates/partial/pagination.html:24
 msgid "Стр."
 msgstr "Бет"
 
-#: templates/partial/pagination.html:29
-msgid "из"
-msgstr "ичинен"
+#: templates/partial/pagination.html:30
+#, python-format
+msgid "из %(total)s"
+msgstr "%(total)s ичинен"
 
-#: templates/partial/pagination.html:40 templates/partial/pagination.html:45
+#: templates/partial/pagination.html:46 templates/partial/pagination.html:51
 msgid "Вперед"
 msgstr "Алга"
 
-#: templates/partial/pagination.html:49
+#: templates/partial/pagination.html:55
 msgid "В конец"
 msgstr "Аягына"
 
@@ -1653,30 +1650,3 @@ msgstr "Бардык симптомдор"
 #: templates/resources/resource_list.html:61
 msgid "В этой подкатегории пока нет материалов."
 msgstr "Бул подкатегорияда азырынча материалдар жок"
-
-#~ msgid "Категория:"
-#~ msgstr "Категория:"
-
-#~ msgid "Все категории"
-#~ msgstr "Бардык категориялар"
-
-#~ msgid "Дата от:"
-#~ msgstr "Күнүнөн:"
-
-#~ msgid "Дата до:"
-#~ msgstr "Күнүнө чейин:"
-
-#~ msgid "Фильтровать"
-#~ msgstr "Чыпкалоо"
-
-#~ msgid "г. Бишкек, ул. Юдахина 61"
-#~ msgstr "Бишкек ш., Юдахин көч. 61"
-
-#~ msgid "Информация о том, как получить помощь и куда обратиться."
-#~ msgstr "Жардам кантип алууга жана кайда кайрылууга болору жөнүндө маалымат."
-
-#~ msgid "Для клиник"
-#~ msgstr "Клиникалар үчүн"
-
-#~ msgid "Присоединяйтесь к сети паллиативной помощи в вашем регионе."
-#~ msgstr "Аймагыңыздагы паллиативдик жардам тармагына кошулуңуз."

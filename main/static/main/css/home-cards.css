@@ -178,6 +178,7 @@
   line-height: 1.2;
   padding-top: .9rem;
 }
+/* News filters (Ticket 114) */
 .filter-chip {
   display: inline-flex;
   align-items: center;
@@ -256,21 +257,7 @@
   border-radius: 50%;
 }
 @media (prefers-reduced-motion: reduce) {
-  .card-tile,
-  .card-tile__arrow,
-  .card-link-item::after,
-  .card-link-item::before,
   .filter-chip {
     transition: none !important;
-  }
-  .card-tile:hover,
-  .card-tile:focus-visible {
-    transform: none;
-  }
-  .card-tile:hover .card-tile__arrow,
-  .card-tile:focus-visible .card-tile__arrow,
-  .card-link-item:hover::after,
-  .card-link-item:hover::before {
-    transform: translate(0, -50%) rotate(45deg);
   }
 }

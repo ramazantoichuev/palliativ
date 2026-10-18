@@ -5,21 +5,25 @@ from news.models.posts import Category, Post
 NEWS_CATEGORY_VISIBLE = 5
 NEWS_CATEGORY_MORE_THRESHOLD = 7
 
+
 def get_split_categories(categories_list, active_category_id=None):
     if not categories_list:
         return [], []
-    total_count = len(categories_list)
-    if total_count <= NEWS_CATEGORY_MORE_THRESHOLD:
+    if len(categories_list) <= NEWS_CATEGORY_MORE_THRESHOLD:
         return list(categories_list), []
+    try:
+        active_id = int(active_category_id)
+    except (TypeError, ValueError):
+        active_id = None
+
     visible = list(categories_list[:NEWS_CATEGORY_VISIBLE])
     more = list(categories_list[NEWS_CATEGORY_VISIBLE:])
 
-    if active_category_id:
-        active_category_id = int(active_category_id)
-        in_more_idx = next((i for i, c in enumerate(more) if c.id == active_category_id), None)
-        if in_more_idx is not None:
-            active_item = more.pop(in_more_idx)
-            replaced_item = visible.pop(-1)
+    if active_id is not None:
+        idx = next((i for i, c in enumerate(more) if c.id == active_id), None)
+        if idx is not None:
+            active_item = more.pop(idx)
+            replaced_item = visible.pop()
             visible.append(active_item)
             more.insert(0, replaced_item)
     return visible, more
