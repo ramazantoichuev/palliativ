@@ -1053,7 +1053,7 @@ msgstr "Жабуу"
 
 #: templates/base.html:56 templates/main/contacts.html:68
 msgid "Ассоциация паллиативной и хосписной помощи"
-msgstr "Паллиативдик жана хоспистик жардам ассоциациясы"
+msgstr "Паллиативдик жана хоспистик жардам боюнча ассоциациясы"
 
 #: templates/base.html:61 templates/base.html:196 templates/base.html:197
 #: templates/main/search_results.html:7
