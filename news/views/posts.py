@@ -2,6 +2,31 @@ from django.views.generic import DetailView, ListView
 
 from news.models.posts import Category, Post
 
+NEWS_CATEGORY_VISIBLE = 5
+NEWS_CATEGORY_MORE_THRESHOLD = 7
+
+
+def get_split_categories(categories_list, active_category_id=None):
+    if not categories_list:
+        return [], []
+    if len(categories_list) <= NEWS_CATEGORY_MORE_THRESHOLD:
+        return list(categories_list), []
+    try:
+        active_id = int(active_category_id)
+    except (TypeError, ValueError):
+        active_id = None
+
+    visible = list(categories_list[:NEWS_CATEGORY_VISIBLE])
+    more = list(categories_list[NEWS_CATEGORY_VISIBLE:])
+
+    if active_id is not None:
+        idx = next((i for i, c in enumerate(more) if c.id == active_id), None)
+        if idx is not None:
+            active_item = more.pop(idx)
+            replaced_item = visible.pop()
+            visible.append(active_item)
+            more.insert(0, replaced_item)
+    return visible, more
 
 class PostListView(ListView):
     model = Post
@@ -30,7 +55,18 @@ class PostListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["categories"] = Category.objects.all()
+        categories_queryset = Category.objects.all()
+        context["categories"] = categories_queryset
+        category_id = self.request.GET.get("category_id")
+        active_category = None
+        if category_id and category_id.isdigit():
+            active_category = next((c for c in categories_queryset if c.id == int(category_id)), None)
+        visible_cats, more_cats = get_split_categories(categories_queryset, category_id)
+        context.update({
+            "active_category": active_category,
+            "visible_categories": visible_cats,
+            "more_categories": more_cats,
+        })
         return context
 
 
