@@ -231,3 +231,43 @@ footer a:hover {
 .form-floating > .form-control:focus::placeholder {
     color: var(--bs-secondary-color);
 }
+
+/* Header two-tier (Ticket 118) */
+html { scroll-padding-top: 56px; }
+
+.hdr-top {
+    background: var(--bs-body-bg);
+    border-bottom: 1px solid var(--bs-border-color);
+}
+.brand-name {
+    text-wrap: balance; /* ровные строки названия */
+    font-weight: 700;
+    color: var(--deep-blue);
+    font-size: 1.05rem;
+    line-height: 1.2;
+    max-width: 21rem;
+}
+@media (min-width: 1400px) {
+    .brand-name { font-size: 1.15rem; max-width: 26rem; }
+}
+@media (max-width: 767.98px) {
+    .brand-name { font-size: .9rem; max-width: none; }
+}
+.hdr-top .navbar-pill {
+    color: var(--deep-blue);
+    border-color: color-mix(in srgb, var(--deep-blue) 35%, transparent);
+    background: transparent;
+}
+.hdr-top .navbar-pill.active {
+    background: var(--mustard);
+    border-color: var(--mustard);
+    color: var(--text-on-mustard);
+}
+.hdr-menu .nav-link { white-space: nowrap; }
+.hdr-menu .navbar-nav { flex-wrap: nowrap; }
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .hdr-menu .nav-link { font-size: .95rem; }
+}
+@media (max-width: 419.98px) { /* узкие телефоны: кнопка заявки в 2 строки */
+    .hdr-menu .btn-primary { white-space: normal; line-height: 1.15; text-align: center; }
+}

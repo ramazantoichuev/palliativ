@@ -1,0 +1,31 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<button class="btn btn-sm navbar-pill js-search-toggle" type="button"
+        id="{{ toggle_id|default:'headerSearchToggle' }}"
+        aria-label="{% translate 'Поиск' %}"
+        aria-expanded="false"
+        aria-controls="headerSearchBar">
+    <i class="fas fa-search"></i>
+</button>
+<a href="{% url 'main:new-consultation' %}"
+   class="btn btn-primary btn-sm text-nowrap"
+   aria-label="{% translate 'Оставить заявку на консультацию' %}">
+    {% translate "Оставить заявку" %}
+</a>
+<form action="{% url 'set_language' %}" method="post"
+      class="d-flex gap-1"
+      aria-label="{% translate 'Выбор языка' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for language in languages %}
+        <button type="submit" name="language" value="{{ language.code }}"
+                class="btn btn-sm navbar-pill{% if language.code == LANGUAGE_CODE %} active{% endif %}"
+                {% if language.code == LANGUAGE_CODE %}aria-current="true"{% endif %}
+                aria-label="{{ language.name_local }}"
+                lang="{{ language.code }}">
+            {{ language.code|upper }}
+        </button>
+    {% endfor %}
+</form>
