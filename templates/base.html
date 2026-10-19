@@ -174,10 +174,12 @@
                         </form>
                     </li>
                     {% else %}
+                    {% if registration_open %}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{% url 'accounts:login' %}">{% translate "Войти" %}</a>
                     </li>
+                    {% endif %}
                     {% endif %}
 
                 </ul>

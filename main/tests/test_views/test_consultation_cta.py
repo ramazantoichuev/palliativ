@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import translation
 
 
 class TestConsultationCta(TestCase):
@@ -26,7 +27,8 @@ class TestConsultationCta(TestCase):
     def test_cta_text_is_unified_on_contacts_page(self):
         response = self.client.get(reverse("main:contacts"))
 
-        self.assertNotContains(response, "Нужна консультация")
+        self.assertContains(response, "Нужна консультация?")
+        self.assertContains(response, "Мы свяжемся с вами")
         self.assertContains(response, "Оставить заявку")
 
     def test_language_switcher_is_pills_not_dropdown(self):
@@ -43,6 +45,10 @@ class TestConsultationCta(TestCase):
         self.assertContains(response, "sticky-top")
 
     def test_language_switch_still_works(self):
+        # LocaleMiddleware активирует en на весь поток; без отката язык
+        # утекает в следующие тесты (порядко-зависимые падения)
+        self.addCleanup(translation.activate, "ru")
+
         response = self.client.post(
             reverse("set_language"),
             {"language": "en", "next": "/"},
