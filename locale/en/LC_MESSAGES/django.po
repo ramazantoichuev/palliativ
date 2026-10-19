@@ -1641,3 +1641,15 @@ msgstr "All symptoms"
 #: templates/resources/resource_list.html:61
 msgid "В этой подкатегории пока нет материалов."
 msgstr "There are no material in this subcategory"
+
+#: templates/main/contacts.html
+msgid "Как нас найти в 2ГИС"
+msgstr "How to find us on 2GIS"
+
+#: templates/main/contacts.html
+msgid "Нужна консультация?"
+msgstr "Need a consultation?"
+
+#: templates/main/contacts.html
+msgid "Мы свяжемся с вами"
+msgstr "We will contact you"
