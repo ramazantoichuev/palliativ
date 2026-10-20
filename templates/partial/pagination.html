@@ -1,14 +1,15 @@
 {% load i18n %}
+{# Фильтры сохраняются через {% querystring %}. Если передан явный query — прежнее поведение. #}
 <nav aria-label="{% translate "Навигация по страницам" %}" class="d-flex justify-content-center my-5">
     <ul class="pagination align-items-center mb-0">
         <li class="page-item">
-            <a class="page-link text-dark" href="?page=1{% if query %}&{{ query }}{% endif %}" title="{% translate "В начало" %}">
+            <a class="page-link text-dark" href="{% if query %}?page=1&{{ query }}{% else %}{% querystring page=1 %}{% endif %}" title="{% translate "В начало" %}">
                 &laquo;
             </a>
         </li>
         {% if page_obj.has_previous %}
             <li class="page-item">
-                <a class="page-link text-dark" href="?page={{ page_obj.previous_page_number }}{% if query %}&{{ query }}{% endif %}">
+                <a class="page-link text-dark" href="{% if query %}?page={{ page_obj.previous_page_number }}&{{ query }}{% else %}{% querystring page=page_obj.previous_page_number %}{% endif %}">
                     {% translate "Назад" %}
                 </a>
             </li>
@@ -26,17 +27,22 @@
                            value="{{ page_obj.number }}"
                            min="1"
                            max="{{ page_obj.paginator.num_pages }}">
-                    <span class="input-group-text bg-light text-muted small">{% translate "из" %} {{ page_obj.paginator.num_pages }}</span>
+                    <span class="input-group-text bg-light text-muted small">{% blocktranslate with total=page_obj.paginator.num_pages %}из {{ total }}{% endblocktranslate %}</span>
                 </div>
                 {% if search_value %}
                     <input type="hidden" name="search" value="{{ search_value }}">
+                {% endif %}
+                {% if not query %}
+                    {% for key, values in request.GET.lists %}
+                        {% if key != "page" %}{% if key != "search" or not search_value %}{% for value in values %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}{% endif %}{% endif %}
+                    {% endfor %}
                 {% endif %}
                 <button type="submit" class="d-none"></button>
             </form>
         </li>
         {% if page_obj.has_next %}
             <li class="page-item">
-                <a class="page-link text-dark" href="?page={{ page_obj.next_page_number }}{% if query %}&{{ query }}{% endif %}">
+                <a class="page-link text-dark" href="{% if query %}?page={{ page_obj.next_page_number }}&{{ query }}{% else %}{% querystring page=page_obj.next_page_number %}{% endif %}">
                     {% translate "Вперед" %}
                 </a>
             </li>
@@ -46,7 +52,7 @@
             </li>
         {% endif %}
         <li class="page-item">
-            <a class="page-link text-dark" href="?page={{ page_obj.paginator.num_pages }}{% if query %}&{{ query }}{% endif %}" title="{% translate "В конец" %}">
+            <a class="page-link text-dark" href="{% if query %}?page={{ page_obj.paginator.num_pages }}&{{ query }}{% else %}{% querystring page=page_obj.paginator.num_pages %}{% endif %}" title="{% translate "В конец" %}">
                 &raquo;
             </a>
         </li>
