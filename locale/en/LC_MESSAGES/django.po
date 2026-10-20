@@ -1653,3 +1653,15 @@ msgstr "Need a consultation?"
 #: templates/main/contacts.html
 msgid "Мы свяжемся с вами"
 msgstr "We will contact you"
+
+msgid "Аудитория"
+msgstr "Audience"
+
+msgid "Скачать"
+msgstr "Download"
+
+msgid "Фото"
+msgstr "Photo"
+
+msgid "Ещё %(count)s"
+msgstr "%(count)s more"

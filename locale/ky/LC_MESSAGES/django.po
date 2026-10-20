@@ -1650,3 +1650,15 @@ msgstr "Бардык симптомдор"
 #: templates/resources/resource_list.html:61
 msgid "В этой подкатегории пока нет материалов."
 msgstr "Бул подкатегорияда азырынча материалдар жок"
+
+msgid "Аудитория"
+msgstr "Аудитория"
+
+msgid "Скачать"
+msgstr "Жүктөп алуу"
+
+msgid "Фото"
+msgstr "Сүрөт"
+
+msgid "Ещё %(count)s"
+msgstr "Дагы %(count)s"
