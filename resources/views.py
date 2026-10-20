@@ -8,7 +8,11 @@ from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.generic import DetailView, ListView
 
+from .constants import RESOURCES_PER_PAGE, RESOURCE_AUDIENCE_CHIPS_MAX
 from .models.resources import Resource
+
+from urllib.parse import urlencode
+from .utils import split_visible_hidden
 
 logger = logging.getLogger(__name__)
 
@@ -17,10 +21,14 @@ class ResourceListView(ListView):
     model = Resource
     template_name = "resources/resource_list.html"
     context_object_name = "resources"
-    paginate_by = 12
+    paginate_by = RESOURCES_PER_PAGE
 
     def get_queryset(self):
-        queryset = Resource.objects.all().order_by("-created_at")
+        queryset = (
+            Resource.objects.all()
+            .prefetch_related("files", "videos")
+            .order_by("-created_at")
+        )
 
         audience = self.request.GET.get("audience")
         subcategory = self.request.GET.get("subcategory")
@@ -45,6 +53,16 @@ class ResourceListView(ListView):
         context["selected_audience"] = self.request.GET.get("audience", "")
         context["selected_subcategory"] = self.request.GET.get("subcategory", "")
         context["selected_symptom"] = self.request.GET.get("symptom", "")
+        visible, hidden = split_visible_hidden(Resource.SUBCATEGORY_CHOICES, context["selected_subcategory"])
+        context["audience_chips"] = list(Resource.AUDIENCE_CHOICES)[:RESOURCE_AUDIENCE_CHIPS_MAX]
+        context["subcategory_visible"] = visible
+        context["subcategory_hidden"] = hidden
+        params = {
+            key: value
+            for key, value in self.request.GET.items()
+            if key != "page" and value
+        }
+        context["query"] = urlencode(params)
         return context
 
 
