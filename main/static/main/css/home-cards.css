@@ -141,6 +141,7 @@ a.contact-card:focus-visible {
   color: var(--on-deep-blue);
 }
 .contact-cta .sub { color: var(--light-on-blue); }
+
 /* --- Единая раскладка страниц и hover карточек (Ticket 113) --- */
 .page-title { margin-top: 3rem; }
 .card-badge i { font-size: 1.25rem; }
@@ -247,6 +248,108 @@ a.contact-card:focus-visible {
   line-height: 1.2;
   padding-top: .9rem;
 }
+
+/* Resources page (Ticket 116) */
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem 1rem;
+  margin-bottom: .5rem;
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--deep-blue) 4%, var(--white));
+}
+.resource-kind {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  color: var(--deep-blue);
+  background: color-mix(in srgb, var(--deep-blue) 8%, var(--white));
+}
+.file-row__icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--deep-blue);
+  color: var(--white);
+}
+.file-row__icon--image { background: var(--soft-green); }
+.file-row__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.file-row__download { flex-shrink: 0; }
+
+@media (max-width: 575.98px) {
+  .file-row { flex-wrap: wrap; }
+  .file-row__name { flex-basis: calc(100% - 52px); }
+  .file-row__download { margin-left: 48px; }
+}
+
+.filter-panel {
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow: visible;
+}
+
+.filter-group-label {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--bs-secondary-color);
+  margin-bottom: .5rem;
+}
+
+.chip-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.filter-chip {
+  gap: .4rem;
+  line-height: 1.4;
+}
+
+.filter-chip.is-active {
+  background: var(--deep-blue, #1b3a5c);
+  color: var(--on-deep-blue, #ffffff);
+}
+
+.filter-more {
+  padding: .75rem;
+  min-width: 18rem;
+}
+
+.filter-more .filter-chip {
+  margin: 0 .35rem .5rem 0;
+}
+
+.filter-symptom {
+  border-top: 1px solid var(--bs-border-color);
+  padding-top: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .chip-scroll {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: .25rem;
+  }
+
+  .chip-scroll > * {
+    flex-shrink: 0;
+  }
+}
+
 /* News filters (Ticket 114) */
 .filter-chip {
   display: inline-flex;

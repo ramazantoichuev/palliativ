@@ -5,38 +5,56 @@
 {% block content %}
     <h1 class="page-title fw-bold mb-4">{% translate "Ресурсы" %}</h1>
 
-    <ul class="nav nav-tabs mb-4">
-        <li class="nav-item">
-            <a class="nav-link {% if not selected_audience %}active{% endif %}"
-               href="{% url 'resources:resource_list' %}">{% translate "Все" %}</a>
-        </li>
-        {% for value, label in audience_choices %}
-        <li class="nav-item">
-            <a class="nav-link {% if selected_audience == value %}active{% endif %}"
-               href="?audience={{ value }}">{{ label }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <form method="get" class="row g-2 mb-4">
-        {% if selected_audience %}<input type="hidden" name="audience" value="{{ selected_audience }}">{% endif %}
-        <div class="col-md-4">
-            <select name="subcategory" class="form-select" onchange="this.form.submit()">
-                <option value="">{% translate "Все подкатегории" %}</option>
-                {% for value, label in subcategory_choices %}
-                <option value="{{ value }}" {% if selected_subcategory == value %}selected{% endif %}>{{ label }}</option>
-                {% endfor %}
-            </select>
+    <div class="card-soft filter-panel">
+        <div class="filter-group-label">{% translate "Аудитория" %}</div>
+        <div class="chip-scroll mb-3">
+            <a class="filter-chip {% if not selected_audience %}is-active{% endif %}"
+               href="{% querystring audience=None subcategory=None page=None %}">{% translate "Все" %}</a>
+            {% for value, label in audience_chips %}
+            <a class="filter-chip {% if selected_audience == value %}is-active{% endif %}"
+               href="{% querystring audience=value subcategory=None page=None %}">{{ label }}</a>
+            {% endfor %}
         </div>
-        <div class="col-md-4">
-            <select name="symptom" class="form-select" onchange="this.form.submit()">
+
+        <div class="filter-group-label">{% translate "Подкатегория" %}</div>
+        <div class="chip-scroll mb-3">
+            <a class="filter-chip {% if not selected_subcategory %}is-active{% endif %}"
+               href="{% querystring subcategory=None page=None %}">{% translate "Все подкатегории" %}</a>
+            {% for value, label in subcategory_visible %}
+            <a class="filter-chip {% if selected_subcategory == value %}is-active{% endif %}"
+               href="{% querystring subcategory=value page=None %}">{{ label }}</a>
+            {% endfor %}
+            {% if subcategory_hidden %}
+            <div class="dropdown">
+                <button class="filter-chip" type="button" data-bs-toggle="dropdown"
+                        data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false">
+                    {% blocktrans count counter=subcategory_hidden|length %}Ещё {{ counter }}{% plural %}Ещё {{ counter }}{% endblocktrans %}
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu filter-more">
+                    {% for value, label in subcategory_hidden %}
+                    <a class="filter-chip {% if selected_subcategory == value %}is-active{% endif %}"
+                       href="{% querystring subcategory=value page=None %}">{{ label }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <form method="get" class="filter-symptom d-flex flex-wrap align-items-center gap-2">
+            {% if selected_audience %}<input type="hidden" name="audience" value="{{ selected_audience }}">{% endif %}
+            {% if selected_subcategory %}<input type="hidden" name="subcategory" value="{{ selected_subcategory }}">{% endif %}
+            <label for="symptom" class="mb-0 text-muted">{% translate "Симптом" %}</label>
+            <select name="symptom" id="symptom" class="form-select w-auto">
                 <option value="">{% translate "Все симптомы" %}</option>
                 {% for symptom in symptoms %}
                 <option value="{{ symptom.id }}" {% if selected_symptom == symptom.id|stringformat:"s" %}selected{% endif %}>{{ symptom.name }}</option>
                 {% endfor %}
             </select>
-        </div>
-    </form>
+            <button type="submit" class="btn btn-primary">{% translate "Применить" %}</button>
+            <a href="{% querystring symptom=None page=None %}">{% translate "Сбросить" %}</a>
+        </form>
+    </div>
 
     {% if resources %}
     <div class="row">
@@ -48,6 +66,19 @@
                         <a href="{{ resource.get_absolute_url }}" class="text-decoration-none text-dark">
                             {{ resource.title }}</a>
                     </h5>
+                    {% with kinds=resource.content_kinds %}
+                    {% if kinds %}
+                    <div class="d-flex flex-wrap gap-2 mb-2">
+                        {% for kind in kinds %}
+                        <span class="resource-kind">
+                            {% if kind == "pdf" %}<i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF
+                            {% elif kind == "image" %}<i class="fa-solid fa-image" aria-hidden="true"></i> {% translate "Фото" %}
+                            {% else %}<i class="fa-solid fa-circle-play" aria-hidden="true"></i> {% translate "Видео" %}{% endif %}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
                     <p class="card-text">{{ resource.description|truncatewords:20 }}</p>
                     <a href="{{resource.get_absolute_url  }}" class="btn btn-outline-primary btn-sm mt-auto align-self-start stretched-link">
                         {% translate "Подробнее" %}
@@ -59,5 +90,8 @@
     </div>
     {% else %}
     <p>{% translate "В этой подкатегории пока нет материалов." %}</p>
+    {% endif %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
     {% endif %}
 {% endblock %}

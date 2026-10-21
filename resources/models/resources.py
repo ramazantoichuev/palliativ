@@ -1,4 +1,5 @@
 import re
+import os
 
 from django.conf import settings
 from django.core.validators import FileExtensionValidator
@@ -7,6 +8,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from transliterate import translit
+from resources.utils import file_kind
 
 from common.choices import ImageProcessingStatus
 from common.validators import validate_resource_file_size
@@ -63,6 +65,20 @@ class Resource(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def content_kinds(self):
+        """Типы содержимого для бейджей: список из 'pdf', 'image', 'video'."""
+        kinds = set()
+        for f in self.files.all():
+            public = f.public_file
+            if public:
+                kind = file_kind(public.name)
+                if kind in ("pdf", "image"):
+                    kinds.add(kind)
+        if self.videos.all():
+            kinds.add("video")
+        return [k for k in ("pdf", "image", "video") if k in kinds]
+
     def save(self, *args, **kwargs):
         if not self.slug:
             latin_title = translit(self.title, "ru", reversed=True)
@@ -82,6 +98,18 @@ class Resource(models.Model):
     def public_files(self):
         """Файлы, доступные посетителю (Word — только готовой PDF-версией)."""
         return [f.public_file for f in self.files.all() if f.public_file]
+
+    @property
+    def public_kind(self):
+        """Тип публичного файла: 'pdf', 'image', 'other' или None, если файл скрыт."""
+        public = self.public_file
+        return file_kind(public.name) if public else None
+
+    @property
+    def public_name(self):
+        """Имя публичного файла без пути, для показа посетителю."""
+        public = self.public_file
+        return os.path.basename(public.name) if public else ""
 
 
 class ResourceFile(models.Model):

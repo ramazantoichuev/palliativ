@@ -231,3 +231,48 @@ footer a:hover {
 .form-floating > .form-control:focus::placeholder {
     color: var(--bs-secondary-color);
 }
+
+/* Header two-tier (Ticket 118) */
+@media (max-width: 419.98px) {
+    .hdr-menu .btn-primary {
+        white-space: normal !important; /* перебивает .text-nowrap у Bootstrap */
+        line-height: 1.15;
+        text-align: center;
+    }
+}
+@media (max-width: 359.98px) {
+    .hdr-menu .navbar-pill { min-width: 32px; padding-inline: .4rem; }
+    .hdr-menu .btn-primary { font-size: .8rem; padding-inline: .5rem; }
+    .hdr-menu .container > .d-flex { gap: .35rem !important; }
+}
+
+.hdr-top {
+    background: var(--deep-blue);
+    border-bottom: 0;
+}
+.brand-name {
+    text-wrap: balance; /* ровные строки названия */
+    font-weight: 700;
+    color: var(--white);;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    max-width: 21rem;
+}
+@media (min-width: 1400px) {
+    .brand-name { font-size: 1.15rem; max-width: 26rem; }
+}
+@media (max-width: 767.98px) {
+    .brand-name { font-size: .9rem; max-width: none; }
+}
+.hdr-menu .nav-link { white-space: nowrap; }
+.hdr-menu .navbar-nav { flex-wrap: nowrap; }
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .hdr-menu .nav-link { font-size: .95rem; }
+}
+@media (max-width: 419.98px) { /* узкие телефоны: кнопка заявки в 2 строки */
+    .hdr-menu .btn-primary { white-space: normal; line-height: 1.15; text-align: center; }
+}
+.hdr-menu {
+    background-color: #14304D !important; /* перебивает .bg-dark у Bootstrap */
+    border-top: 1px solid rgba(255, 255, 255, .12);
+}

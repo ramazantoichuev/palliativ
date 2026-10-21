@@ -25,7 +25,7 @@ GETTEXT = {"_", "gettext", "gettext_lazy", "gettext_noop", "ngettext",
 LOGGERS = {"logger", "log", "logging"}
 
 SAME_OK = {
-    "ky": {"Администратор", "Менеджер", "Категория", "Категория:", "Файл",
+    "ky": {"Администратор", "Аудитория", "Менеджер", "Категория", "Категория:", "Файл",
            "Видео", "ФИО", "Диагноз", "Команда", "Логин", "Модератор",
            "Репутация", "Ресурс", "Слаг", "Текст", "Телефон"},
     "en": set(),
@@ -36,7 +36,9 @@ PAGES = [
     ("main:home", None, ["Нужна помощь или консультация?", "Оставить заявку"]),
     ("main:about", None, ["Законодательство и нормативная база",
                           "Международное сотрудничество"]),
-    ("main:contacts", None, ["Контакты", "Адрес"]),
+    ("main:contacts", None, ["Контакты", "Адрес", "Как нас найти в 2ГИС",
+                             "Нужна консультация?", "Мы свяжемся с вами"]),
+    ("resources:resource_list", None, ["Ресурсы", "Аудитория"]),
     ("main:team", None, ["Команда и руководство"]),
     ("main:privacy_policy", None,
      ["Политика обработки персональных данных", "Срок хранения"]),
@@ -112,6 +114,24 @@ def py_problems(path):
                 and id(n) not in skip and has_cyr(n.value)
                 and "i18n-ignore" not in lines[n.lineno - 1]):
             yield f"{path.relative_to(BASE)}:{n.lineno}: {n.value[:60]!r}"
+
+
+TRANSLATE_TAG = re.compile(r"{%\s*trans(?:late)?\s+(['\"])(.+?)\1")
+
+
+class MissingMsgidTests(SimpleTestCase):
+    """Каждая строка `{% translate "..." %}` из шаблонов есть в .po обоих языков:
+    без записи gettext молча отдаёт русский оригинал."""
+    def test_template_msgids_present_in_catalogs(self):
+        used = {m.group(2) for p in files(".html")
+                for m in TRANSLATE_TAG.finditer(p.read_text(encoding="utf-8"))
+                if has_cyr(m.group(2))}
+        problems = []
+        for lang in LANGS:
+            path = BASE / "locale" / lang / "LC_MESSAGES" / "django.po"
+            known = {e.msgid for e in polib.pofile(str(path))}
+            problems += [f"[{lang}] нет msgid {m!r}" for m in sorted(used - known)]
+        self.assertFalse(problems, "\n".join(problems))
 
 
 class HardcodedTextTests(SimpleTestCase):
