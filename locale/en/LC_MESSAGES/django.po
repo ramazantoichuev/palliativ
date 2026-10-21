@@ -1050,7 +1050,7 @@ msgstr "Close"
 
 #: templates/base.html:56 templates/main/contacts.html:67
 msgid "Ассоциация паллиативной и хосписной помощи"
-msgstr "Association of Palliative and Hospice Care"
+msgstr "Association for Palliative and Hospice Care"
 
 #: templates/base.html:61 templates/base.html:196 templates/base.html:197
 #: templates/main/search_results.html:7

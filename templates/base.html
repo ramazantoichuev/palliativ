@@ -48,44 +48,23 @@
 {% endif %}
 
 {% with ns=request.resolver_match.namespace un=request.resolver_match.url_name %}
-<header class="sticky-top">
-    <nav class="navbar navbar-expand-xl bg-dark shadow-sm" data-bs-theme="dark">
+<header class="hdr-top">
+    <div class="container d-flex align-items-center justify-content-between gap-3 py-2">
+        <a class="navbar-brand d-flex align-items-center gap-3 me-0" href="{% url 'main:home' %}">
+            <img src="{% static 'main/images/logo1_contur.png' %}" alt="">
+            <span class="brand-name">{% translate "Ассоциация паллиативной и хосписной помощи" %}</span>
+        </a>
+        <div class="d-none d-xl-flex align-items-center gap-2">
+            {% include 'partial/header_controls.html' with toggle_id='headerSearchToggle' %}
+        </div>
+    </div>
+</header>
+
+<div class="sticky-top hdr-sticky">
+    <nav class="navbar navbar-expand-xl bg-dark shadow-sm hdr-menu" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'main:home' %}">
-                <img src="{% static 'main/images/logo1_contur.png' %}"
-                     alt="{% translate 'Ассоциация паллиативной и хосписной помощи' %}">
-            </a>
-            <div class="header-controls d-flex align-items-center gap-2 ms-auto order-xl-last">
-                <button class="btn btn-sm navbar-pill" type="button"
-                        id="headerSearchToggle"
-                        aria-label="{% translate 'Поиск' %}"
-                        aria-expanded="false"
-                        aria-controls="headerSearchBar">
-                    <i class="fas fa-search"></i>
-                </button>
-                <a href="{% url 'main:new-consultation' %}"
-                   class="btn btn-primary btn-sm text-nowrap"
-                   aria-label="{% translate 'Оставить заявку на консультацию' %}">
-                    {% translate "Оставить заявку" %}
-                </a>
-
-                <form action="{% url 'set_language' %}" method="post"
-                      class="d-flex gap-1"
-                      aria-label="{% translate 'Выбор языка' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                        <button type="submit" name="language" value="{{ language.code }}"
-                                class="btn btn-sm navbar-pill{% if language.code == LANGUAGE_CODE %} active{% endif %}"
-                                {% if language.code == LANGUAGE_CODE %}aria-current="true"{% endif %}
-                                aria-label="{{ language.name_local }}"
-                                lang="{{ language.code }}">
-                            {{ language.code|upper }}
-                        </button>
-                    {% endfor %}
-                </form>
-
+            <div class="d-flex d-xl-none align-items-center gap-2 ms-auto">
+                {% include 'partial/header_controls.html' with toggle_id='headerSearchToggleMobile' %}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#mainNavbar" aria-controls="mainNavbar"
                         aria-expanded="false" aria-label="{% translate 'Открыть меню' %}">
@@ -93,8 +72,8 @@
                 </button>
             </div>
 
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto me-xl-3 mb-2 mb-xl-0 text-center">
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-xl-0 text-center">
 
                     <li class="nav-item">
                         <a class="nav-link{% if ns == 'main' and un == 'home' %} active{% endif %}"
@@ -187,24 +166,24 @@
         </div>
     </nav>
      <div id="headerSearchBar" class="d-none border-bottom bg-white">
-                <div class="container py-2">
-                    <form action="{% url 'main:search' %}" method="get" class="d-flex">
-                        <input
-                            type="search"
-                            name="q"
-                            value="{{ request.GET.q }}"
-                            id="headerSearchInput"
-                            class="form-control form-control-sm"
-                            placeholder="{% translate 'Поиск' %}"
-                            aria-label="{% translate 'Поиск' %}"
-                        >
-                        <button type="submit" class="btn btn-outline-primary btn-sm ms-2">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-</header>
+         <div class="container py-2">
+             <form action="{% url 'main:search' %}" method="get" class="d-flex">
+                    <input
+                         type="search"
+                         name="q"
+                         value="{{ request.GET.q }}"
+                         id="headerSearchInput"
+                         class="form-control form-control-sm"
+                         placeholder="{% translate 'Поиск' %}"
+                         aria-label="{% translate 'Поиск' %}"
+                    >
+                    <button type="submit" class="btn btn-outline-primary btn-sm ms-2">
+                        <i class="fas fa-search"></i>
+                    </button>
+             </form>
+         </div>
+     </div>
+</div>
 {% endwith %}
 
 <main>
