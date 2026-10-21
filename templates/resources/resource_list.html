@@ -28,7 +28,7 @@
             <div class="dropdown">
                 <button class="filter-chip" type="button" data-bs-toggle="dropdown"
                         data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false">
-                    {% blocktranslate with count=subcategory_hidden|length %}Ещё {{ count }}{% endblocktranslate %}
+                    {% blocktrans count counter=subcategory_hidden|length %}Ещё {{ counter }}{% plural %}Ещё {{ counter }}{% endblocktrans %}
                     <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div class="dropdown-menu filter-more">
