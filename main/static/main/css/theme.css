@@ -236,13 +236,13 @@ footer a:hover {
 html { scroll-padding-top: 56px; }
 
 .hdr-top {
-    background: var(--bs-body-bg);
-    border-bottom: 1px solid var(--bs-border-color);
+    background: var(--deep-blue);
+    border-bottom: 0;
 }
 .brand-name {
     text-wrap: balance; /* ровные строки названия */
     font-weight: 700;
-    color: var(--deep-blue);
+    color: var(--white);;
     font-size: 1.05rem;
     line-height: 1.2;
     max-width: 21rem;
@@ -253,16 +253,6 @@ html { scroll-padding-top: 56px; }
 @media (max-width: 767.98px) {
     .brand-name { font-size: .9rem; max-width: none; }
 }
-.hdr-top .navbar-pill {
-    color: var(--deep-blue);
-    border-color: color-mix(in srgb, var(--deep-blue) 35%, transparent);
-    background: transparent;
-}
-.hdr-top .navbar-pill.active {
-    background: var(--mustard);
-    border-color: var(--mustard);
-    color: var(--text-on-mustard);
-}
 .hdr-menu .nav-link { white-space: nowrap; }
 .hdr-menu .navbar-nav { flex-wrap: nowrap; }
 @media (min-width: 1200px) and (max-width: 1399.98px) {
@@ -270,4 +260,8 @@ html { scroll-padding-top: 56px; }
 }
 @media (max-width: 419.98px) { /* узкие телефоны: кнопка заявки в 2 строки */
     .hdr-menu .btn-primary { white-space: normal; line-height: 1.15; text-align: center; }
+}
+.hdr-menu {
+    background-color: #14304D !important; /* перебивает .bg-dark у Bootstrap */
+    border-top: 1px solid rgba(255, 255, 255, .12);
 }
