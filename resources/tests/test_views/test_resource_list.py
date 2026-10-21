@@ -1,9 +1,10 @@
+from django.conf import settings
 from django.test import TestCase
 from django.urls import reverse
 
 from resources.models.resources import Resource
 from resources.tests.factories import ResourceFactory, SymptomFactory
-
+from resources.constants import RESOURCES_PER_PAGE
 
 class ResourceListViewTest(TestCase):
     def setUp(self):
@@ -102,3 +103,55 @@ class ResourceListViewTest(TestCase):
     def test_pain_management_empty_result_does_not_break_page(self):
         response = self.client.get(self.url, {'subcategory': 'pain_management'})
         self.assertEqual(response.status_code, 200)
+
+    def test_pagination_links_keep_filters(self):
+        for _ in range(RESOURCES_PER_PAGE + 1):
+            ResourceFactory(audience="caregiver", subcategory="pain_management")
+        response = self.client.get(
+            self.url, {"audience": "caregiver", "subcategory": "pain_management"}
+        )
+        self.assertContains(response, "page=2")
+        self.assertContains(response, "audience=caregiver")
+        self.assertContains(response, "subcategory=pain_management")
+
+    def test_chip_links_keep_other_filters_and_reset_page(self):
+        ResourceFactory(audience="caregiver")
+        response = self.client.get(
+            self.url, {"audience": "caregiver", "symptom": self.symptom_pain.pk}
+        )
+        content = response.content.decode()
+        chips = [
+            line for line in content.splitlines()
+            if "subcategory=pain_management" in line
+        ]
+        self.assertTrue(chips)
+        self.assertIn("audience=caregiver", chips[0])
+        self.assertIn(f"symptom={self.symptom_pain.pk}", chips[0])
+        self.assertNotIn("page=", chips[0])
+
+
+class ResourceListLocalizationTest(TestCase):
+    """Интерфейс списка ресурсов на KY/EN: подписи и счётчик «Ещё N»."""
+
+    def setUp(self):
+        self.url = reverse('resources:resource_list')
+
+    def _get(self, lang):
+        self.client.cookies[settings.LANGUAGE_COOKIE_NAME] = lang
+        return self.client.get(self.url, HTTP_ACCEPT_LANGUAGE=lang)
+
+    def test_audience_label_translated(self):
+        for lang, label in (('ky', 'Аудитория'), ('en', 'Audience')):
+            with self.subTest(lang=lang):
+                response = self._get(lang)
+                self.assertContains(response, f'>{label}</div>')
+        self.assertNotContains(self._get('en'), '>Аудитория<')
+
+    def test_more_counter_translated(self):
+        for lang, template in (('ky', 'Дагы {}'), ('en', '{} more')):
+            with self.subTest(lang=lang):
+                response = self._get(lang)
+                hidden = len(response.context['subcategory_hidden'])
+                self.assertGreater(hidden, 0)
+                self.assertContains(response, template.format(hidden))
+                self.assertNotContains(response, f'Ещё {hidden}')

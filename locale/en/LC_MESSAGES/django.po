@@ -1346,8 +1346,7 @@ msgstr "For doctors"
 
 #: templates/main/home.html:75
 msgid "Протоколы, лекции и справочные материалы по уходу за пациентами."
-msgstr ""
-"Protocols, lectures and reference materials for taking care of patients"
+msgstr "Protocols, lectures and reference materials on patient care."
 
 #: templates/main/home.html:109
 msgid "Все новости"
@@ -1654,14 +1653,14 @@ msgstr "Need a consultation?"
 msgid "Мы свяжемся с вами"
 msgstr "We will contact you"
 
+#: templates/resources/resource_list.html:9
 msgid "Аудитория"
 msgstr "Audience"
 
-msgid "Скачать"
-msgstr "Download"
-
+#: templates/resources/resource_list.html:75
 msgid "Фото"
 msgstr "Photo"
 
-msgid "Ещё %(count)s"
-msgstr "%(count)s more"
+#: templates/resources/resource_detail.html:23
+msgid "Скачать"
+msgstr "Download"

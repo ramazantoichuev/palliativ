@@ -1228,7 +1228,7 @@ msgstr "Биз ишенебиз"
 
 #: templates/main/about.html:40
 msgid "Наш вклад в развитие паллиативной помощи в Кыргызстане"
-msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам ассоциациясы"
+msgstr "Кыргызстандагы паллиативдик жардамды өнүктүрүүгө кошкон салымыбыз"
 
 #: templates/main/about.html:53
 msgid "Законодательство и нормативная база"
@@ -1355,7 +1355,7 @@ msgstr "Дарыгерлерге"
 #: templates/main/home.html:75
 msgid "Протоколы, лекции и справочные материалы по уходу за пациентами."
 msgstr ""
-"Пациенттерге кароо боюнча протоколдор, лекциялар жана справочный материалдар."
+"Бейтаптарды кароо боюнча протоколдор, лекциялар жана маалымдама материалдар."
 
 #: templates/main/home.html:109
 msgid "Все новости"
@@ -1651,14 +1651,26 @@ msgstr "Бардык симптомдор"
 msgid "В этой подкатегории пока нет материалов."
 msgstr "Бул подкатегорияда азырынча материалдар жок"
 
+#: templates/resources/resource_list.html:9
 msgid "Аудитория"
 msgstr "Аудитория"
 
-msgid "Скачать"
-msgstr "Жүктөп алуу"
-
+#: templates/resources/resource_list.html:75
 msgid "Фото"
 msgstr "Сүрөт"
 
-msgid "Ещё %(count)s"
-msgstr "Дагы %(count)s"
+#: templates/resources/resource_detail.html:23
+msgid "Скачать"
+msgstr "Жүктөп алуу"
+
+#: templates/main/contacts.html:23
+msgid "Как нас найти в 2ГИС"
+msgstr "2ГИС'те бизди кантип табууга болот"
+
+#: templates/main/contacts.html:99
+msgid "Нужна консультация?"
+msgstr "Кеңеш керекпи?"
+
+#: templates/main/contacts.html:100
+msgid "Мы свяжемся с вами"
+msgstr "Биз сиз менен байланышабыз"
