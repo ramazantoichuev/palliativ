@@ -1050,7 +1050,7 @@ msgstr "Close"
 
 #: templates/base.html:56 templates/main/contacts.html:67
 msgid "Ассоциация паллиативной и хосписной помощи"
-msgstr "Association of Palliative and Hospice Care"
+msgstr "Association for Palliative and Hospice Care"
 
 #: templates/base.html:61 templates/base.html:196 templates/base.html:197
 #: templates/main/search_results.html:7
@@ -1664,24 +1664,3 @@ msgstr "Photo"
 #: templates/resources/resource_detail.html:23
 msgid "Скачать"
 msgstr "Download"
-
-#: main/admin.py
-msgid "Активные"
-msgstr "Active"
-
-#: main/admin.py
-msgid "Взять в работу"
-msgstr "Take into work"
-
-#: main/admin.py
-msgid "Отметить рассмотренными"
-msgstr "Mark as reviewed"
-
-#: main/admin.py
-msgid "Отклонить"
-msgstr "Reject"
-
-#: main/admin.py
-#, python-format
-msgid "Обновлено заявок: %(count)s"
-msgstr "Requests updated: %(count)s"

@@ -1053,7 +1053,7 @@ msgstr "Жабуу"
 
 #: templates/base.html:56 templates/main/contacts.html:67
 msgid "Ассоциация паллиативной и хосписной помощи"
-msgstr "Паллиативдик жана хоспистик жардам ассоциациясы"
+msgstr "Паллиативдик жана хоспистик жардам боюнча ассоциациясы"
 
 #: templates/base.html:61 templates/base.html:196 templates/base.html:197
 #: templates/main/search_results.html:7
@@ -1674,24 +1674,3 @@ msgstr "Кеңеш керекпи?"
 #: templates/main/contacts.html:100
 msgid "Мы свяжемся с вами"
 msgstr "Биз сиз менен байланышабыз"
-
-#: main/admin.py
-msgid "Активные"
-msgstr "Активдүү"
-
-#: main/admin.py
-msgid "Взять в работу"
-msgstr "Жумушка алуу"
-
-#: main/admin.py
-msgid "Отметить рассмотренными"
-msgstr "Каралды деп белгилөө"
-
-#: main/admin.py
-msgid "Отклонить"
-msgstr "Четке кагуу"
-
-#: main/admin.py
-#, python-format
-msgid "Обновлено заявок: %(count)s"
-msgstr "Жаңыртылган арыздар: %(count)s"
