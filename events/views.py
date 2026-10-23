@@ -1,4 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
@@ -12,7 +14,9 @@ from django.views.generic import (
 from django.views.generic.edit import FormMixin
 
 from accounts.models import BaseUser
+from common.honeypot import honeypot_filled
 from common.notifications import notify_admins, send_confirmation
+from common.ratelimit import RATE_LIMIT_MESSAGE, check_rate_limit
 
 from .forms import EventRegistrationForm
 from .models import Event
@@ -58,8 +62,20 @@ class EventDetailView(FormMixin, DetailView):
         context["is_past"] = self.object.is_past
         return context
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["event"] = self.object
+        return kwargs
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
+        if honeypot_filled(request):
+            return redirect(self.get_success_url())
+        if not check_rate_limit(request, "event_registration"):
+            messages.error(request, RATE_LIMIT_MESSAGE)
+            form = self.form_class(event=self.object)
+            context = self.get_context_data(form=form)
+            return self.render_to_response(context, status=429)
         form = self.get_form()
         if self.object.is_past:
             form.add_error(None, _("Регистрация на это мероприятие закрыта"))
