@@ -1,12 +1,16 @@
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
+from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, TemplateView
 
+from common.honeypot import honeypot_filled
 from common.notifications import notify_admins, send_confirmation
+from common.ratelimit import RATE_LIMIT_MESSAGE, check_rate_limit
 from events.models import Event
 from news.models.posts import Post
 from resources.models.resources import Resource
@@ -105,7 +109,30 @@ class ConsultationCreateView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy("main:home")
     success_message = _("Ваша заявка на консультацию успешно отправлена!")
 
+    def post(self, request, *args, **kwargs):
+        if honeypot_filled(request):
+            messages.success(request, self.success_message)
+            return redirect(self.success_url)
+        if not check_rate_limit(request, "consultation"):
+            self.object = None
+            messages.error(request, RATE_LIMIT_MESSAGE)
+            context = self.get_context_data(form=self.form_class())
+            return self.render_to_response(context, status=429)
+        return super().post(request, *args, **kwargs)
+
     def form_valid(self, form):
+        since = timezone.now() - timedelta(
+            seconds=settings.CONSULTATION_DUPLICATE_WINDOW
+        )
+        is_duplicate = ConsultationRequest.objects.filter(
+            phone=form.cleaned_data["phone"],
+            topic=form.cleaned_data["topic"],
+            created_at__gte=since,
+        ).exists()
+        if is_duplicate:
+            messages.success(self.request, self.success_message)
+            return redirect(self.success_url)
+
         response = super().form_valid(form)
         admin_url = self.request.build_absolute_uri(
             reverse('admin:main_consultationrequest_change', args=[self.object.pk])
