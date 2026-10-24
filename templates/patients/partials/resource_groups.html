@@ -1,0 +1,26 @@
+{% load i18n %}
+{% for group in groups %}
+<section class="resource-group mb-4">
+    <span class="badge-symptom">{{ group.symptom.name }}</span>
+    {% if group.resources %}
+    <div class="row row-cols-1 row-cols-md-2 g-3 mt-1">
+        {% for resource in group.resources %}
+        <div class="col">
+            <div class="card card-soft card-hover h-100">
+                <div class="card-body">
+                    <span class="badge-audience badge-audience--{{ resource.audience }}">
+                        {% if resource.audience == "pediatric" %}{% translate "Детям" %}{% elif resource.audience == "specialist" %}{% translate "Для специалистов" %}{% else %}{% translate "Ухаживающим" %}{% endif %}
+                    </span>
+                    <h3 class="h6 card-title mt-2 mb-0">
+                        <a href="{{ resource.get_absolute_url }}" class="stretched-link text-decoration-none">{{ resource.title }}</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-muted mt-2 mb-0">{{ empty_message }}</p>
+    {% endif %}
+</section>
+{% endfor %}

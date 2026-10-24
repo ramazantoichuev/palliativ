@@ -103,6 +103,7 @@ class PatientProfile(models.Model):
         BaseUser, on_delete=models.CASCADE, related_name="patient_profile"
     )
     diagnosis = models.TextField(_("Диагноз"), blank=True)
+    is_child = models.BooleanField(_("Пациент — ребёнок (до 18 лет)"), default=False)
 
     class Meta:
         verbose_name = _("Пациент")

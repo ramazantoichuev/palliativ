@@ -2,64 +2,49 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2>{% translate "Мои пациенты" %}</h2>
+<h1 class="page-title cabinet-title fw-bold mb-4">{% translate "Мои пациенты" %}</h1>
 
-    {% if patient_cards %}
-    <div class="row">
-        {% for card in patient_cards %}
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div>
-                        <h5 class="card-title fw-bold text-primary">{{ card.patient }}</h5>
-                        <p class="card-text"><strong>{% translate "Диагноз" %}:</strong> {{ card.diagnosis }}</p>
-                        <p class="card-text">
-                            <strong>{% translate "Симптомы" %}:</strong>
-                            {% for symptom in card.symptoms.all %}
-                                {{ symptom.name }}{% if not forloop.last %}, {% endif %}
-                            {% empty %}
-                                {% translate "не указаны" %}
-                            {% endfor %}
-                        </p>
+{% if patient_cards %}
+    {% for card in patient_cards %}
+    <div class="card card-soft mb-4">
+        <div class="card-body">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                        <h2 class="h5 fw-bold mb-0 cabinet-heading">{{ card.patient }}</h2>
+                        {% if card.patient.is_child %}
+                            <span class="badge-audience badge-audience--pediatric">{% translate "Ребёнок" %}</span>
+                        {% else %}
+                            <span class="badge-audience badge-audience--caregiver">{% translate "Взрослый" %}</span>
+                        {% endif %}
                     </div>
-                    <div class="mt-4 pt-3 border-top">
-                        <h6 class="text-success fw-bold">
-                            <i class="bi bi-heart-pulse-fill"></i> {% translate "Рекомендованные материалы" %}
-                        </h6>
-                        <div class="mt-2">
-                            {% with resources=card.get_matching_resources %}
-                                {% if resources %}
-                                    <ul>
-                                        {% for resource in resources %}
-                                            <li>
-                                                <a href="#">
-                                                    {{ resource.title }}
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% else %}
-                                    <p class="text-muted">
-                                        {% if card.symptoms.all %}
-                                            {% translate "Нет подходящих материалов по текущим симптомам." %}
-                                        {% else %}
-                                            {% translate "Симптомы не указаны." %}
-                                        {% endif %}
-                                    </p>
-                                {% endif %}
-                            {% endwith %}
-                        </div>
+                    <p class="mb-2"><strong>{% translate "Диагноз" %}:</strong> {{ card.diagnosis }}</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for symptom in card.symptoms.all %}
+                            <span class="badge-symptom">{{ symptom.name }}</span>
+                        {% empty %}
+                            <span class="text-muted">{% translate "не указаны" %}</span>
+                        {% endfor %}
                     </div>
+                </div>
+                <div class="col-lg-7">
+                    <h3 class="h6 cabinet-heading fw-bold mb-3">{% translate "Рекомендованные материалы" %}</h3>
+                    {% with groups=card.get_resource_groups %}
+                        {% if groups %}
+                            {% translate "По этому симптому материалов пока нет" as empty_msg %}
+                            {% include 'patients/partials/resource_groups.html' with groups=groups empty_message=empty_msg %}
+                        {% else %}
+                            <p class="text-muted mb-0">{% translate "Симптомы не указаны." %}</p>
+                        {% endif %}
+                    {% endwith %}
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
-    {% else %}
+    {% endfor %}
+{% else %}
     <div class="alert alert-warning text-center py-4" role="alert">
         <p class="fs-5 mb-0">{% translate "За вами пока не закреплено ни одного пациента." %}</p>
     </div>
-    {% endif %}
-</div>
+{% endif %}
 {% endblock %}

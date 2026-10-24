@@ -1,5 +1,5 @@
-import re
 import os
+import re
 
 from django.conf import settings
 from django.core.validators import FileExtensionValidator
@@ -8,10 +8,10 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from transliterate import translit
-from resources.utils import file_kind
 
 from common.choices import ImageProcessingStatus
 from common.validators import validate_resource_file_size
+from resources.utils import file_kind
 
 
 class Resource(models.Model):

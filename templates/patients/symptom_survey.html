@@ -2,21 +2,37 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <h2>{% translate "Как вы себя чувствуете?" %}</h2>
+<h1 class="page-title fw-bold mb-2">{% translate "Что сейчас беспокоит?" %}</h1>
+<p class="text-muted mb-4">{% translate "Отметьте всё, что подходит. По отмеченным симптомам мы подберём материалы" %}</p>
 
-            <form method="post">
-                {% csrf_token %}
-
-                {{ form.symptoms }}
-
-                <button type="submit" class="btn btn-primary mt-3">
-                    {% translate "Сохранить" %}
-                </button>
-            </form>
-        </div>
+<form method="post">
+    {% csrf_token %}
+    <div class="symptom-grid">
+        {% for checkbox in form.symptoms %}
+        <label class="symptom-tile" for="{{ checkbox.id_for_label }}">
+            {{ checkbox.tag }}
+            <span>{{ checkbox.choice_label }}</span>
+        </label>
+        {% endfor %}
     </div>
-</div>
+
+    <div class="survey-actions">
+        <span class="survey-counter">{% translate "Выбрано" %}: <strong id="surveyCount">0</strong></span>
+        <button type="submit" class="btn btn-primary">{% translate "Сохранить" %}</button>
+    </div>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var boxes = document.querySelectorAll('.symptom-tile input[type="checkbox"]');
+    var out = document.getElementById('surveyCount');
+    function update() {
+        var n = 0;
+        boxes.forEach(function (b) { if (b.checked) n++; });
+        out.textContent = n;
+    }
+    boxes.forEach(function (b) { b.addEventListener('change', update); });
+    update();
+});
+</script>
 {% endblock %}

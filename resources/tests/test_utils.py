@@ -1,11 +1,13 @@
 from django.test import SimpleTestCase
 
-from resources.utils import file_kind
 from resources.constants import (
     RESOURCE_SUBCATEGORY_MORE_THRESHOLD as THRESHOLD,
+)
+from resources.constants import (
     RESOURCE_SUBCATEGORY_VISIBLE as VISIBLE,
 )
-from resources.utils import split_visible_hidden
+from resources.utils import file_kind, split_visible_hidden
+
 
 class FileKindTests(SimpleTestCase):
     def test_pdf(self):
