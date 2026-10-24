@@ -13,21 +13,24 @@ class TestConsultationCta(TestCase):
     def test_header_contains_consultation_button_on_any_page(self):
         response = self.client.get(reverse("main:about"))
 
-        self.assertContains(response, f'href="{self.consultation_url}"', count=1)
+        # Блок управления в шапке выводится дважды: десктопная
+        # и мобильная версии (Ticket 118).
+        self.assertContains(response, f'href="{self.consultation_url}"', count=2)
         self.assertContains(response, "Оставить заявку")
 
     def test_home_has_header_and_banner_links_but_not_middle_block_duplicate(self):
-        """На главной ровно две точки входа: шапка и CTA-баннер —
-        дублирующая кнопка из среднего блока убрана."""
+        """На главной точки входа: шапка (две версии, десктоп и мобильная,
+        Ticket 118) и CTA-баннер; дублирующая кнопка из среднего блока убрана."""
         response = self.client.get(reverse("main:home"))
 
-        self.assertContains(response, f'href="{self.consultation_url}"', count=2)
+        self.assertContains(response, f'href="{self.consultation_url}"', count=3)
         self.assertContains(response, "Нужна помощь или консультация?")
 
     def test_cta_text_is_unified_on_contacts_page(self):
         response = self.client.get(reverse("main:contacts"))
 
-        self.assertNotContains(response, "Нужна консультация")
+        self.assertContains(response, "Нужна консультация?")
+        self.assertContains(response, "Мы свяжемся с вами")
         self.assertContains(response, "Оставить заявку")
 
     def test_language_switcher_is_pills_not_dropdown(self):
