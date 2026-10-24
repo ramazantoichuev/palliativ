@@ -459,6 +459,22 @@ msgstr "Subject of inquiry"
 msgid "Статус заявки"
 msgstr "Request status"
 
+msgid "Активные"
+msgstr "Active"
+
+msgid "Взять в работу"
+msgstr "Take into work"
+
+msgid "Отметить рассмотренными"
+msgstr "Mark as reviewed"
+
+msgid "Отклонить"
+msgstr "Reject"
+
+#, python-format
+msgid "Обновлено заявок: %(count)s"
+msgstr "Requests updated: %(count)s"
+
 #: main/models/consultation.py:30 templates/main/consultation.html:11
 msgid "Заявка на консультацию"
 msgstr "Consultation request"
