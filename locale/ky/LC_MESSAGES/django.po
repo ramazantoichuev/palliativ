@@ -460,6 +460,22 @@ msgstr "Кайрылуунун темасы"
 msgid "Статус заявки"
 msgstr "Билдирменин статусу"
 
+msgid "Активные"
+msgstr "Активдүү"
+
+msgid "Взять в работу"
+msgstr "Ишке алуу"
+
+msgid "Отметить рассмотренными"
+msgstr "Каралды деп белгилөө"
+
+msgid "Отклонить"
+msgstr "Четке кагуу"
+
+#, python-format
+msgid "Обновлено заявок: %(count)s"
+msgstr "Кайрылуулар жаңыртылды: %(count)s"
+
 #: main/models/consultation.py:30 templates/main/consultation.html:11
 msgid "Заявка на консультацию"
 msgstr "Консультация алууга билдирме"
