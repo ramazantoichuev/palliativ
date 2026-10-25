@@ -1680,3 +1680,7 @@ msgstr "Photo"
 #: templates/resources/resource_detail.html:23
 msgid "Скачать"
 msgstr "Download"
+
+#: events/views.py:56
+msgid "Вы успешно зарегистрированы на мероприятие!"
+msgstr "You have successfully registered for the event!"

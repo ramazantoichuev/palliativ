@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -44,11 +46,14 @@ class EventListView(ListView):
         return context
 
 
-class EventDetailView(FormMixin, DetailView):
+class EventDetailView(SuccessMessageMixin, FormMixin, DetailView):
     model = Event
     template_name = "events/event_detail.html"
     context_object_name = "event"
     form_class = EventRegistrationForm
+    # Сообщение добавляется в form_valid, поэтому при невалидной форме
+    # и прошедшем мероприятии (form_invalid) его не будет.
+    success_message = gettext_lazy("Вы успешно зарегистрированы на мероприятие!")
 
     def get_success_url(self):
         return reverse("events:event_detail", kwargs={"slug": self.object.slug})
