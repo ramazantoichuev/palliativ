@@ -1696,3 +1696,7 @@ msgstr "Өтө көп аракет. Кийинчерээк кайталаңыз.
 
 msgid "Вы уже зарегистрированы на это мероприятие"
 msgstr "Сиз бул иш-чарага мурунтан эле катталгансыз."
+#: resources/tests/test_views/test_resource_detail.py:138
+#: templates/resources/resource_detail.html:10
+msgid "Для кого"
+msgstr "Ким үчүн"

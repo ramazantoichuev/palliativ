@@ -1686,3 +1686,7 @@ msgstr "Too many attempts. Please try again later."
 
 msgid "Вы уже зарегистрированы на это мероприятие"
 msgstr "You are already registered for this event."
+#: resources/tests/test_views/test_resource_detail.py:138
+#: templates/resources/resource_detail.html:10
+msgid "Для кого"
+msgstr "For whom"

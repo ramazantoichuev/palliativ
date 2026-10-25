@@ -2,9 +2,10 @@ from django.conf import settings
 from django.test import TestCase
 from django.urls import reverse
 
+from resources.constants import RESOURCES_PER_PAGE
 from resources.models.resources import Resource
 from resources.tests.factories import ResourceFactory, SymptomFactory
-from resources.constants import RESOURCES_PER_PAGE
+
 
 class ResourceListViewTest(TestCase):
     def setUp(self):

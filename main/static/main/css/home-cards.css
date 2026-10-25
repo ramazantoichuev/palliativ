@@ -433,3 +433,62 @@ a.contact-card:focus-visible {
     transition: none !important;
   }
 }
+
+
+/* Resource detail: файлы, картинки, теги */
+.resource-tags__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .85rem;
+  margin-bottom: .75rem;
+}
+.resource-tags__label {
+  flex: 0 0 auto;
+  font-size: .9rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--deep-blue, #1b3a5c) 75%, var(--white, #fff));
+}
+.resource-tags__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tag-pill {
+  display: inline-block;
+  max-width: 100%;
+  padding: .4rem 1rem;
+  border-radius: 50rem;
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--deep-blue, #1b3a5c);
+  background: color-mix(in srgb, var(--deep-blue, #1b3a5c) 12%, var(--white, #fff));
+  overflow-wrap: anywhere;
+}
+/* Симптомы — жёлтые «таблетки», как в макете */
+.tag-pill--symptom {
+  color: var(--text-on-mustard, #7a5a00);
+  background: color-mix(in srgb, var(--mustard, #d4a017) 30%, var(--white, #fff));
+}
+
+.resource-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: .75rem;
+}
+
+/* Строка файла: общий вид (круг иконки, фон) уже задан в проекте.
+   Здесь только то, что нужно для длинных имён и узких экранов. */
+.file-row__name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.file-row__download {
+  flex: 0 0 auto;
+}
