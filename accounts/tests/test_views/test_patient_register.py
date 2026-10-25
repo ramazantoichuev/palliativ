@@ -46,6 +46,7 @@ class TestPatientRegisterView(TestCase):
                 "password1": "1qaz@WSX29",
                 "password2": "1qaz@WSX29",
                 "phone": "+996700123456",
+                "patient_age": "adult",
                 "cf-turnstile-response": "dummy_token",
             },
         )
@@ -66,6 +67,7 @@ class TestPatientRegisterView(TestCase):
                 "password1": "1qaz@WSX29",
                 "password2": "different",
                 "phone": "+996700123457",
+                "patient_age": "adult",
                 "cf-turnstile-response": "dummy_token",
             },
         )
@@ -86,6 +88,7 @@ class TestPatientRegisterView(TestCase):
             "password1": "1qaz@WSX29",
             "password2": "1qaz@WSX29",
             "phone": "+996700123458",
+            "patient_age": "adult",
             "cf-turnstile-response": "dummy_token",
         }
 
@@ -125,6 +128,7 @@ class TestPatientRegisterView(TestCase):
             "password1": "1qaz@WSX29",
             "password2": "different",
             "phone": "+996700123459",
+            "patient_age": "adult",
             "cf-turnstile-response": "dummy_token",
         }
 

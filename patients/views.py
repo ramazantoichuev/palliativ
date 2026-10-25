@@ -7,9 +7,9 @@ from django.views import View
 from django.views.generic import ListView
 
 from accounts.models import BaseUser
-from .matching import match_for_cards
 
 from .forms import SymptomSurveyForm
+from .matching import match_for_cards
 from .models import PatientCard
 
 

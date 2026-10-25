@@ -16,23 +16,29 @@ class SymptomMatchingSimpleTest(TestCase):
         self.symptom_pain = Symptom.objects.create(name="Боль")
         self.symptom_fever = Symptom.objects.create(name="Жар")
         self.symptom_cough = Symptom.objects.create(name="Кашель")
-        self.resource_pain = Resource.objects.create(title="Инструкция при боли")
-        self.resource_pain.symptoms.add(self.symptom_pain)
-        self.resource_fever = Resource.objects.create(title="Инструкция при жаре")
-        self.resource_fever.symptoms.add(self.symptom_fever)
-        self.resource_cough = Resource.objects.create(title="Инструкция при кашле")
-        self.resource_cough.symptoms.add(self.symptom_cough)
+        self.resource_pain = self._resource("Инструкция при боли", self.symptom_pain)
+        self.resource_fever = self._resource("Инструкция при жаре", self.symptom_fever)
+        self.resource_cough = self._resource("Инструкция при кашле", self.symptom_cough)
         self.card = PatientCard.objects.create(
             patient=self.patient_profile, diagnosis="Первичный осмотр"
         )
 
+    def _resource(self, title, symptom):
+        resource = Resource.objects.create(
+            title=title, audience=Resource.AUDIENCE_CAREGIVER
+        )
+        resource.symptoms.add(symptom)
+        return resource
+
+    def _all_resources(self):
+        return [r for g in self.card.get_resource_groups() for r in g["resources"]]
+
     def test_matching_resources_by_symptom(self):
         self.card.symptoms.add(self.symptom_pain)
-        matching_resources = list(self.card.get_matching_resources())
+        matching_resources = self._all_resources()
         self.assertIn(self.resource_pain, matching_resources)
         self.assertNotIn(self.resource_fever, matching_resources)
         self.assertNotIn(self.resource_cough, matching_resources)
 
     def test_empty_symptoms_returns_empty_result(self):
-        matching_resources = self.card.get_matching_resources()
-        self.assertEqual(len(matching_resources), 0)
+        self.assertEqual(self.card.get_resource_groups(), [])

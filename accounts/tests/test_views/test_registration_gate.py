@@ -30,6 +30,7 @@ class PatientRegisterViewGateTests(TestCase):
             "phone": "+996700900001",
             "password1": "StrongPass123",
             "password2": "StrongPass123",
+            "patient_age": "adult",
             "cf-turnstile-response": "dummy_token",
         }
 

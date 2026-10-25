@@ -433,3 +433,67 @@ a.contact-card:focus-visible {
     transition: none !important;
   }
 }
+
+/* Patient cabinets, survey, registration (Ticket 126) */
+.symptom-grid { display: grid; grid-template-columns: 1fr; gap: .75rem; }
+@media (min-width: 576px) { .symptom-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px) { .symptom-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.symptom-tile {
+    display: flex; align-items: center; gap: .75rem;
+    min-height: 56px; padding: .75rem 1rem; cursor: pointer;
+    border: 1px solid var(--bs-border-color); border-radius: .75rem;
+    background: var(--white);
+}
+.symptom-tile input { width: 1.25rem; height: 1.25rem; flex-shrink: 0; }
+.symptom-tile:has(input:checked) {
+    border: 2px solid var(--deep-blue);
+    background: var(--badge-blue-bg);
+}
+.symptom-tile:has(input:focus-visible) { outline: 2px solid var(--mustard); outline-offset: 2px; }
+
+.survey-actions {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; margin-top: 1.5rem;
+}
+@media (max-width: 767.98px) {
+    .survey-actions {
+        position: sticky; bottom: 0; z-index: 5;
+        padding: .75rem 0; margin-top: 1rem;
+        background: var(--white); border-top: 1px solid var(--bs-border-color);
+    }
+}
+
+.badge-symptom, .badge-audience {
+    display: inline-block; padding: .2rem .7rem; border-radius: 999px;
+    font-size: .85rem; font-weight: 600;
+}
+.badge-symptom { background: var(--badge-green-bg); color: var(--soft-green-dark); }
+.badge-audience--pediatric { background: var(--badge-mustard-bg); color: var(--mustard-text-dark); }
+.badge-audience--specialist { background: var(--badge-blue-bg); color: var(--deep-blue); }
+.badge-audience--caregiver { background: var(--badge-gray-bg); color: var(--warm-gray); }
+
+.cabinet-title { position: relative; padding-bottom: .75rem; }
+.cabinet-title::after {
+    content: ""; position: absolute; left: 0; bottom: 0;
+    width: 48px; height: 4px; border-radius: 2px; background: var(--mustard);
+}
+.cabinet-heading { color: var(--warm-gray); }
+
+.register-label {
+    font-size: .75rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--soft-green-dark); margin: 1.5rem 0 .5rem;
+}
+.age-option {
+    display: flex; align-items: center; gap: .75rem; cursor: pointer; height: 100%;
+    padding: .75rem 1rem; border: 1px solid var(--bs-border-color); border-radius: .75rem;
+}
+.age-option:has(input:checked) { border: 2px solid var(--deep-blue); background: var(--badge-blue-bg); }
+.age-option:has(input:focus-visible) { outline: 2px solid var(--mustard); outline-offset: 2px; }
+.age-option .age-radio { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+.age-option__icon {
+    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--badge-blue-bg); color: var(--deep-blue);
+}
+.age-option:has(input:checked) .age-option__icon { background: var(--white); }
