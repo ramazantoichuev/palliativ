@@ -459,6 +459,22 @@ msgstr "Subject of inquiry"
 msgid "Статус заявки"
 msgstr "Request status"
 
+msgid "Активные"
+msgstr "Active"
+
+msgid "Взять в работу"
+msgstr "Take into work"
+
+msgid "Отметить рассмотренными"
+msgstr "Mark as reviewed"
+
+msgid "Отклонить"
+msgstr "Reject"
+
+#, python-format
+msgid "Обновлено заявок: %(count)s"
+msgstr "Requests updated: %(count)s"
+
 #: main/models/consultation.py:30 templates/main/consultation.html:11
 msgid "Заявка на консультацию"
 msgstr "Consultation request"
@@ -1664,3 +1680,13 @@ msgstr "Photo"
 #: templates/resources/resource_detail.html:23
 msgid "Скачать"
 msgstr "Download"
+
+msgid "Слишком много попыток. Повторите позже"
+msgstr "Too many attempts. Please try again later."
+
+msgid "Вы уже зарегистрированы на это мероприятие"
+msgstr "You are already registered for this event."
+#: resources/tests/test_views/test_resource_detail.py:138
+#: templates/resources/resource_detail.html:10
+msgid "Для кого"
+msgstr "For whom"

@@ -4,9 +4,42 @@
 {% block meta_description %}{{ resource.description|truncatechars:160 }}{% endblock %}
 {% block content %}
     <h1 class="page-title fw-bold mb-4">{{ resource.title }}</h1>
+
+    <div class="resource-tags mb-3">
+        <div class="resource-tags__row">
+            <span class="resource-tags__label">{% translate "Для кого" %}</span>
+            <ul class="resource-tags__list">
+                <li class="tag-pill">{{ resource.get_audience_display }}</li>
+                <li class="tag-pill">{{ resource.get_subcategory_display }}</li>
+            </ul>
+        </div>
+        {% with symptoms=resource.symptoms.all %}
+        {% if symptoms %}
+        <div class="resource-tags__row resource-tags__row--symptoms">
+            <span class="resource-tags__label">{% translate "Симптомы" %}</span>
+            <ul class="resource-tags__list">
+                {% for symptom in symptoms %}<li class="tag-pill tag-pill--symptom">{{ symptom }}</li>{% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
     <p>{{ resource.description }}</p>
 
-    {% if resource.files.all %}
+    {% with public_files=resource.public_files images=resource.public_images %}
+
+    {% if images %}
+    <div class="resource-images mb-4">
+        {% for f in images %}
+            <a href="{{ f.public_file.url }}" target="_blank" rel="noopener" class="d-block mb-3">
+                <img src="{{ f.public_file.url }}" alt="{{ f.public_stem }}" loading="lazy" class="resource-image">
+            </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if public_files %}
     <h2 class="h4 mt-4">{% translate "Файлы" %}</h2>
     <div class="mb-3">
         {% for f in resource.files.all %}
@@ -25,7 +58,7 @@
             {% endif %}
         {% endfor %}
     </div>
-    {% if resource.public_files|length > 1 %}
+    {% if public_files|length > 1 %}
     <a href="{% url 'resources:resource_download_all' resource.slug %}"
        class="btn btn-outline-primary">
         {% translate "Скачать все файлы (ZIP)" %}
@@ -52,7 +85,9 @@
     </div>
     {% endif %}
 
-    {% if not resource.files.all and not resource.videos.all %}
+    {% if not public_files and not resource.videos.all %}
     <p class="text-muted">{% translate "Дополнительных материалов нет." %}</p>
     {% endif %}
+
+    {% endwith %}
 {% endblock %}

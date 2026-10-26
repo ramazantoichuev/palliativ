@@ -1,4 +1,5 @@
 from unittest.mock import patch
+from django.core.cache import cache
 
 from django.contrib.messages import get_messages
 from django.core import mail
@@ -22,6 +23,7 @@ def build_valid_data():
 class TestConsultationCreateViewNotifications(TestCase):
     def setUp(self):
         super().setUp()
+        cache.clear()
         self.patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
         self.patcher.start()
 
@@ -62,6 +64,7 @@ class TestConsultationCreateViewNotifications(TestCase):
 class ConsultationCreateViewTest(TestCase):
     def setUp(self):
         super().setUp()
+        cache.clear()
         self.url = reverse('main:new-consultation')
         self.turnstile_patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
         self.turnstile_patcher.start()

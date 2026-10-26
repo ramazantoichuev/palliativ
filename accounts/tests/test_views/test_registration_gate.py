@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
+from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
 
@@ -12,6 +13,7 @@ User = get_user_model()
 class PatientRegisterViewGateTests(TestCase):
     def setUp(self):
         super().setUp()
+        cache.clear()
         self.url = reverse("accounts:patient_register")
         self.turnstile_patcher = patch(
             "common.turnstile_form.verify_turnstile_token", return_value=True
@@ -69,6 +71,7 @@ class PatientRegisterViewGateTests(TestCase):
 class DoctorRegisterViewGateTests(TestCase):
     def setUp(self):
         super().setUp()
+        cache.clear()
         self.url = reverse("accounts:doctor_register")
         self.turnstile_patcher = patch(
             "common.turnstile_form.verify_turnstile_token", return_value=True
