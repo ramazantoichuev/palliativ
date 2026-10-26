@@ -90,8 +90,10 @@ class DoctorRegisterView(RegistrationGateMixin, View):
             return self.render_disabled(request)
         if honeypot_filled(request):
             return redirect("main:about")
-        if not check_rate_limit(request, "patient_register"):
-            return self.render_rate_limited(request, "accounts/patient_register.html")
+        if not check_rate_limit(request, "doctor_register"):
+            return self.render_rate_limited(
+                request, "accounts/doctor_register.html"
+            )
         form = DoctorApplicationForm(request.POST)
         if form.is_valid():
             user = form.save()
