@@ -1,4 +1,5 @@
 from unittest import mock
+from unittest.mock import patch
 
 from django.conf import settings
 from django.core.cache import cache
@@ -13,12 +14,22 @@ TOPICS = [c[0] for c in ConsultationRequest._meta.get_field("topic").choices]
 class ConsultationSpamTests(TestCase):
     def setUp(self):
         cache.clear()
+
+        self.turnstile_patcher = patch(
+            "common.turnstile_form.verify_turnstile_token",
+            return_value=True,
+        )
+        self.turnstile_patcher.start()
+        self.addCleanup(self.turnstile_patcher.stop)
+
         self.url = reverse("main:new-consultation")
         self.limit = settings.RATE_LIMITS["consultation"][0]
+
         for target in ("main.views.notify_admins", "main.views.send_confirmation"):
             patcher = mock.patch(target)
             mocked = patcher.start()
             self.addCleanup(patcher.stop)
+
             if target.endswith("notify_admins"):
                 self.notify = mocked
 
@@ -34,6 +45,7 @@ class ConsultationSpamTests(TestCase):
     def test_request_over_limit_is_blocked(self):
         for i in range(self.limit):
             self._post(phone=f"055512345{i}")
+
         response = self._post(phone="0700123456")
 
         self.assertEqual(response.status_code, 429)
@@ -44,7 +56,11 @@ class ConsultationSpamTests(TestCase):
     def test_other_ip_is_not_blocked(self):
         for i in range(self.limit):
             self._post(phone=f"055512345{i}")
-        response = self._post(phone="0700123456", HTTP_X_REAL_IP="8.8.8.8")
+
+        response = self._post(
+            phone="0700123456",
+            HTTP_X_REAL_IP="8.8.8.8",
+        )
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(ConsultationRequest.objects.count(), self.limit + 1)
@@ -77,6 +93,7 @@ class ConsultationSpamTests(TestCase):
     def test_same_phone_other_topic_is_not_duplicate(self):
         if len(TOPICS) < 2:
             self.skipTest("нужны минимум две темы")
+
         self._post(topic=TOPICS[0])
         self._post(topic=TOPICS[1])
 
