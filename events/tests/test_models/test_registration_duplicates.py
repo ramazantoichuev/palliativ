@@ -11,8 +11,17 @@ from events.tests.factories import EventFactory
 class EventRegistrationSpamTests(TestCase):
     def setUp(self):
         cache.clear()
+
+        self.turnstile_patcher = mock.patch(
+            "common.turnstile_form.verify_turnstile_token",
+            return_value=True,
+        )
+        self.turnstile_patcher.start()
+        self.addCleanup(self.turnstile_patcher.stop)
+
         self.event = EventFactory(image=None)
         self.url = reverse("events:event_detail", kwargs={"slug": self.event.slug})
+
         for target in ("events.views.notify_admins", "events.views.send_confirmation"):
             patcher = mock.patch(target)
             patcher.start()
@@ -22,8 +31,10 @@ class EventRegistrationSpamTests(TestCase):
         url = self.url
         if event:
             url = reverse("events:event_detail", kwargs={"slug": event.slug})
+
         data = {"full_name": "Айгуль", "email": "", "phone": phone}
         data.update(extra)
+
         return self.client.post(url, data)
 
     def test_same_phone_on_same_event_is_rejected(self):
