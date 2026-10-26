@@ -236,7 +236,7 @@ class PaginationPartialTest(TestCase):
         self.assertIn("?page=4&a=1", hrefs)
         self.assertTrue(all("category_id" not in h for h in hrefs))
 
-    class PostListInvalidParamsTest(TestCase):
+class PostListInvalidParamsTest(TestCase):
 
         INVALID_CATEGORY_IDS = ["abc", "-1", "", "1.5", "<script>", "²"]
         INVALID_DATES = ["zzz", "2026-02-31", "31.12.2026"]
