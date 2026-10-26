@@ -1,4 +1,5 @@
 import os
+
 from resources.constants import (
     RESOURCE_SUBCATEGORY_MORE_THRESHOLD,
     RESOURCE_SUBCATEGORY_VISIBLE,
