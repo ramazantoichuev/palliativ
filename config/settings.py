@@ -152,6 +152,28 @@ HUEY = {
         'worker_type': 'thread',  # 'thread', 'process', or 'greenlet'
     },
 }
+REDIS_URL = os.getenv('REDIS_URL')
+if REDIS_URL:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": REDIS_URL,
+        }
+    }
+else:
+    CACHES = {
+        "default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}
+    }
+
+# (максимум попыток, окно в секундах)
+RATE_LIMITS = {
+    "consultation": (5, 3600),
+    "event_registration": (10, 3600),
+    "patient_register": (5, 3600),
+    "doctor_register": (5, 3600),
+    "login": (10, 15 * 60),  # считаются только неудачные попытки
+}
+CONSULTATION_DUPLICATE_WINDOW = 10 * 60
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/

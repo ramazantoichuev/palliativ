@@ -1680,3 +1680,9 @@ msgstr "Photo"
 #: templates/resources/resource_detail.html:23
 msgid "Скачать"
 msgstr "Download"
+
+msgid "Слишком много попыток. Повторите позже"
+msgstr "Too many attempts. Please try again later."
+
+msgid "Вы уже зарегистрированы на это мероприятие"
+msgstr "You are already registered for this event."
