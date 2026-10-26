@@ -235,3 +235,89 @@ class PaginationPartialTest(TestCase):
         hrefs = self._hrefs(out)
         self.assertIn("?page=4&a=1", hrefs)
         self.assertTrue(all("category_id" not in h for h in hrefs))
+
+    class PostListInvalidParamsTest(TestCase):
+
+        INVALID_CATEGORY_IDS = ["abc", "-1", "", "1.5", "<script>", "²"]
+        INVALID_DATES = ["zzz", "2026-02-31", "31.12.2026"]
+
+        def setUp(self):
+            self.url = reverse("news:post_list")
+            self.category = Category.objects.create(name="sport")
+            self.old_post = self._make_post("old", "2025-01-10 12:00:00")
+            self.new_post = self._make_post("new", "2026-06-10 12:00:00")
+
+        def _make_post(self, slug, created):
+            post = Post.objects.create(
+                title=slug, slug=slug, content="c", description="d",
+                category=self.category,
+            )
+            Post.objects.filter(pk=post.pk).update(created_at=created)
+            post.refresh_from_db()
+            return post
+
+        def _date_input_values(self, response, name):
+            values = []
+            for tag in re.findall(r"<input[^>]*>", response.content.decode("utf-8")):
+                if f'name="{name}"' in tag:
+                    match = re.search(r'value="([^"]*)"', tag)
+                    values.append(match.group(1) if match else "")
+            return values
+
+        def test_invalid_category_id_is_ignored(self):
+            for value in self.INVALID_CATEGORY_IDS:
+                with self.subTest(category_id=value):
+                    response = self.client.get(self.url, {"category_id": value})
+                    self.assertEqual(response.status_code, 200)
+                    self.assertEqual(len(response.context["posts"]), 2)
+
+        def test_unknown_numeric_category_id_gives_empty_list(self):
+            response = self.client.get(self.url, {"category_id": "999999"})
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(list(response.context["posts"]), [])
+
+        def test_invalid_date_is_ignored(self):
+            for name in ("date_from", "date_to"):
+                for value in self.INVALID_DATES:
+                    with self.subTest(param=name, value=value):
+                        response = self.client.get(self.url, {name: value})
+                        self.assertEqual(response.status_code, 200)
+                        self.assertEqual(len(response.context["posts"]), 2)
+
+        def test_invalid_date_fields_are_empty(self):
+            for name in ("date_from", "date_to"):
+                for value in self.INVALID_DATES:
+                    with self.subTest(param=name, value=value):
+                        response = self.client.get(self.url, {name: value})
+                        values = self._date_input_values(response, name)
+                        self.assertTrue(values, f"Нет полей {name}")
+                        self.assertEqual(set(values), {""})
+
+        def test_invalid_date_does_not_break_valid_one(self):
+            cases = [
+                ({"date_from": "zzz", "date_to": "2025-12-31"}, [self.old_post]),
+                ({"date_from": "2026-01-01", "date_to": "zzz"}, [self.new_post]),
+                ({"date_from": "zzz", "date_to": "2026-02-31"}, [self.new_post, self.old_post]),
+            ]
+            for params, expected in cases:
+                with self.subTest(params=params):
+                    response = self.client.get(self.url, params)
+                    self.assertEqual(response.status_code, 200)
+                    self.assertEqual(list(response.context["posts"]), expected)
+
+        def test_valid_dates_still_filter(self):
+            cases = [
+                ({"date_from": "2026-01-01"}, [self.new_post]),
+                ({"date_to": "2025-12-31"}, [self.old_post]),
+                ({"date_from": "2025-01-01", "date_to": "2025-12-31"}, [self.old_post]),
+            ]
+            for params, expected in cases:
+                with self.subTest(params=params):
+                    response = self.client.get(self.url, params)
+                    self.assertEqual(list(response.context["posts"]), expected)
+
+        def test_valid_date_is_kept_in_fields(self):
+            response = self.client.get(self.url, {"date_from": "2026-01-01"})
+            values = self._date_input_values(response, "date_from")
+            self.assertTrue(values)
+            self.assertEqual(set(values), {"2026-01-01"})
