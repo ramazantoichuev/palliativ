@@ -1,5 +1,6 @@
-from django.views.generic import DetailView, ListView
 from django.utils.dateparse import parse_date
+from django.views.generic import DetailView, ListView
+
 from news.models.posts import Category, Post
 
 NEWS_CATEGORY_VISIBLE = 5

@@ -5,10 +5,10 @@
 import re
 
 from django.conf import settings
+from django.db import connection
 from django.test import TestCase
 from django.test.utils import CaptureQueriesContext
 from django.utils import translation
-from django.db import connection
 from django.utils.translation import gettext
 
 from resources.models.resources import Resource
