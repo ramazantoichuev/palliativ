@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
 from django.conf import settings
+from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import translation
@@ -31,6 +32,8 @@ class RegistrationSuccessMessageTests(TestCase):
 
     def setUp(self):
         super().setUp()
+        # счётчик rate limit живёт в кэше и делится между тестовыми файлами
+        cache.clear()
         patcher = patch(
             "common.turnstile_form.verify_turnstile_token", return_value=True
         )
@@ -63,6 +66,14 @@ class RegistrationSuccessMessageTests(TestCase):
         response = self.client.post(past_url, data=self.valid_data, follow=True)
 
         self.assertNotContains(response, SUCCESS_MESSAGES["ru"])
+        self.assertFalse(EventRegistration.objects.exists())
+
+    def test_filled_honeypot_shows_same_success_message_without_registration(self):
+        data = {**self.valid_data, "company_site": "http://spam.example"}
+
+        response = self.client.post(self.url, data=data, follow=True)
+
+        self.assertContains(response, SUCCESS_MESSAGES["ru"])
         self.assertFalse(EventRegistration.objects.exists())
 
     def test_success_message_is_translated_on_ky_and_en(self):

@@ -76,6 +76,8 @@ class EventDetailView(SuccessMessageMixin, FormMixin, DetailView):
         self.object = self.get_object()
 
         if honeypot_filled(request):
+            # Как у консультации: бот видит тот же ответ, что и настоящий успех
+            messages.success(request, self.success_message)
             return redirect(self.get_success_url())
 
         form = self.get_form()
