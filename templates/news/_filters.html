@@ -31,7 +31,7 @@
       </details>
     {% endif %}
   </nav>
-  {% with d_from=request.GET.date_from d_to=request.GET.date_to %}
+  {% with d_from=date_from d_to=date_to %}
   <form method="get" action="" class="d-none d-md-flex align-items-center gap-2">
     {% if active_category %}
       <input type="hidden" name="category_id" value="{{ active_category.id }}">

@@ -65,20 +65,6 @@ class Resource(models.Model):
     def __str__(self):
         return self.title
 
-    @property
-    def content_kinds(self):
-        """Типы содержимого для бейджей: список из 'pdf', 'image', 'video'."""
-        kinds = set()
-        for f in self.files.all():
-            public = f.public_file
-            if public:
-                kind = file_kind(public.name)
-                if kind in ("pdf", "image"):
-                    kinds.add(kind)
-        if self.videos.all():
-            kinds.add("video")
-        return [k for k in ("pdf", "image", "video") if k in kinds]
-
     def save(self, *args, **kwargs):
         if not self.slug:
             latin_title = translit(self.title, "ru", reversed=True)
@@ -95,21 +81,27 @@ class Resource(models.Model):
         return reverse("resources:resource_detail", kwargs={"slug": self.slug})
 
     @property
+    def content_kinds(self):
+        """Типы содержимого для бейджей: список из 'pdf', 'image', 'video'."""
+        kinds = set()
+        for f in self.files.all():
+            public = f.public_file
+            if public:
+                kind = file_kind(public.name)
+                if kind in ("pdf", "image"):
+                    kinds.add(kind)
+        if self.videos.all():
+            kinds.add("video")
+        return [k for k in ("pdf", "image", "video") if k in kinds]
+
+    @property
     def public_files(self):
         """Файлы, доступные посетителю (Word — только готовой PDF-версией)."""
         return [f.public_file for f in self.files.all() if f.public_file]
 
     @property
-    def public_kind(self):
-        """Тип публичного файла: 'pdf', 'image', 'other' или None, если файл скрыт."""
-        public = self.public_file
-        return file_kind(public.name) if public else None
-
-    @property
-    def public_name(self):
-        """Имя публичного файла без пути, для показа посетителю."""
-        public = self.public_file
-        return os.path.basename(public.name) if public else ""
+    def public_images(self):
+        return [f for f in self.files.all() if f.public_kind == "image"]
 
 
 class ResourceFile(models.Model):
@@ -165,6 +157,20 @@ class ResourceFile(models.Model):
         if self.converted_pdf and self.processing_status == ImageProcessingStatus.DONE:
             return self.converted_pdf
         return None
+
+    @property
+    def public_kind(self):
+        public = self.public_file
+        return file_kind(public.name) if public else None
+
+    @property
+    def public_name(self):
+        public = self.public_file
+        return os.path.basename(public.name) if public else ""
+
+    @property
+    def public_stem(self):
+        return os.path.splitext(self.public_name)[0]
 
 
 class ResourceVideoLink(models.Model):

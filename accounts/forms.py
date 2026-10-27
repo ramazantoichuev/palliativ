@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 from accounts.models import PatientProfile
+from common.honeypot import HoneypotFormMixin
 from common.turnstile_form import TurnstileFormMixin
 
 User = get_user_model()
@@ -67,7 +68,7 @@ class BaseRegistrationForm(forms.ModelForm):
         return user
 
 
-class PatientRegistrationForm(TurnstileFormMixin, BaseRegistrationForm):
+class PatientRegistrationForm(HoneypotFormMixin, TurnstileFormMixin, BaseRegistrationForm):
     role = User.Role.PATIENT
 
     AGE_ADULT = "adult"
@@ -105,7 +106,7 @@ class PatientRegistrationForm(TurnstileFormMixin, BaseRegistrationForm):
             profile.save()
         return user
 
-class DoctorApplicationForm(TurnstileFormMixin, BaseRegistrationForm):
+class DoctorApplicationForm(HoneypotFormMixin, TurnstileFormMixin, BaseRegistrationForm):
     role = User.Role.DOCTOR
 
     class Meta(BaseRegistrationForm.Meta):

@@ -70,6 +70,9 @@ class ResourceDetailView(DetailView):
     template_name = "resources/resource_detail.html"
     context_object_name = "resource"
 
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related("symptoms", "files", "videos")
+
 
 class ResourceFilesZipView(View):
     """Отдаёт все доступные посетителю файлы ресурса одним ZIP-архивом.
