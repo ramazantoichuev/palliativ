@@ -1732,6 +1732,11 @@ msgstr "There are no materials for this symptom yet"
 msgid "Для этих симптомов материалов для детей пока нет. Обратитесь к лечащему врачу"
 msgstr "There are no materials for children for these symptoms yet. Please contact your doctor"
 
+#: events/views.py:56
+msgid "Вы успешно зарегистрированы на мероприятие!"
+msgstr "You have successfully registered for the event!"
+
+
 msgid "Слишком много попыток. Повторите позже"
 msgstr "Too many attempts. Please try again later."
 
