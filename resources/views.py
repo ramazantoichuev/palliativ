@@ -2,16 +2,15 @@ import logging
 import os
 import zipfile
 from io import BytesIO
+from urllib.parse import urlencode
 
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.generic import DetailView, ListView
 
-from .constants import RESOURCES_PER_PAGE, RESOURCE_AUDIENCE_CHIPS_MAX
+from .constants import RESOURCE_AUDIENCE_CHIPS_MAX, RESOURCES_PER_PAGE
 from .models.resources import Resource
-
-from urllib.parse import urlencode
 from .utils import split_visible_hidden
 
 logger = logging.getLogger(__name__)
@@ -70,6 +69,9 @@ class ResourceDetailView(DetailView):
     model = Resource
     template_name = "resources/resource_detail.html"
     context_object_name = "resource"
+
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related("symptoms", "files", "videos")
 
 
 class ResourceFilesZipView(View):

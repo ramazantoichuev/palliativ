@@ -1,5 +1,6 @@
 import logging
 import os
+import shutil
 import subprocess
 import tempfile
 from io import BytesIO
@@ -33,6 +34,9 @@ def _atomic_replace(storage, name, data: bytes):
     try:
         with os.fdopen(tmp_fd, 'wb') as tmp_file:
             tmp_file.write(data)
+        # mkstemp создаёт файл с правами 0600 — после замены nginx не смог бы
+        # его читать, поэтому переносим права оригинала.
+        shutil.copymode(storage_path, tmp_path)
         os.replace(tmp_path, storage_path)
     except Exception:
         if os.path.exists(tmp_path):
@@ -117,6 +121,9 @@ def _compress_pdf(resource_file, original_size: int) -> bool:
         if compressed_size == 0 or compressed_size >= original_size:
             return False
 
+        # mkstemp создаёт файл с правами 0600 — после замены nginx не смог бы
+        # его читать, поэтому переносим права оригинала.
+        shutil.copymode(storage_path, tmp_output_path)
         os.replace(tmp_output_path, storage_path)
         return True
     finally:

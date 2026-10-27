@@ -19,6 +19,8 @@ class DoctorPatientListView(LoginRequiredMixin, ListView):
     context_object_name = "patient_cards"
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
         if request.user.role != BaseUser.Role.DOCTOR:
             raise PermissionDenied(_("Доступ разрешен только врачам."))
         if not hasattr(request.user, "doctor_profile"):
