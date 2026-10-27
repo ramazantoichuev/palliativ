@@ -5,9 +5,10 @@ from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from accounts.tests.factories import User
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 
 
-class TestDoctorRegisterView(TestCase):
+class TestDoctorRegisterView(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
         super().setUp()
         self.turnstile_patcher = patch(

@@ -1,16 +1,16 @@
 from unittest import mock
 
-from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
 
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 from events.models import EventRegistration
 from events.tests.factories import EventFactory
 
 
-class EventRegistrationSpamTests(TestCase):
+class EventRegistrationSpamTests(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
-        cache.clear()
+        super().setUp()
 
         self.turnstile_patcher = mock.patch(
             "common.turnstile_form.verify_turnstile_token",

@@ -2,10 +2,10 @@ from unittest.mock import patch
 
 from django.contrib.messages import get_messages
 from django.core import mail
-from django.core.cache import cache
 from django.test import TestCase, override_settings
 from django.urls import reverse
 
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 from main.models.consultation import ConsultationRequest
 
 
@@ -20,10 +20,9 @@ def build_valid_data():
 
 
 @override_settings(NOTIFICATION_EMAILS=['admin@example.com'])
-class TestConsultationCreateViewNotifications(TestCase):
+class TestConsultationCreateViewNotifications(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
         super().setUp()
-        cache.clear()
         self.patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
         self.patcher.start()
 
@@ -61,10 +60,9 @@ class TestConsultationCreateViewNotifications(TestCase):
             self.assertTrue(ConsultationRequest.objects.filter(email='client@example.com').exists())
 
 
-class ConsultationCreateViewTest(TestCase):
+class ConsultationCreateViewTest(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
         super().setUp()
-        cache.clear()
         self.url = reverse('main:new-consultation')
         self.turnstile_patcher = patch("common.turnstile_form.verify_turnstile_token", return_value=True)
         self.turnstile_patcher.start()

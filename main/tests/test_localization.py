@@ -166,6 +166,9 @@ class PagesTests(TestCase):
                              "поправьте TEXT_BLOCK_MODEL вверху файла")
         model.objects.all().delete()
         cache.clear()
+        # LocaleMiddleware активирует язык на поток и не сбрасывает его —
+        # возвращаем русский, чтобы не портить соседние тесты.
+        self.addCleanup(translation.activate, "ru")
 
     def test_pages(self):
         for lang in LANGS:

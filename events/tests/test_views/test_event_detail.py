@@ -6,11 +6,12 @@ from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 from events.models import EventRegistration
 from events.tests.factories import EventFactory, PastEventFactory, make_image
 
 
-class TestEventDetailView(TestCase):
+class TestEventDetailView(RateLimitCacheResetMixin, TestCase):
 
     @classmethod
     def setUpTestData(cls):
@@ -187,7 +188,7 @@ class TestEventDetailView(TestCase):
 
         self.assertContains(response, 'необязательно')
 
-class TestPastEventDetailView(TestCase):
+class TestPastEventDetailView(RateLimitCacheResetMixin, TestCase):
 
     @classmethod
     def setUpTestData(cls):

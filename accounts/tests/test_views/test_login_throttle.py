@@ -1,16 +1,17 @@
 from django.contrib.auth import get_user_model
-from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
+
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 
 User = get_user_model()
 PASSWORD = "StrongPass12345"
 LIMIT = 10
 
 
-class LoginThrottleTests(TestCase):
+class LoginThrottleTests(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
-        cache.clear()
+        super().setUp()
         self.url = reverse("accounts:login")
         self.user = User.objects.create_user(
             username="user1",

@@ -1,11 +1,11 @@
 from unittest.mock import patch
 
 from django.conf import settings
-from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import translation
 
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 from events.models import EventRegistration
 from events.tests.factories import EventFactory, PastEventFactory
 
@@ -16,7 +16,7 @@ SUCCESS_MESSAGES = {
 }
 
 
-class RegistrationSuccessMessageTests(TestCase):
+class RegistrationSuccessMessageTests(RateLimitCacheResetMixin, TestCase):
     """После регистрации на мероприятие посетитель видит сообщение об успехе (Ticket 125)."""
 
     @classmethod
@@ -32,8 +32,6 @@ class RegistrationSuccessMessageTests(TestCase):
 
     def setUp(self):
         super().setUp()
-        # счётчик rate limit живёт в кэше и делится между тестовыми файлами
-        cache.clear()
         patcher = patch(
             "common.turnstile_form.verify_turnstile_token", return_value=True
         )
