@@ -36,7 +36,7 @@ class SymptomSurveyViewTests(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Как вы себя чувствуете?")
+        self.assertContains(response, "Что сейчас беспокоит?")
 
     def test_patient_can_save_symptoms(self):
         self.client.force_login(self.patient_user)

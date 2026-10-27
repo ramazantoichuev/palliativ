@@ -7,9 +7,9 @@ from django.views import View
 from django.views.generic import ListView
 
 from accounts.models import BaseUser
-from resources.models.resources import Resource
 
 from .forms import SymptomSurveyForm
+from .matching import match_for_cards
 from .models import PatientCard
 
 
@@ -30,42 +30,13 @@ class DoctorPatientListView(LoginRequiredMixin, ListView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        cards_list = list(
+        cards = list(
             PatientCard.objects.filter(doctor__user=self.request.user)
             .order_by("-updated_at")
             .select_related("patient__user", "doctor__user")
             .prefetch_related("symptoms")
         )
-        all_symptom_ids = set()
-        for card in cards_list:
-            for symptom in card.symptoms.all():
-                all_symptom_ids.add(symptom.id)
-        if not all_symptom_ids:
-            for card in cards_list:
-                card._prefetched_matching_resources = []
-            return cards_list
-
-        resources = (
-            Resource.objects.filter(symptoms__id__in=all_symptom_ids)
-            .distinct()
-            .prefetch_related("symptoms")
-        )
-
-        symptom_to_resources = {}
-        for resource in resources:
-            for symptom in resource.symptoms.all():
-                if symptom.id not in symptom_to_resources:
-                    symptom_to_resources[symptom.id] = []
-                symptom_to_resources[symptom.id].append(resource)
-
-        for card in cards_list:
-            card_resources = set()
-            for symptom in card.symptoms.all():
-                if symptom.id in symptom_to_resources:
-                    card_resources.update(symptom_to_resources[symptom.id])
-            card._prefetched_matching_resources = list(card_resources)
-
-        return cards_list
+        return match_for_cards(cards)
 
 
 class PatientCardDetailView(LoginRequiredMixin, ListView):

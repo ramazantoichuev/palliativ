@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from accounts.models import DoctorProfile, PatientProfile
-from resources.models.resources import Resource
 
 
 class Symptom(models.Model):
@@ -46,15 +45,15 @@ class PatientCard(models.Model):
     def __str__(self):
         return f"{self.patient} — {self.diagnosis[:30]}"
 
-    def get_matching_resources(self):
-        if hasattr(self, "_prefetched_matching_resources"):
-            return self._prefetched_matching_resources
+    def get_resource_groups(self):
+        """Материалы по симптомам для пациента (кабинет врача подставляет
+        результат через match_for_cards)."""
+        if hasattr(self, "_resource_groups"):
+            return self._resource_groups
         if not self.pk:
             return []
+        from patients.matching import match_resources
 
-        if "symptoms" in getattr(self, "_prefetched_objects_cache", {}):
-            symptom_ids = [s.id for s in self.symptoms.all()]
-            if not symptom_ids:
-                return Resource.objects.none()
-            return Resource.objects.filter(symptoms__id__in=symptom_ids).distinct()
-        return Resource.objects.filter(symptoms__in=self.symptoms.all()).distinct()
+        return match_resources(
+            self.symptoms.all(), for_doctor=False, is_child=self.patient.is_child
+        )

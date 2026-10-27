@@ -12,7 +12,6 @@ from .models.site_contacts import SiteContacts
 from .models.system_settings import SystemSettings
 from .models.team import TeamMember
 
-
 STATUS_PRIORITY = Case(
     When(status="new", then=Value(0)),
     When(status="in_progress", then=Value(1)),

@@ -7,7 +7,9 @@ from django.urls import reverse
 from django.utils import timezone
 
 from main.models.consultation import ConsultationRequest
-from main.tests.factories import ConsultationRequestFactory  # поправьте путь, если factories.py лежит в другом месте
+from main.tests.factories import (
+    ConsultationRequestFactory,  # поправьте путь, если factories.py лежит в другом месте
+)
 
 User = get_user_model()
 

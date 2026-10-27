@@ -61,6 +61,8 @@ class BaseUserAdmin(UserAdmin):
 
 @admin.register(PatientProfile)
 class PatientProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "is_child")
+    list_filter = ("is_child",)
     search_fields = ["user__first_name", "user__last_name", "user__email"]
 
 
