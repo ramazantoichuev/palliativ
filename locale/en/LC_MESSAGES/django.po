@@ -1681,6 +1681,10 @@ msgstr "Photo"
 msgid "Скачать"
 msgstr "Download"
 
+#: events/views.py:56
+msgid "Вы успешно зарегистрированы на мероприятие!"
+msgstr "You have successfully registered for the event!"
+
 msgid "Слишком много попыток. Повторите позже"
 msgstr "Too many attempts. Please try again later."
 
