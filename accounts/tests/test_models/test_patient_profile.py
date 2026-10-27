@@ -23,3 +23,8 @@ class PatientProfileModelTest(TestCase):
         user.delete()
 
         self.assertFalse(PatientProfile.objects.filter(id=profile_id).exists())
+
+    def test_patient_profile_is_adult_by_default(self):
+        user = UserFactory(role=User.Role.PATIENT)
+        profile, _created = PatientProfile.objects.get_or_create(user=user)
+        self.assertFalse(profile.is_child)

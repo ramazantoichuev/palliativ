@@ -2,18 +2,18 @@ from unittest import mock
 from unittest.mock import patch
 
 from django.conf import settings
-from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
 
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 from main.models.consultation import ConsultationRequest
 
 TOPICS = [c[0] for c in ConsultationRequest._meta.get_field("topic").choices]
 
 
-class ConsultationSpamTests(TestCase):
+class ConsultationSpamTests(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
-        cache.clear()
+        super().setUp()
 
         self.turnstile_patcher = patch(
             "common.turnstile_form.verify_turnstile_token",

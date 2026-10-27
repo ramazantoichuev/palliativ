@@ -24,51 +24,52 @@
                     </p>
 
                     <form method="post">
-
                         {% csrf_token %}
-
-                        {% for field in form %}
-                            <div class="mb-3">
-
-                                <label
-                                    for="{{ field.id_for_label }}"
-                                    class="form-label"
-                                >
-                                    {{ field.label }}
-                                </label>
-
-                                {{ field }}
-
-                                {% if field.help_text %}
-                                    <div class="form-text">
-                                        {{ field.help_text }}
-                                    </div>
-                                {% endif %}
-
-                                {% for error in field.errors %}
-                                    <div class="invalid-feedback d-block">
-                                        {{ error }}
-                                    </div>
-                                {% endfor %}
-
-                            </div>
-                        {% endfor %}
+                        {% if form.company_site %}{{ form.company_site }}{% endif %}
 
                         {% if form.non_field_errors %}
                             {% for error in form.non_field_errors %}
-                                <div class="alert alert-danger">
-                                    {{ error }}
-                                </div>
+                                <div class="alert alert-danger">{{ error }}</div>
                             {% endfor %}
                         {% endif %}
 
-                        <button
-                            type="submit"
-                            class="btn btn-success btn-lg w-100 mt-2"
-                        >
+                        <div class="register-label">{% trans "О вас" %}</div>
+                        <div class="row g-3">
+                            <div class="col-md-6">{% include 'accounts/partials/field.html' with field=form.first_name %}</div>
+                            <div class="col-md-6">{% include 'accounts/partials/field.html' with field=form.last_name %}</div>
+                            <div class="col-md-6">{% include 'accounts/partials/field.html' with field=form.email %}</div>
+                            <div class="col-md-6">{% include 'accounts/partials/field.html' with field=form.phone %}</div>
+                        </div>
+
+                        <div class="register-label">{% trans "Кто пациент?" %}</div>
+                        <div class="row g-3">
+                            {% for radio in form.patient_age %}
+                            <div class="col-md-6">
+                                <label class="age-option" for="{{ radio.id_for_label }}">
+                                    {{ radio.tag }}
+                                    <span class="age-option__icon" aria-hidden="true">
+                                        <i class="fa-solid {% if radio.data.value == 'child' %}fa-child{% else %}fa-user{% endif %}"></i>
+                                    </span>
+                                    <span>{{ radio.choice_label }}</span>
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% for error in form.patient_age.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                        <p class="text-muted small mt-2 mb-0">{% trans "От этого зависит, какие материалы мы подберём" %}</p>
+
+                        <div class="register-label">{% trans "Пароль" %}</div>
+                        <div class="row g-3">
+                            <div class="col-md-6">{% include 'accounts/partials/field.html' with field=form.password1 %}</div>
+                            <div class="col-md-6">{% include 'accounts/partials/field.html' with field=form.password2 %}</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">
                             {% trans "Зарегистрироваться" %}
                         </button>
-                    {% include 'partial/turnstile_widget.html' %}
+                        {% include 'partial/turnstile_widget.html' %}
                     </form>
 
                     <div class="text-center mt-4">

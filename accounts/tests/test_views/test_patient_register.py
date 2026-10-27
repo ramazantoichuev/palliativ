@@ -6,11 +6,12 @@ from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from accounts.tests.factories import UserFactory
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 
 User = get_user_model()
 
 
-class TestPatientRegisterView(TestCase):
+class TestPatientRegisterView(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
         super().setUp()
         self.turnstile_patcher = mock.patch(
@@ -34,6 +35,15 @@ class TestPatientRegisterView(TestCase):
         self.assertTemplateUsed(response, "accounts/patient_register.html")
         self.assertIn("form", response.context)
 
+    def test_register_page_has_primary_button_and_patient_age_block(self):
+        url = reverse("accounts:patient_register")
+        response = self.client.get(url)
+
+        self.assertContains(response, "btn btn-primary btn-lg")
+        self.assertContains(response, "Кто пациент?")
+        self.assertContains(response, 'name="patient_age" value="adult"')
+        self.assertContains(response, 'name="patient_age" value="child"')
+
     @mock.patch("accounts.views.login")
     def test_post_patient_register_view_success(self, mocked_login: mock.MagicMock):
         url = reverse("accounts:patient_register")
@@ -46,6 +56,7 @@ class TestPatientRegisterView(TestCase):
                 "password1": "1qaz@WSX29",
                 "password2": "1qaz@WSX29",
                 "phone": "+996700123456",
+                "patient_age": "adult",
                 "cf-turnstile-response": "dummy_token",
             },
         )
@@ -66,6 +77,7 @@ class TestPatientRegisterView(TestCase):
                 "password1": "1qaz@WSX29",
                 "password2": "different",
                 "phone": "+996700123457",
+                "patient_age": "adult",
                 "cf-turnstile-response": "dummy_token",
             },
         )
@@ -86,6 +98,7 @@ class TestPatientRegisterView(TestCase):
             "password1": "1qaz@WSX29",
             "password2": "1qaz@WSX29",
             "phone": "+996700123458",
+            "patient_age": "adult",
             "cf-turnstile-response": "dummy_token",
         }
 
@@ -125,6 +138,7 @@ class TestPatientRegisterView(TestCase):
             "password1": "1qaz@WSX29",
             "password2": "different",
             "phone": "+996700123459",
+            "patient_age": "adult",
             "cf-turnstile-response": "dummy_token",
         }
 

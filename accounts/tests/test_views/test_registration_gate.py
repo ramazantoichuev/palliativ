@@ -1,19 +1,18 @@
 from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
-from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
 
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 from main.models.system_settings import SystemSettings
 
 User = get_user_model()
 
 
-class PatientRegisterViewGateTests(TestCase):
+class PatientRegisterViewGateTests(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
         super().setUp()
-        cache.clear()
         self.url = reverse("accounts:patient_register")
         self.turnstile_patcher = patch(
             "common.turnstile_form.verify_turnstile_token", return_value=True
@@ -32,6 +31,7 @@ class PatientRegisterViewGateTests(TestCase):
             "phone": "+996700900001",
             "password1": "StrongPass123",
             "password2": "StrongPass123",
+            "patient_age": "adult",
             "cf-turnstile-response": "dummy_token",
         }
 
@@ -68,10 +68,9 @@ class PatientRegisterViewGateTests(TestCase):
         self.assertTemplateUsed(response, "accounts/registration_disabled.html")
 
 
-class DoctorRegisterViewGateTests(TestCase):
+class DoctorRegisterViewGateTests(RateLimitCacheResetMixin, TestCase):
     def setUp(self):
         super().setUp()
-        cache.clear()
         self.url = reverse("accounts:doctor_register")
         self.turnstile_patcher = patch(
             "common.turnstile_form.verify_turnstile_token", return_value=True

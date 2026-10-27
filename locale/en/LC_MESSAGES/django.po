@@ -1681,6 +1681,62 @@ msgstr "Photo"
 msgid "Скачать"
 msgstr "Download"
 
+msgid "Что сейчас беспокоит?"
+msgstr "What is bothering you right now?"
+
+msgid "Отметьте всё, что подходит. По отмеченным симптомам мы подберём материалы"
+msgstr "Select everything that applies. We will pick materials for the selected symptoms"
+
+msgid "Выбрано"
+msgstr "Selected"
+
+msgid "Кто пациент?"
+msgstr "Who is the patient?"
+
+msgid "Взрослый"
+msgstr "Adult"
+
+msgid "Ребёнок"
+msgstr "Child"
+
+msgid "Ребёнок (до 18 лет)"
+msgstr "Child (under 18)"
+
+msgid "Пациент — ребёнок (до 18 лет)"
+msgstr "Patient is a child (under 18)"
+
+msgid "От этого зависит, какие материалы мы подберём"
+msgstr "This determines which materials we select"
+
+msgid "О вас"
+msgstr "About you"
+
+msgid "Детям"
+msgstr "For children"
+
+msgid "Для специалистов"
+msgstr "For specialists"
+
+msgid "Ухаживающим"
+msgstr "For caregivers"
+
+msgid "Мои симптомы"
+msgstr "My symptoms"
+
+msgid "Изменить симптомы"
+msgstr "Change symptoms"
+
+msgid "По этому симптому материалов пока нет"
+msgstr "There are no materials for this symptom yet"
+
+msgid "Для этих симптомов материалов для детей пока нет. Обратитесь к лечащему врачу"
+msgstr "There are no materials for children for these symptoms yet. Please contact your doctor"
+
+#: events/views.py:56
+msgid "Вы успешно зарегистрированы на мероприятие!"
+msgstr "You have successfully registered for the event!"
+
+
 msgid "Слишком много попыток. Повторите позже"
 msgstr "Too many attempts. Please try again later."
 
@@ -1690,3 +1746,4 @@ msgstr "You are already registered for this event."
 #: templates/resources/resource_detail.html:10
 msgid "Для кого"
 msgstr "For whom"
+

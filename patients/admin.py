@@ -2,12 +2,19 @@ from django import forms
 from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path
+from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
 from .models import PatientCard, Symptom
 
 
 class PatientCardAdminForm(forms.ModelForm):
+    # Признак хранится на профиле пациента, но менеджер правит его
+    # и из карточки (Ticket 126)
+    is_child = forms.BooleanField(
+        label=_("Пациент — ребёнок (до 18 лет)"), required=False
+    )
+
     class Meta:
         model = PatientCard
         fields = [
@@ -22,6 +29,8 @@ class PatientCardAdminForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        if self.instance.pk:
+            self.fields["is_child"].initial = self.instance.patient.is_child
         if not self.instance.pk and self.data.get("patient"):
             try:
                 from accounts.models import PatientProfile
@@ -30,6 +39,14 @@ class PatientCardAdminForm(forms.ModelForm):
                 self.fields["diagnosis"].initial = patient.diagnosis
             except PatientProfile.DoesNotExist:
                 pass
+
+    def save(self, commit=True):
+        # Админка вызывает save(commit=False), поэтому профиль
+        # обновляем сразу: форма к этому моменту уже провалидирована.
+        card = super().save(commit)
+        card.patient.is_child = self.cleaned_data["is_child"]
+        card.patient.save()
+        return card
 
 
 @admin.register(PatientCard)

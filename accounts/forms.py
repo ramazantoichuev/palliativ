@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from accounts.models import PatientProfile
 from common.honeypot import HoneypotFormMixin
 from common.turnstile_form import TurnstileFormMixin
 
@@ -33,6 +34,8 @@ class BaseRegistrationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for name, field in self.fields.items():
+            if isinstance(field.widget, forms.RadioSelect):
+                continue
             attrs = {"class": "form-control"}
             if name in self.PLACEHOLDERS:
                 attrs["placeholder"] = self.PLACEHOLDERS[name]
@@ -68,8 +71,24 @@ class BaseRegistrationForm(forms.ModelForm):
 class PatientRegistrationForm(HoneypotFormMixin, TurnstileFormMixin, BaseRegistrationForm):
     role = User.Role.PATIENT
 
+    AGE_ADULT = "adult"
+    AGE_CHILD = "child"
+    AGE_CHOICES = [
+        (AGE_ADULT, _("Взрослый")),
+        (AGE_CHILD, _("Ребёнок (до 18 лет)")),
+    ]
+    patient_age = forms.ChoiceField(
+        label=_("Кто пациент?"),
+        choices=AGE_CHOICES,
+        widget=forms.RadioSelect,
+    )
+
     class Meta(BaseRegistrationForm.Meta):
         fields = BaseRegistrationForm.Meta.fields + ["phone"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["patient_age"].widget.attrs["class"] = "age-radio"
 
     def clean_phone(self):
         phone = self.cleaned_data["phone"]
@@ -79,6 +98,13 @@ class PatientRegistrationForm(HoneypotFormMixin, TurnstileFormMixin, BaseRegistr
             )
         return phone
 
+    def save(self, commit=True):
+        user = super().save(commit=commit)
+        if commit:
+            profile, _created = PatientProfile.objects.get_or_create(user=user)
+            profile.is_child = self.cleaned_data["patient_age"] == self.AGE_CHILD
+            profile.save()
+        return user
 
 class DoctorApplicationForm(HoneypotFormMixin, TurnstileFormMixin, BaseRegistrationForm):
     role = User.Role.DOCTOR
