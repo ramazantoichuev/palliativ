@@ -2,10 +2,11 @@ from django.test import TestCase
 from django.urls import reverse
 
 from accounts.tests.factories import UserFactory
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 from main.models.system_settings import SystemSettings
 
 
-class NavLoginLinkTests(TestCase):
+class NavLoginLinkTests(RateLimitCacheResetMixin, TestCase):
     """Кнопка «Войти» в шапке скрыта, когда выключены обе регистрации (Ticket 117).
 
     Маркер — точный href ссылки меню: на главной адреса страницы входа

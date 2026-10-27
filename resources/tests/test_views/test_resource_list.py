@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import translation
 
 from resources.constants import RESOURCES_PER_PAGE
 from resources.models.resources import Resource
@@ -136,6 +137,9 @@ class ResourceListLocalizationTest(TestCase):
 
     def setUp(self):
         self.url = reverse('resources:resource_list')
+        # LocaleMiddleware активирует язык на поток и не сбрасывает его —
+        # возвращаем русский, чтобы не портить соседние тесты.
+        self.addCleanup(translation.activate, "ru")
 
     def _get(self, lang):
         self.client.cookies[settings.LANGUAGE_COOKIE_NAME] = lang

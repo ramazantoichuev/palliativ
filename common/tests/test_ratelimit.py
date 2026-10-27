@@ -2,15 +2,13 @@ from django.core.cache import cache
 from django.test import SimpleTestCase
 
 from common.ratelimit import allow_attempt, is_limited, register_hit
+from common.tests.tests_mixins import RateLimitCacheResetMixin
 
 LIMIT = 3
 WINDOW = 3600
 
 
-class RateLimitTests(SimpleTestCase):
-    def setUp(self):
-        cache.clear()
-
+class RateLimitTests(RateLimitCacheResetMixin, SimpleTestCase):
     def test_limit_triggers_on_attempt_after_limit(self):
         for _ in range(LIMIT):
             self.assertTrue(allow_attempt("form", "1.1.1.1", LIMIT, WINDOW))

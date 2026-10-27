@@ -1,6 +1,21 @@
 from unittest.mock import patch
 
 import requests
+from django.core.cache import cache
+
+
+class RateLimitCacheResetMixin:
+    """Очищает кэш перед каждым тестом.
+
+    Счётчики rate limit (Ticket 121) живут в кэше и делятся между
+    тестами и тестовыми файлами: без очистки классы, которые POST-ят
+    лимитируемые формы, зависят от порядка запуска. Подмешивать первым:
+    `class MyTests(RateLimitCacheResetMixin, TestCase)`.
+    """
+
+    def setUp(self):
+        cache.clear()
+        super().setUp()
 
 
 class FormTurnstileIntegrationMixin:
