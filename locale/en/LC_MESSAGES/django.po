@@ -493,7 +493,7 @@ msgstr "Used by the developer in templates"
 
 #: main/models/editable_text_block.py:32
 msgid "Содержимое текста"
-msgstr "Family support"
+msgstr "Text content"
 
 #: main/models/editable_text_block.py:34
 msgid "Удалён"

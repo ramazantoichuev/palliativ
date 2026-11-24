@@ -494,7 +494,7 @@ msgstr "Иштеп чыгуучу тарабынан шаблондордо ко
 
 #: main/models/editable_text_block.py:32
 msgid "Содержимое текста"
-msgstr "Үй-бүлөгө колдоо"
+msgstr "Тексттин мазмуну"
 
 #: main/models/editable_text_block.py:34
 msgid "Удалён"
