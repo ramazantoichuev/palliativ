@@ -493,7 +493,7 @@ msgstr "Used by the developer in templates"
 
 #: main/models/editable_text_block.py:32
 msgid "Содержимое текста"
-msgstr "Family support"
+msgstr "Text content"
 
 #: main/models/editable_text_block.py:34
 msgid "Удалён"
@@ -1747,3 +1747,42 @@ msgstr "You are already registered for this event."
 msgid "Для кого"
 msgstr "For whom"
 
+#: templates/main/user_agreement.html
+msgid "Пользовательское соглашение"
+msgstr "User Agreement"
+
+#: templates/main/user_agreement.html
+msgid "Пользовательское соглашение — Паллиатив.kg"
+msgstr "User Agreement — Palliative.kg"
+
+#: templates/main/user_agreement.html
+msgid "Условия использования сайта Ассоциации паллиативной и хосписной помощи Кыргызской Республики."
+msgstr "Terms of use of the website of the Association of Palliative and Hospice Care of the Kyrgyz Republic."
+
+#: templates/main/user_agreement.html
+msgid "1. Общие положения"
+msgstr "1. General Provisions"
+
+#: templates/main/user_agreement.html
+msgid "2. Характер Сайта"
+msgstr "2. Nature of the Site"
+
+#: templates/main/user_agreement.html
+msgid "3. Права и обязанности пользователя"
+msgstr "3. User Rights and Obligations"
+
+#: templates/main/user_agreement.html
+msgid "4. Интеллектуальная собственность"
+msgstr "4. Intellectual Property"
+
+#: templates/main/user_agreement.html
+msgid "5. Ограничение ответственности"
+msgstr "5. Limitation of Liability"
+
+#: templates/main/user_agreement.html
+msgid "6. Изменение Соглашения и материалов"
+msgstr "6. Amendments to the Agreement and Materials"
+
+#: templates/main/user_agreement.html
+msgid "7. Применимое право"
+msgstr "7. Governing Law"

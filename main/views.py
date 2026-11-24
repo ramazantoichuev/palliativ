@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
+from django.http import Http404
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
@@ -20,6 +21,7 @@ from resources.models.resources import Resource
 from .forms import ConsultationForm
 from .models.consultation import ConsultationRequest
 from .models.team import TeamMember
+from .user_agreement import is_user_agreement_published
 
 
 class HomeView(TemplateView):
@@ -44,6 +46,16 @@ class ContactsView(TemplateView):
 
 class PrivacyPolicyView(TemplateView):
     template_name = "main/privacy_policy.html"
+
+
+class UserAgreementView(TemplateView):
+    template_name = "main/user_agreement.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        if not is_user_agreement_published():
+            raise Http404
+        return super().dispatch(request, *args, **kwargs)
+
 
 class SearchResultsView(TemplateView):
     template_name = "main/search_results.html"

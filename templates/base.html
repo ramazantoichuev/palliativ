@@ -1,5 +1,6 @@
 {% load static i18n %}
 {% load seo_tags %}
+{% load user_agreement %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <!DOCTYPE html>
@@ -249,6 +250,12 @@
             <div>
                 <a href="{% url 'main:contacts' %}">{% translate "Написать нам" %}</a>
             </div>
+            {% user_agreement_published as show_user_agreement %}
+            {% if show_user_agreement %}
+            <div>
+                <a href="{% url 'main:user_agreement' %}">{% translate "Пользовательское соглашение" %}</a>
+            </div>
+            {% endif %}
             <div>
                 <a href="{% url 'main:privacy_policy' %}">{% translate "Политика обработки данных" %}</a>
             </div>

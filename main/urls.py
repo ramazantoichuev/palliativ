@@ -8,6 +8,7 @@ from .views import (
     PrivacyPolicyView,
     SearchResultsView,
     TeamView,
+    UserAgreementView,
 )
 
 app_name = "main"
@@ -19,5 +20,6 @@ urlpatterns = [
     path("team/", TeamView.as_view(), name="team"),
     path("consultation/", ConsultationCreateView.as_view(), name="new-consultation"),
     path("privacy-policy/", PrivacyPolicyView.as_view(), name="privacy_policy"),
+    path("user-agreement/", UserAgreementView.as_view(), name="user_agreement"),
     path("search/", SearchResultsView.as_view(), name="search"),
 ]
