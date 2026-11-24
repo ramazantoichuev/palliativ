@@ -8,13 +8,17 @@ from main.user_agreement import USER_AGREEMENT_SLUGS
 
 
 def create_blocks(skip=(), **overrides):
-    """Создаёт блоки соглашения; текст каждого — «Текст <slug>»."""
+    """Задаёт тексты блоков соглашения (их создаёт миграция 0014).
+
+    Текст каждого блока — «Текст <slug>», блоки из skip становятся пустыми.
+    """
     for slug in USER_AGREEMENT_SLUGS:
-        if slug in skip:
-            continue
-        EditableTextBlock.objects.create(
-            slug=slug, content_ru=overrides.get(slug, f"Текст {slug}")
-        )
+        text = "" if slug in skip else overrides.get(slug, f"Текст {slug}")
+        EditableTextBlock.objects.filter(slug=slug).update(content_ru=text)
+
+
+def empty_blocks():
+    create_blocks(skip=USER_AGREEMENT_SLUGS)
 
 
 class TestUserAgreementPublication(TestCase):
@@ -24,12 +28,14 @@ class TestUserAgreementPublication(TestCase):
     def setUpTestData(cls):
         cls.url = reverse("main:user_agreement")
 
-    def test_page_is_not_found_without_blocks(self):
+    def test_page_is_not_found_while_blocks_are_empty(self):
+        empty_blocks()
+
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 404)
 
-    def test_page_is_not_found_when_one_block_is_missing(self):
+    def test_page_is_not_found_when_one_block_is_empty(self):
         create_blocks(skip=("user-agreement-law",))
 
         response = self.client.get(self.url)
@@ -43,6 +49,14 @@ class TestUserAgreementPublication(TestCase):
 
         self.assertEqual(response.status_code, 404)
 
+    def test_page_is_not_found_when_one_block_is_deleted(self):
+        create_blocks()
+        EditableTextBlock.objects.get(slug="user-agreement-ip").delete()
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 404)
+
     def test_page_is_not_found_when_one_block_is_soft_deleted(self):
         create_blocks()
         EditableTextBlock.objects.get(slug="user-agreement-ip").soft_delete()
@@ -50,6 +64,22 @@ class TestUserAgreementPublication(TestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 404)
+
+    def test_migration_creates_all_blocks_with_agreed_text(self):
+        texts = dict(
+            EditableTextBlock.objects.filter(slug__in=USER_AGREEMENT_SLUGS)
+            .values_list("slug", "content_ru")
+        )
+
+        self.assertEqual(set(texts), set(USER_AGREEMENT_SLUGS))
+        self.assertTrue(all(text.strip() for text in texts.values()))
+
+    def test_agreed_text_is_published_right_after_migration(self):
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Используя сайт")
+        self.assertContains(response, "Редакция от: 20 октября 2026 г.")
 
     def test_footer_link_is_hidden_until_text_is_complete(self):
         create_blocks(skip=("user-agreement-law",))
@@ -168,7 +198,9 @@ class TestUserAgreementPublishedTag(TestCase):
             "{% user_agreement_published as published %}{{ published }}"
         ).render(Context())
 
-    def test_false_without_blocks(self):
+    def test_false_while_blocks_are_empty(self):
+        empty_blocks()
+
         self.assertEqual(self.render(), "False")
 
     def test_true_when_all_blocks_are_filled(self):
