@@ -1757,3 +1757,42 @@ msgstr "Сиз бул иш-чарага мурунтан эле катталга
 msgid "Для кого"
 msgstr "Ким үчүн"
 
+#: templates/main/user_agreement.html
+msgid "Пользовательское соглашение"
+msgstr "Колдонуучу келишими"
+
+#: templates/main/user_agreement.html
+msgid "Пользовательское соглашение — Паллиатив.kg"
+msgstr "Колдонуучу келишими — Паллиатив.kg"
+
+#: templates/main/user_agreement.html
+msgid "Условия использования сайта Ассоциации паллиативной и хосписной помощи Кыргызской Республики."
+msgstr "Кыргыз Республикасынын паллиативдик жана хоспистик жардам боюнча ассоциациясынын сайтын пайдалануу шарттары."
+
+#: templates/main/user_agreement.html
+msgid "1. Общие положения"
+msgstr "1. Жалпы жоболор"
+
+#: templates/main/user_agreement.html
+msgid "2. Характер Сайта"
+msgstr "2. Сайттын мүнөзү"
+
+#: templates/main/user_agreement.html
+msgid "3. Права и обязанности пользователя"
+msgstr "3. Колдонуучунун укуктары жана милдеттери"
+
+#: templates/main/user_agreement.html
+msgid "4. Интеллектуальная собственность"
+msgstr "4. Интеллектуалдык менчик"
+
+#: templates/main/user_agreement.html
+msgid "5. Ограничение ответственности"
+msgstr "5. Жоопкерчиликти чектөө"
+
+#: templates/main/user_agreement.html
+msgid "6. Изменение Соглашения и материалов"
+msgstr "6. Келишимди жана материалдарды өзгөртүү"
+
+#: templates/main/user_agreement.html
+msgid "7. Применимое право"
+msgstr "7. Колдонулуучу укук"
