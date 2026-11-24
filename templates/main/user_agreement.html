@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n text_blocks %}
+
+{% block title %}{% translate "Пользовательское соглашение — Паллиатив.kg" %}{% endblock %}
+{% block meta_description %}{% translate "Условия использования сайта Ассоциации паллиативной и хосписной помощи Кыргызской Республики." %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% translate "Пользовательское соглашение" %}</h2>
+    {% get_text_block "user-agreement-intro" %}
+
+    <h4>{% translate "1. Общие положения" %}</h4>
+    {% get_text_block "user-agreement-general" %}
+
+    <h4>{% translate "2. Характер Сайта" %}</h4>
+    {% get_text_block "user-agreement-nature" %}
+
+    <h4>{% translate "3. Права и обязанности пользователя" %}</h4>
+    {% get_text_block "user-agreement-duties" %}
+
+    <h4>{% translate "4. Интеллектуальная собственность" %}</h4>
+    {% get_text_block "user-agreement-ip" %}
+
+    <h4>{% translate "5. Ограничение ответственности" %}</h4>
+    {% get_text_block "user-agreement-liability" %}
+
+    <h4>{% translate "6. Изменение Соглашения и материалов" %}</h4>
+    {% get_text_block "user-agreement-changes" %}
+
+    <h4>{% translate "7. Применимое право" %}</h4>
+    {% get_text_block "user-agreement-law" %}
+
+    <h4>{% translate "Контакты" %}</h4>
+    <p>
+        {% translate "Ассоциация паллиативной и хосписной помощи Кыргызской Республики" %}<br>
+        {% if site_contacts.email %}<a href="mailto:{{ site_contacts.email }}">{{ site_contacts.email }}</a><br>{% endif %}
+        {% if site_contacts.phone %}<a href="tel:{{ site_contacts.phone }}">{{ site_contacts.phone_display }}</a><br>{% endif %}
+        {% if site_contacts.address %}{{ site_contacts.address }}{% endif %}
+    </p>
+</div>
+{% endblock %}
